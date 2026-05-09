@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title> 2 Ferramentas | Fundamentos de Ecologia Numérica</title>
+<meta name="author" content="Prof. Elvio S. F. Medeiros">
+<meta name="author" content="Laboratório de Ecologia">
+<meta name="author" content="Universidade Estadual da Paraíba">
+<meta name="author" content="Campus V, João Pessoa, PB">
+<meta name="description" content="RESUMO Ferramentas como Git (software de controle de versões), GitHub (plataforma online que hospeda respositórios Git) e Zotero (software de gerenciamento e compartilhamento de referências...">
+<meta name="generator" content="bookdown 0.46 with bs4_book()">
+<meta property="og:title" content=" 2 Ferramentas | Fundamentos de Ecologia Numérica">
+<meta property="og:type" content="book">
+<meta property="og:description" content="RESUMO Ferramentas como Git (software de controle de versões), GitHub (plataforma online que hospeda respositórios Git) e Zotero (software de gerenciamento e compartilhamento de referências...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content=" 2 Ferramentas | Fundamentos de Ecologia Numérica">
+<meta name="twitter:description" content="RESUMO Ferramentas como Git (software de controle de versões), GitHub (plataforma online que hospeda respositórios Git) e Zotero (software de gerenciamento e compartilhamento de referências...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.10.0/transition.js"></script><script src="libs/bs3compat-0.10.0/tabs.js"></script><script src="libs/bs3compat-0.10.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet">
+<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script><script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script><script src="libs/rglWebGL-binding-1.3.36/rglWebGL.js"></script><link href="libs/rglwidgetClass-1.3.36/rgl.css" rel="stylesheet">
+<script src="libs/rglwidgetClass-1.3.36/rglClass.src.js"></script><script src="libs/rglwidgetClass-1.3.36/utils.src.js"></script><script src="libs/rglwidgetClass-1.3.36/buffer.src.js"></script><script src="libs/rglwidgetClass-1.3.36/subscenes.src.js"></script><script src="libs/rglwidgetClass-1.3.36/shaders.src.js"></script><script src="libs/rglwidgetClass-1.3.36/shadersrc.src.js"></script><script src="libs/rglwidgetClass-1.3.36/textures.src.js"></script><script src="libs/rglwidgetClass-1.3.36/projection.src.js"></script><script src="libs/rglwidgetClass-1.3.36/mouse.src.js"></script><script src="libs/rglwidgetClass-1.3.36/init.src.js"></script><script src="libs/rglwidgetClass-1.3.36/pieces.src.js"></script><script src="libs/rglwidgetClass-1.3.36/draw.src.js"></script><script src="libs/rglwidgetClass-1.3.36/controls.src.js"></script><script src="libs/rglwidgetClass-1.3.36/selection.src.js"></script><script src="libs/rglwidgetClass-1.3.36/rglTimer.src.js"></script><script src="libs/rglwidgetClass-1.3.36/pretty.src.js"></script><script src="libs/rglwidgetClass-1.3.36/axes.src.js"></script><script src="libs/rglwidgetClass-1.3.36/animation.src.js"></script><script src="libs/CanvasMatrix4-1.3.36/CanvasMatrix.src.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<style type="text/css">
+    /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+          margin-bottom: 1em;
+        }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
+  </style>
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="Disciplina de Ecologia Numérica do Curso de Ciências Biológicas do Campus V da UEPB">Fundamentos de Ecologia Numérica</a>:
+        <small class="text-muted">Disciplina de Ecologia Numérica do Curso de Ciências Biológicas do Campus V da UEPB</small>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html"><span class="header-section-number">1</span> Apresentação</a></li>
+<li class="book-part">I. INTRODUÇÃO</li>
+<li><a class="active" href="ferram.html"><span class="header-section-number">2</span> Ferramentas</a></li>
+<li><a class="" href="rrstu.html"><span class="header-section-number">3</span> Introdução ao R/RStudio</a></li>
+<li class="book-part">II. TEORIA</li>
+<li><a class="" href="amd.html"><span class="header-section-number">4</span> Teoria 1 - Introdução à Análise Multivariada de Dados (AMD)</a></li>
+<li><a class="" href="tiposE.html"><span class="header-section-number">5</span> Teoria 2 - Tipos de dados usados em AMD</a></li>
+<li><a class="" href="reltrnsT.html"><span class="header-section-number">6</span> Teoria 3 - Relativizações e transformações de dados</a></li>
+<li class="book-part">III. BASES DE DADOS</li>
+<li><a class="" href="bases.html"><span class="header-section-number">7</span> Bases de dados. Dados do PPBio Semiárido</a></li>
+<li><a class="" href="basepeixes.html"><span class="header-section-number">8</span> Base de dados I - Peixes</a></li>
+<li><a class="" href="basehab.html"><span class="header-section-number">9</span> Base de dados II - Habitat</a></li>
+<li class="book-part">IV. ESTATÍSTICAS DESCRITIVAS</li>
+<li><a class="" href="tiposR.html"><span class="header-section-number">10</span> R Módulo 1 - Sintaxe e Tipos de dados no R</a></li>
+<li><a class="" href="xls.html"><span class="header-section-number">11</span> R Módulo 2 - Importando planilhas de dados</a></li>
+<li><a class="" href="univ.html"><span class="header-section-number">12</span> R Módulo 3.1 - Estatísticas descritivas e normalidade</a></li>
+<li><a class="" href="univ2.html"><span class="header-section-number">13</span> R Módulo 3.2 - Testes estatísticos</a></li>
+<li><a class="" href="unigr.html"><span class="header-section-number">14</span> R Modulo 3.3 - Gráficos univariados</a></li>
+<li><a class="" href="estrcom.html"><span class="header-section-number">15</span> R Módulo 4.1 - Estrutura da comunidade</a></li>
+<li><a class="" href="partdiv.html"><span class="header-section-number">16</span> R Modulo 4.2 - Decomposição da diversidade</a></li>
+<li><a class="" href="estrhab.html"><span class="header-section-number">17</span> R Módulo 4.3 - Estrutura do habitat</a></li>
+<li><a class="" href="reltrns.html"><span class="header-section-number">18</span> R Modulo 5 - Relativizações e transformações</a></li>
+<li><a class="" href="outcentr.html"><span class="header-section-number">19</span> R Módulo 6 - Análise de outliers baseada no desvio padrão do centróide</a></li>
+<li class="book-part">V. ANÁLISES MULTIVARIADAS</li>
+<li><a class="" href="upgma.html"><span class="header-section-number">20</span> R Módulo 7 - Análise de Classificação Hierárquica - SAHN</a></li>
+<li><a class="" href="kmeans.html"><span class="header-section-number">21</span> R Módulo 8 - Análise de Classificação Não-hierárquica - K-Means</a></li>
+<li><a class="" href="pca.html"><span class="header-section-number">22</span> R Módulo 9 - Análise de Componentes Principais - PCA</a></li>
+<li><a class="" href="nmds.html"><span class="header-section-number">23</span> R Módulo 10.1 - Análise de Ordenação - NMDS</a></li>
+<li><a class="" href="nmds2.html"><span class="header-section-number">24</span> R Modulo 10.2 - Análise de Ordenação - NMDS</a></li>
+<li class="book-part">VI. INFORMAÇÕES GERAIS</li>
+<li><a class="" href="bibliografia-geral.html">Bibliografia Geral</a></li>
+</ul>
+
+        <div class="book-extra">
+          
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="ferram" class="section level1" number="2">
+<h1>
+<span class="header-section-number"> 2</span> Ferramentas<a class="anchor" aria-label="anchor" href="#ferram"><i class="fas fa-link"></i></a>
+</h1>
+<div id="resumo" class="section level3 unnumbered">
+<h3>RESUMO<a class="anchor" aria-label="anchor" href="#resumo"><i class="fas fa-link"></i></a>
+</h3>
+<p>Ferramentas como <a href="https://git-scm.com/install/">Git</a> (software de controle de versões), <a href="https://github.com/">GitHub</a> (plataforma online que hospeda respositórios Git) e <a href="https://www.zotero.org/">Zotero</a> (software de gerenciamento e compartilhamento de referências bibliográficas) desempenham um papel central na <strong>ciência aberta</strong>, especialmente no que diz respeito à <strong>reprodutibilidade</strong> e à <strong>replicabilidade</strong> dos estudos. Essas plataformas contribuem diretamente para a transparência do processo científico ao permitir que dados, códigos, metodologias e referências sejam organizados, documentados e compartilhados de forma acessível. Outra ferramenta que usaremos é o <em>Ambiente de Desenvolvimento Integrado (IDE)</em> para a linguagem R, o <a href="https://posit.co/download/rstudio-desktop">RStudio</a>. Uma introdução detalhada sobre o R e RStudio é apresentada no próximo capítulo <a href="rrstu.html#rrstu">Introdução ao R/RStudio</a>.</p>
+<p>No caso do Git e do GitHub, sua principal contribuição está no controle de versão e na rastreabilidade das alterações em projetos de pesquisa. Cada modificação em scripts, conjuntos de dados ou documentos pode ser registrada com precisão, incluindo informações sobre quem realizou a alteração, quando e por quê. Isso cria um histórico auditável que permite a outros pesquisadores compreenderem todas as etapas do desenvolvimento de um estudo. Como resultado, torna-se mais viável reproduzir os resultados originais utilizando os mesmos métodos e procedimentos, o que é essencial para validar descobertas científicas. Além disso, o uso dessas ferramentas facilita a colaboração entre pesquisadores, mesmo em contextos distribuídos geograficamente. Projetos podem ser desenvolvidos coletivamente, com contribuições revisadas e integradas de forma estruturada. Isso reduz inconsistências e melhora a qualidade geral da pesquisa.</p>
+<p>O Zotero atua na organização e gestão de referências bibliográficas, assegurando que as fontes utilizadas sejam corretamente registradas e facilmente recuperáveis. Ele também permite o compartilhamento de bibliotecas entre grupos de pesquisa, promovendo alinhamento teórico e metodológico. Ao tornar explícitas as bases conceituais de um estudo, o Zotero contribui para que outros pesquisadores possam compreender, verificar e replicar os fundamentos da pesquisa.</p>
+<p>Em conjunto, essas ferramentas fortalecem práticas científicas mais abertas, confiáveis e verificáveis, pilares fundamentais da ciência aberta.</p>
+</div>
+<div id="instala_r" class="section level2" number="2.1">
+<h2>
+<span class="header-section-number">2.1</span> Instalação do R e RStudio<a class="anchor" aria-label="anchor" href="#instala_r"><i class="fas fa-link"></i></a>
+</h2>
+<div id="r-base" class="section level3" number="2.1.1">
+<h3>
+<span class="header-section-number">2.1.1</span> R base<a class="anchor" aria-label="anchor" href="#r-base"><i class="fas fa-link"></i></a>
+</h3>
+<ol style="list-style-type: decimal">
+<li>O primeiro passo é entrar na página do projeto CRAN (Comprehensive R Archive Network) (<a href="https://www.r-project.org/" class="uri">https://www.r-project.org/</a>).</li>
+<li>Do lado esquerdo da página clique sobre o link CRAN abaixo de Download. 3. Uma nova página com uma série de links irá se abrir. Esses links são chamados de “espelhos” e servem para que você possa escolher o local mais próximo de onde você está para fazer o download do programa. Escolha um espelho no Brasil.</li>
+<li>Na seção Download and Install R, clique sobre o link <code>Download R for Windows</code> para baixar a versão para esse sistema… (MacOS??… o que é isso?)</li>
+<li>Clique sobre o link <code>base</code>.</li>
+<li>Clique sobre o link <code>Download R 4.x.x for Windows</code> para fazer o download do arquivo R.exe.</li>
+<li>A instalação segue o formato padrão de instalação de programas no Windows, e portanto não são necessários maiores detalhes.</li>
+</ol>
+</div>
+<div id="rstudio" class="section level3" number="2.1.2">
+<h3>
+<span class="header-section-number">2.1.2</span> RStudio<a class="anchor" aria-label="anchor" href="#rstudio"><i class="fas fa-link"></i></a>
+</h3>
+<ol style="list-style-type: decimal">
+<li>Para baixar o RStudio entre no endereço (<a href="https://posit.co/download/rstudio-desktop/" class="uri">https://posit.co/download/rstudio-desktop/</a>)</li>
+<li>Clique no link <code>Products &gt; RStudio</code>
+</li>
+<li>Selecione a versão Desktop.</li>
+<li>Clique em <code>DOWNLOAD RSTUDIO DESKTOP</code>
+</li>
+<li>Será exibida uma página com a recomendação para você baixar o RStudio FREE versão mais recente - Windows</li>
+<li>Clicando nesse link, você irá baixar o arquivo RStudio atual (.exe)</li>
+<li>Depois é só clicar e instalar da forma convencional do Windows.</li>
+</ol>
+<p>Após a instalação, você pode abrir o <code>RStudio</code> pelo seu respectivo ícone, e o RStudio estará pronto para ser utilizado. O “R base” continuará instalado mas será acessado pelo RStudio. Não o desinstale.</p>
+</div>
+<div id="rstudio-na-nuvem" class="section level3" number="2.1.3">
+<h3>
+<span class="header-section-number">2.1.3</span> RStudio na nuvem<a class="anchor" aria-label="anchor" href="#rstudio-na-nuvem"><i class="fas fa-link"></i></a>
+</h3>
+<p>Usar o RStudio Cloud (<a href="https://login.rstudio.cloud/" class="uri">https://login.rstudio.cloud/</a>) é uma opção para quem não quer instalar a versão para PC. O RStudio Cloud é uma plataforma online que fornece um ambiente de desenvolvimento integrado para o R, permitindo que os usuários executem análises, desenvolvam código e colaborem com outras pessoas, sem a necessidade de instalar o R e o RStudio em seus próprios computadores. É uma solução conveniente e acessível, especialmente para iniciantes ou usuários que desejam compartilhar projetos e colaborar de forma eficiente.</p>
+</div>
+</div>
+<div id="criando-uma-conta-no-github" class="section level2" number="2.2">
+<h2>
+<span class="header-section-number">2.2</span> Criando uma conta no GitHub<a class="anchor" aria-label="anchor" href="#criando-uma-conta-no-github"><i class="fas fa-link"></i></a>
+</h2>
+<ol style="list-style-type: decimal">
+<li><p>Acesse o site oficial do GitHub em <a href="https://github.com/" class="uri">https://github.com/</a> e faça o cadastro. Você vai precisar confirmar por e-mail. Anote seu <code>e-mail</code> e <code>login de cadastro</code>.</p></li>
+<li><p>Agora instale o Git a partir desse site <a href="https://git-scm.com/" class="uri">https://git-scm.com/</a>. O Git fará a ponte entre o Github e o RStudio.</p></li>
+</ol>
+<div id="criando-um-repositório-no-github" class="section level3" number="2.2.1">
+<h3>
+<span class="header-section-number">2.2.1</span> Criando um repositório no Github<a class="anchor" aria-label="anchor" href="#criando-um-reposit%C3%B3rio-no-github"><i class="fas fa-link"></i></a>
+</h3>
+<ol style="list-style-type: decimal">
+<li><p>Faça login no GitHub</p></li>
+<li><p>No canto superior direito, navegue até o seu perfil (<code>Profile</code>): <a href="https://github.com/seu_nome" class="uri">https://github.com/seu_nome</a></p></li>
+</ol>
+<div class="figure">
+<span style="display:block;" id="fig:101gitperfil"></span>
+<img src="imagens/github_perfil.png" alt="Teste" width="300px"><p class="caption">
+Figura 2.1: Teste
+</p>
+</div>
+<ol start="3" style="list-style-type: decimal">
+<li>Selecione <code>Repository &gt; New</code>
+</li>
+</ol>
+<div class="figure">
+<span style="display:block;" id="fig:101asbim"></span>
+<img src="imagens/github_perfil.png" alt="*Astyanax bimaculatus*, a espécie mais comum da matriz de dados ppbio. Peru, by Eakins, R. Fonte: &lt;https://www.fishbase.se/summary/Astianax-bimaculatus.html&gt;" width="450px"><p class="caption">
+Figura 2.2: <em>Astyanax bimaculatus</em>, a espécie mais comum da matriz de dados ppbio. Peru, by Eakins, R. Fonte: <a href="https://www.fishbase.se/summary/Astianax-bimaculatus.html" class="uri">https://www.fishbase.se/summary/Astianax-bimaculatus.html</a>
+</p>
+</div>
+<div class="inline-figure"><img src="imagens/github-reps-new.png" id="fig-github-reps-new" width="300"></div>
+<ol start="4" style="list-style-type: decimal">
+<li>
+<p>Preencha os campos:</p>
+<p>● Repository name: nome_do_projeto</p>
+<p>● Description (opcional)</p>
+<p>● Public (público)</p>
+<p>● Marque <code>Add a README</code></p>
+<p>● Escolha uma licença (GNU)</p>
+<p>● Clique em <code>Create repository</code></p>
+</li>
+<li>
+<p>Abra o repositório criado, em <code>Settings</code>, vá em <code>Pages</code></p>
+<p>● Na opção <code>Branch</code>, escolha as opções <code>main</code> e <code>/docs</code>.</p>
+<p>● Clique em <code>Save</code></p>
+</li>
+</ol>
+<div class="inline-figure"><img src="imagens/github-reps-settings.png" id="fig-github-reps-settings" width="500"></div>
+<ol start="6" style="list-style-type: decimal">
+<li>
+<p>Volte no repositório e escolha <code>About</code> (símbolo da engrenagem)</p>
+<p>● Dê uma descrição do repositório</p>
+<p>● Marque a opção <code>Use your GitHub Pages website</code></p>
+<p>● Insira dois ou três tópicos</p>
+<p>● <code>Save changes</code></p>
+</li>
+</ol>
+<div class="inline-figure"><img src="imagens/github-reps-about.png" id="fig-github-reps-about" width="300"></div>
+</div>
+<div id="criando-um-controle-de-versões-no-rstudio" class="section level3" number="2.2.2">
+<h3>
+<span class="header-section-number">2.2.2</span> Criando um <code>Controle de Versões</code> no RStudio<a class="anchor" aria-label="anchor" href="#criando-um-controle-de-vers%C3%B5es-no-rstudio"><i class="fas fa-link"></i></a>
+</h3>
+<p>No RStudio siga as seguintes opções:</p>
+<p><code>File &gt; New Project &gt; Version Control &gt; Git</code></p>
+<p>Para incluir a opção <code>Repository URL</code> você precisará voltar no seu repositório do Github:</p>
+<ol style="list-style-type: decimal">
+<li>Volte no seu repositório do Github e clique em <code>Code</code>
+</li>
+<li>Copie o <code>HTTPS</code>
+</li>
+<li>Volte no RStudio e cole em <code>Repository URL</code>
+</li>
+<li>O <code>Project directory name</code> é preenchido automaticamente com o nome do seu projeto</li>
+<li>Em <code>Create project as subdirectory of</code> escolha a pasta local onde será mantido seu projeto.</li>
+<li>Marque a opção <code>Open in new session</code>
+</li>
+<li>Clique em <code>Create Project</code>
+</li>
+</ol>
+<p>Após esse passos o RStudio abrirá uma nova sessão com seu projeto. Esse projeto estará vinculado ao Git e Github. O RStudio vai criar uma subpasta com o seu projeto (nome do repositório) na pasta que você definir em <code>Project directory name</code>.</p>
+</div>
+<div id="ativação-do-git-no-rstudio" class="section level3" number="2.2.3">
+<h3>
+<span class="header-section-number">2.2.3</span> Ativação do Git no RStudio<a class="anchor" aria-label="anchor" href="#ativa%C3%A7%C3%A3o-do-git-no-rstudio"><i class="fas fa-link"></i></a>
+</h3>
+<ol style="list-style-type: decimal">
+<li>Para ativar Git no RStudio, abra o RStudio, vá em <code>Tools &gt; Global Options &gt; Git/SVN</code> e marque <code>Enable version control interface</code>
+</li>
+</ol>
+</div>
+<div id="configurando-usuário-e-e-mail-do-git-no-rstudio" class="section level3" number="2.2.4">
+<h3>
+<span class="header-section-number">2.2.4</span> Configurando usuário e e-mail do Git, no RStudio<a class="anchor" aria-label="anchor" href="#configurando-usu%C3%A1rio-e-e-mail-do-git-no-rstudio"><i class="fas fa-link"></i></a>
+</h3>
+<p>Instale o pacote usethis:</p>
+<pre><code>install.packages("usethis")</code></pre>
+<p>Depois configure:</p>
+<pre><code>usethis::use_git_config(
+  user.name = "github_login",
+  user.email = "seu_email_cadastrado"
+)
+usethis::git_sitrep()</code></pre>
+<p>Também é possível configurar pelo Terminal do RStudio:</p>
+<pre><code>git config --global user.name "Github_login"
+git config --global user.email "email@exemplo.com"</code></pre>
+</div>
+</div>
+<div id="fluxo-básico-stage-commit-e-push" class="section level2" number="2.3">
+<h2>
+<span class="header-section-number">2.3</span> Fluxo básico: <code>Stage</code>, <code>Commit</code> e <code>Push</code><a class="anchor" aria-label="anchor" href="#fluxo-b%C3%A1sico-stage-commit-e-push"><i class="fas fa-link"></i></a>
+</h2>
+<p>Depois que você cria o seu projeto no RStudio, ele cria novos arquivos (por exemplo, o arquivo do projeto, .Rproj, entre outros). O seu RStudio fica diferente do seu repositório do Github. Esses arquivos existem apenas no computador local e ainda não estão no GitHub. É necessário levar essas mudanças para o Github.</p>
+<div class="infobox note">
+<div class="center">
+<p><strong>NOTA</strong></p>
+</div>
+<p>Se você não consegue ver a extansão (exemplo, arquivo.Rproj) veja o tópico <a href="rrstu.html#extensoes">Visualizar extenções de arquivos</a> do Capítulo <a href="rrstu.html#rrstu">Introdução ao R/RStudio</a></p>
+</div>
+<p>Para enviar as alterações ao GitHub:</p>
+<p>Depois de alterar qualquer arquivo do seu projeto, vá até a aba <em>Git</em> no canto superior direito do RStudio. Ali aparecerão todos os arquivos modificados. Marque aqueles que deseja enviar para o GitHub — esse passo corresponde ao <code>Stage</code> dos arquivos, ou seja, selecionar os arquivos que farão parte do próximo <code>Commit</code>.
+Em seguida, clique em <code>Commit</code>.</p>
+<p>Isso abrirá uma janela para você escrever a mensagem do commit. Escreva uma mensagem descrevendo as alterações realizadas (por exemplo, “primeiro commit”)</p>
+<p>Depois de escrever a mensagem, clique novamente em <code>Commit</code>. Nesse momento, as alterações ficam registradas localmente no seu computador (na pasta do seu projeto do RStudio). Finalizado o commit, clique em <code>Push</code> para enviar tudo ao repositório remoto no GitHub.</p>
+<p>Depois disso, abra o repositório no GitHub pelo navegador e atualize a página para conferir se os arquivos e alterações realmente foram enviados. Se o processo ocorreu corretamente, os arquivos atualizados e a nova mensagem de commit já aparecerão no histórico do repositório.</p>
+</div>
+<div id="modelo-de-site" class="section level2" number="2.4">
+<h2>
+<span class="header-section-number">2.4</span> Modelo de site<a class="anchor" aria-label="anchor" href="#modelo-de-site"><i class="fas fa-link"></i></a>
+</h2>
+<p>Agora baixe esse arquivo <a href="https://drive.google.com/file/d/1E0smYYd6L2hYxMsZBFmoaHj3Ufe9vHYb/view?usp=drive_link">___ms_modelo_quarto-novo.ZIP</a> e descompacte-o.
+Nele há um conjunto de arquivos que cria um site provisório, a partir de onde você construirá seu relatório da disciplina.</p>
+<p>Copie todos os arquivos da pasta descompactada para dentro da pasta do seu projeto no RStudio.</p>
+<p>Atualize seu repositório do Github, com as opções <code>Stage</code>, <code>Commit</code> e <code>Push</code>, como descrito anteriormente. Na mensagem de commit escreva “site provisório”.</p>
+</div>
+<div id="material-de-apoio" class="section level2 unnumbered">
+<h2>Material de apoio<a class="anchor" aria-label="anchor" href="#material-de-apoio"><i class="fas fa-link"></i></a>
+</h2>
+</div>
+<div id="apêndices" class="section level2 unnumbered">
+<h2>Apêndices<a class="anchor" aria-label="anchor" href="#ap%C3%AAndices"><i class="fas fa-link"></i></a>
+</h2>
+</div>
+<div id="sites-consultados" class="section level2 unnumbered">
+<h2>Sites consultados<a class="anchor" aria-label="anchor" href="#sites-consultados"><i class="fas fa-link"></i></a>
+</h2>
+</div>
+<div id="leitura-suplementar" class="section level2 unnumbered">
+<h2>Leitura suplementar<a class="anchor" aria-label="anchor" href="#leitura-suplementar"><i class="fas fa-link"></i></a>
+</h2>
+</div>
+<div id="referências" class="section level2 unnumbered">
+<h2>Referências<a class="anchor" aria-label="anchor" href="#refer%C3%AAncias"><i class="fas fa-link"></i></a>
+</h2>
+
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="index.html"><span class="header-section-number">1</span> Apresentação</a></div>
+<div class="next"><a href="rrstu.html"><span class="header-section-number">3</span> Introdução ao R/RStudio</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li>
+<a class="nav-link" href="#ferram"><span class="header-section-number">2</span> Ferramentas</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#resumo">RESUMO</a></li></ul>
+</li>
+<li>
+<a class="nav-link" href="#instala_r"><span class="header-section-number">2.1</span> Instalação do R e RStudio</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#r-base"><span class="header-section-number">2.1.1</span> R base</a></li>
+<li><a class="nav-link" href="#rstudio"><span class="header-section-number">2.1.2</span> RStudio</a></li>
+<li><a class="nav-link" href="#rstudio-na-nuvem"><span class="header-section-number">2.1.3</span> RStudio na nuvem</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#criando-uma-conta-no-github"><span class="header-section-number">2.2</span> Criando uma conta no GitHub</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#criando-um-reposit%C3%B3rio-no-github"><span class="header-section-number">2.2.1</span> Criando um repositório no Github</a></li>
+<li><a class="nav-link" href="#criando-um-controle-de-vers%C3%B5es-no-rstudio"><span class="header-section-number">2.2.2</span> Criando um Controle de Versões no RStudio</a></li>
+<li><a class="nav-link" href="#ativa%C3%A7%C3%A3o-do-git-no-rstudio"><span class="header-section-number">2.2.3</span> Ativação do Git no RStudio</a></li>
+<li><a class="nav-link" href="#configurando-usu%C3%A1rio-e-e-mail-do-git-no-rstudio"><span class="header-section-number">2.2.4</span> Configurando usuário e e-mail do Git, no RStudio</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#fluxo-b%C3%A1sico-stage-commit-e-push"><span class="header-section-number">2.3</span> Fluxo básico: Stage, Commit e Push</a></li>
+<li><a class="nav-link" href="#modelo-de-site"><span class="header-section-number">2.4</span> Modelo de site</a></li>
+<li><a class="nav-link" href="#material-de-apoio">Material de apoio</a></li>
+<li><a class="nav-link" href="#ap%C3%AAndices">Apêndices</a></li>
+<li><a class="nav-link" href="#sites-consultados">Sites consultados</a></li>
+<li><a class="nav-link" href="#leitura-suplementar">Leitura suplementar</a></li>
+<li><a class="nav-link" href="#refer%C3%AAncias">Referências</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Fundamentos de Ecologia Numérica</strong>: Disciplina de Ecologia Numérica do Curso de Ciências Biológicas do Campus V da UEPB" was written by Prof. Elvio S. F. Medeiros, Laboratório de Ecologia, Universidade Estadual da Paraíba, Campus V, João Pessoa, PB. It was last built on Last updated: 09/05/2026 12:41:51.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>
