@@ -20,7 +20,9 @@
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.10.0/transition.js"></script><script src="libs/bs3compat-0.10.0/tabs.js"></script><script src="libs/bs3compat-0.10.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
-<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet">
+<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
   </style>
@@ -74,6 +76,14 @@
 <li class="book-part">I. INTRODUÇÃO</li>
 <li><a class="" href="ferram.html"><span class="header-section-number">2</span> Ferramentas</a></li>
 <li><a class="" href="rrstu.html"><span class="header-section-number">3</span> Introdução ao R/RStudio</a></li>
+<li class="book-part">II. TEORIA</li>
+<li><a class="" href="amd.html"><span class="header-section-number">4</span> Teoria 1 - Introdução à Análise Multivariada de Dados (AMD)</a></li>
+<li><a class="" href="tiposE.html"><span class="header-section-number">5</span> Teoria 2 - Tipos de dados usados em AMD</a></li>
+<li><a class="" href="reltrnsT.html"><span class="header-section-number">6</span> Teoria 3 - Relativizações e transformações de dados</a></li>
+<li class="book-part">III. BASES DE DADOS</li>
+<li><a class="" href="bases.html"><span class="header-section-number">7</span> Bases de dados. Dados do PPBio Semiárido</a></li>
+<li><a class="" href="basepeixes.html"><span class="header-section-number">8</span> Base de dados I - Peixes</a></li>
+<li><a class="" href="basehab.html"><span class="header-section-number">9</span> Base de dados II - Habitat</a></li>
 <li class="book-part">VI. INFORMAÇÕES GERAIS</li>
 <li><a class="active" href="bibliografia-geral.html">Bibliografia Geral</a></li>
 </ul>
@@ -101,10 +111,22 @@ LEGENDRE, P.; LEGENDRE, L. <strong>Numerical Ecology</strong>. 2nd English ed ed
 MCCUNE, B.; GRACE, J. B. <strong>Analysis of Ecological Communities</strong>. Gleneden Beach, Oregon, U.S.A.: MjM Software Design, 2002. p. 300
 </div>
 <div class="csl-entry">
+MEDEIROS, E. S. F.; SILVA, M. J. da; RAMOS, T. P. A.; RAMOS, R. T. C. <a href="https://doi.org/10.1590/S2179-975X3023">Environmental variables as predictors of fish community composition in semiarid aquatic systems</a>. <strong>Acta Limnologica Brasiliensia</strong>, [s. l.], v. 36, n. e4, p. 1–13, 2024.
+</div>
+<div class="csl-entry">
+MEDEIROS, E. S. F.; SILVA, M. J.; RAMOS, R. T. C. Application of catchment- and local-scale variables for aquatic habitat characterization and assessment in the Brazilian semi-arid region. <strong>Neotropical Biology and Conservation</strong>, [s. l.], v. 3, n. 1, p. 13–20, 2008. Disponível em: &lt;<a href="https://revistas.unisinos.br/index.php/neotropical/article/view/5440">https://revistas.unisinos.br/index.php/neotropical/article/view/5440</a>&gt;
+</div>
+<div class="csl-entry">
 R STUDIO TEAM. <strong>RStudio: Integrated Development Environment for R</strong>. Boston, MA: RStudio, PBC, 2022. Type: Book. Disponível em: &lt;<a href="https://posit.co/products/open-source/rstudio/">https://posit.co/products/open-source/rstudio/</a>&gt;
 </div>
 <div class="csl-entry">
+SILVA, E. P. da; DUARTE, M. R. N.; MEDEIROS, E. S. F. <a href="https://doi.org/10.4013/nbc.2018.131.11">Length-weight relationship of two fish species from a dryland intermittent river in northeastern Brazil</a>. <strong>Neotropical Biology and Conservation</strong>, [s. l.], v. 13, n. 1, 2018.
+</div>
+<div class="csl-entry">
 SILVA, F. R.; GONÇALVES-SOUZA, T.; PATERNO, G. B.; PROVETE, D. B.; VANCINE, M. H. <strong>Análises Ecológicas no R</strong>. 1. ed. Bauru - SP: Canal 6 Editora. NUPEEA., 2022. Disponível em: &lt;<a href="https://canal6.com.br/livreacesso/livro/analises-ecologicas-no-r/">https://canal6.com.br/livreacesso/livro/analises-ecologicas-no-r/</a>&gt;
+</div>
+<div class="csl-entry">
+SILVA, M. J.; FIGUEIREDO, B. R. S.; RAMOS, R. T. C.; MEDEIROS, E. S. F. <a href="https://doi.org/10.1590/S1679-62252010005000010%20">Food resources used by three species of fish in the semi-arid region of Brazil</a>. <strong>Neotropical Ichthyology</strong>, [s. l.], v. 8, n. 4, p. 825–833, 2010.
 </div>
 <div class="csl-entry">
 VALENTIN, J. L. <strong>Ecologia Numérica. Uma Introdução à Análise Multivariada de Dados Ecológicos</strong>. 1. ed. Rio de Janeiro: Interciência, 2000. Type: Book.
@@ -114,8 +136,23 @@ WILLIAMS, D. G. <strong>Study Guide: Classification and Ordination</strong>. (v1
 </div>
 </div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   <div class="chapter-nav">
-<div class="prev"><a href="rrstu.html"><span class="header-section-number">3</span> Introdução ao R/RStudio</a></div>
+<div class="prev"><a href="basehab.html"><span class="header-section-number">9</span> Base de dados II - Habitat</a></div>
 <div class="empty"></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
@@ -135,7 +172,7 @@ WILLIAMS, D. G. <strong>Study Guide: Classification and Ordination</strong>. (v1
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Fundamentos de Ecologia Numérica</strong>: Disciplina de Ecologia Numérica do Curso de Ciências Biológicas do Campus V da UEPB" was written by Prof. Elvio S. F. Medeiros, Laboratório de Ecologia, Universidade Estadual da Paraíba, Campus V, João Pessoa, PB. It was last built on Last updated: 09/05/2026 17:11:14.</p>
+    <p>"<strong>Fundamentos de Ecologia Numérica</strong>: Disciplina de Ecologia Numérica do Curso de Ciências Biológicas do Campus V da UEPB" was written by Prof. Elvio S. F. Medeiros, Laboratório de Ecologia, Universidade Estadual da Paraíba, Campus V, João Pessoa, PB. It was last built on Last updated: 09/05/2026 17:16:44.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
