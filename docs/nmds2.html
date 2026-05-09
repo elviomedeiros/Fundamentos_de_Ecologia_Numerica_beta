@@ -1,0 +1,1939 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title> 20 R Modulo 10.2 - Análise de Ordenação - NMDS | Fundamentos de Ecologia Numérica</title>
+  <meta name="description" content="…. The output format for this example is bookdown::gitbook." />
+  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
+
+  <meta property="og:title" content=" 20 R Modulo 10.2 - Análise de Ordenação - NMDS | Fundamentos de Ecologia Numérica" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="…. The output format for this example is bookdown::gitbook." />
+  <meta name="github-repo" content="rstudio/fundamentos_de_ecologia_numerica" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content=" 20 R Modulo 10.2 - Análise de Ordenação - NMDS | Fundamentos de Ecologia Numérica" />
+  
+  <meta name="twitter:description" content="…. The output format for this example is bookdown::gitbook." />
+  
+
+<meta name="author" content="Prof. Elvio S. F. Medeiros" />
+<meta name="author" content="Laboratório de Ecologia" />
+<meta name="author" content="Universidade Estadual da Paraíba" />
+<meta name="author" content="Campus V, João Pessoa, PB" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="nmds.html"/>
+<link rel="next" href="bibliografia-geral.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
+<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script>
+<script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<script src="libs/rglWebGL-binding-1.3.34/rglWebGL.js"></script>
+<link href="libs/rglwidgetClass-1.3.34/rgl.css" rel="stylesheet" />
+<script src="libs/rglwidgetClass-1.3.34/rglClass.src.js"></script>
+<script src="libs/rglwidgetClass-1.3.34/utils.src.js"></script>
+<script src="libs/rglwidgetClass-1.3.34/buffer.src.js"></script>
+<script src="libs/rglwidgetClass-1.3.34/subscenes.src.js"></script>
+<script src="libs/rglwidgetClass-1.3.34/shaders.src.js"></script>
+<script src="libs/rglwidgetClass-1.3.34/shadersrc.src.js"></script>
+<script src="libs/rglwidgetClass-1.3.34/textures.src.js"></script>
+<script src="libs/rglwidgetClass-1.3.34/projection.src.js"></script>
+<script src="libs/rglwidgetClass-1.3.34/mouse.src.js"></script>
+<script src="libs/rglwidgetClass-1.3.34/init.src.js"></script>
+<script src="libs/rglwidgetClass-1.3.34/pieces.src.js"></script>
+<script src="libs/rglwidgetClass-1.3.34/draw.src.js"></script>
+<script src="libs/rglwidgetClass-1.3.34/controls.src.js"></script>
+<script src="libs/rglwidgetClass-1.3.34/selection.src.js"></script>
+<script src="libs/rglwidgetClass-1.3.34/rglTimer.src.js"></script>
+<script src="libs/rglwidgetClass-1.3.34/pretty.src.js"></script>
+<script src="libs/rglwidgetClass-1.3.34/axes.src.js"></script>
+<script src="libs/rglwidgetClass-1.3.34/animation.src.js"></script>
+<script src="libs/CanvasMatrix4-1.3.34/CanvasMatrix.src.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 1em;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Fundamentos de Ecologia Numérica</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Apresentação</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#motivação"><i class="fa fa-check"></i><b>1.1</b> Motivação</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#organização-do-livro"><i class="fa fa-check"></i><b>1.2</b> Organização do livro</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#como-estudar-por-esse-livro"><i class="fa fa-check"></i><b>1.3</b> Como estudar por esse livro?</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="index.html"><a href="index.html#para-um-estudo-aprofundado"><i class="fa fa-check"></i><b>1.3.1</b> Para um estudo aprofundado</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Introdução ao R/RStudio</a>
+<ul>
+<li class="chapter" data-level="" data-path="intro.html"><a href="intro.html#resumo"><i class="fa fa-check"></i>RESUMO</a></li>
+<li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#plano-de-estudo"><i class="fa fa-check"></i><b>2.1</b> Plano de estudo</a></li>
+<li class="chapter" data-level="2.2" data-path="intro.html"><a href="intro.html#pré-requisitos"><i class="fa fa-check"></i><b>2.2</b> Pré-requisitos</a></li>
+<li class="chapter" data-level="2.3" data-path="intro.html"><a href="intro.html#principais-conceitos"><i class="fa fa-check"></i><b>2.3</b> Principais conceitos</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="intro.html"><a href="intro.html#o-ambiente-de-programação-do-r"><i class="fa fa-check"></i><b>2.3.1</b> O ambiente de programação do R</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="intro.html"><a href="intro.html#o-que-é-o-r-studio"><i class="fa fa-check"></i><b>2.4</b> O que é o R Studio?</a></li>
+<li class="chapter" data-level="2.5" data-path="intro.html"><a href="intro.html#instala_r"><i class="fa fa-check"></i><b>2.5</b> Instalação do R e RStudio</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="intro.html"><a href="intro.html#r-base"><i class="fa fa-check"></i><b>2.5.1</b> R base</a></li>
+<li class="chapter" data-level="2.5.2" data-path="intro.html"><a href="intro.html#rstudio"><i class="fa fa-check"></i><b>2.5.2</b> RStudio</a></li>
+<li class="chapter" data-level="2.5.3" data-path="intro.html"><a href="intro.html#rstudio-na-nuvem"><i class="fa fa-check"></i><b>2.5.3</b> RStudio na nuvem</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="intro.html"><a href="intro.html#o-essencial"><i class="fa fa-check"></i><b>2.6</b> O essencial</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="intro.html"><a href="intro.html#licença-de-software"><i class="fa fa-check"></i><b>2.6.1</b> Licença de software</a></li>
+<li class="chapter" data-level="2.6.2" data-path="intro.html"><a href="intro.html#interface-do-usuário"><i class="fa fa-check"></i><b>2.6.2</b> Interface do usuário</a></li>
+<li class="chapter" data-level="2.6.3" data-path="intro.html"><a href="intro.html#interface-do-usuário-do-rstudio"><i class="fa fa-check"></i><b>2.6.3</b> Interface do usuário do RStudio</a></li>
+<li class="chapter" data-level="2.6.4" data-path="intro.html"><a href="intro.html#projetos"><i class="fa fa-check"></i><b>2.6.4</b> Projetos</a></li>
+<li class="chapter" data-level="2.6.5" data-path="intro.html"><a href="intro.html#nomes-de-arquivos"><i class="fa fa-check"></i><b>2.6.5</b> Nomes de arquivos</a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="intro.html"><a href="intro.html#preparação-dos-arquivos"><i class="fa fa-check"></i><b>2.7</b> Preparação dos arquivos</a>
+<ul>
+<li class="chapter" data-level="2.7.1" data-path="intro.html"><a href="intro.html#formatos-de-arquivo-de-dados"><i class="fa fa-check"></i><b>2.7.1</b> Formatos de arquivo de dados</a></li>
+<li class="chapter" data-level="2.7.2" data-path="intro.html"><a href="intro.html#o-arquivo-de-espécies"><i class="fa fa-check"></i><b>2.7.2</b> O arquivo de espécies</a></li>
+<li class="chapter" data-level="2.7.3" data-path="intro.html"><a href="intro.html#formato-de-valores-separados-por-vírgula-.csv"><i class="fa fa-check"></i><b>2.7.3</b> Formato de valores separados por vírgula (.csv)</a></li>
+<li class="chapter" data-level="2.7.4" data-path="intro.html"><a href="intro.html#editando-a-matriz-de-dados"><i class="fa fa-check"></i><b>2.7.4</b> Editando a matriz de dados</a></li>
+<li class="chapter" data-level="2.7.5" data-path="intro.html"><a href="intro.html#arquivos-de-resultados"><i class="fa fa-check"></i><b>2.7.5</b> Arquivos de resultados</a></li>
+<li class="chapter" data-level="2.7.6" data-path="intro.html"><a href="intro.html#gráficos"><i class="fa fa-check"></i><b>2.7.6</b> Gráficos</a></li>
+</ul></li>
+<li class="chapter" data-level="2.8" data-path="intro.html"><a href="intro.html#conclusão"><i class="fa fa-check"></i><b>2.8</b> Conclusão</a></li>
+<li class="chapter" data-level="2.9" data-path="intro.html"><a href="intro.html#sequência-típica-na-preparação-e-análise-de-dados"><i class="fa fa-check"></i><b>2.9</b> Sequência típica na preparação e análise de dados</a></li>
+<li class="chapter" data-level="2.10" data-path="intro.html"><a href="intro.html#material-de-apoio"><i class="fa fa-check"></i><b>2.10</b> Material de apoio</a></li>
+<li class="chapter" data-level="" data-path="intro.html"><a href="intro.html#apêndices"><i class="fa fa-check"></i>Apêndices</a></li>
+<li class="chapter" data-level="" data-path="intro.html"><a href="intro.html#sites-consultados"><i class="fa fa-check"></i>Sites consultados</a></li>
+<li class="chapter" data-level="" data-path="intro.html"><a href="intro.html#leitura-suplementar"><i class="fa fa-check"></i>Leitura suplementar</a></li>
+<li class="chapter" data-level="" data-path="intro.html"><a href="intro.html#referências"><i class="fa fa-check"></i>Referências</a></li>
+</ul></li>
+<li class="part"><span><b>I II. BASES DE DADOS</b></span></li>
+<li class="chapter" data-level="3" data-path="bases.html"><a href="bases.html"><i class="fa fa-check"></i><b>3</b> Bases de dados. Dados do PPBio Semiárido</a>
+<ul>
+<li class="chapter" data-level="" data-path="bases.html"><a href="bases.html#exemplos-de-conjunto-de-dados-ecológicos-do-programa-de-pesquisa-em-biodiversidade-ppbio-do-semiárido"><i class="fa fa-check"></i>Exemplos de conjunto de dados ecológicos do Programa de Pesquisa em Biodiversidade (PPBio) do Semiárido</a></li>
+<li class="chapter" data-level="" data-path="bases.html"><a href="bases.html#resumo-1"><i class="fa fa-check"></i>RESUMO</a></li>
+<li class="chapter" data-level="3.1" data-path="bases.html"><a href="bases.html#sobre-os-dados-do-ppbio"><i class="fa fa-check"></i><b>3.1</b> Sobre os dados do PPBio</a></li>
+<li class="chapter" data-level="3.2" data-path="bases.html"><a href="bases.html#arqs"><i class="fa fa-check"></i><b>3.2</b> Arquivos disponíveis</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="bases.html"><a href="bases.html#codificação-das-variáveis"><i class="fa fa-check"></i><b>3.2.1</b> Codificação das variáveis</a></li>
+<li class="chapter" data-level="3.2.2" data-path="bases.html"><a href="bases.html#abrev"><i class="fa fa-check"></i><b>3.2.2</b> Abreviações</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="bases.html"><a href="bases.html#referências-1"><i class="fa fa-check"></i>Referências</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="basepeixes.html"><a href="basepeixes.html"><i class="fa fa-check"></i><b>4</b> Base de dados I - Peixes</a>
+<ul>
+<li class="chapter" data-level="" data-path="basepeixes.html"><a href="basepeixes.html#estrutura-da-comunidade-peixes-no-semiárido"><i class="fa fa-check"></i>Estrutura da Comunidade: Peixes no semiárido</a></li>
+<li class="chapter" data-level="" data-path="basepeixes.html"><a href="basepeixes.html#apresentação-1"><i class="fa fa-check"></i>Apresentação</a></li>
+<li class="chapter" data-level="" data-path="basepeixes.html"><a href="basepeixes.html#resumo-2"><i class="fa fa-check"></i>RESUMO</a></li>
+<li class="chapter" data-level="4.1" data-path="basepeixes.html"><a href="basepeixes.html#introdução"><i class="fa fa-check"></i><b>4.1</b> Introdução</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="basepeixes.html"><a href="basepeixes.html#desenho-amostral"><i class="fa fa-check"></i><b>4.1.1</b> Desenho Amostral</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="basepeixes.html"><a href="basepeixes.html#codificação-das-variáveis-1"><i class="fa fa-check"></i><b>4.2</b> Codificação das variáveis</a></li>
+<li class="chapter" data-level="4.3" data-path="basepeixes.html"><a href="basepeixes.html#amostragem-dos-dados"><i class="fa fa-check"></i><b>4.3</b> Amostragem dos dados</a></li>
+<li class="chapter" data-level="4.4" data-path="basepeixes.html"><a href="basepeixes.html#análises-estatísticas"><i class="fa fa-check"></i><b>4.4</b> Análises estatísticas</a></li>
+<li class="chapter" data-level="4.5" data-path="basepeixes.html"><a href="basepeixes.html#discussão"><i class="fa fa-check"></i><b>4.5</b> Discussão</a></li>
+<li class="chapter" data-level="" data-path="basepeixes.html"><a href="basepeixes.html#apêndices-1"><i class="fa fa-check"></i>Apêndices</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="basepeixes.html"><a href="basepeixes.html#tabelas-e-figuras"><i class="fa fa-check"></i><b>4.5.1</b> Tabelas e Figuras</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="basepeixes.html"><a href="basepeixes.html#referências-2"><i class="fa fa-check"></i>Referências</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="basehab.html"><a href="basehab.html"><i class="fa fa-check"></i><b>5</b> Base de dados II - Habitat</a>
+<ul>
+<li class="chapter" data-level="" data-path="basehab.html"><a href="basehab.html#estrutura-do-habitat-variáveis-ambientais-no-semiárido"><i class="fa fa-check"></i>Estrutura do Habitat: Variáveis ambientais no semiárido</a></li>
+<li class="chapter" data-level="" data-path="basehab.html"><a href="basehab.html#apresentação-2"><i class="fa fa-check"></i>Apresentação</a></li>
+<li class="chapter" data-level="" data-path="basehab.html"><a href="basehab.html#resumo-3"><i class="fa fa-check"></i>RESUMO</a></li>
+<li class="chapter" data-level="5.1" data-path="basehab.html"><a href="basehab.html#introdução-1"><i class="fa fa-check"></i><b>5.1</b> Introdução</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="basehab.html"><a href="basehab.html#desenho-amostral-1"><i class="fa fa-check"></i><b>5.1.1</b> Desenho Amostral</a></li>
+<li class="chapter" data-level="5.1.2" data-path="basehab.html"><a href="basehab.html#sobre-os-dados-do-ppbio-1"><i class="fa fa-check"></i><b>5.1.2</b> Sobre os dados do PPBio</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="basehab.html"><a href="basehab.html#codificação-para-variáveis"><i class="fa fa-check"></i><b>5.2</b> Codificação para variáveis</a></li>
+<li class="chapter" data-level="5.3" data-path="basehab.html"><a href="basehab.html#área-de-estudo-e-amostragem-dos-dados"><i class="fa fa-check"></i><b>5.3</b> Área de estudo e amostragem dos dados</a></li>
+<li class="chapter" data-level="5.4" data-path="basehab.html"><a href="basehab.html#análises-estatísticas-1"><i class="fa fa-check"></i><b>5.4</b> Análises estatísticas</a></li>
+<li class="chapter" data-level="5.5" data-path="basehab.html"><a href="basehab.html#resultados"><i class="fa fa-check"></i><b>5.5</b> Resultados</a></li>
+<li class="chapter" data-level="5.6" data-path="basehab.html"><a href="basehab.html#discussão-1"><i class="fa fa-check"></i><b>5.6</b> Discussão</a></li>
+<li class="chapter" data-level="" data-path="basehab.html"><a href="basehab.html#referências-3"><i class="fa fa-check"></i>Referências</a></li>
+</ul></li>
+<li class="part"><span><b>II III. ESTATÍSTICAS DESCRITIVAS</b></span></li>
+<li class="chapter" data-level="6" data-path="xls.html"><a href="xls.html"><i class="fa fa-check"></i><b>6</b> R Módulo 1 - Importando planilhas de dados</a>
+<ul>
+<li class="chapter" data-level="" data-path="xls.html"><a href="xls.html#resumo-4"><i class="fa fa-check"></i>RESUMO</a></li>
+<li class="chapter" data-level="" data-path="xls.html"><a href="xls.html#apresentação-3"><i class="fa fa-check"></i>Apresentação</a></li>
+<li class="chapter" data-level="6.1" data-path="xls.html"><a href="xls.html#sobre-os-dados-do-ppbio-2"><i class="fa fa-check"></i><b>6.1</b> Sobre os dados do PPBio</a></li>
+<li class="chapter" data-level="6.2" data-path="xls.html"><a href="xls.html#importando-a-planilha-de-trabalho"><i class="fa fa-check"></i><b>6.2</b> Importando a planilha de trabalho</a></li>
+<li class="chapter" data-level="6.3" data-path="xls.html"><a href="xls.html#mensagens-de-erro-e-avisos-no-r"><i class="fa fa-check"></i><b>6.3</b> Mensagens de erro e avisos no R</a></li>
+<li class="chapter" data-level="6.4" data-path="xls.html"><a href="xls.html#organização-básica"><i class="fa fa-check"></i><b>6.4</b> Organização básica</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="xls.html"><a href="xls.html#prefira-sempre-códigos-e-scripts-do-que-mouse-e-menus-de-janelas-no-r"><i class="fa fa-check"></i><b>6.4.1</b> Prefira sempre códigos e scripts do que mouse e menus de janelas no R</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="xls.html"><a href="xls.html#importando-a-planilha"><i class="fa fa-check"></i><b>6.5</b> Importando a planilha</a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="xls.html"><a href="xls.html#outra-forma-de-achar-e-importar-uma-planilha"><i class="fa fa-check"></i><b>6.5.1</b> Outra forma de achar e importar uma planilha</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="xls.html"><a href="xls.html#importando-.ods-do-libreoffice-calc"><i class="fa fa-check"></i><b>6.6</b> Importando <code>.ods</code> do LibreOffice Calc</a>
+<ul>
+<li class="chapter" data-level="6.6.1" data-path="xls.html"><a href="xls.html#colunas-com-o-mesmo-nome"><i class="fa fa-check"></i><b>6.6.1</b> Colunas com o mesmo nome</a></li>
+<li class="chapter" data-level="6.6.2" data-path="xls.html"><a href="xls.html#removendo-linhas-ou-colunas-por-nome"><i class="fa fa-check"></i><b>6.6.2</b> Removendo linhas ou colunas por nome</a></li>
+<li class="chapter" data-level="6.6.3" data-path="xls.html"><a href="xls.html#criando-uma-matriz-de-médias"><i class="fa fa-check"></i><b>6.6.3</b> Criando uma matriz de médias</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="xls.html"><a href="xls.html#apêndices-2"><i class="fa fa-check"></i>Apêndices</a>
+<ul>
+<li class="chapter" data-level="" data-path="xls.html"><a href="xls.html#sites-consultados-1"><i class="fa fa-check"></i>Sites consultados</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="xls.html"><a href="xls.html#script-limpo"><i class="fa fa-check"></i>Script limpo</a></li>
+<li class="chapter" data-level="" data-path="xls.html"><a href="xls.html#referências-4"><i class="fa fa-check"></i>Referências</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="tiposR.html"><a href="tiposR.html"><i class="fa fa-check"></i><b>7</b> R Módulo 2 - Tipos de dados no R</a>
+<ul>
+<li class="chapter" data-level="" data-path="tiposR.html"><a href="tiposR.html#apresentação-4"><i class="fa fa-check"></i>Apresentação</a></li>
+<li class="chapter" data-level="7.1" data-path="tiposR.html"><a href="tiposR.html#tipos-e-estruturas-de-dados-no-r"><i class="fa fa-check"></i><b>7.1</b> Tipos e estruturas de dados no R</a></li>
+<li class="chapter" data-level="7.2" data-path="tiposR.html"><a href="tiposR.html#mensagens-de-erro-e-avisos-no-r-1"><i class="fa fa-check"></i><b>7.2</b> Mensagens de erro e avisos no R</a></li>
+<li class="chapter" data-level="7.3" data-path="tiposR.html"><a href="tiposR.html#o-que-é-um-script-e-qual-sua-diferença-para-um-código"><i class="fa fa-check"></i><b>7.3</b> O que é um <code>script</code> e qual sua diferença para um <code>código</code>?</a></li>
+<li class="chapter" data-level="7.4" data-path="tiposR.html"><a href="tiposR.html#tipos-e-estruturas-de-dados-no-r-1"><i class="fa fa-check"></i><b>7.4</b> Tipos e estruturas de dados no R</a></li>
+<li class="chapter" data-level="7.5" data-path="tiposR.html"><a href="tiposR.html#tipos-de-dados-no-r"><i class="fa fa-check"></i><b>7.5</b> Tipos de dados no R</a>
+<ul>
+<li class="chapter" data-level="7.5.1" data-path="tiposR.html"><a href="tiposR.html#variáveis-e-tipos-básicos-de-dados-figura-reffignucleos"><i class="fa fa-check"></i><b>7.5.1</b> Variáveis e tipos básicos de dados (Figura @ref(fig:nucleos))</a></li>
+</ul></li>
+<li class="chapter" data-level="7.6" data-path="tiposR.html"><a href="tiposR.html#estruturas-de-dados-no-r"><i class="fa fa-check"></i><b>7.6</b> Estruturas de dados no R</a></li>
+<li class="chapter" data-level="7.7" data-path="tiposR.html"><a href="tiposR.html#como-pedir-ajuda"><i class="fa fa-check"></i><b>7.7</b> Como pedir ajuda?</a>
+<ul>
+<li class="chapter" data-level="7.7.1" data-path="tiposR.html"><a href="tiposR.html#dentro-do-r"><i class="fa fa-check"></i><b>7.7.1</b> Dentro do R</a></li>
+<li class="chapter" data-level="7.7.2" data-path="tiposR.html"><a href="tiposR.html#fora-do-r"><i class="fa fa-check"></i><b>7.7.2</b> Fora do R</a></li>
+<li class="chapter" data-level="7.7.3" data-path="tiposR.html"><a href="tiposR.html#chatgpt"><i class="fa fa-check"></i><b>7.7.3</b> ChatGPT</a></li>
+</ul></li>
+<li class="chapter" data-level="7.8" data-path="tiposR.html"><a href="tiposR.html#work-flow"><i class="fa fa-check"></i><b>7.8</b> Work flow</a></li>
+<li class="chapter" data-level="7.9" data-path="tiposR.html"><a href="tiposR.html#reconhecendo-a-estrutura-dos-dados-do-r-em-uma-matriz-multivariada"><i class="fa fa-check"></i><b>7.9</b> Reconhecendo a estrutura dos dados do R em uma matriz multivariada</a>
+<ul>
+<li class="chapter" data-level="7.9.1" data-path="tiposR.html"><a href="tiposR.html#organização-básica-1"><i class="fa fa-check"></i><b>7.9.1</b> Organização básica</a></li>
+</ul></li>
+<li class="chapter" data-level="7.10" data-path="tiposR.html"><a href="tiposR.html#importando-a-planilha-1"><i class="fa fa-check"></i><b>7.10</b> Importando a planilha</a></li>
+<li class="chapter" data-level="" data-path="tiposR.html"><a href="tiposR.html#apêndices-3"><i class="fa fa-check"></i>Apêndices</a>
+<ul>
+<li class="chapter" data-level="" data-path="tiposR.html"><a href="tiposR.html#snippet-e-chunk"><i class="fa fa-check"></i>Snippet e chunk</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="tiposR.html"><a href="tiposR.html#sites-consultados-2"><i class="fa fa-check"></i>Sites consultados</a></li>
+<li class="chapter" data-level="" data-path="tiposR.html"><a href="tiposR.html#script-limpo-1"><i class="fa fa-check"></i>Script limpo</a></li>
+<li class="chapter" data-level="" data-path="tiposR.html"><a href="tiposR.html#referências-5"><i class="fa fa-check"></i>Referências</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="univ.html"><a href="univ.html"><i class="fa fa-check"></i><b>8</b> R Módulo 3.1 - Estatísticas descritivas e normalidade</a>
+<ul>
+<li class="chapter" data-level="" data-path="univ.html"><a href="univ.html#resumo-5"><i class="fa fa-check"></i>RESUMO</a></li>
+<li class="chapter" data-level="" data-path="univ.html"><a href="univ.html#apresentação-5"><i class="fa fa-check"></i>Apresentação</a></li>
+<li class="chapter" data-level="8.1" data-path="univ.html"><a href="univ.html#sobre-os-dados"><i class="fa fa-check"></i><b>8.1</b> Sobre os dados</a></li>
+<li class="chapter" data-level="8.2" data-path="univ.html"><a href="univ.html#organização-básica-2"><i class="fa fa-check"></i><b>8.2</b> Organização básica</a></li>
+<li class="chapter" data-level="8.3" data-path="univ.html"><a href="univ.html#importando-a-planilha-2"><i class="fa fa-check"></i><b>8.3</b> Importando a planilha</a></li>
+<li class="chapter" data-level="8.4" data-path="univ.html"><a href="univ.html#gráficos-de-histograma-e-boxplot"><i class="fa fa-check"></i><b>8.4</b> Gráficos de histograma e boxplot</a></li>
+<li class="chapter" data-level="8.5" data-path="univ.html"><a href="univ.html#sumário-estatístico-geral"><i class="fa fa-check"></i><b>8.5</b> Sumário estatístico geral</a></li>
+<li class="chapter" data-level="" data-path="univ.html"><a href="univ.html#apêndices-4"><i class="fa fa-check"></i>Apêndices</a></li>
+<li class="chapter" data-level="" data-path="univ.html"><a href="univ.html#sites-consultados-3"><i class="fa fa-check"></i>Sites consultados</a></li>
+<li class="chapter" data-level="" data-path="univ.html"><a href="univ.html#script-limpo-2"><i class="fa fa-check"></i>Script limpo</a></li>
+<li class="chapter" data-level="" data-path="univ.html"><a href="univ.html#referências-6"><i class="fa fa-check"></i>Referências</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="univ2.html"><a href="univ2.html"><i class="fa fa-check"></i><b>9</b> R Módulo 3.2 - Testes estatísticos</a>
+<ul>
+<li class="chapter" data-level="" data-path="univ2.html"><a href="univ2.html#resumo-6"><i class="fa fa-check"></i>RESUMO</a></li>
+<li class="chapter" data-level="" data-path="univ2.html"><a href="univ2.html#apresentação-6"><i class="fa fa-check"></i>Apresentação</a></li>
+<li class="chapter" data-level="9.1" data-path="univ2.html"><a href="univ2.html#sobre-os-dados-1"><i class="fa fa-check"></i><b>9.1</b> Sobre os dados</a></li>
+<li class="chapter" data-level="9.2" data-path="univ2.html"><a href="univ2.html#organização-básica-3"><i class="fa fa-check"></i><b>9.2</b> Organização básica</a></li>
+<li class="chapter" data-level="9.3" data-path="univ2.html"><a href="univ2.html#importando-a-planilha-3"><i class="fa fa-check"></i><b>9.3</b> Importando a planilha</a></li>
+<li class="chapter" data-level="9.4" data-path="univ2.html"><a href="univ2.html#gráficos-de-histograma-e-boxplot-1"><i class="fa fa-check"></i><b>9.4</b> Gráficos de histograma e boxplot</a></li>
+<li class="chapter" data-level="9.5" data-path="univ2.html"><a href="univ2.html#sumário-estatístico-geral-1"><i class="fa fa-check"></i><b>9.5</b> Sumário estatístico geral</a></li>
+<li class="chapter" data-level="9.6" data-path="univ2.html"><a href="univ2.html#testando-normalidade"><i class="fa fa-check"></i><b>9.6</b> Testando normalidade</a>
+<ul>
+<li class="chapter" data-level="9.6.1" data-path="univ2.html"><a href="univ2.html#q-q-plots"><i class="fa fa-check"></i><b>9.6.1</b> Q-Q plots</a></li>
+<li class="chapter" data-level="9.6.2" data-path="univ2.html"><a href="univ2.html#testes-de-shapiro-wilk-e-kolmogorov-smirnov"><i class="fa fa-check"></i><b>9.6.2</b> Testes de Shapiro-Wilk e Kolmogorov-Smirnov</a></li>
+</ul></li>
+<li class="chapter" data-level="9.7" data-path="univ2.html"><a href="univ2.html#testando-diferenças-entre-médias"><i class="fa fa-check"></i><b>9.7</b> Testando diferenças entre médias</a>
+<ul>
+<li class="chapter" data-level="9.7.1" data-path="univ2.html"><a href="univ2.html#testando-homogeneidade-de-variâncias"><i class="fa fa-check"></i><b>9.7.1</b> Testando homogeneidade de variâncias</a></li>
+<li class="chapter" data-level="9.7.2" data-path="univ2.html"><a href="univ2.html#teste-entre-duas-médias-t-student"><i class="fa fa-check"></i><b>9.7.2</b> Teste entre duas médias (t-Student)</a></li>
+<li class="chapter" data-level="9.7.3" data-path="univ2.html"><a href="univ2.html#teste-entre-três-médias-anova"><i class="fa fa-check"></i><b>9.7.3</b> Teste entre três médias (ANOVA)</a></li>
+<li class="chapter" data-level="9.7.4" data-path="univ2.html"><a href="univ2.html#teste-entre-três-médias-e-dois-fatores-two-way-anova"><i class="fa fa-check"></i><b>9.7.4</b> Teste entre três médias e dois fatores (Two-Way ANOVA)</a></li>
+</ul></li>
+<li class="chapter" data-level="9.8" data-path="univ2.html"><a href="univ2.html#correlação-e-regressão-simples"><i class="fa fa-check"></i><b>9.8</b> Correlação e regressão simples</a></li>
+<li class="chapter" data-level="" data-path="univ2.html"><a href="univ2.html#apêndices-5"><i class="fa fa-check"></i>Apêndices</a></li>
+<li class="chapter" data-level="" data-path="univ2.html"><a href="univ2.html#sites-consultados-4"><i class="fa fa-check"></i>Sites consultados</a></li>
+<li class="chapter" data-level="" data-path="univ2.html"><a href="univ2.html#script-limpo-3"><i class="fa fa-check"></i>Script limpo</a></li>
+<li class="chapter" data-level="" data-path="univ2.html"><a href="univ2.html#referências-7"><i class="fa fa-check"></i>Referências</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="unigr.html"><a href="unigr.html"><i class="fa fa-check"></i><b>10</b> R Modulo 3.3 - Gráficos univariados</a>
+<ul>
+<li class="chapter" data-level="" data-path="unigr.html"><a href="unigr.html#resumo-7"><i class="fa fa-check"></i>RESUMO</a></li>
+<li class="chapter" data-level="" data-path="unigr.html"><a href="unigr.html#apresentação-7"><i class="fa fa-check"></i>Apresentação</a></li>
+<li class="chapter" data-level="10.1" data-path="unigr.html"><a href="unigr.html#sobre-os-dados-2"><i class="fa fa-check"></i><b>10.1</b> Sobre os dados</a></li>
+<li class="chapter" data-level="10.2" data-path="unigr.html"><a href="unigr.html#organização-básica-4"><i class="fa fa-check"></i><b>10.2</b> Organização básica</a></li>
+<li class="chapter" data-level="10.3" data-path="unigr.html"><a href="unigr.html#importando-a-planilha-4"><i class="fa fa-check"></i><b>10.3</b> Importando a planilha</a></li>
+<li class="chapter" data-level="10.4" data-path="unigr.html"><a href="unigr.html#reset-point"><i class="fa fa-check"></i><b>10.4</b> Reset point</a></li>
+<li class="chapter" data-level="10.5" data-path="unigr.html"><a href="unigr.html#gráficos-de-dispersão"><i class="fa fa-check"></i><b>10.5</b> Gráficos de dispersão</a></li>
+<li class="chapter" data-level="10.6" data-path="unigr.html"><a href="unigr.html#gráficos-de-linha"><i class="fa fa-check"></i><b>10.6</b> Gráficos de linha</a></li>
+<li class="chapter" data-level="10.7" data-path="unigr.html"><a href="unigr.html#gráficos-de-barra"><i class="fa fa-check"></i><b>10.7</b> Gráficos de barra</a></li>
+<li class="chapter" data-level="10.8" data-path="unigr.html"><a href="unigr.html#gráficos-de-grupos"><i class="fa fa-check"></i><b>10.8</b> Gráficos de grupos</a></li>
+<li class="chapter" data-level="" data-path="unigr.html"><a href="unigr.html#apêndices-6"><i class="fa fa-check"></i>Apêndices</a></li>
+<li class="chapter" data-level="" data-path="unigr.html"><a href="unigr.html#sites-para-consulta"><i class="fa fa-check"></i>Sites para consulta</a></li>
+<li class="chapter" data-level="" data-path="unigr.html"><a href="unigr.html#script-limpo-4"><i class="fa fa-check"></i>Script limpo</a></li>
+<li class="chapter" data-level="" data-path="unigr.html"><a href="unigr.html#referências-8"><i class="fa fa-check"></i>Referências</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="estrcom.html"><a href="estrcom.html"><i class="fa fa-check"></i><b>11</b> R Módulo 4.1 - Estrutura da comunidade</a>
+<ul>
+<li class="chapter" data-level="" data-path="estrcom.html"><a href="estrcom.html#resumo-8"><i class="fa fa-check"></i>RESUMO</a></li>
+<li class="chapter" data-level="" data-path="estrcom.html"><a href="estrcom.html#apresentação-8"><i class="fa fa-check"></i>Apresentação</a></li>
+<li class="chapter" data-level="11.1" data-path="estrcom.html"><a href="estrcom.html#sobre-os-dados-3"><i class="fa fa-check"></i><b>11.1</b> Sobre os dados</a></li>
+<li class="chapter" data-level="11.2" data-path="estrcom.html"><a href="estrcom.html#organização-básica-5"><i class="fa fa-check"></i><b>11.2</b> Organização básica</a></li>
+<li class="chapter" data-level="11.3" data-path="estrcom.html"><a href="estrcom.html#importando-a-planilha-5"><i class="fa fa-check"></i><b>11.3</b> Importando a planilha</a></li>
+<li class="chapter" data-level="11.4" data-path="estrcom.html"><a href="estrcom.html#reset-point-1"><i class="fa fa-check"></i><b>11.4</b> Reset point</a></li>
+<li class="chapter" data-level="11.5" data-path="estrcom.html"><a href="estrcom.html#transpor-a-matriz-para-trabalhar-com-as-espécies"><i class="fa fa-check"></i><b>11.5</b> Transpor a matriz para trabalhar com as espécies</a>
+<ul>
+<li class="chapter" data-level="11.5.1" data-path="estrcom.html"><a href="estrcom.html#informações-básicas-da-matriz"><i class="fa fa-check"></i><b>11.5.1</b> Informações básicas da matriz</a></li>
+</ul></li>
+<li class="chapter" data-level="11.6" data-path="estrcom.html"><a href="estrcom.html#calculando-os-descritores-da-comunidade"><i class="fa fa-check"></i><b>11.6</b> Calculando os descritores da comunidade</a>
+<ul>
+<li class="chapter" data-level="11.6.1" data-path="estrcom.html"><a href="estrcom.html#variabilidade"><i class="fa fa-check"></i><b>11.6.1</b> Variabilidade</a></li>
+<li class="chapter" data-level="11.6.2" data-path="estrcom.html"><a href="estrcom.html#riqueza"><i class="fa fa-check"></i><b>11.6.2</b> Riqueza</a></li>
+</ul></li>
+<li class="chapter" data-level="11.7" data-path="estrcom.html"><a href="estrcom.html#índices-de-diversidade"><i class="fa fa-check"></i><b>11.7</b> Índices de Diversidade</a>
+<ul>
+<li class="chapter" data-level="11.7.1" data-path="estrcom.html"><a href="estrcom.html#shannon"><i class="fa fa-check"></i><b>11.7.1</b> Shannon</a></li>
+<li class="chapter" data-level="11.7.2" data-path="estrcom.html"><a href="estrcom.html#simpson"><i class="fa fa-check"></i><b>11.7.2</b> Simpson</a></li>
+<li class="chapter" data-level="11.7.3" data-path="estrcom.html"><a href="estrcom.html#equitabilidade-de-pielou"><i class="fa fa-check"></i><b>11.7.3</b> Equitabilidade de Pielou</a></li>
+</ul></li>
+<li class="chapter" data-level="11.8" data-path="estrcom.html"><a href="estrcom.html#gráficos-descritivos"><i class="fa fa-check"></i><b>11.8</b> Gráficos descritivos</a>
+<ul>
+<li class="chapter" data-level="11.8.1" data-path="estrcom.html"><a href="estrcom.html#série-de-hill-e-pefil-da-diversidade"><i class="fa fa-check"></i><b>11.8.1</b> Série de Hill e pefil da diversidade</a></li>
+</ul></li>
+<li class="chapter" data-level="11.9" data-path="estrcom.html"><a href="estrcom.html#distribuição-de-abundância"><i class="fa fa-check"></i><b>11.9</b> Distribuição de abundância</a></li>
+<li class="chapter" data-level="11.10" data-path="estrcom.html"><a href="estrcom.html#curva-de-rarefação"><i class="fa fa-check"></i><b>11.10</b> Curva de rarefação</a>
+<ul>
+<li class="chapter" data-level="11.10.1" data-path="estrcom.html"><a href="estrcom.html#interpretando-a-curva-de-rarefação"><i class="fa fa-check"></i><b>11.10.1</b> Interpretando a curva de rarefação</a></li>
+</ul></li>
+<li class="chapter" data-level="11.11" data-path="estrcom.html"><a href="estrcom.html#curva-de-acumulação-de-espécies"><i class="fa fa-check"></i><b>11.11</b> Curva de acumulação de espécies</a>
+<ul>
+<li class="chapter" data-level="11.11.1" data-path="estrcom.html"><a href="estrcom.html#plot-locais"><i class="fa fa-check"></i><b>11.11.1</b> Plot locais</a></li>
+</ul></li>
+<li class="chapter" data-level="11.12" data-path="estrcom.html"><a href="estrcom.html#plot-indivíduos"><i class="fa fa-check"></i><b>11.12</b> Plot indivíduos</a></li>
+<li class="chapter" data-level="" data-path="estrcom.html"><a href="estrcom.html#apêndices-7"><i class="fa fa-check"></i>Apêndices</a>
+<ul>
+<li class="chapter" data-level="" data-path="estrcom.html"><a href="estrcom.html#criando-uma-tabela-de-espécies"><i class="fa fa-check"></i>Criando uma tabela de espécies</a></li>
+<li class="chapter" data-level="" data-path="estrcom.html"><a href="estrcom.html#descruas"><i class="fa fa-check"></i>Descritores da estrutura da comunidade: UA’s</a></li>
+<li class="chapter" data-level="" data-path="estrcom.html"><a href="estrcom.html#descritores-da-normalidade-1"><i class="fa fa-check"></i>Descritores da normalidade</a></li>
+<li class="chapter" data-level="" data-path="estrcom.html"><a href="estrcom.html#salvando-as-tabelas-criadas-em-txt-direto-no-diretório-de-trabalho"><i class="fa fa-check"></i>Salvando as tabelas criadas em txt direto no diretório de trabalho</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="estrcom.html"><a href="estrcom.html#sites-consultados-5"><i class="fa fa-check"></i>Sites consultados</a></li>
+<li class="chapter" data-level="" data-path="estrcom.html"><a href="estrcom.html#script-limpo-5"><i class="fa fa-check"></i>Script limpo</a></li>
+<li class="chapter" data-level="" data-path="estrcom.html"><a href="estrcom.html#referências-9"><i class="fa fa-check"></i>Referências</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="partdiv.html"><a href="partdiv.html"><i class="fa fa-check"></i><b>12</b> R Modulo 4.2 - Decomposição da diversidade</a>
+<ul>
+<li class="chapter" data-level="" data-path="partdiv.html"><a href="partdiv.html#resumo-9"><i class="fa fa-check"></i>RESUMO</a></li>
+<li class="chapter" data-level="" data-path="partdiv.html"><a href="partdiv.html#apresentação-9"><i class="fa fa-check"></i>Apresentação</a></li>
+<li class="chapter" data-level="12.1" data-path="partdiv.html"><a href="partdiv.html#sobre-os-dados-4"><i class="fa fa-check"></i><b>12.1</b> Sobre os dados</a></li>
+<li class="chapter" data-level="12.2" data-path="partdiv.html"><a href="partdiv.html#organização-básica-6"><i class="fa fa-check"></i><b>12.2</b> Organização básica</a></li>
+<li class="chapter" data-level="" data-path="partdiv.html"><a href="partdiv.html#apêndices-8"><i class="fa fa-check"></i>Apêndices</a>
+<ul>
+<li class="chapter" data-level="" data-path="partdiv.html"><a href="partdiv.html#sites-consultados-6"><i class="fa fa-check"></i>Sites consultados</a></li>
+<li class="chapter" data-level="" data-path="partdiv.html"><a href="partdiv.html#script-limpo-6"><i class="fa fa-check"></i>Script limpo</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="partdiv.html"><a href="partdiv.html#referências-10"><i class="fa fa-check"></i>Referências</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="estrhab.html"><a href="estrhab.html"><i class="fa fa-check"></i><b>13</b> R Módulo 4.3 - Estrutura do habitat</a>
+<ul>
+<li class="chapter" data-level="" data-path="estrhab.html"><a href="estrhab.html#resumo-10"><i class="fa fa-check"></i>RESUMO</a></li>
+<li class="chapter" data-level="" data-path="estrhab.html"><a href="estrhab.html#apresentação-10"><i class="fa fa-check"></i>Apresentação</a></li>
+<li class="chapter" data-level="13.1" data-path="estrhab.html"><a href="estrhab.html#sobre-os-dados-5"><i class="fa fa-check"></i><b>13.1</b> Sobre os dados</a></li>
+<li class="chapter" data-level="13.2" data-path="estrhab.html"><a href="estrhab.html#organização-básica-7"><i class="fa fa-check"></i><b>13.2</b> Organização básica</a>
+<ul>
+<li class="chapter" data-level="13.2.1" data-path="estrhab.html"><a href="estrhab.html#instalando-os-pacotes-necessários-para-esse-módulo."><i class="fa fa-check"></i><b>13.2.1</b> Instalando os pacotes necessários para esse módulo.</a></li>
+</ul></li>
+<li class="chapter" data-level="13.3" data-path="estrhab.html"><a href="estrhab.html#importando-a-planilha-6"><i class="fa fa-check"></i><b>13.3</b> Importando a planilha</a></li>
+<li class="chapter" data-level="13.4" data-path="estrhab.html"><a href="estrhab.html#reset-point-2"><i class="fa fa-check"></i><b>13.4</b> Reset point</a></li>
+<li class="chapter" data-level="13.5" data-path="estrhab.html"><a href="estrhab.html#correlograma-e-remoção-de-variáveis-redundantes-ou-desnecessárias"><i class="fa fa-check"></i><b>13.5</b> Correlograma e remoção de variáveis redundantes ou desnecessárias</a></li>
+<li class="chapter" data-level="13.6" data-path="estrhab.html"><a href="estrhab.html#deletando-variáveis-colineares"><i class="fa fa-check"></i><b>13.6</b> Deletando variáveis colineares</a></li>
+<li class="chapter" data-level="13.7" data-path="estrhab.html"><a href="estrhab.html#somando-variáveis-redundantes"><i class="fa fa-check"></i><b>13.7</b> Somando variáveis redundantes</a></li>
+<li class="chapter" data-level="13.8" data-path="estrhab.html"><a href="estrhab.html#tabela-de-dados-ambientais"><i class="fa fa-check"></i><b>13.8</b> Tabela de dados ambientais</a></li>
+<li class="chapter" data-level="" data-path="estrhab.html"><a href="estrhab.html#apêndices-9"><i class="fa fa-check"></i>Apêndices</a></li>
+<li class="chapter" data-level="" data-path="estrhab.html"><a href="estrhab.html#sites-consultados-7"><i class="fa fa-check"></i>Sites consultados</a></li>
+<li class="chapter" data-level="" data-path="estrhab.html"><a href="estrhab.html#script-limpo-7"><i class="fa fa-check"></i>Script limpo</a></li>
+<li class="chapter" data-level="" data-path="estrhab.html"><a href="estrhab.html#referências-11"><i class="fa fa-check"></i>Referências</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="reltrns.html"><a href="reltrns.html"><i class="fa fa-check"></i><b>14</b> R Modulo 5 - Relativizações e transformações</a>
+<ul>
+<li class="chapter" data-level="" data-path="reltrns.html"><a href="reltrns.html#resumo-11"><i class="fa fa-check"></i>RESUMO</a></li>
+<li class="chapter" data-level="" data-path="reltrns.html"><a href="reltrns.html#apresentação-11"><i class="fa fa-check"></i>Apresentação</a></li>
+<li class="chapter" data-level="14.1" data-path="reltrns.html"><a href="reltrns.html#organização-básica-8"><i class="fa fa-check"></i><b>14.1</b> Organização básica</a>
+<ul>
+<li class="chapter" data-level="14.1.1" data-path="reltrns.html"><a href="reltrns.html#importando-a-planilha-7"><i class="fa fa-check"></i><b>14.1.1</b> Importando a planilha</a></li>
+</ul></li>
+<li class="chapter" data-level="14.2" data-path="reltrns.html"><a href="reltrns.html#tamanho-da-matriz"><i class="fa fa-check"></i><b>14.2</b> Tamanho da matriz</a></li>
+<li class="chapter" data-level="14.3" data-path="reltrns.html"><a href="reltrns.html#reset-point-1-1"><i class="fa fa-check"></i><b>14.3</b> Reset point 1</a></li>
+<li class="chapter" data-level="14.4" data-path="reltrns.html"><a href="reltrns.html#cálculo-da-matriz-de-distâncias"><i class="fa fa-check"></i><b>14.4</b> Cálculo da matriz de distâncias</a></li>
+<li class="chapter" data-level="14.5" data-path="reltrns.html"><a href="reltrns.html#distribuição-de-frequência-da-matriz-de-distâncias"><i class="fa fa-check"></i><b>14.5</b> Distribuição de frequência da matriz de distâncias</a>
+<ul>
+<li class="chapter" data-level="14.5.1" data-path="reltrns.html"><a href="reltrns.html#calculando-alguns-parâmetros-básicos"><i class="fa fa-check"></i><b>14.5.1</b> Calculando alguns parâmetros básicos</a></li>
+<li class="chapter" data-level="14.5.2" data-path="reltrns.html"><a href="reltrns.html#calculando-a-assimetria-e-a-curtose"><i class="fa fa-check"></i><b>14.5.2</b> Calculando a assimetria e a curtose</a></li>
+</ul></li>
+<li class="chapter" data-level="14.6" data-path="reltrns.html"><a href="reltrns.html#distribuição-de-frequências-da-matriz-de-distâncias"><i class="fa fa-check"></i><b>14.6</b> Distribuição de frequências da matriz de distâncias</a></li>
+<li class="chapter" data-level="14.7" data-path="reltrns.html"><a href="reltrns.html#relativizando-e-transformando-a-base-de-dados"><i class="fa fa-check"></i><b>14.7</b> Relativizando e transformando a base de dados</a>
+<ul>
+<li class="chapter" data-level="14.7.1" data-path="reltrns.html"><a href="reltrns.html#relativização-pelo-total"><i class="fa fa-check"></i><b>14.7.1</b> Relativização pelo total</a></li>
+<li class="chapter" data-level="14.7.2" data-path="reltrns.html"><a href="reltrns.html#transformação-pelo-arcoseno-da-raiz-quadrada"><i class="fa fa-check"></i><b>14.7.2</b> Transformação pelo arcoseno da raiz quadrada</a></li>
+</ul></li>
+<li class="chapter" data-level="14.8" data-path="reltrns.html"><a href="reltrns.html#reset-point-2-1"><i class="fa fa-check"></i><b>14.8</b> Reset point 2</a></li>
+<li class="chapter" data-level="" data-path="reltrns.html"><a href="reltrns.html#apêndices-10"><i class="fa fa-check"></i>Apêndices</a>
+<ul>
+<li class="chapter" data-level="" data-path="reltrns.html"><a href="reltrns.html#relativizações"><i class="fa fa-check"></i>Relativizações</a></li>
+<li class="chapter" data-level="" data-path="reltrns.html"><a href="reltrns.html#transformações"><i class="fa fa-check"></i>Transformações</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="reltrns.html"><a href="reltrns.html#script-limpo-8"><i class="fa fa-check"></i>Script limpo</a></li>
+<li class="chapter" data-level="" data-path="reltrns.html"><a href="reltrns.html#referências-12"><i class="fa fa-check"></i>Referências</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="outcentr.html"><a href="outcentr.html"><i class="fa fa-check"></i><b>15</b> R Módulo 6 - Análise de outliers baseada no desvio padrão do centróide</a>
+<ul>
+<li class="chapter" data-level="" data-path="outcentr.html"><a href="outcentr.html#apresentação-12"><i class="fa fa-check"></i>Apresentação</a></li>
+<li class="chapter" data-level="15.1" data-path="outcentr.html"><a href="outcentr.html#sobre-os-dados-do-ppbio-3"><i class="fa fa-check"></i><b>15.1</b> Sobre os dados do PPBio</a></li>
+<li class="chapter" data-level="15.2" data-path="outcentr.html"><a href="outcentr.html#organização-básica-9"><i class="fa fa-check"></i><b>15.2</b> Organização básica</a>
+<ul>
+<li class="chapter" data-level="15.2.1" data-path="outcentr.html"><a href="outcentr.html#importando-a-planilha-8"><i class="fa fa-check"></i><b>15.2.1</b> Importando a planilha</a></li>
+</ul></li>
+<li class="chapter" data-level="15.3" data-path="outcentr.html"><a href="outcentr.html#reset-point-3"><i class="fa fa-check"></i><b>15.3</b> Reset point</a>
+<ul>
+<li class="chapter" data-level="15.3.1" data-path="outcentr.html"><a href="outcentr.html#tamanho-da-matriz-1"><i class="fa fa-check"></i><b>15.3.1</b> Tamanho da matriz</a></li>
+</ul></li>
+<li class="chapter" data-level="15.4" data-path="outcentr.html"><a href="outcentr.html#cálculo-de-matriz-de-distâncias-euclidiana-euclid"><i class="fa fa-check"></i><b>15.4</b> Cálculo de matriz de distâncias Euclidiana (<code>euclid</code>)</a></li>
+<li class="chapter" data-level="15.5" data-path="outcentr.html"><a href="outcentr.html#calculando-o-centróide-da-matriz-de-distâncias-euclid"><i class="fa fa-check"></i><b>15.5</b> Calculando o centróide da matriz de distâncias <code>euclid</code></a></li>
+<li class="chapter" data-level="15.6" data-path="outcentr.html"><a href="outcentr.html#distribuição-de-frequências-da-matriz-de-distâncias-euclid"><i class="fa fa-check"></i><b>15.6</b> Distribuição de frequências da matriz de distâncias <code>euclid</code></a></li>
+<li class="chapter" data-level="15.7" data-path="outcentr.html"><a href="outcentr.html#procurando-outliers"><i class="fa fa-check"></i><b>15.7</b> Procurando outliers</a>
+<ul>
+<li class="chapter" data-level="15.7.1" data-path="outcentr.html"><a href="outcentr.html#listas-de-distâncias"><i class="fa fa-check"></i><b>15.7.1</b> Listas de distâncias</a></li>
+<li class="chapter" data-level="15.7.2" data-path="outcentr.html"><a href="outcentr.html#distribuição-de-frequências-das-distâncias-médias-para-o-centróide-av.dist"><i class="fa fa-check"></i><b>15.7.2</b> Distribuição de frequências das distâncias médias para o centróide <code>av.dist</code></a></li>
+</ul></li>
+<li class="chapter" data-level="15.8" data-path="outcentr.html"><a href="outcentr.html#lista-final-de-outliers"><i class="fa fa-check"></i><b>15.8</b> Lista final de outliers</a></li>
+<li class="chapter" data-level="15.9" data-path="outcentr.html"><a href="outcentr.html#particionando-a-matriz"><i class="fa fa-check"></i><b>15.9</b> Particionando a matriz</a></li>
+<li class="chapter" data-level="15.10" data-path="outcentr.html"><a href="outcentr.html#exportando-a-matrix-final-de-trabalho"><i class="fa fa-check"></i><b>15.10</b> Exportando a matrix final de trabalho</a></li>
+<li class="chapter" data-level="" data-path="outcentr.html"><a href="outcentr.html#apêndices-11"><i class="fa fa-check"></i>Apêndices</a>
+<ul>
+<li class="chapter" data-level="" data-path="outcentr.html"><a href="outcentr.html#outras-formas-de-fazer-a-partição"><i class="fa fa-check"></i>Outras formas de fazer a partição</a></li>
+<li class="chapter" data-level="" data-path="outcentr.html"><a href="outcentr.html#código"><i class="fa fa-check"></i>Código</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="outcentr.html"><a href="outcentr.html#script-limpo-9"><i class="fa fa-check"></i>Script limpo</a></li>
+<li class="chapter" data-level="" data-path="outcentr.html"><a href="outcentr.html#referências-13"><i class="fa fa-check"></i>Referências</a></li>
+</ul></li>
+<li class="part"><span><b>III IV. ANÁLISES MULTIVARIADAS</b></span></li>
+<li class="chapter" data-level="16" data-path="upgma.html"><a href="upgma.html"><i class="fa fa-check"></i><b>16</b> R Módulo 7 - Análise de Classificação Hierárquica - SAHN</a>
+<ul>
+<li class="chapter" data-level="" data-path="upgma.html"><a href="upgma.html#resumo-12"><i class="fa fa-check"></i>RESUMO</a></li>
+<li class="chapter" data-level="" data-path="upgma.html"><a href="upgma.html#apresentação-13"><i class="fa fa-check"></i>Apresentação</a></li>
+<li class="chapter" data-level="16.1" data-path="upgma.html"><a href="upgma.html#organização-básica-10"><i class="fa fa-check"></i><b>16.1</b> Organização básica</a>
+<ul>
+<li class="chapter" data-level="16.1.1" data-path="upgma.html"><a href="upgma.html#pacotes"><i class="fa fa-check"></i><b>16.1.1</b> Pacotes</a></li>
+<li class="chapter" data-level="16.1.2" data-path="upgma.html"><a href="upgma.html#sobre-os-dados-do-ppbio-4"><i class="fa fa-check"></i><b>16.1.2</b> Sobre os dados do PPBio</a></li>
+<li class="chapter" data-level="16.1.3" data-path="upgma.html"><a href="upgma.html#importando-a-planilha-de-trabalho-1"><i class="fa fa-check"></i><b>16.1.3</b> Importando a planilha de trabalho</a></li>
+</ul></li>
+<li class="chapter" data-level="16.2" data-path="upgma.html"><a href="upgma.html#reset-point-4"><i class="fa fa-check"></i><b>16.2</b> Reset point</a></li>
+<li class="chapter" data-level="16.3" data-path="upgma.html"><a href="upgma.html#nomenclatura-das-matrizes-em-amd"><i class="fa fa-check"></i><b>16.3</b> Nomenclatura das matrizes em AMD</a></li>
+<li class="chapter" data-level="16.4" data-path="upgma.html"><a href="upgma.html#cluster-1-piloto-automático"><i class="fa fa-check"></i><b>16.4</b> Cluster 1: Piloto automático</a>
+<ul>
+<li class="chapter" data-level="16.4.1" data-path="upgma.html"><a href="upgma.html#histórico-das-fusões"><i class="fa fa-check"></i><b>16.4.1</b> Histórico das fusões</a></li>
+</ul></li>
+<li class="chapter" data-level="16.5" data-path="upgma.html"><a href="upgma.html#cluster-2-criando-a-matriz-de-distâncias-euclidiana"><i class="fa fa-check"></i><b>16.5</b> Cluster 2: Criando a matriz de distâncias Euclidiana</a>
+<ul>
+<li class="chapter" data-level="16.5.1" data-path="upgma.html"><a href="upgma.html#comparação-dos-resultados-obtidos-até-aqui"><i class="fa fa-check"></i><b>16.5.1</b> Comparação dos resultados obtidos até aqui</a></li>
+</ul></li>
+<li class="chapter" data-level="16.6" data-path="upgma.html"><a href="upgma.html#cluster-3-relativização-pelo-total-da-coluna"><i class="fa fa-check"></i><b>16.6</b> Cluster 3: Relativização pelo total da coluna</a>
+<ul>
+<li class="chapter" data-level="16.6.1" data-path="upgma.html"><a href="upgma.html#gráfico-de-clustering-relativizado"><i class="fa fa-check"></i><b>16.6.1</b> Gráfico de clustering relativizado</a></li>
+</ul></li>
+<li class="chapter" data-level="16.7" data-path="upgma.html"><a href="upgma.html#cluster-4-transformação-pelo-arcoseno-da-raiz-quadrada"><i class="fa fa-check"></i><b>16.7</b> Cluster 4: Transformação pelo arcoseno da raiz quadrada</a>
+<ul>
+<li class="chapter" data-level="16.7.1" data-path="upgma.html"><a href="upgma.html#gráfico-de-clustering-relativizadotransformado"><i class="fa fa-check"></i><b>16.7.1</b> Gráfico de clustering relativizado/transformado</a></li>
+</ul></li>
+<li class="chapter" data-level="16.8" data-path="upgma.html"><a href="upgma.html#cluster-5-controle-total-dos-parâmetros"><i class="fa fa-check"></i><b>16.8</b> Cluster 5: Controle total dos parâmetros</a></li>
+<li class="chapter" data-level="16.9" data-path="upgma.html"><a href="upgma.html#construindo-uma-prancha-de-gráficos-comparativos"><i class="fa fa-check"></i><b>16.9</b> Construindo uma prancha de gráficos comparativos</a></li>
+<li class="chapter" data-level="16.10" data-path="upgma.html"><a href="upgma.html#construindo-heatmaps"><i class="fa fa-check"></i><b>16.10</b> Construindo <code>heatmaps</code></a>
+<ul>
+<li class="chapter" data-level="16.10.1" data-path="upgma.html"><a href="upgma.html#percentual-de-encadeamento-chaining"><i class="fa fa-check"></i><b>16.10.1</b> Percentual de encadeamento (% chaining)</a></li>
+<li class="chapter" data-level="16.10.2" data-path="upgma.html"><a href="upgma.html#função-loop-para-comparar-os-encadeamentos"><i class="fa fa-check"></i><b>16.10.2</b> Função <code>loop</code> para comparar os encadeamentos</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="upgma.html"><a href="upgma.html#apêndices-12"><i class="fa fa-check"></i>Apêndices</a></li>
+<li class="chapter" data-level="" data-path="upgma.html"><a href="upgma.html#sites-consultados-8"><i class="fa fa-check"></i>Sites consultados</a>
+<ul>
+<li class="chapter" data-level="" data-path="upgma.html"><a href="upgma.html#outras-formas-de-fazer-a-partição-1"><i class="fa fa-check"></i>Outras formas de fazer a partição</a></li>
+<li class="chapter" data-level="" data-path="upgma.html"><a href="upgma.html#código-1"><i class="fa fa-check"></i>Código</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="upgma.html"><a href="upgma.html#script-limpo-10"><i class="fa fa-check"></i>Script limpo</a></li>
+<li class="chapter" data-level="" data-path="upgma.html"><a href="upgma.html#referências-14"><i class="fa fa-check"></i>Referências</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="kmeans.html"><a href="kmeans.html"><i class="fa fa-check"></i><b>17</b> R Módulo 8 - Análise de Classificação Não-hierárquica - K-Means</a>
+<ul>
+<li class="chapter" data-level="" data-path="kmeans.html"><a href="kmeans.html#resumo-13"><i class="fa fa-check"></i>RESUMO</a></li>
+<li class="chapter" data-level="" data-path="kmeans.html"><a href="kmeans.html#apresentação-14"><i class="fa fa-check"></i>Apresentação</a></li>
+<li class="chapter" data-level="17.1" data-path="kmeans.html"><a href="kmeans.html#organização-básica-11"><i class="fa fa-check"></i><b>17.1</b> Organização básica</a>
+<ul>
+<li class="chapter" data-level="17.1.1" data-path="kmeans.html"><a href="kmeans.html#sobre-os-dados-do-ppbio-5"><i class="fa fa-check"></i><b>17.1.1</b> Sobre os dados do PPBio</a></li>
+<li class="chapter" data-level="17.1.2" data-path="kmeans.html"><a href="kmeans.html#importando-a-planilha-de-trabalho-2"><i class="fa fa-check"></i><b>17.1.2</b> Importando a planilha de trabalho</a></li>
+</ul></li>
+<li class="chapter" data-level="17.2" data-path="kmeans.html"><a href="kmeans.html#reset-point-1-2"><i class="fa fa-check"></i><b>17.2</b> Reset point 1</a>
+<ul>
+<li class="chapter" data-level="17.2.1" data-path="kmeans.html"><a href="kmeans.html#outra-forma-de-achar-e-importar-uma-planilha-2"><i class="fa fa-check"></i><b>17.2.1</b> Outra forma de achar e importar uma planilha</a></li>
+</ul></li>
+<li class="chapter" data-level="17.3" data-path="kmeans.html"><a href="kmeans.html#classificação"><i class="fa fa-check"></i><b>17.3</b> Classificação</a></li>
+<li class="chapter" data-level="17.4" data-path="kmeans.html"><a href="kmeans.html#histórico-das-fusões-1"><i class="fa fa-check"></i><b>17.4</b> Histórico das fusões</a></li>
+<li class="chapter" data-level="17.5" data-path="kmeans.html"><a href="kmeans.html#algoritmo-k-means---versão-simplificada"><i class="fa fa-check"></i><b>17.5</b> Algoritmo K-Means - Versão simplificada</a>
+<ul>
+<li class="chapter" data-level="17.5.1" data-path="kmeans.html"><a href="kmeans.html#organização-básica-primeiro"><i class="fa fa-check"></i><b>17.5.1</b> Organização básica primeiro</a></li>
+<li class="chapter" data-level="17.5.2" data-path="kmeans.html"><a href="kmeans.html#instalar-pacotes-necessários"><i class="fa fa-check"></i><b>17.5.2</b> Instalar pacotes necessários</a></li>
+<li class="chapter" data-level="17.5.3" data-path="kmeans.html"><a href="kmeans.html#importando-matriz"><i class="fa fa-check"></i><b>17.5.3</b> Importando matriz</a></li>
+</ul></li>
+<li class="chapter" data-level="17.6" data-path="kmeans.html"><a href="kmeans.html#reset-point-2-2"><i class="fa fa-check"></i><b>17.6</b> Reset point 2</a>
+<ul>
+<li class="chapter" data-level="17.6.1" data-path="kmeans.html"><a href="kmeans.html#algumas-análises-exploatórias"><i class="fa fa-check"></i><b>17.6.1</b> Algumas análises exploatórias</a></li>
+</ul></li>
+<li class="chapter" data-level="17.7" data-path="kmeans.html"><a href="kmeans.html#determinando-o-número-ideal-de-clusteres"><i class="fa fa-check"></i><b>17.7</b> Determinando o número ideal de clusteres</a>
+<ul>
+<li class="chapter" data-level="17.7.1" data-path="kmeans.html"><a href="kmeans.html#reescalar-os-dados-primeiro-usando-a-função-scale"><i class="fa fa-check"></i><b>17.7.1</b> Reescalar os dados primeiro usando a função <code>scale()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="kmeans.html"><a href="kmeans.html#apêndices-13"><i class="fa fa-check"></i>Apêndices</a>
+<ul>
+<li class="chapter" data-level="" data-path="kmeans.html"><a href="kmeans.html#restos-de-códigos"><i class="fa fa-check"></i>Restos de códigos</a></li>
+<li class="chapter" data-level="" data-path="kmeans.html"><a href="kmeans.html#métodos-de-determinação-de-clusters-em-k-means"><i class="fa fa-check"></i>Métodos de determinação de clusters em <code>k-means</code></a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="kmeans.html"><a href="kmeans.html#referências-15"><i class="fa fa-check"></i>Referências</a></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="pca.html"><a href="pca.html"><i class="fa fa-check"></i><b>18</b> R Módulo 9 - Análise de Componentes Principais - PCA</a>
+<ul>
+<li class="chapter" data-level="" data-path="pca.html"><a href="pca.html#resumo-14"><i class="fa fa-check"></i>RESUMO</a></li>
+<li class="chapter" data-level="" data-path="pca.html"><a href="pca.html#apresentação-15"><i class="fa fa-check"></i>Apresentação</a></li>
+<li class="chapter" data-level="18.1" data-path="pca.html"><a href="pca.html#organização-básica-12"><i class="fa fa-check"></i><b>18.1</b> Organização básica</a></li>
+<li class="chapter" data-level="18.2" data-path="pca.html"><a href="pca.html#pacotes-do-módulo"><i class="fa fa-check"></i><b>18.2</b> Pacotes do módulo</a></li>
+<li class="chapter" data-level="18.3" data-path="pca.html"><a href="pca.html#sobre-os-dados-do-ppbio-6"><i class="fa fa-check"></i><b>18.3</b> Sobre os dados do PPBio</a>
+<ul>
+<li class="chapter" data-level="18.3.1" data-path="pca.html"><a href="pca.html#a-planilha-ppbio-habitat"><i class="fa fa-check"></i><b>18.3.1</b> A planilha PPBio Habitat</a></li>
+</ul></li>
+<li class="chapter" data-level="18.4" data-path="pca.html"><a href="pca.html#importando-a-planilha-de-trabalho-3"><i class="fa fa-check"></i><b>18.4</b> Importando a planilha de trabalho</a>
+<ul>
+<li class="chapter" data-level="18.4.1" data-path="pca.html"><a href="pca.html#outra-forma-de-achar-e-importar-uma-planilha-3"><i class="fa fa-check"></i><b>18.4.1</b> Outra forma de achar e importar uma planilha</a></li>
+</ul></li>
+<li class="chapter" data-level="18.5" data-path="pca.html"><a href="pca.html#particionando-as-variáveis-de-interesse"><i class="fa fa-check"></i><b>18.5</b> Particionando as variáveis de interesse</a></li>
+<li class="chapter" data-level="18.6" data-path="pca.html"><a href="pca.html#reinício-1"><i class="fa fa-check"></i><b>18.6</b> REINÍCIO 1</a></li>
+<li class="chapter" data-level="18.7" data-path="pca.html"><a href="pca.html#classificação-1"><i class="fa fa-check"></i><b>18.7</b> Classificação</a>
+<ul>
+<li class="chapter" data-level="18.7.1" data-path="pca.html"><a href="pca.html#dendrograma-e-heatmap"><i class="fa fa-check"></i><b>18.7.1</b> Dendrograma e Heatmap</a></li>
+<li class="chapter" data-level="18.7.2" data-path="pca.html"><a href="pca.html#histórico-das-fusões-2"><i class="fa fa-check"></i><b>18.7.2</b> Histórico das fusões</a></li>
+</ul></li>
+<li class="chapter" data-level="18.8" data-path="pca.html"><a href="pca.html#análise-de-componentes-principais"><i class="fa fa-check"></i><b>18.8</b> Análise de Componentes Principais</a>
+<ul>
+<li class="chapter" data-level="18.8.1" data-path="pca.html"><a href="pca.html#subsetting-as-variáveis-para-a-pca"><i class="fa fa-check"></i><b>18.8.1</b> Subsetting as variáveis para a PCA</a></li>
+<li class="chapter" data-level="18.8.2" data-path="pca.html"><a href="pca.html#explorando-correlações-multivariadas"><i class="fa fa-check"></i><b>18.8.2</b> Explorando correlações multivariadas</a></li>
+<li class="chapter" data-level="18.8.3" data-path="pca.html"><a href="pca.html#centrando-e-re-escalando-a-matriz-de-dados"><i class="fa fa-check"></i><b>18.8.3</b> Centrando e re-escalando a matriz de dados</a></li>
+</ul></li>
+<li class="chapter" data-level="18.9" data-path="pca.html"><a href="pca.html#fazendo-a-pca"><i class="fa fa-check"></i><b>18.9</b> Fazendo a PCA</a></li>
+<li class="chapter" data-level="18.10" data-path="pca.html"><a href="pca.html#interpretando-o-biplot-gerado-no-código-anterior"><i class="fa fa-check"></i><b>18.10</b> Interpretando o <code>biplot</code> gerado no código anterior</a></li>
+<li class="chapter" data-level="18.11" data-path="pca.html"><a href="pca.html#extraindo-pc-escores"><i class="fa fa-check"></i><b>18.11</b> Extraindo PC escores</a></li>
+<li class="chapter" data-level="18.12" data-path="pca.html"><a href="pca.html#gráfico-melhorado-com-ggplot"><i class="fa fa-check"></i><b>18.12</b> Gráfico melhorado com <code>ggplot</code></a></li>
+<li class="chapter" data-level="" data-path="pca.html"><a href="pca.html#apêndices-14"><i class="fa fa-check"></i>Apêndices</a>
+<ul>
+<li class="chapter" data-level="" data-path="pca.html"><a href="pca.html#pca-usando-o-pacote-factominer"><i class="fa fa-check"></i>PCA usando o pacote FactoMineR</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="nmds.html"><a href="nmds.html"><i class="fa fa-check"></i><b>19</b> R Módulo 10.1 - Análise de Ordenação - NMDS</a>
+<ul>
+<li class="chapter" data-level="" data-path="nmds.html"><a href="nmds.html#resumo-15"><i class="fa fa-check"></i>RESUMO</a></li>
+<li class="chapter" data-level="" data-path="nmds.html"><a href="nmds.html#apresentação-16"><i class="fa fa-check"></i>Apresentação</a></li>
+<li class="chapter" data-level="19.1" data-path="nmds.html"><a href="nmds.html#algoritmo-da-nmds"><i class="fa fa-check"></i><b>19.1</b> Algoritmo da NMDS</a></li>
+<li class="chapter" data-level="19.2" data-path="nmds.html"><a href="nmds.html#organização-básica-13"><i class="fa fa-check"></i><b>19.2</b> Organização básica</a></li>
+<li class="chapter" data-level="19.3" data-path="nmds.html"><a href="nmds.html#pacotes-do-módulo-1"><i class="fa fa-check"></i><b>19.3</b> Pacotes do módulo</a></li>
+<li class="chapter" data-level="19.4" data-path="nmds.html"><a href="nmds.html#reinício-1-1"><i class="fa fa-check"></i><b>19.4</b> REINÍCIO 1</a></li>
+<li class="chapter" data-level="19.5" data-path="nmds.html"><a href="nmds.html#classificação-1-matriz-comunitária"><i class="fa fa-check"></i><b>19.5</b> Classificação 1: Matriz comunitária</a>
+<ul>
+<li class="chapter" data-level="19.5.1" data-path="nmds.html"><a href="nmds.html#dendrograma-e-heatmap-1"><i class="fa fa-check"></i><b>19.5.1</b> Dendrograma e Heatmap 1</a></li>
+<li class="chapter" data-level="19.5.2" data-path="nmds.html"><a href="nmds.html#histórico-das-fusões-1-1"><i class="fa fa-check"></i><b>19.5.2</b> Histórico das fusões 1</a></li>
+</ul></li>
+<li class="chapter" data-level="19.6" data-path="nmds.html"><a href="nmds.html#ordenação"><i class="fa fa-check"></i><b>19.6</b> Ordenação</a></li>
+<li class="chapter" data-level="" data-path="nmds.html"><a href="nmds.html#apêndices-15"><i class="fa fa-check"></i>Apêndices</a></li>
+<li class="chapter" data-level="" data-path="nmds.html"><a href="nmds.html#sites-consultados-9"><i class="fa fa-check"></i>Sites consultados</a></li>
+<li class="chapter" data-level="" data-path="nmds.html"><a href="nmds.html#referências-16"><i class="fa fa-check"></i>Referências</a></li>
+</ul></li>
+<li class="chapter" data-level="20" data-path="nmds2.html"><a href="nmds2.html"><i class="fa fa-check"></i><b>20</b> R Modulo 10.2 - Análise de Ordenação - NMDS</a>
+<ul>
+<li class="chapter" data-level="" data-path="nmds2.html"><a href="nmds2.html#resumo-16"><i class="fa fa-check"></i>RESUMO</a></li>
+<li class="chapter" data-level="" data-path="nmds2.html"><a href="nmds2.html#apresentação-17"><i class="fa fa-check"></i>Apresentação</a></li>
+<li class="chapter" data-level="20.1" data-path="nmds2.html"><a href="nmds2.html#algoritmo-da-nmds-1"><i class="fa fa-check"></i><b>20.1</b> Algoritmo da NMDS</a></li>
+<li class="chapter" data-level="20.2" data-path="nmds2.html"><a href="nmds2.html#organização-básica-14"><i class="fa fa-check"></i><b>20.2</b> Organização básica</a></li>
+<li class="chapter" data-level="20.3" data-path="nmds2.html"><a href="nmds2.html#pacotes-do-módulo-2"><i class="fa fa-check"></i><b>20.3</b> Pacotes do módulo</a></li>
+<li class="chapter" data-level="20.4" data-path="nmds2.html"><a href="nmds2.html#reinício-1-2"><i class="fa fa-check"></i><b>20.4</b> REINÍCIO 1</a></li>
+<li class="chapter" data-level="20.5" data-path="nmds2.html"><a href="nmds2.html#classificação-1-matriz-comunitária-1"><i class="fa fa-check"></i><b>20.5</b> Classificação 1: Matriz comunitária</a>
+<ul>
+<li class="chapter" data-level="20.5.1" data-path="nmds2.html"><a href="nmds2.html#dendrograma-e-heatmap-1-1"><i class="fa fa-check"></i><b>20.5.1</b> Dendrograma e Heatmap 1</a></li>
+<li class="chapter" data-level="20.5.2" data-path="nmds2.html"><a href="nmds2.html#histórico-das-fusões-1-2"><i class="fa fa-check"></i><b>20.5.2</b> Histórico das fusões 1</a></li>
+</ul></li>
+<li class="chapter" data-level="20.6" data-path="nmds2.html"><a href="nmds2.html#ordenação-1"><i class="fa fa-check"></i><b>20.6</b> Ordenação</a>
+<ul>
+<li class="chapter" data-level="20.6.1" data-path="nmds2.html"><a href="nmds2.html#gráficos-de-ordenação"><i class="fa fa-check"></i><b>20.6.1</b> Gráficos de ordenação</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="nmds2.html"><a href="nmds2.html#apêndices-16"><i class="fa fa-check"></i>Apêndices</a>
+<ul>
+<li class="chapter" data-level="" data-path="nmds2.html"><a href="nmds2.html#videos-consultados"><i class="fa fa-check"></i>Videos consultados</a></li>
+<li class="chapter" data-level="" data-path="nmds2.html"><a href="nmds2.html#script-limpo-11"><i class="fa fa-check"></i>Script limpo</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="nmds2.html"><a href="nmds2.html#referências-17"><i class="fa fa-check"></i>Referências</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="bibliografia-geral.html"><a href="bibliografia-geral.html"><i class="fa fa-check"></i>Bibliografia Geral</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Fundamentos de Ecologia Numérica</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="nmds2" class="section level1 hasAnchor" number="20">
+<h1><span class="header-section-number"> 20</span> R Modulo 10.2 - Análise de Ordenação - NMDS<a href="nmds2.html#nmds2" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="resumo-16" class="section level3 unnumbered hasAnchor">
+<h3>RESUMO<a href="nmds2.html#resumo-16" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>O Escalonamento Multidimensional Não-Métrico, também conhecido como NMDS ou MDS não-métrico (Multidimensional Scaling), é uma técnica estatística útil em situações onde as relações entre os pontos são importantes, mas as distâncias exatas entre eles podem não ser facilmente quantificáveis ou interpretáveis. Além da Ecologia, o NMDS é frequentemente usado em áreas como análise de dados, psicometria, ciência social, visualização de dados e aprendizado de máquina.</p>
+</div>
+<div id="apresentação-17" class="section level3 unnumbered hasAnchor">
+<h3>Apresentação<a href="nmds2.html#apresentação-17" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>O Escalonamento Multidimensional Não-Métrico, também conhecido como NMDS ou MDS não-métrico (Multidimensional Scaling), é uma técnica estatística utilizada para representar dados com muitas dimensões em um espaço dimensional menor, de forma que a estrutura dos dados originais seja preservada o máximo possível.</p>
+<p>Ao contrário do MDS métrico, que preserva as distâncias entre os pontos, o MDS não-métrico preserva apenas as relações de ordem ou similaridade entre os pontos, sem assumir uma relação linear com as distâncias reais. Em outras palavras, ele se concentra em preservar as relações de proximidade entre os pontos, mas não necessariamente suas distâncias exatas.</p>
+<p>A técnica funciona construindo uma matriz de similaridade a partir dos dados originais e, em seguida, posicionando os pontos em um espaço de menor dimensão de forma que as distâncias ou similaridades relativas sejam mantidas o mais fiel possível à matriz original.</p>
+<p>O MDS não-métrico é útil em situações onde as relações entre os pontos são importantes, mas as distâncias exatas entre eles podem não ser facilmente quantificáveis ou interpretáveis. Além da Ecologia, o NMDS é frequentemente usado em áreas como análise de dados, psicometria, ciência social, visualização de dados e aprendizado de máquina.</p>
+</div>
+<div id="algoritmo-da-nmds-1" class="section level2 hasAnchor" number="20.1">
+<h2><span class="header-section-number">20.1</span> Algoritmo da NMDS<a href="nmds2.html#algoritmo-da-nmds-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>O algoritmo de uma NMDS (Non-Metric Multidimensional Scaling) funciona de maneira a posicionar os pontos de dados em um espaço de menor dimensão de forma que as relações de ordem ou similaridade entre os pontos sejam preservadas o máximo possível.</p>
+<p>Aqui está uma visão geral de como o algoritmo de NMDS opera:</p>
+<ol style="list-style-type: decimal">
+<li><p><strong>Matriz de Similaridade</strong>: O algoritmo começa com uma matriz de similaridade ou dissimilaridade que captura as relações entre os pontos de dados. Essa matriz pode ser baseada em diferentes medidas, como correlações, coeficientes de similaridade, distâncias euclidianas, entre outras.</p></li>
+<li><p><strong>Inicialização</strong>: Inicialmente, os pontos são atribuídos a posições aleatórias ou em uma configuração inicial no espaço de menor dimensão.</p></li>
+<li><p><strong>Ajuste Iterativo</strong>: O algoritmo itera para melhorar as posições dos pontos no espaço de menor dimensão. Durante cada iteração, os pontos são movidos em direção a uma configuração que melhor preserve as relações de similaridade ou dissimilaridade conforme definido pela matriz de similaridade.</p></li>
+<li><p><strong>Critério de Convergência</strong>: O processo iterativo continua até que um critério de convergência seja alcançado. Isso pode ser baseado na estabilidade das posições dos pontos ou na convergência de uma função de custo que quantifica a discrepância entre as relações de similaridade na configuração original e na configuração reduzida.</p></li>
+<li><p><strong>Saída</strong>: Uma vez que o algoritmo convergiu, as posições finais dos pontos no espaço de menor dimensão são utilizadas como representações dos dados para visualização ou análise.</p></li>
+</ol>
+<div id="hello" class="greeting message" style="color: green;">
+<p>É importante notar que, embora o NMDS preserve as relações de ordem ou similaridade entre os pontos, não há garantia de que as distâncias absolutas entre os pontos no espaço de menor dimensão correspondam às distâncias reais entre os pontos nos dados originais. O objetivo principal é preservar a estrutura relativa dos dados em um espaço de menor dimensão, facilitando a interpretação e visualização dos padrões nos dados.</p>
+</div>
+</div>
+<div id="organização-básica-14" class="section level2 hasAnchor" number="20.2">
+<h2><span class="header-section-number">20.2</span> Organização básica<a href="nmds2.html#organização-básica-14" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Apagamos os gráficos, se houver algum, limpamos a memória e o console.</p>
+<div class="sourceCode" id="cb586"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb586-1"><a href="nmds2.html#cb586-1" tabindex="-1"></a><span class="fu">dev.off</span>()</span>
+<span id="cb586-2"><a href="nmds2.html#cb586-2" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list=</span><span class="fu">ls</span>(<span class="at">all=</span><span class="cn">TRUE</span>))</span>
+<span id="cb586-3"><a href="nmds2.html#cb586-3" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;</span><span class="sc">\014</span><span class="st">&quot;</span>)</span>
+<span id="cb586-4"><a href="nmds2.html#cb586-4" tabindex="-1"></a><span class="co">#apaga os graficos, se houver algum, limpa a memória e o console</span></span></code></pre></div>
+</div>
+<div id="pacotes-do-módulo-2" class="section level2 hasAnchor" number="20.3">
+<h2><span class="header-section-number">20.3</span> Pacotes do módulo<a href="nmds2.html#pacotes-do-módulo-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Instalando os pacotes necessários para esse módulo. Nos computadores do Laboratório de Ecologia não instale esses pacotes, eles já estão instalados.</p>
+<div class="sourceCode" id="cb587"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb587-1"><a href="nmds2.html#cb587-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;openxlsx&quot;</span>)</span>
+<span id="cb587-2"><a href="nmds2.html#cb587-2" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;rgl&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb588"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb588-1"><a href="nmds2.html#cb588-1" tabindex="-1"></a><span class="co">#dir &lt;- getwd() #criamos um vetor com o diretório  de trbalho </span></span>
+<span id="cb588-2"><a href="nmds2.html#cb588-2" tabindex="-1"></a><span class="co">#shell.exec(dir) #abre o diretorio de trabalho no Windows Explorer</span></span>
+<span id="cb588-3"><a href="nmds2.html#cb588-3" tabindex="-1"></a><span class="fu">library</span>(openxlsx)</span>
+<span id="cb588-4"><a href="nmds2.html#cb588-4" tabindex="-1"></a>ppbio <span class="ot">&lt;-</span> <span class="fu">read.xlsx</span>(<span class="st">&quot;D:/Elvio/OneDrive/Disciplinas/_EcoNumerica/5.Matrizes/ppbio06p-peixes.xlsx&quot;</span>,</span>
+<span id="cb588-5"><a href="nmds2.html#cb588-5" tabindex="-1"></a>                   <span class="at">rowNames =</span> T, <span class="at">colNames =</span> T,</span>
+<span id="cb588-6"><a href="nmds2.html#cb588-6" tabindex="-1"></a>                   <span class="at">sheet =</span> <span class="st">&quot;Sheet1&quot;</span>)</span>
+<span id="cb588-7"><a href="nmds2.html#cb588-7" tabindex="-1"></a><span class="fu">str</span>(ppbio)</span>
+<span id="cb588-8"><a href="nmds2.html#cb588-8" tabindex="-1"></a><span class="co">#View(ppbio)</span></span>
+<span id="cb588-9"><a href="nmds2.html#cb588-9" tabindex="-1"></a>ppbio[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>] <span class="co">#[1:5,1:5] mostra apenas as linhas e colunas de 1 a 5.</span></span>
+<span id="cb588-10"><a href="nmds2.html#cb588-10" tabindex="-1"></a>t_grps <span class="ot">&lt;-</span> <span class="fu">read.xlsx</span>(<span class="st">&quot;D:/Elvio/OneDrive/Disciplinas/_EcoNumerica/5.Matrizes/ppbio06-grupos.xlsx&quot;</span>,</span>
+<span id="cb588-11"><a href="nmds2.html#cb588-11" tabindex="-1"></a>                   <span class="at">rowNames =</span> T,</span>
+<span id="cb588-12"><a href="nmds2.html#cb588-12" tabindex="-1"></a>                   <span class="at">colNames =</span> T,</span>
+<span id="cb588-13"><a href="nmds2.html#cb588-13" tabindex="-1"></a>                   <span class="at">sheet =</span> <span class="st">&quot;peixesp&quot;</span>)</span></code></pre></div>
+</div>
+<div id="reinício-1-2" class="section level2 hasAnchor" number="20.4">
+<h2><span class="header-section-number">20.4</span> REINÍCIO 1<a href="nmds2.html#reinício-1-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="hello" class="greeting message" style="color: green;">
+<p>Aqui substitui-se uma nova matriz de dados, caso seja necessário refazer a análise com uma matriz gerada nesse código.</p>
+</div>
+<div class="sourceCode" id="cb589"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb589-1"><a href="nmds2.html#cb589-1" tabindex="-1"></a>m_trab <span class="ot">&lt;-</span> (ppbio)   <span class="co"># &lt;1&gt;</span></span></code></pre></div>
+<ol style="list-style-type: decimal">
+<li>Substitua a nova matriz aqui. Caso seja necessário.</li>
+</ol>
+</div>
+<div id="classificação-1-matriz-comunitária-1" class="section level2 hasAnchor" number="20.5">
+<h2><span class="header-section-number">20.5</span> Classificação 1: Matriz comunitária<a href="nmds2.html#classificação-1-matriz-comunitária-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Para conhecermos os dados, vamos criar uma classificação baseada na distância Bray-Curtis e UPGMA como método de fusão, a partir das matrizes de dados de interesse <code>ppbio**</code> com suas devidas relativizações e transformações.</p>
+<div id="dendrograma-e-heatmap-1-1" class="section level3 hasAnchor" number="20.5.1">
+<h3><span class="header-section-number">20.5.1</span> Dendrograma e Heatmap 1<a href="nmds2.html#dendrograma-e-heatmap-1-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb590"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb590-1"><a href="nmds2.html#cb590-1" tabindex="-1"></a><span class="co">#Dendrograma</span></span>
+<span id="cb590-2"><a href="nmds2.html#cb590-2" tabindex="-1"></a><span class="fu">library</span>(vegan)</span>
+<span id="cb590-3"><a href="nmds2.html#cb590-3" tabindex="-1"></a>m_trns <span class="ot">&lt;-</span> <span class="fu">asin</span>(<span class="fu">sqrt</span>(<span class="fu">decostand</span>(m_trab,</span>
+<span id="cb590-4"><a href="nmds2.html#cb590-4" tabindex="-1"></a>                               <span class="at">method=</span><span class="st">&quot;total&quot;</span>, <span class="at">MARGIN =</span> <span class="dv">2</span>)))</span>
+<span id="cb590-5"><a href="nmds2.html#cb590-5" tabindex="-1"></a><span class="co">#m_trns &lt;- sqrt(m_trab)</span></span>
+<span id="cb590-6"><a href="nmds2.html#cb590-6" tabindex="-1"></a>vegdist <span class="ot">&lt;-</span> <span class="fu">vegdist</span>(m_trns, <span class="at">method =</span> <span class="st">&quot;bray&quot;</span>,</span>
+<span id="cb590-7"><a href="nmds2.html#cb590-7" tabindex="-1"></a>                   <span class="at">diag =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb590-8"><a href="nmds2.html#cb590-8" tabindex="-1"></a>                   <span class="at">upper =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb590-9"><a href="nmds2.html#cb590-9" tabindex="-1"></a>cluster_uas <span class="ot">&lt;-</span> <span class="fu">hclust</span>(vegdist, <span class="at">method =</span> <span class="st">&quot;average&quot;</span>)</span>
+<span id="cb590-10"><a href="nmds2.html#cb590-10" tabindex="-1"></a><span class="fu">plot</span> (cluster_uas, <span class="at">main =</span> <span class="st">&quot;Cluster Dendrogram - Bray-Curtis da Matriz Comunitária&quot;</span>,</span>
+<span id="cb590-11"><a href="nmds2.html#cb590-11" tabindex="-1"></a>      <span class="at">hang =</span> <span class="fl">0.1</span>) <span class="co">#testar com -.01</span></span>
+<span id="cb590-12"><a href="nmds2.html#cb590-12" tabindex="-1"></a><span class="co">#rect.hclust(cluster_uas, k = 3, h = NULL) </span></span>
+<span id="cb590-13"><a href="nmds2.html#cb590-13" tabindex="-1"></a><span class="co">#h = 0.8 fornece os grupos formados na altura h</span></span>
+<span id="cb590-14"><a href="nmds2.html#cb590-14" tabindex="-1"></a><span class="fu">as.matrix</span>(vegdist)[<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>]</span>
+<span id="cb590-15"><a href="nmds2.html#cb590-15" tabindex="-1"></a></span>
+<span id="cb590-16"><a href="nmds2.html#cb590-16" tabindex="-1"></a><span class="co">#Heatmap</span></span>
+<span id="cb590-17"><a href="nmds2.html#cb590-17" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;gplots&quot;</span>)</span>
+<span id="cb590-18"><a href="nmds2.html#cb590-18" tabindex="-1"></a>heatdist <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(vegdist)</span>
+<span id="cb590-19"><a href="nmds2.html#cb590-19" tabindex="-1"></a>col <span class="ot">&lt;-</span> <span class="fu">rev</span>(<span class="fu">heat.colors</span>(<span class="dv">999</span>)) <span class="co">#rev() reverte as cores do heatmap</span></span>
+<span id="cb590-20"><a href="nmds2.html#cb590-20" tabindex="-1"></a><span class="fu">heatmap.2</span>(<span class="at">x=</span>(<span class="fu">as.matrix</span>(vegdist)), <span class="co">#objetos x objetos</span></span>
+<span id="cb590-21"><a href="nmds2.html#cb590-21" tabindex="-1"></a>          <span class="at">Rowv =</span> <span class="fu">as.dendrogram</span>(cluster_uas),</span>
+<span id="cb590-22"><a href="nmds2.html#cb590-22" tabindex="-1"></a>          <span class="at">Colv =</span> <span class="fu">as.dendrogram</span>(cluster_uas),</span>
+<span id="cb590-23"><a href="nmds2.html#cb590-23" tabindex="-1"></a>          <span class="at">key =</span> T, <span class="at">tracecol =</span> <span class="cn">NA</span>, <span class="at">revC =</span> T,</span>
+<span id="cb590-24"><a href="nmds2.html#cb590-24" tabindex="-1"></a>          <span class="at">col =</span> heat.colors,  <span class="co">#dissimilaridade = 1 - similaridade</span></span>
+<span id="cb590-25"><a href="nmds2.html#cb590-25" tabindex="-1"></a>          <span class="at">density.info =</span> <span class="st">&quot;none&quot;</span>,</span>
+<span id="cb590-26"><a href="nmds2.html#cb590-26" tabindex="-1"></a>          <span class="at">xlab =</span> <span class="st">&quot;UA´s&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;UA´s&quot;</span>,</span>
+<span id="cb590-27"><a href="nmds2.html#cb590-27" tabindex="-1"></a>          <span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">6</span>) <span class="sc">+</span> <span class="fl">0.2</span>)</span>
+<span id="cb590-28"><a href="nmds2.html#cb590-28" tabindex="-1"></a>cluster_spp <span class="ot">&lt;-</span> <span class="fu">hclust</span>((<span class="fu">vegdist</span>(<span class="fu">t</span>(m_trns), <span class="at">method =</span> <span class="st">&quot;bray&quot;</span>,</span>
+<span id="cb590-29"><a href="nmds2.html#cb590-29" tabindex="-1"></a>                            <span class="at">diag =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb590-30"><a href="nmds2.html#cb590-30" tabindex="-1"></a>                            <span class="at">upper =</span> <span class="cn">FALSE</span>)), <span class="at">method =</span> <span class="st">&quot;average&quot;</span>)</span>
+<span id="cb590-31"><a href="nmds2.html#cb590-31" tabindex="-1"></a><span class="fu">plot</span> (cluster_spp, <span class="at">main =</span> <span class="st">&quot;Dendrograma dos atributos&quot;</span>)</span>
+<span id="cb590-32"><a href="nmds2.html#cb590-32" tabindex="-1"></a><span class="fu">heatmap.2</span>(<span class="fu">t</span>(<span class="fu">as.matrix</span>(m_trns)), <span class="co">#objetos x atributos</span></span>
+<span id="cb590-33"><a href="nmds2.html#cb590-33" tabindex="-1"></a>          <span class="at">Colv =</span> <span class="fu">as.dendrogram</span>(cluster_uas),</span>
+<span id="cb590-34"><a href="nmds2.html#cb590-34" tabindex="-1"></a>          <span class="at">Rowv =</span> <span class="fu">as.dendrogram</span>(cluster_spp),</span>
+<span id="cb590-35"><a href="nmds2.html#cb590-35" tabindex="-1"></a>          <span class="at">key =</span> T, <span class="at">tracecol =</span> <span class="cn">NA</span>, <span class="at">revC =</span> T,</span>
+<span id="cb590-36"><a href="nmds2.html#cb590-36" tabindex="-1"></a>          <span class="at">col =</span> col,</span>
+<span id="cb590-37"><a href="nmds2.html#cb590-37" tabindex="-1"></a>          <span class="at">density.info =</span> <span class="st">&quot;none&quot;</span>,</span>
+<span id="cb590-38"><a href="nmds2.html#cb590-38" tabindex="-1"></a>          <span class="at">xlab =</span> <span class="st">&quot;Unidades amostrais&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Espécies&quot;</span>,</span>
+<span id="cb590-39"><a href="nmds2.html#cb590-39" tabindex="-1"></a>          <span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">6</span>) <span class="sc">+</span> <span class="fl">0.1</span>)  <span class="co"># adjust margin size</span></span></code></pre></div>
+<pre><code>##           S-R-CT1   S-R-CP1   S-A-TA1   S-R-CT2   S-R-CP2   S-A-TA2
+## S-R-CT1 0.0000000 0.8743721 0.9338269 0.6274997 0.8106894 0.9420728
+## S-R-CP1 0.8743721 0.0000000 0.6833816 0.7759468 0.7726098 0.7342613
+## S-A-TA1 0.9338269 0.6833816 0.0000000 0.8789631 0.9178304 0.5700984
+## S-R-CT2 0.6274997 0.7759468 0.8789631 0.0000000 0.7280378 0.8836068
+## S-R-CP2 0.8106894 0.7726098 0.9178304 0.7280378 0.0000000 0.8915271
+## S-A-TA2 0.9420728 0.7342613 0.5700984 0.8836068 0.8915271 0.0000000</code></pre>
+<p><img src="fundamentos_de_ecologia_numerica_files/figure-html/unnamed-chunk-319-1.png" width="768" /><img src="fundamentos_de_ecologia_numerica_files/figure-html/unnamed-chunk-319-2.png" width="768" /><img src="fundamentos_de_ecologia_numerica_files/figure-html/unnamed-chunk-319-3.png" width="768" /><img src="fundamentos_de_ecologia_numerica_files/figure-html/unnamed-chunk-319-4.png" width="768" /></p>
+</div>
+<div id="histórico-das-fusões-1-2" class="section level3 hasAnchor" number="20.5.2">
+<h3><span class="header-section-number">20.5.2</span> Histórico das fusões 1<a href="nmds2.html#histórico-das-fusões-1-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Criamos agora o histórico das fusões dos objetos. Na tabela gerada, as duas primeiras colunas (No. e UA) representam o número (No.) atribuido a cada unidade amostral (UA). As duas colunas subsequentes (Cluster1 e Cluster2) representam o par de objetos (indicado pelo sinal de “-”) ou grupo de objetos (indicado pela ausência do sinall de “-”) que foram agrupadas. A coluna Height, indica o valor de similaridade na qual um dado par de objetos (ou grupo de objetos) foi agrupado. O valor aproximado de Height também pode ser visualizado no eixo do dendrograma. Por último, na coluna Histórico, é mostrada a sequência das fusões da primeira até a <code>m-1</code> última fusão entre os dois últimos grupos. Nesse caso, 22.</p>
+<div class="sourceCode" id="cb592"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb592-1"><a href="nmds2.html#cb592-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb592-2"><a href="nmds2.html#cb592-2" tabindex="-1"></a><span class="fu">library</span>(gt)</span>
+<span id="cb592-3"><a href="nmds2.html#cb592-3" tabindex="-1"></a>merge <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(cluster_uas<span class="sc">$</span>merge)</span>
+<span id="cb592-4"><a href="nmds2.html#cb592-4" tabindex="-1"></a>merge[<span class="fu">nrow</span>(merge)<span class="sc">+</span><span class="dv">1</span>,] <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;0&quot;</span>,<span class="st">&quot;0&quot;</span>)</span>
+<span id="cb592-5"><a href="nmds2.html#cb592-5" tabindex="-1"></a>height <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">round</span>(cluster_uas<span class="sc">$</span>height, <span class="dv">2</span>))</span>
+<span id="cb592-6"><a href="nmds2.html#cb592-6" tabindex="-1"></a>height[<span class="fu">nrow</span>(height)<span class="sc">+</span><span class="dv">1</span>,] <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;1.0&quot;</span>)</span>
+<span id="cb592-7"><a href="nmds2.html#cb592-7" tabindex="-1"></a>fusoes <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Cluster_uas =</span> merge, <span class="at">Height =</span> height)</span>
+<span id="cb592-8"><a href="nmds2.html#cb592-8" tabindex="-1"></a><span class="fu">colnames</span>(fusoes) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Cluster1&quot;</span>, <span class="st">&quot;Cluster2&quot;</span>, <span class="st">&quot;Height&quot;</span>)</span>
+<span id="cb592-9"><a href="nmds2.html#cb592-9" tabindex="-1"></a>UA <span class="ot">&lt;-</span> <span class="fu">rownames_to_column</span>(<span class="fu">as.data.frame</span>(m_trns[, <span class="dv">0</span>]))</span>
+<span id="cb592-10"><a href="nmds2.html#cb592-10" tabindex="-1"></a><span class="fu">colnames</span>(UA) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;UAs&quot;</span>)</span>
+<span id="cb592-11"><a href="nmds2.html#cb592-11" tabindex="-1"></a>No.UA <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(fusoes)</span>
+<span id="cb592-12"><a href="nmds2.html#cb592-12" tabindex="-1"></a>fusoes <span class="ot">&lt;-</span> <span class="fu">cbind</span>(No.UA, UA, fusoes)</span>
+<span id="cb592-13"><a href="nmds2.html#cb592-13" tabindex="-1"></a>fusoes<span class="sc">$</span>Histórico <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(fusoes)</span>
+<span id="cb592-14"><a href="nmds2.html#cb592-14" tabindex="-1"></a><span class="co">#fusoes</span></span>
+<span id="cb592-15"><a href="nmds2.html#cb592-15" tabindex="-1"></a><span class="fu">gt</span>(fusoes)</span></code></pre></div>
+<div id="slyvxbniyk" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#slyvxbniyk table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#slyvxbniyk thead, #slyvxbniyk tbody, #slyvxbniyk tfoot, #slyvxbniyk tr, #slyvxbniyk td, #slyvxbniyk th {
+  border-style: none;
+}
+
+#slyvxbniyk p {
+  margin: 0;
+  padding: 0;
+}
+
+#slyvxbniyk .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#slyvxbniyk .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#slyvxbniyk .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#slyvxbniyk .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#slyvxbniyk .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#slyvxbniyk .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#slyvxbniyk .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#slyvxbniyk .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#slyvxbniyk .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#slyvxbniyk .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#slyvxbniyk .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#slyvxbniyk .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#slyvxbniyk .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#slyvxbniyk .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#slyvxbniyk .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#slyvxbniyk .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#slyvxbniyk .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#slyvxbniyk .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#slyvxbniyk .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#slyvxbniyk .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#slyvxbniyk .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#slyvxbniyk .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#slyvxbniyk .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#slyvxbniyk .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#slyvxbniyk .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#slyvxbniyk .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#slyvxbniyk .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#slyvxbniyk .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#slyvxbniyk .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#slyvxbniyk .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#slyvxbniyk .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#slyvxbniyk .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#slyvxbniyk .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#slyvxbniyk .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#slyvxbniyk .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#slyvxbniyk .gt_left {
+  text-align: left;
+}
+
+#slyvxbniyk .gt_center {
+  text-align: center;
+}
+
+#slyvxbniyk .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#slyvxbniyk .gt_font_normal {
+  font-weight: normal;
+}
+
+#slyvxbniyk .gt_font_bold {
+  font-weight: bold;
+}
+
+#slyvxbniyk .gt_font_italic {
+  font-style: italic;
+}
+
+#slyvxbniyk .gt_super {
+  font-size: 65%;
+}
+
+#slyvxbniyk .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#slyvxbniyk .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#slyvxbniyk .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#slyvxbniyk .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#slyvxbniyk .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#slyvxbniyk .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#slyvxbniyk .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#slyvxbniyk .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#slyvxbniyk div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+  <thead>
+    <tr class="gt_col_headings">
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="No.UA">No.UA</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="UAs">UAs</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Cluster1">Cluster1</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Cluster2">Cluster2</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Height">Height</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Histórico">Histórico</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td headers="No.UA" class="gt_row gt_right">1</td>
+<td headers="UAs" class="gt_row gt_left">S-R-CT1</td>
+<td headers="Cluster1" class="gt_row gt_right">-20</td>
+<td headers="Cluster2" class="gt_row gt_right">-23</td>
+<td headers="Height" class="gt_row gt_right">0.14</td>
+<td headers="Histórico" class="gt_row gt_right">1</td></tr>
+    <tr><td headers="No.UA" class="gt_row gt_right">2</td>
+<td headers="UAs" class="gt_row gt_left">S-R-CP1</td>
+<td headers="Cluster1" class="gt_row gt_right">-8</td>
+<td headers="Cluster2" class="gt_row gt_right">-11</td>
+<td headers="Height" class="gt_row gt_right">0.26</td>
+<td headers="Histórico" class="gt_row gt_right">2</td></tr>
+    <tr><td headers="No.UA" class="gt_row gt_right">3</td>
+<td headers="UAs" class="gt_row gt_left">S-A-TA1</td>
+<td headers="Cluster1" class="gt_row gt_right">-17</td>
+<td headers="Cluster2" class="gt_row gt_right">1</td>
+<td headers="Height" class="gt_row gt_right">0.28</td>
+<td headers="Histórico" class="gt_row gt_right">3</td></tr>
+    <tr><td headers="No.UA" class="gt_row gt_right">4</td>
+<td headers="UAs" class="gt_row gt_left">S-R-CT2</td>
+<td headers="Cluster1" class="gt_row gt_right">-19</td>
+<td headers="Cluster2" class="gt_row gt_right">-22</td>
+<td headers="Height" class="gt_row gt_right">0.37</td>
+<td headers="Histórico" class="gt_row gt_right">4</td></tr>
+    <tr><td headers="No.UA" class="gt_row gt_right">5</td>
+<td headers="UAs" class="gt_row gt_left">S-R-CP2</td>
+<td headers="Cluster1" class="gt_row gt_right">-6</td>
+<td headers="Cluster2" class="gt_row gt_right">-12</td>
+<td headers="Height" class="gt_row gt_right">0.41</td>
+<td headers="Histórico" class="gt_row gt_right">5</td></tr>
+    <tr><td headers="No.UA" class="gt_row gt_right">6</td>
+<td headers="UAs" class="gt_row gt_left">S-A-TA2</td>
+<td headers="Cluster1" class="gt_row gt_right">-4</td>
+<td headers="Cluster2" class="gt_row gt_right">-10</td>
+<td headers="Height" class="gt_row gt_right">0.46</td>
+<td headers="Histórico" class="gt_row gt_right">6</td></tr>
+    <tr><td headers="No.UA" class="gt_row gt_right">7</td>
+<td headers="UAs" class="gt_row gt_left">S-R-CT3</td>
+<td headers="Cluster1" class="gt_row gt_right">-16</td>
+<td headers="Cluster2" class="gt_row gt_right">4</td>
+<td headers="Height" class="gt_row gt_right">0.48</td>
+<td headers="Histórico" class="gt_row gt_right">7</td></tr>
+    <tr><td headers="No.UA" class="gt_row gt_right">8</td>
+<td headers="UAs" class="gt_row gt_left">S-R-CP3</td>
+<td headers="Cluster1" class="gt_row gt_right">-5</td>
+<td headers="Cluster2" class="gt_row gt_right">2</td>
+<td headers="Height" class="gt_row gt_right">0.53</td>
+<td headers="Histórico" class="gt_row gt_right">8</td></tr>
+    <tr><td headers="No.UA" class="gt_row gt_right">9</td>
+<td headers="UAs" class="gt_row gt_left">S-A-TA3</td>
+<td headers="Cluster1" class="gt_row gt_right">-13</td>
+<td headers="Cluster2" class="gt_row gt_right">7</td>
+<td headers="Height" class="gt_row gt_right">0.56</td>
+<td headers="Histórico" class="gt_row gt_right">9</td></tr>
+    <tr><td headers="No.UA" class="gt_row gt_right">10</td>
+<td headers="UAs" class="gt_row gt_left">S-R-CT4</td>
+<td headers="Cluster1" class="gt_row gt_right">-9</td>
+<td headers="Cluster2" class="gt_row gt_right">5</td>
+<td headers="Height" class="gt_row gt_right">0.57</td>
+<td headers="Histórico" class="gt_row gt_right">10</td></tr>
+    <tr><td headers="No.UA" class="gt_row gt_right">11</td>
+<td headers="UAs" class="gt_row gt_left">S-R-CP4</td>
+<td headers="Cluster1" class="gt_row gt_right">-7</td>
+<td headers="Cluster2" class="gt_row gt_right">6</td>
+<td headers="Height" class="gt_row gt_right">0.59</td>
+<td headers="Histórico" class="gt_row gt_right">11</td></tr>
+    <tr><td headers="No.UA" class="gt_row gt_right">12</td>
+<td headers="UAs" class="gt_row gt_left">S-A-TA4</td>
+<td headers="Cluster1" class="gt_row gt_right">-14</td>
+<td headers="Cluster2" class="gt_row gt_right">3</td>
+<td headers="Height" class="gt_row gt_right">0.61</td>
+<td headers="Histórico" class="gt_row gt_right">12</td></tr>
+    <tr><td headers="No.UA" class="gt_row gt_right">13</td>
+<td headers="UAs" class="gt_row gt_left">B-A-MU1</td>
+<td headers="Cluster1" class="gt_row gt_right">-2</td>
+<td headers="Cluster2" class="gt_row gt_right">-3</td>
+<td headers="Height" class="gt_row gt_right">0.68</td>
+<td headers="Histórico" class="gt_row gt_right">13</td></tr>
+    <tr><td headers="No.UA" class="gt_row gt_right">14</td>
+<td headers="UAs" class="gt_row gt_left">B-A-GU1</td>
+<td headers="Cluster1" class="gt_row gt_right">-1</td>
+<td headers="Cluster2" class="gt_row gt_right">11</td>
+<td headers="Height" class="gt_row gt_right">0.68</td>
+<td headers="Histórico" class="gt_row gt_right">14</td></tr>
+    <tr><td headers="No.UA" class="gt_row gt_right">15</td>
+<td headers="UAs" class="gt_row gt_left">B-R-PC2</td>
+<td headers="Cluster1" class="gt_row gt_right">-15</td>
+<td headers="Cluster2" class="gt_row gt_right">-18</td>
+<td headers="Height" class="gt_row gt_right">0.69</td>
+<td headers="Histórico" class="gt_row gt_right">15</td></tr>
+    <tr><td headers="No.UA" class="gt_row gt_right">16</td>
+<td headers="UAs" class="gt_row gt_left">B-A-MU2</td>
+<td headers="Cluster1" class="gt_row gt_right">-21</td>
+<td headers="Cluster2" class="gt_row gt_right">14</td>
+<td headers="Height" class="gt_row gt_right">0.75</td>
+<td headers="Histórico" class="gt_row gt_right">16</td></tr>
+    <tr><td headers="No.UA" class="gt_row gt_right">17</td>
+<td headers="UAs" class="gt_row gt_left">B-A-GU2</td>
+<td headers="Cluster1" class="gt_row gt_right">10</td>
+<td headers="Cluster2" class="gt_row gt_right">13</td>
+<td headers="Height" class="gt_row gt_right">0.76</td>
+<td headers="Histórico" class="gt_row gt_right">17</td></tr>
+    <tr><td headers="No.UA" class="gt_row gt_right">18</td>
+<td headers="UAs" class="gt_row gt_left">B-R-PC3</td>
+<td headers="Cluster1" class="gt_row gt_right">9</td>
+<td headers="Cluster2" class="gt_row gt_right">12</td>
+<td headers="Height" class="gt_row gt_right">0.79</td>
+<td headers="Histórico" class="gt_row gt_right">18</td></tr>
+    <tr><td headers="No.UA" class="gt_row gt_right">19</td>
+<td headers="UAs" class="gt_row gt_left">B-A-MU3</td>
+<td headers="Cluster1" class="gt_row gt_right">8</td>
+<td headers="Cluster2" class="gt_row gt_right">16</td>
+<td headers="Height" class="gt_row gt_right">0.8</td>
+<td headers="Histórico" class="gt_row gt_right">19</td></tr>
+    <tr><td headers="No.UA" class="gt_row gt_right">20</td>
+<td headers="UAs" class="gt_row gt_left">B-A-GU3</td>
+<td headers="Cluster1" class="gt_row gt_right">17</td>
+<td headers="Cluster2" class="gt_row gt_right">19</td>
+<td headers="Height" class="gt_row gt_right">0.85</td>
+<td headers="Histórico" class="gt_row gt_right">20</td></tr>
+    <tr><td headers="No.UA" class="gt_row gt_right">21</td>
+<td headers="UAs" class="gt_row gt_left">B-R-PC4</td>
+<td headers="Cluster1" class="gt_row gt_right">15</td>
+<td headers="Cluster2" class="gt_row gt_right">20</td>
+<td headers="Height" class="gt_row gt_right">0.89</td>
+<td headers="Histórico" class="gt_row gt_right">21</td></tr>
+    <tr><td headers="No.UA" class="gt_row gt_right">22</td>
+<td headers="UAs" class="gt_row gt_left">B-A-MU4</td>
+<td headers="Cluster1" class="gt_row gt_right">18</td>
+<td headers="Cluster2" class="gt_row gt_right">21</td>
+<td headers="Height" class="gt_row gt_right">0.91</td>
+<td headers="Histórico" class="gt_row gt_right">22</td></tr>
+    <tr><td headers="No.UA" class="gt_row gt_right">23</td>
+<td headers="UAs" class="gt_row gt_left">B-A-GU4</td>
+<td headers="Cluster1" class="gt_row gt_right">0</td>
+<td headers="Cluster2" class="gt_row gt_right">0</td>
+<td headers="Height" class="gt_row gt_right">1.0</td>
+<td headers="Histórico" class="gt_row gt_right">23</td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+</div>
+</div>
+<div id="ordenação-1" class="section level2 hasAnchor" number="20.6">
+<h2><span class="header-section-number">20.6</span> Ordenação<a href="nmds2.html#ordenação-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>O Escalonamento Multidimensional Não-Métrico (NMS ou NMDS) é uma ferramenta comumente usada para examinar a composição da comunidade. Vamos estabelecer algumas bases conceituais. Considere um único eixo de abundância representando uma única espécie <a href="https://jonlefcheck.net/2012/10/24/nmds-tutorial-in-r/">Fonte</a>:</p>
+<p>O objetivo do NMDS é representar a posição original das comunidades em um espaço multidimensional da forma mais precisa possível, usando um número reduzido de dimensões que podem ser facilmente plotadas e visualizadas.</p>
+<p>Por ser uma ordenação <strong>não-métrica</strong> o NMDS não utiliza as abundâncias absolutas das espécies nas comunidades, mas sim a ordem do seu “rank” estatístico (ou sua “ordenação). O uso de”ranks” ou ordenações omite alguns dos problemas associados ao uso de distâncias absolutas (por exemplo, sensibilidade à transformação) e, como resultado, é uma técnica muito mais flexível, que aceita uma variedade de tipos de dados.</p>
+<p>O procedimento NMDS segue um algorítimo iterativo que ocorre em várias etapas:</p>
+<ol style="list-style-type: decimal">
+<li>Definir as posições originais das comunidades em espaço multidimensional</li>
+<li>Especificar o número m de dimensões reduzidas (tipicamente 2)</li>
+<li>Construir uma configuração inicial das amostras em 2 dimensões</li>
+<li>Regressar distâncias nesta configuração inicial contra as distâncias observadas (medidas)</li>
+<li>Determinar o stress (discordância entre a configuração 2-D e os valores previstos da regressão).
+Se a configuração 2-D preservar perfeitamente os ranks originais de classificação, então um gráfico de um vs. o outro deve ser monotonicamente crescente (gráfico de Shepard). A extensão com que os pontos na configuração 2-D diferem dessa linha monotonicamente crescente determina o grau de stress</li>
+<li>Se o stress for alto, reposicione os pontos em m dimensões na direção do stress decrescente e repita até que o stress esteja abaixo de um certo limite.</li>
+</ol>
+<p>Geralmente, stress &lt; 0.05 fornece uma excelente representação em dimensões reduzidas, &lt; 0.1 é ótimo, &lt; 0.2 é bom, e stress &gt; 0.3 fornece uma representação ruim.</p>
+<p>NOTA: A configuração final pode diferir dependendo da configuração inicial (que normalmente é aleatória) e do número de iterações do algorítmo, então é aconselhável executar o NMDS várias vezes e comparar a interpretação das soluções de menor stress.</p>
+<p>Para começar, o NMDS requer uma matriz de distâncias (ou uma matriz de dissimilaridades). Distâncias Euclidianas brutas não são ideais para este propósito: elas são sensíveis às abundâncias totais, então podem tratar locais com um número semelhante de espécies como mais semelhantes, mesmo que as identidades das espécies sejam diferentes. Elas também são sensíveis às ausências de espécies, então podem tratar locais com o mesmo número de espécies ausentes como mais semelhantes.</p>
+<p>Consequentemente, os ecologistas usam o cálculo de dissimilaridade de Bray-Curtis, que possui muitas propriedades ideais:</p>
+<ul>
+<li>É invariante a mudanças em unidades</li>
+<li>Não é afetado por adições/remoções de espécies que não estão presentes em duas comunidades</li>
+<li>Não é afetado pela adição de uma nova comunidade</li>
+<li>Pode reconhecer diferenças nas abundâncias totais quando as abundâncias relativas são iguais.</li>
+</ul>
+<p>Para executar a NMDS, usa-se a função <code>metaMDS</code> do pacote <code>vegan</code>.</p>
+<div class="sourceCode" id="cb593"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb593-1"><a href="nmds2.html#cb593-1" tabindex="-1"></a><span class="fu">library</span>(vegan)</span></code></pre></div>
+<p>Para executar a NMDS, usa-se a função <code>metaMDS</code> do pacote <code>vegan</code>. <code>metaMDS</code> requer uma matriz de comunidade-por-espécies (CPE, “community-by-species”). De momento, cria-se essa matrizcom dados amostradoes aleatóriamente de um cojunto arbitrário de valores.</p>
+<p>A função <code>metaMDS</code> vai calcular as distâncias, executar o algorítimo iterativo, determna o stress ou fitting entre os conjuntos de dados e etc. Precisa-se apenas definir a matriz de comunidade-por-espécies. Nesse caso:</p>
+<div class="sourceCode" id="cb594"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb594-1"><a href="nmds2.html#cb594-1" tabindex="-1"></a>nmds <span class="ot">&lt;-</span> <span class="fu">metaMDS</span>(m_trns, <span class="co">#matriz CPE, definida anteriormente</span></span>
+<span id="cb594-2"><a href="nmds2.html#cb594-2" tabindex="-1"></a>                <span class="at">k=</span><span class="dv">2</span>) <span class="co">#no. de redução de dimensões</span></span></code></pre></div>
+<pre><code>## Run 0 stress 0.1601399 
+## Run 1 stress 0.1601399 
+## ... New best solution
+## ... Procrustes: rmse 1.48636e-06  max resid 4.762426e-06 
+## ... Similar to previous best
+## Run 2 stress 0.1601399 
+## ... Procrustes: rmse 2.380709e-06  max resid 6.886123e-06 
+## ... Similar to previous best
+## Run 3 stress 0.1601399 
+## ... New best solution
+## ... Procrustes: rmse 1.355828e-06  max resid 4.689067e-06 
+## ... Similar to previous best
+## Run 4 stress 0.1601399 
+## ... Procrustes: rmse 1.784654e-06  max resid 6.269961e-06 
+## ... Similar to previous best
+## Run 5 stress 0.1601399 
+## ... New best solution
+## ... Procrustes: rmse 1.091364e-06  max resid 3.175341e-06 
+## ... Similar to previous best
+## Run 6 stress 0.1601399 
+## ... Procrustes: rmse 3.000764e-06  max resid 9.853888e-06 
+## ... Similar to previous best
+## Run 7 stress 0.1601399 
+## ... Procrustes: rmse 1.191157e-06  max resid 3.000012e-06 
+## ... Similar to previous best
+## Run 8 stress 0.1601399 
+## ... Procrustes: rmse 9.141497e-07  max resid 2.101769e-06 
+## ... Similar to previous best
+## Run 9 stress 0.2078279 
+## Run 10 stress 0.1601399 
+## ... Procrustes: rmse 2.650655e-06  max resid 8.83245e-06 
+## ... Similar to previous best
+## Run 11 stress 0.1972675 
+## Run 12 stress 0.1601399 
+## ... Procrustes: rmse 1.185218e-06  max resid 2.096014e-06 
+## ... Similar to previous best
+## Run 13 stress 0.1601399 
+## ... New best solution
+## ... Procrustes: rmse 8.104786e-07  max resid 1.805247e-06 
+## ... Similar to previous best
+## Run 14 stress 0.1601399 
+## ... Procrustes: rmse 1.657221e-06  max resid 3.540145e-06 
+## ... Similar to previous best
+## Run 15 stress 0.2199318 
+## Run 16 stress 0.1601399 
+## ... Procrustes: rmse 1.565273e-06  max resid 3.692174e-06 
+## ... Similar to previous best
+## Run 17 stress 0.1601399 
+## ... Procrustes: rmse 8.341295e-07  max resid 1.419309e-06 
+## ... Similar to previous best
+## Run 18 stress 0.1601399 
+## ... New best solution
+## ... Procrustes: rmse 6.606092e-07  max resid 1.34269e-06 
+## ... Similar to previous best
+## Run 19 stress 0.1601399 
+## ... Procrustes: rmse 6.394982e-07  max resid 9.480347e-07 
+## ... Similar to previous best
+## Run 20 stress 0.2078279 
+## *** Best solution repeated 2 times</code></pre>
+<div class="sourceCode" id="cb596"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb596-1"><a href="nmds2.html#cb596-1" tabindex="-1"></a>nmds</span></code></pre></div>
+<pre><code>## 
+## Call:
+## metaMDS(comm = m_trns, k = 2) 
+## 
+## global Multidimensional Scaling using monoMDS
+## 
+## Data:     m_trns 
+## Distance: bray 
+## 
+## Dimensions: 2 
+## Stress:     0.1601399 
+## Stress type 1, weak ties
+## Best solution was repeated 2 times in 20 tries
+## The best solution was from try 18 (random start)
+## Scaling: centring, PC rotation, halfchange scaling 
+## Species: expanded scores based on &#39;m_trns&#39;</code></pre>
+<p>Nesse exemplo, <code>metaMDS</code> aplicou automaticamente uma transformação da raiz quadrada e calculou as distâncias de Bray-Curtis para a matriz de comunidade-por-local.</p>
+<p>Deve-se observar cada iteração do NMDS até que uma solução seja alcançada (ou seja, o stress foi minimizado após algum número de reconfigurações dos pontos em 2 dimensões). Pode-se aumentar o número padrão de iterações usando o argumento <code>trymax =</code>. Isso pode ajudar a aliviar problemas de não convergência. Se o stress for alto, pode-se aumentar o número de dimensões para <code>k = 3</code>.</p>
+<div class="sourceCode" id="cb598"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb598-1"><a href="nmds2.html#cb598-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">321</span>)</span>
+<span id="cb598-2"><a href="nmds2.html#cb598-2" tabindex="-1"></a>nmds <span class="ot">&lt;-</span> <span class="fu">metaMDS</span>(m_trns, <span class="at">distance =</span> <span class="st">&quot;bray&quot;</span>, <span class="at">k =</span> <span class="dv">3</span>, <span class="at">trymax =</span> <span class="dv">100</span>)</span></code></pre></div>
+<pre><code>## Run 0 stress 0.1105304 
+## Run 1 stress 0.1111279 
+## Run 2 stress 0.1111282 
+## Run 3 stress 0.1073495 
+## ... New best solution
+## ... Procrustes: rmse 0.07078509  max resid 0.1956867 
+## Run 4 stress 0.1072835 
+## ... New best solution
+## ... Procrustes: rmse 0.0221437  max resid 0.07183978 
+## Run 5 stress 0.1072833 
+## ... New best solution
+## ... Procrustes: rmse 0.0001479742  max resid 0.0003523263 
+## ... Similar to previous best
+## Run 6 stress 0.1091695 
+## Run 7 stress 0.1073496 
+## ... Procrustes: rmse 0.02217784  max resid 0.07198735 
+## Run 8 stress 0.1105306 
+## Run 9 stress 0.1072837 
+## ... Procrustes: rmse 0.0003378354  max resid 0.0008339771 
+## ... Similar to previous best
+## Run 10 stress 0.1072836 
+## ... Procrustes: rmse 0.0002426655  max resid 0.0006080793 
+## ... Similar to previous best
+## Run 11 stress 0.1072835 
+## ... Procrustes: rmse 0.0002310946  max resid 0.0005813784 
+## ... Similar to previous best
+## Run 12 stress 0.1148151 
+## Run 13 stress 0.1148151 
+## Run 14 stress 0.1072894 
+## ... Procrustes: rmse 0.00180887  max resid 0.004939432 
+## ... Similar to previous best
+## Run 15 stress 0.1072833 
+## ... Procrustes: rmse 4.431772e-05  max resid 0.0001068513 
+## ... Similar to previous best
+## Run 16 stress 0.1105303 
+## Run 17 stress 0.1073493 
+## ... Procrustes: rmse 0.02213488  max resid 0.07189392 
+## Run 18 stress 0.1163012 
+## Run 19 stress 0.1073495 
+## ... Procrustes: rmse 0.02206039  max resid 0.07161019 
+## Run 20 stress 0.1105304 
+## *** Best solution repeated 6 times</code></pre>
+<div class="sourceCode" id="cb600"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb600-1"><a href="nmds2.html#cb600-1" tabindex="-1"></a><span class="co">#distance = &quot;manhattan&quot;, &quot;euclidean&quot;, &quot;canberra&quot;, &quot;clark&quot;, &quot;bray&quot;, &quot;kulczynski&quot;, &quot;jaccard&quot;, &quot;gower&quot;, #&quot;altGower&quot;, &quot;morisita&quot;, &quot;horn&quot;, &quot;mountford&quot;, &quot;raup&quot;, &quot;binomial&quot;, &quot;chao&quot;, &quot;cao&quot;, &quot;mahalanobis&quot;, &quot;chisq&quot;, #&quot;chord&quot;, &quot;hellinger&quot;, &quot;aitchison&quot;, or &quot;robust.aitchison&quot;.</span></span></code></pre></div>
+<p>Pode-se agora examinar o objeto NMDS.</p>
+<div class="sourceCode" id="cb601"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb601-1"><a href="nmds2.html#cb601-1" tabindex="-1"></a>nmds</span></code></pre></div>
+<pre><code>## 
+## Call:
+## metaMDS(comm = m_trns, distance = &quot;bray&quot;, k = 3, trymax = 100) 
+## 
+## global Multidimensional Scaling using monoMDS
+## 
+## Data:     m_trns 
+## Distance: bray 
+## 
+## Dimensions: 3 
+## Stress:     0.1072833 
+## Stress type 1, weak ties
+## Best solution was repeated 6 times in 20 tries
+## The best solution was from try 5 (random start)
+## Scaling: centring, PC rotation, halfchange scaling 
+## Species: expanded scores based on &#39;m_trns&#39;</code></pre>
+<div class="sourceCode" id="cb603"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb603-1"><a href="nmds2.html#cb603-1" tabindex="-1"></a><span class="fu">scores</span>(nmds)</span></code></pre></div>
+<pre><code>## $sites
+##               NMDS1       NMDS2       NMDS3
+## S-R-CT1 -0.55184543  0.92903240  0.67309796
+## S-R-CP1 -0.64422074 -0.39586762 -0.57609214
+## S-A-TA1  0.06337462 -0.75014403 -1.01396726
+## S-R-CT2 -0.56368016  0.28369854  0.32785273
+## S-R-CP2 -1.32840867  0.28533277 -0.09972257
+## S-A-TA2 -0.39321633 -1.12251908 -0.52649396
+## S-R-CT3 -0.67162538  0.58469847  0.85296793
+## S-R-CP3 -1.18931582 -0.19592847  0.07278880
+## S-A-TA3 -0.59855686 -1.28335380  0.04516662
+## S-R-CT4 -0.40624697  0.94037183  0.11916157
+## S-R-CP4 -1.22928790 -0.02480186  0.24910852
+## S-A-TA4 -0.55105041 -0.53647766  0.29599403
+## B-A-MU1  1.25467513 -0.51187249  0.16278582
+## B-A-GU1  1.34839255 -0.15921423 -0.47982251
+## B-R-PC2  0.09554426  1.11267181 -1.15925174
+## B-A-MU2  0.36190986 -0.59036596  0.04099380
+## B-A-GU2  1.62884577  0.33425248  0.26202181
+## B-R-PC3 -0.14377797  1.10299453 -0.55148164
+## B-A-MU3  0.44792178 -0.44744275  0.37859882
+## B-A-GU3  1.43419849  0.34992690  0.24554745
+## B-R-PC4 -0.14448803  0.38054762 -0.40790080
+## B-A-MU4  0.42559878 -0.61216902  0.97820004
+## B-A-GU4  1.35525942  0.32662963  0.11044671
+## 
+## $species
+##                 NMDS1       NMDS2       NMDS3
+## ap-davis  -0.01495781  1.29218956 -0.96364825
+## as-bimac  -0.08444554 -0.30195697  0.19874224
+## as-fasci  -0.43902511  0.45212432  0.29464859
+## ch-bimac  -0.51882751 -1.25772500 -0.14816822
+## ci-ocela  -1.19637071  0.25077439 -0.21174896
+## ci-orien  -0.92500918  0.30670709  0.38457115
+## co-macro  -0.66116054 -1.73538798  0.01457586
+## co-heter  -0.60339636  1.06826261  0.81358642
+## cr-menez  -0.62927305  0.63683147  0.68773870
+## cu-lepid  -0.09877286  1.28871644 -0.74462857
+## cy-gilbe  -0.23688285  0.67396301 -0.27760072
+## ge-brasi   0.86109311 -0.34796611  0.37321852
+## he-margi  -0.52068904  0.66654728  0.24150508
+## ho-malab  -0.72853442 -0.13648153  0.15635968
+## hy-pusar  -0.67090831  0.50993573  0.35553226
+## le-melan   0.19717728  1.30097999 -1.51798498
+## le-piau   -0.91818363  0.20152000  0.31048506
+## le-taeni   0.19717728  1.30097999 -1.51798498
+## mo-costa  -0.09877286  1.28871644 -0.74462857
+## mo-lepid  -0.60487570  0.98559718  0.76918012
+## or-nilot   0.54252119  0.46950438  0.21583318
+## pa-manag   1.86833019  0.27353658  0.15207511
+## pimel-sp  -0.60339636  1.06826261  0.81358642
+## po-retic   0.37060324 -0.61094304  0.84311236
+## po-vivip  -0.49863780  0.07688495  0.54090975
+## pr-brevi  -0.53177683  0.56816610  0.27214584
+## ps-rhomb  -0.75151837  0.63190478  1.04246178
+## ps-genise -0.75151837  0.63190478  1.04246178
+## se-heter  -0.41072279  0.60159464 -0.11643558
+## se-piaba  -0.60339636  1.06826261  0.81358642
+## se-spilo  -0.75151837  0.63190478  1.04246178
+## st-noton  -0.61618486  0.71853327  0.60948738
+## sy-marmo  -1.56370831  0.25253303 -0.16978823
+## te-chalc   0.06189483  1.29537417 -1.16447425
+## tr-signa  -0.38328723  0.92884690  0.02246739</code></pre>
+<p>Nesse exemplo, aplicamos uma transformação do acro seno da raiz quadrada e calculamos as distâncias de Bray-Curtis para a matriz de comunidade-por-local.</p>
+<p>É necessário examinar o <strong>Gráfico de Shepard</strong> (Figura <a href="nmds2.html#fig:2102stress">20.1</a>), que mostra a dispersão em torno da regressão entre as distâncias entre pontos da configuração final (distâncias entre cada par de comunidades) <em>versus</em> as dissimilaridades originais.</p>
+<div class="sourceCode" id="cb605"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb605-1"><a href="nmds2.html#cb605-1" tabindex="-1"></a><span class="fu">stressplot</span>(nmds)</span>
+<span id="cb605-2"><a href="nmds2.html#cb605-2" tabindex="-1"></a>gof <span class="ot">&lt;-</span> <span class="fu">goodness</span>(nmds)</span>
+<span id="cb605-3"><a href="nmds2.html#cb605-3" tabindex="-1"></a>gof</span></code></pre></div>
+<pre><code>##  [1] 0.023394858 0.021796449 0.020305239 0.015585419 0.019854879 0.020036890
+##  [7] 0.021347243 0.020983981 0.033130717 0.024022238 0.027214601 0.018339083
+## [13] 0.020496519 0.023942786 0.028588009 0.021345701 0.013227181 0.028408153
+## [19] 0.016844756 0.009815131 0.028353169 0.027209022 0.014701342</code></pre>
+<div class="figure"><span style="display:block;" id="fig:2102stress"></span>
+<img src="fundamentos_de_ecologia_numerica_files/figure-html/2102stress-1.png" alt="Stress da análise de ordenação da matriz CBE, baseada na dissimilaridade de Bray-Curtis." width="672" />
+<p class="caption">
+Figura 20.1: Stress da análise de ordenação da matriz CBE, baseada na dissimilaridade de Bray-Curtis.
+</p>
+</div>
+<p>Uma dispersão grande ao redor da linha sugere que as dissimilaridades originais não são bem preservadas no número reduzido de dimensões.</p>
+<div id="gráficos-de-ordenação" class="section level3 hasAnchor" number="20.6.1">
+<h3><span class="header-section-number">20.6.1</span> Gráficos de ordenação<a href="nmds2.html#gráficos-de-ordenação" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Agora podemos plotar a NMDS</p>
+<div class="sourceCode" id="cb607"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb607-1"><a href="nmds2.html#cb607-1" tabindex="-1"></a><span class="fu">plot</span>(nmds, <span class="at">display =</span> <span class="st">&quot;sites&quot;</span>, <span class="at">type =</span> <span class="st">&quot;n&quot;</span>)</span>
+<span id="cb607-2"><a href="nmds2.html#cb607-2" tabindex="-1"></a><span class="fu">points</span>(nmds, <span class="at">display =</span> <span class="st">&quot;sites&quot;</span>, <span class="at">cex =</span> <span class="dv">2</span><span class="sc">*</span>gof<span class="sc">/</span><span class="fu">mean</span>(gof))</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:ord2102"></span>
+<img src="fundamentos_de_ecologia_numerica_files/figure-html/ord2102-1.png" alt="Gráfico de ordenação, baseada na dissimilaridade de Bray-Curtis." width="672" />
+<p class="caption">
+Figura 20.2: Gráfico de ordenação, baseada na dissimilaridade de Bray-Curtis.
+</p>
+</div>
+<p>A ordenação mostra tanto as comunidades (“locais”, círculos abertos) quanto as espécies (cruzes vermelhas).</p>
+<p>Aqui, pode-se usar as funções <code>ordiplot</code> e <code>orditorp</code> para adicionar texto ao gráfico no lugar dos pontos.</p>
+<div class="sourceCode" id="cb608"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb608-1"><a href="nmds2.html#cb608-1" tabindex="-1"></a><span class="fu">plot</span>(nmds)</span></code></pre></div>
+<p><img src="fundamentos_de_ecologia_numerica_files/figure-html/unnamed-chunk-325-1.png" width="672" /></p>
+<div class="sourceCode" id="cb609"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb609-1"><a href="nmds2.html#cb609-1" tabindex="-1"></a><span class="fu">ordiplot</span>(nmds, <span class="at">choices =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>), <span class="at">type =</span> <span class="st">&quot;n&quot;</span>)</span>
+<span id="cb609-2"><a href="nmds2.html#cb609-2" tabindex="-1"></a><span class="fu">orditorp</span>(nmds, <span class="at">display =</span> <span class="st">&quot;species&quot;</span>, <span class="at">col=</span><span class="st">&quot;red&quot;</span>, <span class="at">air=</span><span class="fl">0.01</span>)</span>
+<span id="cb609-3"><a href="nmds2.html#cb609-3" tabindex="-1"></a><span class="fu">orditorp</span>(nmds, <span class="at">display =</span> <span class="st">&quot;sites&quot;</span>, <span class="at">cex=</span><span class="fl">1.25</span>, <span class="at">air=</span><span class="fl">0.01</span>)</span></code></pre></div>
+<p><img src="fundamentos_de_ecologia_numerica_files/figure-html/unnamed-chunk-325-2.png" width="672" /></p>
+<p>A função <code>choices = c(1,2)</code> escolhe quais eixos da ordenação serão mostrados.</p>
+<p>Existem algumas funções adicionais que podem ser de interesse. Pode-se desenhar polígonos convexos conectando os vértices dos pontos feitos por certos grupos de comunidades no gráfico.</p>
+<p>Para isso, cria-se um vetor de valores de tratamento.</p>
+<div class="sourceCode" id="cb610"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb610-1"><a href="nmds2.html#cb610-1" tabindex="-1"></a><span class="fu">plot</span>(nmds)</span></code></pre></div>
+<p><img src="fundamentos_de_ecologia_numerica_files/figure-html/unnamed-chunk-326-1.png" width="672" /></p>
+<div class="sourceCode" id="cb611"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb611-1"><a href="nmds2.html#cb611-1" tabindex="-1"></a>grupos <span class="ot">&lt;-</span> t_grps<span class="sc">$</span>area</span>
+<span id="cb611-2"><a href="nmds2.html#cb611-2" tabindex="-1"></a>grupos</span></code></pre></div>
+<pre><code>##  [1] &quot;Serido&quot; &quot;Serido&quot; &quot;Serido&quot; &quot;Serido&quot; &quot;Serido&quot; &quot;Serido&quot; &quot;Serido&quot; &quot;Serido&quot;
+##  [9] &quot;Serido&quot; &quot;Serido&quot; &quot;Serido&quot; &quot;Serido&quot; &quot;Buique&quot; &quot;Buique&quot; &quot;Buique&quot; &quot;Buique&quot;
+## [17] &quot;Buique&quot; &quot;Buique&quot; &quot;Buique&quot; &quot;Buique&quot; &quot;Buique&quot; &quot;Buique&quot; &quot;Buique&quot;</code></pre>
+<div class="sourceCode" id="cb613"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb613-1"><a href="nmds2.html#cb613-1" tabindex="-1"></a>colors <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(grupos <span class="sc">==</span> <span class="st">&quot;Serido&quot;</span>, <span class="st">&quot;green&quot;</span>, </span>
+<span id="cb613-2"><a href="nmds2.html#cb613-2" tabindex="-1"></a>           <span class="fu">ifelse</span>(grupos <span class="sc">==</span> <span class="st">&quot;Buique&quot;</span>, <span class="st">&quot;blue&quot;</span>, <span class="st">&quot;black&quot;</span>))</span>
+<span id="cb613-3"><a href="nmds2.html#cb613-3" tabindex="-1"></a><span class="co">#           ifelse(grupos == &quot;Rio&quot;, &quot;red&quot;, &quot;black&quot;)))</span></span>
+<span id="cb613-4"><a href="nmds2.html#cb613-4" tabindex="-1"></a>colors</span></code></pre></div>
+<pre><code>##  [1] &quot;green&quot; &quot;green&quot; &quot;green&quot; &quot;green&quot; &quot;green&quot; &quot;green&quot; &quot;green&quot; &quot;green&quot; &quot;green&quot;
+## [10] &quot;green&quot; &quot;green&quot; &quot;green&quot; &quot;blue&quot;  &quot;blue&quot;  &quot;blue&quot;  &quot;blue&quot;  &quot;blue&quot;  &quot;blue&quot; 
+## [19] &quot;blue&quot;  &quot;blue&quot;  &quot;blue&quot;  &quot;blue&quot;  &quot;blue&quot;</code></pre>
+<div class="sourceCode" id="cb615"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb615-1"><a href="nmds2.html#cb615-1" tabindex="-1"></a><span class="fu">ordiplot</span>(nmds, <span class="at">type =</span> <span class="st">&quot;n&quot;</span>)</span>
+<span id="cb615-2"><a href="nmds2.html#cb615-2" tabindex="-1"></a><span class="fu">ordihull</span>(nmds, <span class="at">groups =</span> grupos, <span class="at">draw =</span> <span class="st">&quot;polygon&quot;</span>, <span class="at">col=</span> <span class="st">&quot;grey90&quot;</span>, <span class="at">label =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb615-3"><a href="nmds2.html#cb615-3" tabindex="-1"></a><span class="fu">orditorp</span>(nmds, <span class="at">display =</span> <span class="st">&quot;species&quot;</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, <span class="at">air =</span> <span class="fl">0.01</span>)</span>
+<span id="cb615-4"><a href="nmds2.html#cb615-4" tabindex="-1"></a><span class="fu">orditorp</span>(nmds, <span class="at">display =</span> <span class="st">&quot;sites&quot;</span>, <span class="at">col =</span> colors, <span class="at">air =</span> <span class="fl">0.01</span>, <span class="at">cex =</span> <span class="fl">1.25</span>)</span></code></pre></div>
+<p><img src="fundamentos_de_ecologia_numerica_files/figure-html/unnamed-chunk-326-2.png" width="672" /></p>
+<p>Essa é uma maneira intuitiva de entender como as comunidades e espécies se agrupam com base nos tratamentos possveis. Nesse caso, grupos com cores diferentes. Também é possível plotar elipses e “gráficos de aranha” usando as funções <code>ordiellipse</code> e <code>orderspider</code>, que enfatizam o centróide das comunidades em cada agrupamento.</p>
+<div class="sourceCode" id="cb616"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb616-1"><a href="nmds2.html#cb616-1" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
+<span id="cb616-2"><a href="nmds2.html#cb616-2" tabindex="-1"></a><span class="fu">ordiplot</span>(nmds, <span class="at">type =</span> <span class="st">&quot;n&quot;</span>)</span>
+<span id="cb616-3"><a href="nmds2.html#cb616-3" tabindex="-1"></a><span class="fu">orditorp</span>(nmds, <span class="at">display =</span> <span class="st">&quot;species&quot;</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, <span class="at">air =</span> <span class="fl">0.01</span>)</span>
+<span id="cb616-4"><a href="nmds2.html#cb616-4" tabindex="-1"></a><span class="fu">orditorp</span>(nmds, <span class="at">display =</span> <span class="st">&quot;sites&quot;</span>, <span class="at">col =</span> colors, <span class="at">air =</span> <span class="fl">0.01</span>, <span class="at">cex =</span> <span class="fl">1.25</span>)</span>
+<span id="cb616-5"><a href="nmds2.html#cb616-5" tabindex="-1"></a><span class="fu">ordihull</span>(nmds, <span class="at">groups =</span> grupos, <span class="at">draw =</span> <span class="st">&quot;polygon&quot;</span>, <span class="at">col =</span> <span class="st">&quot;grey90&quot;</span>, <span class="at">label =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb616-6"><a href="nmds2.html#cb616-6" tabindex="-1"></a></span>
+<span id="cb616-7"><a href="nmds2.html#cb616-7" tabindex="-1"></a><span class="fu">ordiplot</span>(nmds, <span class="at">type =</span> <span class="st">&quot;n&quot;</span>)</span>
+<span id="cb616-8"><a href="nmds2.html#cb616-8" tabindex="-1"></a><span class="fu">orditorp</span>(nmds, <span class="at">display =</span> <span class="st">&quot;species&quot;</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, <span class="at">air =</span> <span class="fl">0.01</span>)</span>
+<span id="cb616-9"><a href="nmds2.html#cb616-9" tabindex="-1"></a><span class="fu">orditorp</span>(nmds, <span class="at">display =</span> <span class="st">&quot;sites&quot;</span>, <span class="at">col =</span> colors, <span class="at">air =</span> <span class="fl">0.01</span>, <span class="at">cex =</span> <span class="fl">1.25</span>)</span>
+<span id="cb616-10"><a href="nmds2.html#cb616-10" tabindex="-1"></a><span class="fu">ordiellipse</span>(nmds, <span class="at">groups =</span> grupos, <span class="at">display =</span> <span class="st">&quot;sites&quot;</span>, <span class="at">draw =</span> <span class="st">&quot;polygon&quot;</span>, <span class="at">col =</span> <span class="st">&quot;grey90&quot;</span>, <span class="at">label =</span> T)</span>
+<span id="cb616-11"><a href="nmds2.html#cb616-11" tabindex="-1"></a><span class="fu">ordibar</span>(nmds, grupos, <span class="at">display =</span> <span class="st">&quot;sites&quot;</span>)</span>
+<span id="cb616-12"><a href="nmds2.html#cb616-12" tabindex="-1"></a></span>
+<span id="cb616-13"><a href="nmds2.html#cb616-13" tabindex="-1"></a><span class="fu">ordiplot</span>(nmds, <span class="at">type =</span> <span class="st">&quot;n&quot;</span>)</span>
+<span id="cb616-14"><a href="nmds2.html#cb616-14" tabindex="-1"></a><span class="fu">orditorp</span>(nmds, <span class="at">display =</span> <span class="st">&quot;species&quot;</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, <span class="at">air =</span> <span class="fl">0.01</span>)</span>
+<span id="cb616-15"><a href="nmds2.html#cb616-15" tabindex="-1"></a><span class="fu">orditorp</span>(nmds, <span class="at">display =</span> <span class="st">&quot;sites&quot;</span>, <span class="at">col =</span> colors, <span class="at">air =</span> <span class="fl">0.01</span>, <span class="at">cex =</span> <span class="fl">1.25</span>)</span>
+<span id="cb616-16"><a href="nmds2.html#cb616-16" tabindex="-1"></a><span class="fu">ordispider</span>(nmds, grupos, <span class="at">display=</span><span class="st">&quot;sites&quot;</span>)</span>
+<span id="cb616-17"><a href="nmds2.html#cb616-17" tabindex="-1"></a></span>
+<span id="cb616-18"><a href="nmds2.html#cb616-18" tabindex="-1"></a><span class="fu">ordiplot</span>(nmds, <span class="at">type =</span> <span class="st">&quot;n&quot;</span>)</span>
+<span id="cb616-19"><a href="nmds2.html#cb616-19" tabindex="-1"></a><span class="fu">orditorp</span>(nmds, <span class="at">display =</span> <span class="st">&quot;species&quot;</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, <span class="at">air =</span> <span class="fl">0.01</span>)</span>
+<span id="cb616-20"><a href="nmds2.html#cb616-20" tabindex="-1"></a><span class="fu">orditorp</span>(nmds, <span class="at">display =</span> <span class="st">&quot;sites&quot;</span>, <span class="at">col =</span> colors, <span class="at">air =</span> <span class="fl">0.01</span>, <span class="at">cex =</span> <span class="fl">1.25</span>)</span>
+<span id="cb616-21"><a href="nmds2.html#cb616-21" tabindex="-1"></a><span class="fu">ordicluster</span>(nmds, cluster_uas, <span class="at">prune =</span> <span class="dv">0</span>, <span class="at">display =</span> <span class="st">&quot;sites&quot;</span>)</span>
+<span id="cb616-22"><a href="nmds2.html#cb616-22" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))</span></code></pre></div>
+<p><img src="fundamentos_de_ecologia_numerica_files/figure-html/unnamed-chunk-327-1.png" width="864" /></p>
+<p>Outra alternativa é plotar uma “árvore de abrangência mínima” (da função <code>hclust</code>), que agrupa as comunidades com base em suas dissimilaridades originais e projeta o dendrograma no gráfico 2D.</p>
+<div class="sourceCode" id="cb617"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb617-1"><a href="nmds2.html#cb617-1" tabindex="-1"></a><span class="fu">plot</span>(nmds)</span></code></pre></div>
+<p><img src="fundamentos_de_ecologia_numerica_files/figure-html/unnamed-chunk-328-1.png" width="672" /></p>
+<div class="sourceCode" id="cb618"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb618-1"><a href="nmds2.html#cb618-1" tabindex="-1"></a><span class="fu">ordiplot</span>(nmds, <span class="at">type =</span> <span class="st">&quot;n&quot;</span>)</span>
+<span id="cb618-2"><a href="nmds2.html#cb618-2" tabindex="-1"></a><span class="fu">orditorp</span>(nmds, <span class="at">display =</span> <span class="st">&quot;species&quot;</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, <span class="at">air =</span> <span class="fl">0.01</span>)</span>
+<span id="cb618-3"><a href="nmds2.html#cb618-3" tabindex="-1"></a><span class="fu">orditorp</span>(nmds, <span class="at">display =</span> <span class="st">&quot;sites&quot;</span>, <span class="at">col =</span> colors, <span class="at">air =</span> <span class="fl">0.01</span>, <span class="at">cex =</span> <span class="fl">1.25</span>)</span>
+<span id="cb618-4"><a href="nmds2.html#cb618-4" tabindex="-1"></a><span class="fu">ordicluster</span>(nmds, <span class="fu">hclust</span>(<span class="fu">vegdist</span>(m_trns, <span class="st">&quot;bray&quot;</span>)))</span></code></pre></div>
+<p><img src="fundamentos_de_ecologia_numerica_files/figure-html/unnamed-chunk-328-2.png" width="672" /></p>
+<div class="sourceCode" id="cb619"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb619-1"><a href="nmds2.html#cb619-1" tabindex="-1"></a><span class="co">#?ordicluster</span></span></code></pre></div>
+<p>Observe que o agrupamento é baseado em distâncias de Bray-Curtis. Este é um método sugerido para verificar a precisão do gráfico 2D.</p>
+<p>Pode-se ainda plotar os polígonos convexos, elipses, gráficos de aranha, etc., coloridos com base nos agrupamentos. Lembrar que deve-se ter criado um vetor de valores de cor com a mesma extensão do vetor de valores de agrupamento.</p>
+<div class="sourceCode" id="cb620"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb620-1"><a href="nmds2.html#cb620-1" tabindex="-1"></a><span class="fu">plot</span>(nmds)</span></code></pre></div>
+<p><img src="fundamentos_de_ecologia_numerica_files/figure-html/unnamed-chunk-329-1.png" width="672" /></p>
+<div class="sourceCode" id="cb621"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb621-1"><a href="nmds2.html#cb621-1" tabindex="-1"></a><span class="fu">ordiplot</span>(nmds, <span class="at">type =</span> <span class="st">&quot;n&quot;</span>)</span>
+<span id="cb621-2"><a href="nmds2.html#cb621-2" tabindex="-1"></a><span class="co">#Plot convex hulls with colors baesd on treatment</span></span>
+<span id="cb621-3"><a href="nmds2.html#cb621-3" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="fu">unique</span>(grupos)) {</span>
+<span id="cb621-4"><a href="nmds2.html#cb621-4" tabindex="-1"></a>  <span class="fu">ordihull</span>(nmds<span class="sc">$</span>point[<span class="fu">grep</span>(i,grupos),],<span class="at">draw=</span><span class="st">&quot;polygon&quot;</span>,<span class="at">groups=</span>grupos[grupos<span class="sc">==</span>i],<span class="at">col=</span>colors[<span class="fu">grep</span>(i,grupos)],<span class="at">label=</span>F) } </span>
+<span id="cb621-5"><a href="nmds2.html#cb621-5" tabindex="-1"></a><span class="fu">orditorp</span>(nmds, <span class="at">display =</span> <span class="st">&quot;species&quot;</span>, <span class="at">col=</span> <span class="st">&quot;red&quot;</span>, <span class="at">air =</span> <span class="fl">0.01</span>)</span>
+<span id="cb621-6"><a href="nmds2.html#cb621-6" tabindex="-1"></a><span class="fu">orditorp</span>(nmds, <span class="at">display =</span> <span class="st">&quot;sites&quot;</span>, <span class="at">col =</span> colors, <span class="at">air =</span> <span class="fl">0.01</span>, <span class="at">cex =</span> <span class="fl">1.25</span>)</span></code></pre></div>
+<p><img src="fundamentos_de_ecologia_numerica_files/figure-html/unnamed-chunk-329-2.png" width="672" /></p>
+<p>Esse agrupamento é baseado em distâncias de Bray-Curtis. Este é um método sugerido para verificar a precisão do gráfico 2D.</p>
+<p>Pode-se plotar os polígonos convexos, elipses, gráficos de aranha, etc., coloridos com base nos tratamentos. Primeiro, cria-se um vetor de valores de cor com a mesma extensão do vetor de valores de tratamento.</p>
+<p>Se o tratamento for uma variável contínua, deve-se considerar linhas de mapeamento de contorno sobrepostas no gráfico. Para este exemplo, considera-se que os tratamentos foram aplicados ao longo de um gradiente de elevação. Podemos definir elevações aleatórias para o mesmo exemplo.</p>
+<div class="sourceCode" id="cb622"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb622-1"><a href="nmds2.html#cb622-1" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">nrow</span>(m_trns)</span>
+<span id="cb622-2"><a href="nmds2.html#cb622-2" tabindex="-1"></a>surf <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">1</span>, m)</span>
+<span id="cb622-3"><a href="nmds2.html#cb622-3" tabindex="-1"></a>surf <span class="ot">&lt;-</span> <span class="fu">c</span>(cluster_uas<span class="sc">$</span>height, <span class="dv">1</span>)</span>
+<span id="cb622-4"><a href="nmds2.html#cb622-4" tabindex="-1"></a>knots <span class="ot">&lt;-</span> <span class="fu">nrow</span>(m_trns)</span></code></pre></div>
+<p>Agora usa-se a função <code>ordisurf</code> para plotar as linhas de contorno. A quantidade de linhas de contorno é definida pelo comando <code>knots =</code>. Se <code>knots = 0</code> ou <code>knots = 1</code> a função <code>ordisurf</code> ajustará uma tendencia linear a superfície, e se <code>knots = 2</code> a função ajustará uma tendência quadrática, ao inves de linhas retas. E por fim, exibe-se as espécies no gráfico.</p>
+<div class="sourceCode" id="cb623"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb623-1"><a href="nmds2.html#cb623-1" tabindex="-1"></a><span class="fu">plot</span>(nmds)</span></code></pre></div>
+<p><img src="fundamentos_de_ecologia_numerica_files/figure-html/unnamed-chunk-331-1.png" width="672" /></p>
+<div class="sourceCode" id="cb624"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb624-1"><a href="nmds2.html#cb624-1" tabindex="-1"></a><span class="fu">ordisurf</span>(nmds, surf, <span class="at">main =</span> <span class="st">&quot;&quot;</span>, <span class="at">col =</span> <span class="st">&quot;forestgreen&quot;</span>, <span class="at">knots =</span> knots)</span></code></pre></div>
+<pre><code>## 
+## Family: gaussian 
+## Link function: identity 
+## 
+## Formula:
+## y ~ s(x1, x2, k = 23, bs = &quot;tp&quot;, fx = FALSE)
+## 
+## Estimated degrees of freedom:
+## 5.63  total = 6.63 
+## 
+## REML score: -2.960328</code></pre>
+<div class="sourceCode" id="cb626"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb626-1"><a href="nmds2.html#cb626-1" tabindex="-1"></a><span class="fu">orditorp</span>(nmds, <span class="at">display =</span> <span class="st">&quot;sites&quot;</span>, <span class="at">col =</span> <span class="st">&quot;grey30&quot;</span>, <span class="at">air =</span> <span class="fl">0.1</span>, <span class="at">cex =</span> <span class="dv">1</span>)</span>
+<span id="cb626-2"><a href="nmds2.html#cb626-2" tabindex="-1"></a><span class="fu">orditorp</span>(nmds, <span class="at">display =</span> <span class="st">&quot;species&quot;</span>, <span class="at">col =</span> <span class="st">&quot;grey30&quot;</span>, <span class="at">air =</span> <span class="fl">0.1</span>, <span class="at">cex =</span> <span class="dv">1</span>)</span></code></pre></div>
+<p><img src="fundamentos_de_ecologia_numerica_files/figure-html/unnamed-chunk-331-2.png" width="672" /></p>
+</div>
+</div>
+<div id="apêndices-16" class="section level2 unnumbered hasAnchor">
+<h2>Apêndices<a href="nmds2.html#apêndices-16" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="videos-consultados" class="section level3 unnumbered hasAnchor">
+<h3>Videos consultados<a href="nmds2.html#videos-consultados" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><a href="https://youtu.be/OMrtxobDhrM" class="uri">https://youtu.be/OMrtxobDhrM</a>
+<a href="https://youtu.be/zjxE2KwNO0M" class="uri">https://youtu.be/zjxE2KwNO0M</a>
+<a href="https://youtu.be/Kl49qI3XJKY" class="uri">https://youtu.be/Kl49qI3XJKY</a>
+<a href="https://youtu.be/paO9-PLXwD0" class="uri">https://youtu.be/paO9-PLXwD0</a>
+<a href="https://youtu.be/QljEeBei-JA" class="uri">https://youtu.be/QljEeBei-JA</a>
+<a href="https://youtu.be/4tQJI-g9wao" class="uri">https://youtu.be/4tQJI-g9wao</a>
+<a href="https://youtu.be/M-Ing955VEI" class="uri">https://youtu.be/M-Ing955VEI</a></p>
+</div>
+<div id="script-limpo-11" class="section level3 unnumbered hasAnchor">
+<h3>Script limpo<a href="nmds2.html#script-limpo-11" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Aqui apresento o scrip na íntegra sem os textos ou outros comentários. Você pode copiar e colar no R para executa-lo. Lembre de remover os <span style="color:green"><code>#</code></span> ou <span style="color:green"><code>##</code></span> caso necessite executar essas linhas.</p>
+</div>
+</div>
+<div id="referências-17" class="section level2 unnumbered hasAnchor">
+<h2>Referências<a href="nmds2.html#referências-17" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="nmds.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="bibliografia-geral.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/rstudio/bookdown-demo/edit/master/4-10-2-rmd10_nmds2.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["fundamentos_de_ecologia_numerica.pdf", "fundamentos_de_ecologia_numerica.epub"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "section"
+  }
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

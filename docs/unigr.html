@@ -1,0 +1,1168 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title> 10 R Modulo 3.3 - Gráficos univariados | Fundamentos de Ecologia Numérica</title>
+  <meta name="description" content="…. The output format for this example is bookdown::gitbook." />
+  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
+
+  <meta property="og:title" content=" 10 R Modulo 3.3 - Gráficos univariados | Fundamentos de Ecologia Numérica" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="…. The output format for this example is bookdown::gitbook." />
+  <meta name="github-repo" content="rstudio/fundamentos_de_ecologia_numerica" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content=" 10 R Modulo 3.3 - Gráficos univariados | Fundamentos de Ecologia Numérica" />
+  
+  <meta name="twitter:description" content="…. The output format for this example is bookdown::gitbook." />
+  
+
+<meta name="author" content="Prof. Elvio S. F. Medeiros" />
+<meta name="author" content="Laboratório de Ecologia" />
+<meta name="author" content="Universidade Estadual da Paraíba" />
+<meta name="author" content="Campus V, João Pessoa, PB" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="univ2.html"/>
+<link rel="next" href="estrcom.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
+<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script>
+<script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<script src="libs/rglWebGL-binding-1.3.34/rglWebGL.js"></script>
+<link href="libs/rglwidgetClass-1.3.34/rgl.css" rel="stylesheet" />
+<script src="libs/rglwidgetClass-1.3.34/rglClass.src.js"></script>
+<script src="libs/rglwidgetClass-1.3.34/utils.src.js"></script>
+<script src="libs/rglwidgetClass-1.3.34/buffer.src.js"></script>
+<script src="libs/rglwidgetClass-1.3.34/subscenes.src.js"></script>
+<script src="libs/rglwidgetClass-1.3.34/shaders.src.js"></script>
+<script src="libs/rglwidgetClass-1.3.34/shadersrc.src.js"></script>
+<script src="libs/rglwidgetClass-1.3.34/textures.src.js"></script>
+<script src="libs/rglwidgetClass-1.3.34/projection.src.js"></script>
+<script src="libs/rglwidgetClass-1.3.34/mouse.src.js"></script>
+<script src="libs/rglwidgetClass-1.3.34/init.src.js"></script>
+<script src="libs/rglwidgetClass-1.3.34/pieces.src.js"></script>
+<script src="libs/rglwidgetClass-1.3.34/draw.src.js"></script>
+<script src="libs/rglwidgetClass-1.3.34/controls.src.js"></script>
+<script src="libs/rglwidgetClass-1.3.34/selection.src.js"></script>
+<script src="libs/rglwidgetClass-1.3.34/rglTimer.src.js"></script>
+<script src="libs/rglwidgetClass-1.3.34/pretty.src.js"></script>
+<script src="libs/rglwidgetClass-1.3.34/axes.src.js"></script>
+<script src="libs/rglwidgetClass-1.3.34/animation.src.js"></script>
+<script src="libs/CanvasMatrix4-1.3.34/CanvasMatrix.src.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 1em;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Fundamentos de Ecologia Numérica</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Apresentação</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#motivação"><i class="fa fa-check"></i><b>1.1</b> Motivação</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#organização-do-livro"><i class="fa fa-check"></i><b>1.2</b> Organização do livro</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#como-estudar-por-esse-livro"><i class="fa fa-check"></i><b>1.3</b> Como estudar por esse livro?</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="index.html"><a href="index.html#para-um-estudo-aprofundado"><i class="fa fa-check"></i><b>1.3.1</b> Para um estudo aprofundado</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Introdução ao R/RStudio</a>
+<ul>
+<li class="chapter" data-level="" data-path="intro.html"><a href="intro.html#resumo"><i class="fa fa-check"></i>RESUMO</a></li>
+<li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#plano-de-estudo"><i class="fa fa-check"></i><b>2.1</b> Plano de estudo</a></li>
+<li class="chapter" data-level="2.2" data-path="intro.html"><a href="intro.html#pré-requisitos"><i class="fa fa-check"></i><b>2.2</b> Pré-requisitos</a></li>
+<li class="chapter" data-level="2.3" data-path="intro.html"><a href="intro.html#principais-conceitos"><i class="fa fa-check"></i><b>2.3</b> Principais conceitos</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="intro.html"><a href="intro.html#o-ambiente-de-programação-do-r"><i class="fa fa-check"></i><b>2.3.1</b> O ambiente de programação do R</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="intro.html"><a href="intro.html#o-que-é-o-r-studio"><i class="fa fa-check"></i><b>2.4</b> O que é o R Studio?</a></li>
+<li class="chapter" data-level="2.5" data-path="intro.html"><a href="intro.html#instala_r"><i class="fa fa-check"></i><b>2.5</b> Instalação do R e RStudio</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="intro.html"><a href="intro.html#r-base"><i class="fa fa-check"></i><b>2.5.1</b> R base</a></li>
+<li class="chapter" data-level="2.5.2" data-path="intro.html"><a href="intro.html#rstudio"><i class="fa fa-check"></i><b>2.5.2</b> RStudio</a></li>
+<li class="chapter" data-level="2.5.3" data-path="intro.html"><a href="intro.html#rstudio-na-nuvem"><i class="fa fa-check"></i><b>2.5.3</b> RStudio na nuvem</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="intro.html"><a href="intro.html#o-essencial"><i class="fa fa-check"></i><b>2.6</b> O essencial</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="intro.html"><a href="intro.html#licença-de-software"><i class="fa fa-check"></i><b>2.6.1</b> Licença de software</a></li>
+<li class="chapter" data-level="2.6.2" data-path="intro.html"><a href="intro.html#interface-do-usuário"><i class="fa fa-check"></i><b>2.6.2</b> Interface do usuário</a></li>
+<li class="chapter" data-level="2.6.3" data-path="intro.html"><a href="intro.html#interface-do-usuário-do-rstudio"><i class="fa fa-check"></i><b>2.6.3</b> Interface do usuário do RStudio</a></li>
+<li class="chapter" data-level="2.6.4" data-path="intro.html"><a href="intro.html#projetos"><i class="fa fa-check"></i><b>2.6.4</b> Projetos</a></li>
+<li class="chapter" data-level="2.6.5" data-path="intro.html"><a href="intro.html#nomes-de-arquivos"><i class="fa fa-check"></i><b>2.6.5</b> Nomes de arquivos</a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="intro.html"><a href="intro.html#preparação-dos-arquivos"><i class="fa fa-check"></i><b>2.7</b> Preparação dos arquivos</a>
+<ul>
+<li class="chapter" data-level="2.7.1" data-path="intro.html"><a href="intro.html#formatos-de-arquivo-de-dados"><i class="fa fa-check"></i><b>2.7.1</b> Formatos de arquivo de dados</a></li>
+<li class="chapter" data-level="2.7.2" data-path="intro.html"><a href="intro.html#o-arquivo-de-espécies"><i class="fa fa-check"></i><b>2.7.2</b> O arquivo de espécies</a></li>
+<li class="chapter" data-level="2.7.3" data-path="intro.html"><a href="intro.html#formato-de-valores-separados-por-vírgula-.csv"><i class="fa fa-check"></i><b>2.7.3</b> Formato de valores separados por vírgula (.csv)</a></li>
+<li class="chapter" data-level="2.7.4" data-path="intro.html"><a href="intro.html#editando-a-matriz-de-dados"><i class="fa fa-check"></i><b>2.7.4</b> Editando a matriz de dados</a></li>
+<li class="chapter" data-level="2.7.5" data-path="intro.html"><a href="intro.html#arquivos-de-resultados"><i class="fa fa-check"></i><b>2.7.5</b> Arquivos de resultados</a></li>
+<li class="chapter" data-level="2.7.6" data-path="intro.html"><a href="intro.html#gráficos"><i class="fa fa-check"></i><b>2.7.6</b> Gráficos</a></li>
+</ul></li>
+<li class="chapter" data-level="2.8" data-path="intro.html"><a href="intro.html#conclusão"><i class="fa fa-check"></i><b>2.8</b> Conclusão</a></li>
+<li class="chapter" data-level="2.9" data-path="intro.html"><a href="intro.html#sequência-típica-na-preparação-e-análise-de-dados"><i class="fa fa-check"></i><b>2.9</b> Sequência típica na preparação e análise de dados</a></li>
+<li class="chapter" data-level="2.10" data-path="intro.html"><a href="intro.html#material-de-apoio"><i class="fa fa-check"></i><b>2.10</b> Material de apoio</a></li>
+<li class="chapter" data-level="" data-path="intro.html"><a href="intro.html#apêndices"><i class="fa fa-check"></i>Apêndices</a></li>
+<li class="chapter" data-level="" data-path="intro.html"><a href="intro.html#sites-consultados"><i class="fa fa-check"></i>Sites consultados</a></li>
+<li class="chapter" data-level="" data-path="intro.html"><a href="intro.html#leitura-suplementar"><i class="fa fa-check"></i>Leitura suplementar</a></li>
+<li class="chapter" data-level="" data-path="intro.html"><a href="intro.html#referências"><i class="fa fa-check"></i>Referências</a></li>
+</ul></li>
+<li class="part"><span><b>I II. BASES DE DADOS</b></span></li>
+<li class="chapter" data-level="3" data-path="bases.html"><a href="bases.html"><i class="fa fa-check"></i><b>3</b> Bases de dados. Dados do PPBio Semiárido</a>
+<ul>
+<li class="chapter" data-level="" data-path="bases.html"><a href="bases.html#exemplos-de-conjunto-de-dados-ecológicos-do-programa-de-pesquisa-em-biodiversidade-ppbio-do-semiárido"><i class="fa fa-check"></i>Exemplos de conjunto de dados ecológicos do Programa de Pesquisa em Biodiversidade (PPBio) do Semiárido</a></li>
+<li class="chapter" data-level="" data-path="bases.html"><a href="bases.html#resumo-1"><i class="fa fa-check"></i>RESUMO</a></li>
+<li class="chapter" data-level="3.1" data-path="bases.html"><a href="bases.html#sobre-os-dados-do-ppbio"><i class="fa fa-check"></i><b>3.1</b> Sobre os dados do PPBio</a></li>
+<li class="chapter" data-level="3.2" data-path="bases.html"><a href="bases.html#arqs"><i class="fa fa-check"></i><b>3.2</b> Arquivos disponíveis</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="bases.html"><a href="bases.html#codificação-das-variáveis"><i class="fa fa-check"></i><b>3.2.1</b> Codificação das variáveis</a></li>
+<li class="chapter" data-level="3.2.2" data-path="bases.html"><a href="bases.html#abrev"><i class="fa fa-check"></i><b>3.2.2</b> Abreviações</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="bases.html"><a href="bases.html#referências-1"><i class="fa fa-check"></i>Referências</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="basepeixes.html"><a href="basepeixes.html"><i class="fa fa-check"></i><b>4</b> Base de dados I - Peixes</a>
+<ul>
+<li class="chapter" data-level="" data-path="basepeixes.html"><a href="basepeixes.html#estrutura-da-comunidade-peixes-no-semiárido"><i class="fa fa-check"></i>Estrutura da Comunidade: Peixes no semiárido</a></li>
+<li class="chapter" data-level="" data-path="basepeixes.html"><a href="basepeixes.html#apresentação-1"><i class="fa fa-check"></i>Apresentação</a></li>
+<li class="chapter" data-level="" data-path="basepeixes.html"><a href="basepeixes.html#resumo-2"><i class="fa fa-check"></i>RESUMO</a></li>
+<li class="chapter" data-level="4.1" data-path="basepeixes.html"><a href="basepeixes.html#introdução"><i class="fa fa-check"></i><b>4.1</b> Introdução</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="basepeixes.html"><a href="basepeixes.html#desenho-amostral"><i class="fa fa-check"></i><b>4.1.1</b> Desenho Amostral</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="basepeixes.html"><a href="basepeixes.html#codificação-das-variáveis-1"><i class="fa fa-check"></i><b>4.2</b> Codificação das variáveis</a></li>
+<li class="chapter" data-level="4.3" data-path="basepeixes.html"><a href="basepeixes.html#amostragem-dos-dados"><i class="fa fa-check"></i><b>4.3</b> Amostragem dos dados</a></li>
+<li class="chapter" data-level="4.4" data-path="basepeixes.html"><a href="basepeixes.html#análises-estatísticas"><i class="fa fa-check"></i><b>4.4</b> Análises estatísticas</a></li>
+<li class="chapter" data-level="4.5" data-path="basepeixes.html"><a href="basepeixes.html#discussão"><i class="fa fa-check"></i><b>4.5</b> Discussão</a></li>
+<li class="chapter" data-level="" data-path="basepeixes.html"><a href="basepeixes.html#apêndices-1"><i class="fa fa-check"></i>Apêndices</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="basepeixes.html"><a href="basepeixes.html#tabelas-e-figuras"><i class="fa fa-check"></i><b>4.5.1</b> Tabelas e Figuras</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="basepeixes.html"><a href="basepeixes.html#referências-2"><i class="fa fa-check"></i>Referências</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="basehab.html"><a href="basehab.html"><i class="fa fa-check"></i><b>5</b> Base de dados II - Habitat</a>
+<ul>
+<li class="chapter" data-level="" data-path="basehab.html"><a href="basehab.html#estrutura-do-habitat-variáveis-ambientais-no-semiárido"><i class="fa fa-check"></i>Estrutura do Habitat: Variáveis ambientais no semiárido</a></li>
+<li class="chapter" data-level="" data-path="basehab.html"><a href="basehab.html#apresentação-2"><i class="fa fa-check"></i>Apresentação</a></li>
+<li class="chapter" data-level="" data-path="basehab.html"><a href="basehab.html#resumo-3"><i class="fa fa-check"></i>RESUMO</a></li>
+<li class="chapter" data-level="5.1" data-path="basehab.html"><a href="basehab.html#introdução-1"><i class="fa fa-check"></i><b>5.1</b> Introdução</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="basehab.html"><a href="basehab.html#desenho-amostral-1"><i class="fa fa-check"></i><b>5.1.1</b> Desenho Amostral</a></li>
+<li class="chapter" data-level="5.1.2" data-path="basehab.html"><a href="basehab.html#sobre-os-dados-do-ppbio-1"><i class="fa fa-check"></i><b>5.1.2</b> Sobre os dados do PPBio</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="basehab.html"><a href="basehab.html#codificação-para-variáveis"><i class="fa fa-check"></i><b>5.2</b> Codificação para variáveis</a></li>
+<li class="chapter" data-level="5.3" data-path="basehab.html"><a href="basehab.html#área-de-estudo-e-amostragem-dos-dados"><i class="fa fa-check"></i><b>5.3</b> Área de estudo e amostragem dos dados</a></li>
+<li class="chapter" data-level="5.4" data-path="basehab.html"><a href="basehab.html#análises-estatísticas-1"><i class="fa fa-check"></i><b>5.4</b> Análises estatísticas</a></li>
+<li class="chapter" data-level="5.5" data-path="basehab.html"><a href="basehab.html#resultados"><i class="fa fa-check"></i><b>5.5</b> Resultados</a></li>
+<li class="chapter" data-level="5.6" data-path="basehab.html"><a href="basehab.html#discussão-1"><i class="fa fa-check"></i><b>5.6</b> Discussão</a></li>
+<li class="chapter" data-level="" data-path="basehab.html"><a href="basehab.html#referências-3"><i class="fa fa-check"></i>Referências</a></li>
+</ul></li>
+<li class="part"><span><b>II III. ESTATÍSTICAS DESCRITIVAS</b></span></li>
+<li class="chapter" data-level="6" data-path="xls.html"><a href="xls.html"><i class="fa fa-check"></i><b>6</b> R Módulo 1 - Importando planilhas de dados</a>
+<ul>
+<li class="chapter" data-level="" data-path="xls.html"><a href="xls.html#resumo-4"><i class="fa fa-check"></i>RESUMO</a></li>
+<li class="chapter" data-level="" data-path="xls.html"><a href="xls.html#apresentação-3"><i class="fa fa-check"></i>Apresentação</a></li>
+<li class="chapter" data-level="6.1" data-path="xls.html"><a href="xls.html#sobre-os-dados-do-ppbio-2"><i class="fa fa-check"></i><b>6.1</b> Sobre os dados do PPBio</a></li>
+<li class="chapter" data-level="6.2" data-path="xls.html"><a href="xls.html#importando-a-planilha-de-trabalho"><i class="fa fa-check"></i><b>6.2</b> Importando a planilha de trabalho</a></li>
+<li class="chapter" data-level="6.3" data-path="xls.html"><a href="xls.html#mensagens-de-erro-e-avisos-no-r"><i class="fa fa-check"></i><b>6.3</b> Mensagens de erro e avisos no R</a></li>
+<li class="chapter" data-level="6.4" data-path="xls.html"><a href="xls.html#organização-básica"><i class="fa fa-check"></i><b>6.4</b> Organização básica</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="xls.html"><a href="xls.html#prefira-sempre-códigos-e-scripts-do-que-mouse-e-menus-de-janelas-no-r"><i class="fa fa-check"></i><b>6.4.1</b> Prefira sempre códigos e scripts do que mouse e menus de janelas no R</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="xls.html"><a href="xls.html#importando-a-planilha"><i class="fa fa-check"></i><b>6.5</b> Importando a planilha</a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="xls.html"><a href="xls.html#outra-forma-de-achar-e-importar-uma-planilha"><i class="fa fa-check"></i><b>6.5.1</b> Outra forma de achar e importar uma planilha</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="xls.html"><a href="xls.html#importando-.ods-do-libreoffice-calc"><i class="fa fa-check"></i><b>6.6</b> Importando <code>.ods</code> do LibreOffice Calc</a>
+<ul>
+<li class="chapter" data-level="6.6.1" data-path="xls.html"><a href="xls.html#colunas-com-o-mesmo-nome"><i class="fa fa-check"></i><b>6.6.1</b> Colunas com o mesmo nome</a></li>
+<li class="chapter" data-level="6.6.2" data-path="xls.html"><a href="xls.html#removendo-linhas-ou-colunas-por-nome"><i class="fa fa-check"></i><b>6.6.2</b> Removendo linhas ou colunas por nome</a></li>
+<li class="chapter" data-level="6.6.3" data-path="xls.html"><a href="xls.html#criando-uma-matriz-de-médias"><i class="fa fa-check"></i><b>6.6.3</b> Criando uma matriz de médias</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="xls.html"><a href="xls.html#apêndices-2"><i class="fa fa-check"></i>Apêndices</a>
+<ul>
+<li class="chapter" data-level="" data-path="xls.html"><a href="xls.html#sites-consultados-1"><i class="fa fa-check"></i>Sites consultados</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="xls.html"><a href="xls.html#script-limpo"><i class="fa fa-check"></i>Script limpo</a></li>
+<li class="chapter" data-level="" data-path="xls.html"><a href="xls.html#referências-4"><i class="fa fa-check"></i>Referências</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="tiposR.html"><a href="tiposR.html"><i class="fa fa-check"></i><b>7</b> R Módulo 2 - Tipos de dados no R</a>
+<ul>
+<li class="chapter" data-level="" data-path="tiposR.html"><a href="tiposR.html#apresentação-4"><i class="fa fa-check"></i>Apresentação</a></li>
+<li class="chapter" data-level="7.1" data-path="tiposR.html"><a href="tiposR.html#tipos-e-estruturas-de-dados-no-r"><i class="fa fa-check"></i><b>7.1</b> Tipos e estruturas de dados no R</a></li>
+<li class="chapter" data-level="7.2" data-path="tiposR.html"><a href="tiposR.html#mensagens-de-erro-e-avisos-no-r-1"><i class="fa fa-check"></i><b>7.2</b> Mensagens de erro e avisos no R</a></li>
+<li class="chapter" data-level="7.3" data-path="tiposR.html"><a href="tiposR.html#o-que-é-um-script-e-qual-sua-diferença-para-um-código"><i class="fa fa-check"></i><b>7.3</b> O que é um <code>script</code> e qual sua diferença para um <code>código</code>?</a></li>
+<li class="chapter" data-level="7.4" data-path="tiposR.html"><a href="tiposR.html#tipos-e-estruturas-de-dados-no-r-1"><i class="fa fa-check"></i><b>7.4</b> Tipos e estruturas de dados no R</a></li>
+<li class="chapter" data-level="7.5" data-path="tiposR.html"><a href="tiposR.html#tipos-de-dados-no-r"><i class="fa fa-check"></i><b>7.5</b> Tipos de dados no R</a>
+<ul>
+<li class="chapter" data-level="7.5.1" data-path="tiposR.html"><a href="tiposR.html#variáveis-e-tipos-básicos-de-dados-figura-reffignucleos"><i class="fa fa-check"></i><b>7.5.1</b> Variáveis e tipos básicos de dados (Figura @ref(fig:nucleos))</a></li>
+</ul></li>
+<li class="chapter" data-level="7.6" data-path="tiposR.html"><a href="tiposR.html#estruturas-de-dados-no-r"><i class="fa fa-check"></i><b>7.6</b> Estruturas de dados no R</a></li>
+<li class="chapter" data-level="7.7" data-path="tiposR.html"><a href="tiposR.html#como-pedir-ajuda"><i class="fa fa-check"></i><b>7.7</b> Como pedir ajuda?</a>
+<ul>
+<li class="chapter" data-level="7.7.1" data-path="tiposR.html"><a href="tiposR.html#dentro-do-r"><i class="fa fa-check"></i><b>7.7.1</b> Dentro do R</a></li>
+<li class="chapter" data-level="7.7.2" data-path="tiposR.html"><a href="tiposR.html#fora-do-r"><i class="fa fa-check"></i><b>7.7.2</b> Fora do R</a></li>
+<li class="chapter" data-level="7.7.3" data-path="tiposR.html"><a href="tiposR.html#chatgpt"><i class="fa fa-check"></i><b>7.7.3</b> ChatGPT</a></li>
+</ul></li>
+<li class="chapter" data-level="7.8" data-path="tiposR.html"><a href="tiposR.html#work-flow"><i class="fa fa-check"></i><b>7.8</b> Work flow</a></li>
+<li class="chapter" data-level="7.9" data-path="tiposR.html"><a href="tiposR.html#reconhecendo-a-estrutura-dos-dados-do-r-em-uma-matriz-multivariada"><i class="fa fa-check"></i><b>7.9</b> Reconhecendo a estrutura dos dados do R em uma matriz multivariada</a>
+<ul>
+<li class="chapter" data-level="7.9.1" data-path="tiposR.html"><a href="tiposR.html#organização-básica-1"><i class="fa fa-check"></i><b>7.9.1</b> Organização básica</a></li>
+</ul></li>
+<li class="chapter" data-level="7.10" data-path="tiposR.html"><a href="tiposR.html#importando-a-planilha-1"><i class="fa fa-check"></i><b>7.10</b> Importando a planilha</a></li>
+<li class="chapter" data-level="" data-path="tiposR.html"><a href="tiposR.html#apêndices-3"><i class="fa fa-check"></i>Apêndices</a>
+<ul>
+<li class="chapter" data-level="" data-path="tiposR.html"><a href="tiposR.html#snippet-e-chunk"><i class="fa fa-check"></i>Snippet e chunk</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="tiposR.html"><a href="tiposR.html#sites-consultados-2"><i class="fa fa-check"></i>Sites consultados</a></li>
+<li class="chapter" data-level="" data-path="tiposR.html"><a href="tiposR.html#script-limpo-1"><i class="fa fa-check"></i>Script limpo</a></li>
+<li class="chapter" data-level="" data-path="tiposR.html"><a href="tiposR.html#referências-5"><i class="fa fa-check"></i>Referências</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="univ.html"><a href="univ.html"><i class="fa fa-check"></i><b>8</b> R Módulo 3.1 - Estatísticas descritivas e normalidade</a>
+<ul>
+<li class="chapter" data-level="" data-path="univ.html"><a href="univ.html#resumo-5"><i class="fa fa-check"></i>RESUMO</a></li>
+<li class="chapter" data-level="" data-path="univ.html"><a href="univ.html#apresentação-5"><i class="fa fa-check"></i>Apresentação</a></li>
+<li class="chapter" data-level="8.1" data-path="univ.html"><a href="univ.html#sobre-os-dados"><i class="fa fa-check"></i><b>8.1</b> Sobre os dados</a></li>
+<li class="chapter" data-level="8.2" data-path="univ.html"><a href="univ.html#organização-básica-2"><i class="fa fa-check"></i><b>8.2</b> Organização básica</a></li>
+<li class="chapter" data-level="8.3" data-path="univ.html"><a href="univ.html#importando-a-planilha-2"><i class="fa fa-check"></i><b>8.3</b> Importando a planilha</a></li>
+<li class="chapter" data-level="8.4" data-path="univ.html"><a href="univ.html#gráficos-de-histograma-e-boxplot"><i class="fa fa-check"></i><b>8.4</b> Gráficos de histograma e boxplot</a></li>
+<li class="chapter" data-level="8.5" data-path="univ.html"><a href="univ.html#sumário-estatístico-geral"><i class="fa fa-check"></i><b>8.5</b> Sumário estatístico geral</a></li>
+<li class="chapter" data-level="" data-path="univ.html"><a href="univ.html#apêndices-4"><i class="fa fa-check"></i>Apêndices</a></li>
+<li class="chapter" data-level="" data-path="univ.html"><a href="univ.html#sites-consultados-3"><i class="fa fa-check"></i>Sites consultados</a></li>
+<li class="chapter" data-level="" data-path="univ.html"><a href="univ.html#script-limpo-2"><i class="fa fa-check"></i>Script limpo</a></li>
+<li class="chapter" data-level="" data-path="univ.html"><a href="univ.html#referências-6"><i class="fa fa-check"></i>Referências</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="univ2.html"><a href="univ2.html"><i class="fa fa-check"></i><b>9</b> R Módulo 3.2 - Testes estatísticos</a>
+<ul>
+<li class="chapter" data-level="" data-path="univ2.html"><a href="univ2.html#resumo-6"><i class="fa fa-check"></i>RESUMO</a></li>
+<li class="chapter" data-level="" data-path="univ2.html"><a href="univ2.html#apresentação-6"><i class="fa fa-check"></i>Apresentação</a></li>
+<li class="chapter" data-level="9.1" data-path="univ2.html"><a href="univ2.html#sobre-os-dados-1"><i class="fa fa-check"></i><b>9.1</b> Sobre os dados</a></li>
+<li class="chapter" data-level="9.2" data-path="univ2.html"><a href="univ2.html#organização-básica-3"><i class="fa fa-check"></i><b>9.2</b> Organização básica</a></li>
+<li class="chapter" data-level="9.3" data-path="univ2.html"><a href="univ2.html#importando-a-planilha-3"><i class="fa fa-check"></i><b>9.3</b> Importando a planilha</a></li>
+<li class="chapter" data-level="9.4" data-path="univ2.html"><a href="univ2.html#gráficos-de-histograma-e-boxplot-1"><i class="fa fa-check"></i><b>9.4</b> Gráficos de histograma e boxplot</a></li>
+<li class="chapter" data-level="9.5" data-path="univ2.html"><a href="univ2.html#sumário-estatístico-geral-1"><i class="fa fa-check"></i><b>9.5</b> Sumário estatístico geral</a></li>
+<li class="chapter" data-level="9.6" data-path="univ2.html"><a href="univ2.html#testando-normalidade"><i class="fa fa-check"></i><b>9.6</b> Testando normalidade</a>
+<ul>
+<li class="chapter" data-level="9.6.1" data-path="univ2.html"><a href="univ2.html#q-q-plots"><i class="fa fa-check"></i><b>9.6.1</b> Q-Q plots</a></li>
+<li class="chapter" data-level="9.6.2" data-path="univ2.html"><a href="univ2.html#testes-de-shapiro-wilk-e-kolmogorov-smirnov"><i class="fa fa-check"></i><b>9.6.2</b> Testes de Shapiro-Wilk e Kolmogorov-Smirnov</a></li>
+</ul></li>
+<li class="chapter" data-level="9.7" data-path="univ2.html"><a href="univ2.html#testando-diferenças-entre-médias"><i class="fa fa-check"></i><b>9.7</b> Testando diferenças entre médias</a>
+<ul>
+<li class="chapter" data-level="9.7.1" data-path="univ2.html"><a href="univ2.html#testando-homogeneidade-de-variâncias"><i class="fa fa-check"></i><b>9.7.1</b> Testando homogeneidade de variâncias</a></li>
+<li class="chapter" data-level="9.7.2" data-path="univ2.html"><a href="univ2.html#teste-entre-duas-médias-t-student"><i class="fa fa-check"></i><b>9.7.2</b> Teste entre duas médias (t-Student)</a></li>
+<li class="chapter" data-level="9.7.3" data-path="univ2.html"><a href="univ2.html#teste-entre-três-médias-anova"><i class="fa fa-check"></i><b>9.7.3</b> Teste entre três médias (ANOVA)</a></li>
+<li class="chapter" data-level="9.7.4" data-path="univ2.html"><a href="univ2.html#teste-entre-três-médias-e-dois-fatores-two-way-anova"><i class="fa fa-check"></i><b>9.7.4</b> Teste entre três médias e dois fatores (Two-Way ANOVA)</a></li>
+</ul></li>
+<li class="chapter" data-level="9.8" data-path="univ2.html"><a href="univ2.html#correlação-e-regressão-simples"><i class="fa fa-check"></i><b>9.8</b> Correlação e regressão simples</a></li>
+<li class="chapter" data-level="" data-path="univ2.html"><a href="univ2.html#apêndices-5"><i class="fa fa-check"></i>Apêndices</a></li>
+<li class="chapter" data-level="" data-path="univ2.html"><a href="univ2.html#sites-consultados-4"><i class="fa fa-check"></i>Sites consultados</a></li>
+<li class="chapter" data-level="" data-path="univ2.html"><a href="univ2.html#script-limpo-3"><i class="fa fa-check"></i>Script limpo</a></li>
+<li class="chapter" data-level="" data-path="univ2.html"><a href="univ2.html#referências-7"><i class="fa fa-check"></i>Referências</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="unigr.html"><a href="unigr.html"><i class="fa fa-check"></i><b>10</b> R Modulo 3.3 - Gráficos univariados</a>
+<ul>
+<li class="chapter" data-level="" data-path="unigr.html"><a href="unigr.html#resumo-7"><i class="fa fa-check"></i>RESUMO</a></li>
+<li class="chapter" data-level="" data-path="unigr.html"><a href="unigr.html#apresentação-7"><i class="fa fa-check"></i>Apresentação</a></li>
+<li class="chapter" data-level="10.1" data-path="unigr.html"><a href="unigr.html#sobre-os-dados-2"><i class="fa fa-check"></i><b>10.1</b> Sobre os dados</a></li>
+<li class="chapter" data-level="10.2" data-path="unigr.html"><a href="unigr.html#organização-básica-4"><i class="fa fa-check"></i><b>10.2</b> Organização básica</a></li>
+<li class="chapter" data-level="10.3" data-path="unigr.html"><a href="unigr.html#importando-a-planilha-4"><i class="fa fa-check"></i><b>10.3</b> Importando a planilha</a></li>
+<li class="chapter" data-level="10.4" data-path="unigr.html"><a href="unigr.html#reset-point"><i class="fa fa-check"></i><b>10.4</b> Reset point</a></li>
+<li class="chapter" data-level="10.5" data-path="unigr.html"><a href="unigr.html#gráficos-de-dispersão"><i class="fa fa-check"></i><b>10.5</b> Gráficos de dispersão</a></li>
+<li class="chapter" data-level="10.6" data-path="unigr.html"><a href="unigr.html#gráficos-de-linha"><i class="fa fa-check"></i><b>10.6</b> Gráficos de linha</a></li>
+<li class="chapter" data-level="10.7" data-path="unigr.html"><a href="unigr.html#gráficos-de-barra"><i class="fa fa-check"></i><b>10.7</b> Gráficos de barra</a></li>
+<li class="chapter" data-level="10.8" data-path="unigr.html"><a href="unigr.html#gráficos-de-grupos"><i class="fa fa-check"></i><b>10.8</b> Gráficos de grupos</a></li>
+<li class="chapter" data-level="" data-path="unigr.html"><a href="unigr.html#apêndices-6"><i class="fa fa-check"></i>Apêndices</a></li>
+<li class="chapter" data-level="" data-path="unigr.html"><a href="unigr.html#sites-para-consulta"><i class="fa fa-check"></i>Sites para consulta</a></li>
+<li class="chapter" data-level="" data-path="unigr.html"><a href="unigr.html#script-limpo-4"><i class="fa fa-check"></i>Script limpo</a></li>
+<li class="chapter" data-level="" data-path="unigr.html"><a href="unigr.html#referências-8"><i class="fa fa-check"></i>Referências</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="estrcom.html"><a href="estrcom.html"><i class="fa fa-check"></i><b>11</b> R Módulo 4.1 - Estrutura da comunidade</a>
+<ul>
+<li class="chapter" data-level="" data-path="estrcom.html"><a href="estrcom.html#resumo-8"><i class="fa fa-check"></i>RESUMO</a></li>
+<li class="chapter" data-level="" data-path="estrcom.html"><a href="estrcom.html#apresentação-8"><i class="fa fa-check"></i>Apresentação</a></li>
+<li class="chapter" data-level="11.1" data-path="estrcom.html"><a href="estrcom.html#sobre-os-dados-3"><i class="fa fa-check"></i><b>11.1</b> Sobre os dados</a></li>
+<li class="chapter" data-level="11.2" data-path="estrcom.html"><a href="estrcom.html#organização-básica-5"><i class="fa fa-check"></i><b>11.2</b> Organização básica</a></li>
+<li class="chapter" data-level="11.3" data-path="estrcom.html"><a href="estrcom.html#importando-a-planilha-5"><i class="fa fa-check"></i><b>11.3</b> Importando a planilha</a></li>
+<li class="chapter" data-level="11.4" data-path="estrcom.html"><a href="estrcom.html#reset-point-1"><i class="fa fa-check"></i><b>11.4</b> Reset point</a></li>
+<li class="chapter" data-level="11.5" data-path="estrcom.html"><a href="estrcom.html#transpor-a-matriz-para-trabalhar-com-as-espécies"><i class="fa fa-check"></i><b>11.5</b> Transpor a matriz para trabalhar com as espécies</a>
+<ul>
+<li class="chapter" data-level="11.5.1" data-path="estrcom.html"><a href="estrcom.html#informações-básicas-da-matriz"><i class="fa fa-check"></i><b>11.5.1</b> Informações básicas da matriz</a></li>
+</ul></li>
+<li class="chapter" data-level="11.6" data-path="estrcom.html"><a href="estrcom.html#calculando-os-descritores-da-comunidade"><i class="fa fa-check"></i><b>11.6</b> Calculando os descritores da comunidade</a>
+<ul>
+<li class="chapter" data-level="11.6.1" data-path="estrcom.html"><a href="estrcom.html#variabilidade"><i class="fa fa-check"></i><b>11.6.1</b> Variabilidade</a></li>
+<li class="chapter" data-level="11.6.2" data-path="estrcom.html"><a href="estrcom.html#riqueza"><i class="fa fa-check"></i><b>11.6.2</b> Riqueza</a></li>
+</ul></li>
+<li class="chapter" data-level="11.7" data-path="estrcom.html"><a href="estrcom.html#índices-de-diversidade"><i class="fa fa-check"></i><b>11.7</b> Índices de Diversidade</a>
+<ul>
+<li class="chapter" data-level="11.7.1" data-path="estrcom.html"><a href="estrcom.html#shannon"><i class="fa fa-check"></i><b>11.7.1</b> Shannon</a></li>
+<li class="chapter" data-level="11.7.2" data-path="estrcom.html"><a href="estrcom.html#simpson"><i class="fa fa-check"></i><b>11.7.2</b> Simpson</a></li>
+<li class="chapter" data-level="11.7.3" data-path="estrcom.html"><a href="estrcom.html#equitabilidade-de-pielou"><i class="fa fa-check"></i><b>11.7.3</b> Equitabilidade de Pielou</a></li>
+</ul></li>
+<li class="chapter" data-level="11.8" data-path="estrcom.html"><a href="estrcom.html#gráficos-descritivos"><i class="fa fa-check"></i><b>11.8</b> Gráficos descritivos</a>
+<ul>
+<li class="chapter" data-level="11.8.1" data-path="estrcom.html"><a href="estrcom.html#série-de-hill-e-pefil-da-diversidade"><i class="fa fa-check"></i><b>11.8.1</b> Série de Hill e pefil da diversidade</a></li>
+</ul></li>
+<li class="chapter" data-level="11.9" data-path="estrcom.html"><a href="estrcom.html#distribuição-de-abundância"><i class="fa fa-check"></i><b>11.9</b> Distribuição de abundância</a></li>
+<li class="chapter" data-level="11.10" data-path="estrcom.html"><a href="estrcom.html#curva-de-rarefação"><i class="fa fa-check"></i><b>11.10</b> Curva de rarefação</a>
+<ul>
+<li class="chapter" data-level="11.10.1" data-path="estrcom.html"><a href="estrcom.html#interpretando-a-curva-de-rarefação"><i class="fa fa-check"></i><b>11.10.1</b> Interpretando a curva de rarefação</a></li>
+</ul></li>
+<li class="chapter" data-level="11.11" data-path="estrcom.html"><a href="estrcom.html#curva-de-acumulação-de-espécies"><i class="fa fa-check"></i><b>11.11</b> Curva de acumulação de espécies</a>
+<ul>
+<li class="chapter" data-level="11.11.1" data-path="estrcom.html"><a href="estrcom.html#plot-locais"><i class="fa fa-check"></i><b>11.11.1</b> Plot locais</a></li>
+</ul></li>
+<li class="chapter" data-level="11.12" data-path="estrcom.html"><a href="estrcom.html#plot-indivíduos"><i class="fa fa-check"></i><b>11.12</b> Plot indivíduos</a></li>
+<li class="chapter" data-level="" data-path="estrcom.html"><a href="estrcom.html#apêndices-7"><i class="fa fa-check"></i>Apêndices</a>
+<ul>
+<li class="chapter" data-level="" data-path="estrcom.html"><a href="estrcom.html#criando-uma-tabela-de-espécies"><i class="fa fa-check"></i>Criando uma tabela de espécies</a></li>
+<li class="chapter" data-level="" data-path="estrcom.html"><a href="estrcom.html#descruas"><i class="fa fa-check"></i>Descritores da estrutura da comunidade: UA’s</a></li>
+<li class="chapter" data-level="" data-path="estrcom.html"><a href="estrcom.html#descritores-da-normalidade-1"><i class="fa fa-check"></i>Descritores da normalidade</a></li>
+<li class="chapter" data-level="" data-path="estrcom.html"><a href="estrcom.html#salvando-as-tabelas-criadas-em-txt-direto-no-diretório-de-trabalho"><i class="fa fa-check"></i>Salvando as tabelas criadas em txt direto no diretório de trabalho</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="estrcom.html"><a href="estrcom.html#sites-consultados-5"><i class="fa fa-check"></i>Sites consultados</a></li>
+<li class="chapter" data-level="" data-path="estrcom.html"><a href="estrcom.html#script-limpo-5"><i class="fa fa-check"></i>Script limpo</a></li>
+<li class="chapter" data-level="" data-path="estrcom.html"><a href="estrcom.html#referências-9"><i class="fa fa-check"></i>Referências</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="partdiv.html"><a href="partdiv.html"><i class="fa fa-check"></i><b>12</b> R Modulo 4.2 - Decomposição da diversidade</a>
+<ul>
+<li class="chapter" data-level="" data-path="partdiv.html"><a href="partdiv.html#resumo-9"><i class="fa fa-check"></i>RESUMO</a></li>
+<li class="chapter" data-level="" data-path="partdiv.html"><a href="partdiv.html#apresentação-9"><i class="fa fa-check"></i>Apresentação</a></li>
+<li class="chapter" data-level="12.1" data-path="partdiv.html"><a href="partdiv.html#sobre-os-dados-4"><i class="fa fa-check"></i><b>12.1</b> Sobre os dados</a></li>
+<li class="chapter" data-level="12.2" data-path="partdiv.html"><a href="partdiv.html#organização-básica-6"><i class="fa fa-check"></i><b>12.2</b> Organização básica</a></li>
+<li class="chapter" data-level="" data-path="partdiv.html"><a href="partdiv.html#apêndices-8"><i class="fa fa-check"></i>Apêndices</a>
+<ul>
+<li class="chapter" data-level="" data-path="partdiv.html"><a href="partdiv.html#sites-consultados-6"><i class="fa fa-check"></i>Sites consultados</a></li>
+<li class="chapter" data-level="" data-path="partdiv.html"><a href="partdiv.html#script-limpo-6"><i class="fa fa-check"></i>Script limpo</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="partdiv.html"><a href="partdiv.html#referências-10"><i class="fa fa-check"></i>Referências</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="estrhab.html"><a href="estrhab.html"><i class="fa fa-check"></i><b>13</b> R Módulo 4.3 - Estrutura do habitat</a>
+<ul>
+<li class="chapter" data-level="" data-path="estrhab.html"><a href="estrhab.html#resumo-10"><i class="fa fa-check"></i>RESUMO</a></li>
+<li class="chapter" data-level="" data-path="estrhab.html"><a href="estrhab.html#apresentação-10"><i class="fa fa-check"></i>Apresentação</a></li>
+<li class="chapter" data-level="13.1" data-path="estrhab.html"><a href="estrhab.html#sobre-os-dados-5"><i class="fa fa-check"></i><b>13.1</b> Sobre os dados</a></li>
+<li class="chapter" data-level="13.2" data-path="estrhab.html"><a href="estrhab.html#organização-básica-7"><i class="fa fa-check"></i><b>13.2</b> Organização básica</a>
+<ul>
+<li class="chapter" data-level="13.2.1" data-path="estrhab.html"><a href="estrhab.html#instalando-os-pacotes-necessários-para-esse-módulo."><i class="fa fa-check"></i><b>13.2.1</b> Instalando os pacotes necessários para esse módulo.</a></li>
+</ul></li>
+<li class="chapter" data-level="13.3" data-path="estrhab.html"><a href="estrhab.html#importando-a-planilha-6"><i class="fa fa-check"></i><b>13.3</b> Importando a planilha</a></li>
+<li class="chapter" data-level="13.4" data-path="estrhab.html"><a href="estrhab.html#reset-point-2"><i class="fa fa-check"></i><b>13.4</b> Reset point</a></li>
+<li class="chapter" data-level="13.5" data-path="estrhab.html"><a href="estrhab.html#correlograma-e-remoção-de-variáveis-redundantes-ou-desnecessárias"><i class="fa fa-check"></i><b>13.5</b> Correlograma e remoção de variáveis redundantes ou desnecessárias</a></li>
+<li class="chapter" data-level="13.6" data-path="estrhab.html"><a href="estrhab.html#deletando-variáveis-colineares"><i class="fa fa-check"></i><b>13.6</b> Deletando variáveis colineares</a></li>
+<li class="chapter" data-level="13.7" data-path="estrhab.html"><a href="estrhab.html#somando-variáveis-redundantes"><i class="fa fa-check"></i><b>13.7</b> Somando variáveis redundantes</a></li>
+<li class="chapter" data-level="13.8" data-path="estrhab.html"><a href="estrhab.html#tabela-de-dados-ambientais"><i class="fa fa-check"></i><b>13.8</b> Tabela de dados ambientais</a></li>
+<li class="chapter" data-level="" data-path="estrhab.html"><a href="estrhab.html#apêndices-9"><i class="fa fa-check"></i>Apêndices</a></li>
+<li class="chapter" data-level="" data-path="estrhab.html"><a href="estrhab.html#sites-consultados-7"><i class="fa fa-check"></i>Sites consultados</a></li>
+<li class="chapter" data-level="" data-path="estrhab.html"><a href="estrhab.html#script-limpo-7"><i class="fa fa-check"></i>Script limpo</a></li>
+<li class="chapter" data-level="" data-path="estrhab.html"><a href="estrhab.html#referências-11"><i class="fa fa-check"></i>Referências</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="reltrns.html"><a href="reltrns.html"><i class="fa fa-check"></i><b>14</b> R Modulo 5 - Relativizações e transformações</a>
+<ul>
+<li class="chapter" data-level="" data-path="reltrns.html"><a href="reltrns.html#resumo-11"><i class="fa fa-check"></i>RESUMO</a></li>
+<li class="chapter" data-level="" data-path="reltrns.html"><a href="reltrns.html#apresentação-11"><i class="fa fa-check"></i>Apresentação</a></li>
+<li class="chapter" data-level="14.1" data-path="reltrns.html"><a href="reltrns.html#organização-básica-8"><i class="fa fa-check"></i><b>14.1</b> Organização básica</a>
+<ul>
+<li class="chapter" data-level="14.1.1" data-path="reltrns.html"><a href="reltrns.html#importando-a-planilha-7"><i class="fa fa-check"></i><b>14.1.1</b> Importando a planilha</a></li>
+</ul></li>
+<li class="chapter" data-level="14.2" data-path="reltrns.html"><a href="reltrns.html#tamanho-da-matriz"><i class="fa fa-check"></i><b>14.2</b> Tamanho da matriz</a></li>
+<li class="chapter" data-level="14.3" data-path="reltrns.html"><a href="reltrns.html#reset-point-1-1"><i class="fa fa-check"></i><b>14.3</b> Reset point 1</a></li>
+<li class="chapter" data-level="14.4" data-path="reltrns.html"><a href="reltrns.html#cálculo-da-matriz-de-distâncias"><i class="fa fa-check"></i><b>14.4</b> Cálculo da matriz de distâncias</a></li>
+<li class="chapter" data-level="14.5" data-path="reltrns.html"><a href="reltrns.html#distribuição-de-frequência-da-matriz-de-distâncias"><i class="fa fa-check"></i><b>14.5</b> Distribuição de frequência da matriz de distâncias</a>
+<ul>
+<li class="chapter" data-level="14.5.1" data-path="reltrns.html"><a href="reltrns.html#calculando-alguns-parâmetros-básicos"><i class="fa fa-check"></i><b>14.5.1</b> Calculando alguns parâmetros básicos</a></li>
+<li class="chapter" data-level="14.5.2" data-path="reltrns.html"><a href="reltrns.html#calculando-a-assimetria-e-a-curtose"><i class="fa fa-check"></i><b>14.5.2</b> Calculando a assimetria e a curtose</a></li>
+</ul></li>
+<li class="chapter" data-level="14.6" data-path="reltrns.html"><a href="reltrns.html#distribuição-de-frequências-da-matriz-de-distâncias"><i class="fa fa-check"></i><b>14.6</b> Distribuição de frequências da matriz de distâncias</a></li>
+<li class="chapter" data-level="14.7" data-path="reltrns.html"><a href="reltrns.html#relativizando-e-transformando-a-base-de-dados"><i class="fa fa-check"></i><b>14.7</b> Relativizando e transformando a base de dados</a>
+<ul>
+<li class="chapter" data-level="14.7.1" data-path="reltrns.html"><a href="reltrns.html#relativização-pelo-total"><i class="fa fa-check"></i><b>14.7.1</b> Relativização pelo total</a></li>
+<li class="chapter" data-level="14.7.2" data-path="reltrns.html"><a href="reltrns.html#transformação-pelo-arcoseno-da-raiz-quadrada"><i class="fa fa-check"></i><b>14.7.2</b> Transformação pelo arcoseno da raiz quadrada</a></li>
+</ul></li>
+<li class="chapter" data-level="14.8" data-path="reltrns.html"><a href="reltrns.html#reset-point-2-1"><i class="fa fa-check"></i><b>14.8</b> Reset point 2</a></li>
+<li class="chapter" data-level="" data-path="reltrns.html"><a href="reltrns.html#apêndices-10"><i class="fa fa-check"></i>Apêndices</a>
+<ul>
+<li class="chapter" data-level="" data-path="reltrns.html"><a href="reltrns.html#relativizações"><i class="fa fa-check"></i>Relativizações</a></li>
+<li class="chapter" data-level="" data-path="reltrns.html"><a href="reltrns.html#transformações"><i class="fa fa-check"></i>Transformações</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="reltrns.html"><a href="reltrns.html#script-limpo-8"><i class="fa fa-check"></i>Script limpo</a></li>
+<li class="chapter" data-level="" data-path="reltrns.html"><a href="reltrns.html#referências-12"><i class="fa fa-check"></i>Referências</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="outcentr.html"><a href="outcentr.html"><i class="fa fa-check"></i><b>15</b> R Módulo 6 - Análise de outliers baseada no desvio padrão do centróide</a>
+<ul>
+<li class="chapter" data-level="" data-path="outcentr.html"><a href="outcentr.html#apresentação-12"><i class="fa fa-check"></i>Apresentação</a></li>
+<li class="chapter" data-level="15.1" data-path="outcentr.html"><a href="outcentr.html#sobre-os-dados-do-ppbio-3"><i class="fa fa-check"></i><b>15.1</b> Sobre os dados do PPBio</a></li>
+<li class="chapter" data-level="15.2" data-path="outcentr.html"><a href="outcentr.html#organização-básica-9"><i class="fa fa-check"></i><b>15.2</b> Organização básica</a>
+<ul>
+<li class="chapter" data-level="15.2.1" data-path="outcentr.html"><a href="outcentr.html#importando-a-planilha-8"><i class="fa fa-check"></i><b>15.2.1</b> Importando a planilha</a></li>
+</ul></li>
+<li class="chapter" data-level="15.3" data-path="outcentr.html"><a href="outcentr.html#reset-point-3"><i class="fa fa-check"></i><b>15.3</b> Reset point</a>
+<ul>
+<li class="chapter" data-level="15.3.1" data-path="outcentr.html"><a href="outcentr.html#tamanho-da-matriz-1"><i class="fa fa-check"></i><b>15.3.1</b> Tamanho da matriz</a></li>
+</ul></li>
+<li class="chapter" data-level="15.4" data-path="outcentr.html"><a href="outcentr.html#cálculo-de-matriz-de-distâncias-euclidiana-euclid"><i class="fa fa-check"></i><b>15.4</b> Cálculo de matriz de distâncias Euclidiana (<code>euclid</code>)</a></li>
+<li class="chapter" data-level="15.5" data-path="outcentr.html"><a href="outcentr.html#calculando-o-centróide-da-matriz-de-distâncias-euclid"><i class="fa fa-check"></i><b>15.5</b> Calculando o centróide da matriz de distâncias <code>euclid</code></a></li>
+<li class="chapter" data-level="15.6" data-path="outcentr.html"><a href="outcentr.html#distribuição-de-frequências-da-matriz-de-distâncias-euclid"><i class="fa fa-check"></i><b>15.6</b> Distribuição de frequências da matriz de distâncias <code>euclid</code></a></li>
+<li class="chapter" data-level="15.7" data-path="outcentr.html"><a href="outcentr.html#procurando-outliers"><i class="fa fa-check"></i><b>15.7</b> Procurando outliers</a>
+<ul>
+<li class="chapter" data-level="15.7.1" data-path="outcentr.html"><a href="outcentr.html#listas-de-distâncias"><i class="fa fa-check"></i><b>15.7.1</b> Listas de distâncias</a></li>
+<li class="chapter" data-level="15.7.2" data-path="outcentr.html"><a href="outcentr.html#distribuição-de-frequências-das-distâncias-médias-para-o-centróide-av.dist"><i class="fa fa-check"></i><b>15.7.2</b> Distribuição de frequências das distâncias médias para o centróide <code>av.dist</code></a></li>
+</ul></li>
+<li class="chapter" data-level="15.8" data-path="outcentr.html"><a href="outcentr.html#lista-final-de-outliers"><i class="fa fa-check"></i><b>15.8</b> Lista final de outliers</a></li>
+<li class="chapter" data-level="15.9" data-path="outcentr.html"><a href="outcentr.html#particionando-a-matriz"><i class="fa fa-check"></i><b>15.9</b> Particionando a matriz</a></li>
+<li class="chapter" data-level="15.10" data-path="outcentr.html"><a href="outcentr.html#exportando-a-matrix-final-de-trabalho"><i class="fa fa-check"></i><b>15.10</b> Exportando a matrix final de trabalho</a></li>
+<li class="chapter" data-level="" data-path="outcentr.html"><a href="outcentr.html#apêndices-11"><i class="fa fa-check"></i>Apêndices</a>
+<ul>
+<li class="chapter" data-level="" data-path="outcentr.html"><a href="outcentr.html#outras-formas-de-fazer-a-partição"><i class="fa fa-check"></i>Outras formas de fazer a partição</a></li>
+<li class="chapter" data-level="" data-path="outcentr.html"><a href="outcentr.html#código"><i class="fa fa-check"></i>Código</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="outcentr.html"><a href="outcentr.html#script-limpo-9"><i class="fa fa-check"></i>Script limpo</a></li>
+<li class="chapter" data-level="" data-path="outcentr.html"><a href="outcentr.html#referências-13"><i class="fa fa-check"></i>Referências</a></li>
+</ul></li>
+<li class="part"><span><b>III IV. ANÁLISES MULTIVARIADAS</b></span></li>
+<li class="chapter" data-level="16" data-path="upgma.html"><a href="upgma.html"><i class="fa fa-check"></i><b>16</b> R Módulo 7 - Análise de Classificação Hierárquica - SAHN</a>
+<ul>
+<li class="chapter" data-level="" data-path="upgma.html"><a href="upgma.html#resumo-12"><i class="fa fa-check"></i>RESUMO</a></li>
+<li class="chapter" data-level="" data-path="upgma.html"><a href="upgma.html#apresentação-13"><i class="fa fa-check"></i>Apresentação</a></li>
+<li class="chapter" data-level="16.1" data-path="upgma.html"><a href="upgma.html#organização-básica-10"><i class="fa fa-check"></i><b>16.1</b> Organização básica</a>
+<ul>
+<li class="chapter" data-level="16.1.1" data-path="upgma.html"><a href="upgma.html#pacotes"><i class="fa fa-check"></i><b>16.1.1</b> Pacotes</a></li>
+<li class="chapter" data-level="16.1.2" data-path="upgma.html"><a href="upgma.html#sobre-os-dados-do-ppbio-4"><i class="fa fa-check"></i><b>16.1.2</b> Sobre os dados do PPBio</a></li>
+<li class="chapter" data-level="16.1.3" data-path="upgma.html"><a href="upgma.html#importando-a-planilha-de-trabalho-1"><i class="fa fa-check"></i><b>16.1.3</b> Importando a planilha de trabalho</a></li>
+</ul></li>
+<li class="chapter" data-level="16.2" data-path="upgma.html"><a href="upgma.html#reset-point-4"><i class="fa fa-check"></i><b>16.2</b> Reset point</a></li>
+<li class="chapter" data-level="16.3" data-path="upgma.html"><a href="upgma.html#nomenclatura-das-matrizes-em-amd"><i class="fa fa-check"></i><b>16.3</b> Nomenclatura das matrizes em AMD</a></li>
+<li class="chapter" data-level="16.4" data-path="upgma.html"><a href="upgma.html#cluster-1-piloto-automático"><i class="fa fa-check"></i><b>16.4</b> Cluster 1: Piloto automático</a>
+<ul>
+<li class="chapter" data-level="16.4.1" data-path="upgma.html"><a href="upgma.html#histórico-das-fusões"><i class="fa fa-check"></i><b>16.4.1</b> Histórico das fusões</a></li>
+</ul></li>
+<li class="chapter" data-level="16.5" data-path="upgma.html"><a href="upgma.html#cluster-2-criando-a-matriz-de-distâncias-euclidiana"><i class="fa fa-check"></i><b>16.5</b> Cluster 2: Criando a matriz de distâncias Euclidiana</a>
+<ul>
+<li class="chapter" data-level="16.5.1" data-path="upgma.html"><a href="upgma.html#comparação-dos-resultados-obtidos-até-aqui"><i class="fa fa-check"></i><b>16.5.1</b> Comparação dos resultados obtidos até aqui</a></li>
+</ul></li>
+<li class="chapter" data-level="16.6" data-path="upgma.html"><a href="upgma.html#cluster-3-relativização-pelo-total-da-coluna"><i class="fa fa-check"></i><b>16.6</b> Cluster 3: Relativização pelo total da coluna</a>
+<ul>
+<li class="chapter" data-level="16.6.1" data-path="upgma.html"><a href="upgma.html#gráfico-de-clustering-relativizado"><i class="fa fa-check"></i><b>16.6.1</b> Gráfico de clustering relativizado</a></li>
+</ul></li>
+<li class="chapter" data-level="16.7" data-path="upgma.html"><a href="upgma.html#cluster-4-transformação-pelo-arcoseno-da-raiz-quadrada"><i class="fa fa-check"></i><b>16.7</b> Cluster 4: Transformação pelo arcoseno da raiz quadrada</a>
+<ul>
+<li class="chapter" data-level="16.7.1" data-path="upgma.html"><a href="upgma.html#gráfico-de-clustering-relativizadotransformado"><i class="fa fa-check"></i><b>16.7.1</b> Gráfico de clustering relativizado/transformado</a></li>
+</ul></li>
+<li class="chapter" data-level="16.8" data-path="upgma.html"><a href="upgma.html#cluster-5-controle-total-dos-parâmetros"><i class="fa fa-check"></i><b>16.8</b> Cluster 5: Controle total dos parâmetros</a></li>
+<li class="chapter" data-level="16.9" data-path="upgma.html"><a href="upgma.html#construindo-uma-prancha-de-gráficos-comparativos"><i class="fa fa-check"></i><b>16.9</b> Construindo uma prancha de gráficos comparativos</a></li>
+<li class="chapter" data-level="16.10" data-path="upgma.html"><a href="upgma.html#construindo-heatmaps"><i class="fa fa-check"></i><b>16.10</b> Construindo <code>heatmaps</code></a>
+<ul>
+<li class="chapter" data-level="16.10.1" data-path="upgma.html"><a href="upgma.html#percentual-de-encadeamento-chaining"><i class="fa fa-check"></i><b>16.10.1</b> Percentual de encadeamento (% chaining)</a></li>
+<li class="chapter" data-level="16.10.2" data-path="upgma.html"><a href="upgma.html#função-loop-para-comparar-os-encadeamentos"><i class="fa fa-check"></i><b>16.10.2</b> Função <code>loop</code> para comparar os encadeamentos</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="upgma.html"><a href="upgma.html#apêndices-12"><i class="fa fa-check"></i>Apêndices</a></li>
+<li class="chapter" data-level="" data-path="upgma.html"><a href="upgma.html#sites-consultados-8"><i class="fa fa-check"></i>Sites consultados</a>
+<ul>
+<li class="chapter" data-level="" data-path="upgma.html"><a href="upgma.html#outras-formas-de-fazer-a-partição-1"><i class="fa fa-check"></i>Outras formas de fazer a partição</a></li>
+<li class="chapter" data-level="" data-path="upgma.html"><a href="upgma.html#código-1"><i class="fa fa-check"></i>Código</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="upgma.html"><a href="upgma.html#script-limpo-10"><i class="fa fa-check"></i>Script limpo</a></li>
+<li class="chapter" data-level="" data-path="upgma.html"><a href="upgma.html#referências-14"><i class="fa fa-check"></i>Referências</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="kmeans.html"><a href="kmeans.html"><i class="fa fa-check"></i><b>17</b> R Módulo 8 - Análise de Classificação Não-hierárquica - K-Means</a>
+<ul>
+<li class="chapter" data-level="" data-path="kmeans.html"><a href="kmeans.html#resumo-13"><i class="fa fa-check"></i>RESUMO</a></li>
+<li class="chapter" data-level="" data-path="kmeans.html"><a href="kmeans.html#apresentação-14"><i class="fa fa-check"></i>Apresentação</a></li>
+<li class="chapter" data-level="17.1" data-path="kmeans.html"><a href="kmeans.html#organização-básica-11"><i class="fa fa-check"></i><b>17.1</b> Organização básica</a>
+<ul>
+<li class="chapter" data-level="17.1.1" data-path="kmeans.html"><a href="kmeans.html#sobre-os-dados-do-ppbio-5"><i class="fa fa-check"></i><b>17.1.1</b> Sobre os dados do PPBio</a></li>
+<li class="chapter" data-level="17.1.2" data-path="kmeans.html"><a href="kmeans.html#importando-a-planilha-de-trabalho-2"><i class="fa fa-check"></i><b>17.1.2</b> Importando a planilha de trabalho</a></li>
+</ul></li>
+<li class="chapter" data-level="17.2" data-path="kmeans.html"><a href="kmeans.html#reset-point-1-2"><i class="fa fa-check"></i><b>17.2</b> Reset point 1</a>
+<ul>
+<li class="chapter" data-level="17.2.1" data-path="kmeans.html"><a href="kmeans.html#outra-forma-de-achar-e-importar-uma-planilha-2"><i class="fa fa-check"></i><b>17.2.1</b> Outra forma de achar e importar uma planilha</a></li>
+</ul></li>
+<li class="chapter" data-level="17.3" data-path="kmeans.html"><a href="kmeans.html#classificação"><i class="fa fa-check"></i><b>17.3</b> Classificação</a></li>
+<li class="chapter" data-level="17.4" data-path="kmeans.html"><a href="kmeans.html#histórico-das-fusões-1"><i class="fa fa-check"></i><b>17.4</b> Histórico das fusões</a></li>
+<li class="chapter" data-level="17.5" data-path="kmeans.html"><a href="kmeans.html#algoritmo-k-means---versão-simplificada"><i class="fa fa-check"></i><b>17.5</b> Algoritmo K-Means - Versão simplificada</a>
+<ul>
+<li class="chapter" data-level="17.5.1" data-path="kmeans.html"><a href="kmeans.html#organização-básica-primeiro"><i class="fa fa-check"></i><b>17.5.1</b> Organização básica primeiro</a></li>
+<li class="chapter" data-level="17.5.2" data-path="kmeans.html"><a href="kmeans.html#instalar-pacotes-necessários"><i class="fa fa-check"></i><b>17.5.2</b> Instalar pacotes necessários</a></li>
+<li class="chapter" data-level="17.5.3" data-path="kmeans.html"><a href="kmeans.html#importando-matriz"><i class="fa fa-check"></i><b>17.5.3</b> Importando matriz</a></li>
+</ul></li>
+<li class="chapter" data-level="17.6" data-path="kmeans.html"><a href="kmeans.html#reset-point-2-2"><i class="fa fa-check"></i><b>17.6</b> Reset point 2</a>
+<ul>
+<li class="chapter" data-level="17.6.1" data-path="kmeans.html"><a href="kmeans.html#algumas-análises-exploatórias"><i class="fa fa-check"></i><b>17.6.1</b> Algumas análises exploatórias</a></li>
+</ul></li>
+<li class="chapter" data-level="17.7" data-path="kmeans.html"><a href="kmeans.html#determinando-o-número-ideal-de-clusteres"><i class="fa fa-check"></i><b>17.7</b> Determinando o número ideal de clusteres</a>
+<ul>
+<li class="chapter" data-level="17.7.1" data-path="kmeans.html"><a href="kmeans.html#reescalar-os-dados-primeiro-usando-a-função-scale"><i class="fa fa-check"></i><b>17.7.1</b> Reescalar os dados primeiro usando a função <code>scale()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="kmeans.html"><a href="kmeans.html#apêndices-13"><i class="fa fa-check"></i>Apêndices</a>
+<ul>
+<li class="chapter" data-level="" data-path="kmeans.html"><a href="kmeans.html#restos-de-códigos"><i class="fa fa-check"></i>Restos de códigos</a></li>
+<li class="chapter" data-level="" data-path="kmeans.html"><a href="kmeans.html#métodos-de-determinação-de-clusters-em-k-means"><i class="fa fa-check"></i>Métodos de determinação de clusters em <code>k-means</code></a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="kmeans.html"><a href="kmeans.html#referências-15"><i class="fa fa-check"></i>Referências</a></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="pca.html"><a href="pca.html"><i class="fa fa-check"></i><b>18</b> R Módulo 9 - Análise de Componentes Principais - PCA</a>
+<ul>
+<li class="chapter" data-level="" data-path="pca.html"><a href="pca.html#resumo-14"><i class="fa fa-check"></i>RESUMO</a></li>
+<li class="chapter" data-level="" data-path="pca.html"><a href="pca.html#apresentação-15"><i class="fa fa-check"></i>Apresentação</a></li>
+<li class="chapter" data-level="18.1" data-path="pca.html"><a href="pca.html#organização-básica-12"><i class="fa fa-check"></i><b>18.1</b> Organização básica</a></li>
+<li class="chapter" data-level="18.2" data-path="pca.html"><a href="pca.html#pacotes-do-módulo"><i class="fa fa-check"></i><b>18.2</b> Pacotes do módulo</a></li>
+<li class="chapter" data-level="18.3" data-path="pca.html"><a href="pca.html#sobre-os-dados-do-ppbio-6"><i class="fa fa-check"></i><b>18.3</b> Sobre os dados do PPBio</a>
+<ul>
+<li class="chapter" data-level="18.3.1" data-path="pca.html"><a href="pca.html#a-planilha-ppbio-habitat"><i class="fa fa-check"></i><b>18.3.1</b> A planilha PPBio Habitat</a></li>
+</ul></li>
+<li class="chapter" data-level="18.4" data-path="pca.html"><a href="pca.html#importando-a-planilha-de-trabalho-3"><i class="fa fa-check"></i><b>18.4</b> Importando a planilha de trabalho</a>
+<ul>
+<li class="chapter" data-level="18.4.1" data-path="pca.html"><a href="pca.html#outra-forma-de-achar-e-importar-uma-planilha-3"><i class="fa fa-check"></i><b>18.4.1</b> Outra forma de achar e importar uma planilha</a></li>
+</ul></li>
+<li class="chapter" data-level="18.5" data-path="pca.html"><a href="pca.html#particionando-as-variáveis-de-interesse"><i class="fa fa-check"></i><b>18.5</b> Particionando as variáveis de interesse</a></li>
+<li class="chapter" data-level="18.6" data-path="pca.html"><a href="pca.html#reinício-1"><i class="fa fa-check"></i><b>18.6</b> REINÍCIO 1</a></li>
+<li class="chapter" data-level="18.7" data-path="pca.html"><a href="pca.html#classificação-1"><i class="fa fa-check"></i><b>18.7</b> Classificação</a>
+<ul>
+<li class="chapter" data-level="18.7.1" data-path="pca.html"><a href="pca.html#dendrograma-e-heatmap"><i class="fa fa-check"></i><b>18.7.1</b> Dendrograma e Heatmap</a></li>
+<li class="chapter" data-level="18.7.2" data-path="pca.html"><a href="pca.html#histórico-das-fusões-2"><i class="fa fa-check"></i><b>18.7.2</b> Histórico das fusões</a></li>
+</ul></li>
+<li class="chapter" data-level="18.8" data-path="pca.html"><a href="pca.html#análise-de-componentes-principais"><i class="fa fa-check"></i><b>18.8</b> Análise de Componentes Principais</a>
+<ul>
+<li class="chapter" data-level="18.8.1" data-path="pca.html"><a href="pca.html#subsetting-as-variáveis-para-a-pca"><i class="fa fa-check"></i><b>18.8.1</b> Subsetting as variáveis para a PCA</a></li>
+<li class="chapter" data-level="18.8.2" data-path="pca.html"><a href="pca.html#explorando-correlações-multivariadas"><i class="fa fa-check"></i><b>18.8.2</b> Explorando correlações multivariadas</a></li>
+<li class="chapter" data-level="18.8.3" data-path="pca.html"><a href="pca.html#centrando-e-re-escalando-a-matriz-de-dados"><i class="fa fa-check"></i><b>18.8.3</b> Centrando e re-escalando a matriz de dados</a></li>
+</ul></li>
+<li class="chapter" data-level="18.9" data-path="pca.html"><a href="pca.html#fazendo-a-pca"><i class="fa fa-check"></i><b>18.9</b> Fazendo a PCA</a></li>
+<li class="chapter" data-level="18.10" data-path="pca.html"><a href="pca.html#interpretando-o-biplot-gerado-no-código-anterior"><i class="fa fa-check"></i><b>18.10</b> Interpretando o <code>biplot</code> gerado no código anterior</a></li>
+<li class="chapter" data-level="18.11" data-path="pca.html"><a href="pca.html#extraindo-pc-escores"><i class="fa fa-check"></i><b>18.11</b> Extraindo PC escores</a></li>
+<li class="chapter" data-level="18.12" data-path="pca.html"><a href="pca.html#gráfico-melhorado-com-ggplot"><i class="fa fa-check"></i><b>18.12</b> Gráfico melhorado com <code>ggplot</code></a></li>
+<li class="chapter" data-level="" data-path="pca.html"><a href="pca.html#apêndices-14"><i class="fa fa-check"></i>Apêndices</a>
+<ul>
+<li class="chapter" data-level="" data-path="pca.html"><a href="pca.html#pca-usando-o-pacote-factominer"><i class="fa fa-check"></i>PCA usando o pacote FactoMineR</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="nmds.html"><a href="nmds.html"><i class="fa fa-check"></i><b>19</b> R Módulo 10.1 - Análise de Ordenação - NMDS</a>
+<ul>
+<li class="chapter" data-level="" data-path="nmds.html"><a href="nmds.html#resumo-15"><i class="fa fa-check"></i>RESUMO</a></li>
+<li class="chapter" data-level="" data-path="nmds.html"><a href="nmds.html#apresentação-16"><i class="fa fa-check"></i>Apresentação</a></li>
+<li class="chapter" data-level="19.1" data-path="nmds.html"><a href="nmds.html#algoritmo-da-nmds"><i class="fa fa-check"></i><b>19.1</b> Algoritmo da NMDS</a></li>
+<li class="chapter" data-level="19.2" data-path="nmds.html"><a href="nmds.html#organização-básica-13"><i class="fa fa-check"></i><b>19.2</b> Organização básica</a></li>
+<li class="chapter" data-level="19.3" data-path="nmds.html"><a href="nmds.html#pacotes-do-módulo-1"><i class="fa fa-check"></i><b>19.3</b> Pacotes do módulo</a></li>
+<li class="chapter" data-level="19.4" data-path="nmds.html"><a href="nmds.html#reinício-1-1"><i class="fa fa-check"></i><b>19.4</b> REINÍCIO 1</a></li>
+<li class="chapter" data-level="19.5" data-path="nmds.html"><a href="nmds.html#classificação-1-matriz-comunitária"><i class="fa fa-check"></i><b>19.5</b> Classificação 1: Matriz comunitária</a>
+<ul>
+<li class="chapter" data-level="19.5.1" data-path="nmds.html"><a href="nmds.html#dendrograma-e-heatmap-1"><i class="fa fa-check"></i><b>19.5.1</b> Dendrograma e Heatmap 1</a></li>
+<li class="chapter" data-level="19.5.2" data-path="nmds.html"><a href="nmds.html#histórico-das-fusões-1-1"><i class="fa fa-check"></i><b>19.5.2</b> Histórico das fusões 1</a></li>
+</ul></li>
+<li class="chapter" data-level="19.6" data-path="nmds.html"><a href="nmds.html#ordenação"><i class="fa fa-check"></i><b>19.6</b> Ordenação</a></li>
+<li class="chapter" data-level="" data-path="nmds.html"><a href="nmds.html#apêndices-15"><i class="fa fa-check"></i>Apêndices</a></li>
+<li class="chapter" data-level="" data-path="nmds.html"><a href="nmds.html#sites-consultados-9"><i class="fa fa-check"></i>Sites consultados</a></li>
+<li class="chapter" data-level="" data-path="nmds.html"><a href="nmds.html#referências-16"><i class="fa fa-check"></i>Referências</a></li>
+</ul></li>
+<li class="chapter" data-level="20" data-path="nmds2.html"><a href="nmds2.html"><i class="fa fa-check"></i><b>20</b> R Modulo 10.2 - Análise de Ordenação - NMDS</a>
+<ul>
+<li class="chapter" data-level="" data-path="nmds2.html"><a href="nmds2.html#resumo-16"><i class="fa fa-check"></i>RESUMO</a></li>
+<li class="chapter" data-level="" data-path="nmds2.html"><a href="nmds2.html#apresentação-17"><i class="fa fa-check"></i>Apresentação</a></li>
+<li class="chapter" data-level="20.1" data-path="nmds2.html"><a href="nmds2.html#algoritmo-da-nmds-1"><i class="fa fa-check"></i><b>20.1</b> Algoritmo da NMDS</a></li>
+<li class="chapter" data-level="20.2" data-path="nmds2.html"><a href="nmds2.html#organização-básica-14"><i class="fa fa-check"></i><b>20.2</b> Organização básica</a></li>
+<li class="chapter" data-level="20.3" data-path="nmds2.html"><a href="nmds2.html#pacotes-do-módulo-2"><i class="fa fa-check"></i><b>20.3</b> Pacotes do módulo</a></li>
+<li class="chapter" data-level="20.4" data-path="nmds2.html"><a href="nmds2.html#reinício-1-2"><i class="fa fa-check"></i><b>20.4</b> REINÍCIO 1</a></li>
+<li class="chapter" data-level="20.5" data-path="nmds2.html"><a href="nmds2.html#classificação-1-matriz-comunitária-1"><i class="fa fa-check"></i><b>20.5</b> Classificação 1: Matriz comunitária</a>
+<ul>
+<li class="chapter" data-level="20.5.1" data-path="nmds2.html"><a href="nmds2.html#dendrograma-e-heatmap-1-1"><i class="fa fa-check"></i><b>20.5.1</b> Dendrograma e Heatmap 1</a></li>
+<li class="chapter" data-level="20.5.2" data-path="nmds2.html"><a href="nmds2.html#histórico-das-fusões-1-2"><i class="fa fa-check"></i><b>20.5.2</b> Histórico das fusões 1</a></li>
+</ul></li>
+<li class="chapter" data-level="20.6" data-path="nmds2.html"><a href="nmds2.html#ordenação-1"><i class="fa fa-check"></i><b>20.6</b> Ordenação</a>
+<ul>
+<li class="chapter" data-level="20.6.1" data-path="nmds2.html"><a href="nmds2.html#gráficos-de-ordenação"><i class="fa fa-check"></i><b>20.6.1</b> Gráficos de ordenação</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="nmds2.html"><a href="nmds2.html#apêndices-16"><i class="fa fa-check"></i>Apêndices</a>
+<ul>
+<li class="chapter" data-level="" data-path="nmds2.html"><a href="nmds2.html#videos-consultados"><i class="fa fa-check"></i>Videos consultados</a></li>
+<li class="chapter" data-level="" data-path="nmds2.html"><a href="nmds2.html#script-limpo-11"><i class="fa fa-check"></i>Script limpo</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="nmds2.html"><a href="nmds2.html#referências-17"><i class="fa fa-check"></i>Referências</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="bibliografia-geral.html"><a href="bibliografia-geral.html"><i class="fa fa-check"></i>Bibliografia Geral</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Fundamentos de Ecologia Numérica</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="unigr" class="section level1 hasAnchor" number="10">
+<h1><span class="header-section-number"> 10</span> R Modulo 3.3 - Gráficos univariados<a href="unigr.html#unigr" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="resumo-7" class="section level3 unnumbered hasAnchor">
+<h3>RESUMO<a href="unigr.html#resumo-7" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+</div>
+<div id="apresentação-7" class="section level3 unnumbered hasAnchor">
+<h3>Apresentação<a href="unigr.html#apresentação-7" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+</div>
+<div id="sobre-os-dados-2" class="section level2 hasAnchor" number="10.1">
+<h2><span class="header-section-number">10.1</span> Sobre os dados<a href="unigr.html#sobre-os-dados-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Considere os dados merísticos (ou médições morfológicas) da espécie de peixe <em>Cichla ocellaris</em> (tucunaré amarelo) do reservatório da barragem de Gramame, PB <span class="citation">(<a href="#ref-RN3024">MEDEIROS; ROSA, 1994</a>)</span> (Figura <a href="unigr.html#fig:rmd32tucu">10.1</a>). Existem 421 medições do comprimemto total (CT), comprimento padrão (CP) e peso total (PT), além do sexo (MACHO, FÊMEA ou imaturo), e outros descritores da estrutura populacional da espécie, um conjunto de dados formidável.</p>
+<div class="figure"><span style="display:block;" id="fig:rmd32tucu"></span>
+<img src="imagens/tucuna.png" alt="Dados merísticos da espécie de peixe *Cichla ocellaris* (tucunaré amarelo) do reservatório da barragem  de Gramame, PB." width="450px" />
+<p class="caption">
+Figura 10.1: Dados merísticos da espécie de peixe <em>Cichla ocellaris</em> (tucunaré amarelo) do reservatório da barragem de Gramame, PB.
+</p>
+</div>
+</div>
+<div id="organização-básica-4" class="section level2 hasAnchor" number="10.2">
+<h2><span class="header-section-number">10.2</span> Organização básica<a href="unigr.html#organização-básica-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="unigr.html#cb232-1" tabindex="-1"></a><span class="fu">dev.off</span>() <span class="co">#apaga os graficos, se houver algum</span></span>
+<span id="cb232-2"><a href="unigr.html#cb232-2" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list=</span><span class="fu">ls</span>(<span class="at">all=</span><span class="cn">TRUE</span>)) <span class="co">#limpa a memória</span></span>
+<span id="cb232-3"><a href="unigr.html#cb232-3" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;</span><span class="sc">\014</span><span class="st">&quot;</span>) <span class="co">#limpa o console </span></span></code></pre></div>
+<p>Instalando os pacotes necessários para esse módulo</p>
+<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb233-1"><a href="unigr.html#cb233-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;mdatools&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb234-1"><a href="unigr.html#cb234-1" tabindex="-1"></a><span class="fu">library</span>(openxlsx)</span></code></pre></div>
+<p>Os códigos acima, são usados para instalar e carregar os pacotes necessários para este módulo. Esses códigos são comandos para instalar pacotes no R. Um pacote é uma coleção de funções, dados e documentação que ampliam as capacidades do R (<a href="https://cran.r-project.org/">R CRAN</a> <span class="citation">(<a href="#ref-RN2774">TEAM, 2017</a>)</span> e <a href="https://posit.co/download/rstudio-desktop/">RStudio</a> <span class="citation">(<a href="#ref-RN358">TEAM, 2022</a>)</span>). No exemplo acima, o pacote <code>openxlsx</code> permite ler e escrever arquivos Excel no R. Para instalar um pacote no R, você precisa usar a função <code>install.packages()</code>.</p>
+<p>Depois de instalar um pacote, você precisa carregá-lo na sua sessão R com a função <code>library()</code>. Por exemplo, para carregar o pacote <code>openxlsx</code>, você precisa executar a função <code>library(openxlsx)</code>. Isso irá permitir que você use as funções do pacote na sua sessão R. Você precisa carregar um pacote toda vez que iniciar uma nova sessão R e quiser usar um pacote instalado.</p>
+<p>Agora vamos <strong>definir o diretório de trabalho</strong>. Esse código é usado para obter e definir o diretório de trabalho atual no R. O comando <code>getwd()</code> retorna o caminho do diretório onde o R está lendo e salvando arquivos. O comando <code>setwd()</code> muda esse diretório de trabalho para o caminho especificado entre aspas. No seu caso, você deve ajustar o caminho para o seu próprio diretório de trabalho. <strong>Lembre de usar a barra “/” entre os diretórios. E não a contra-barra “\”.</strong></p>
+<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb235-1"><a href="unigr.html#cb235-1" tabindex="-1"></a><span class="fu">getwd</span>()</span>
+<span id="cb235-2"><a href="unigr.html#cb235-2" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;C:/Seu/Diretório/De/Trabalho&quot;</span>)</span></code></pre></div>
+</div>
+<div id="importando-a-planilha-4" class="section level2 hasAnchor" number="10.3">
+<h2><span class="header-section-number">10.3</span> Importando a planilha<a href="unigr.html#importando-a-planilha-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="infobox2 stopred">
+<div class="center">
+<p><strong><span style="color:white">ATENÇÃO</span></strong></p>
+</div>
+<p>Os links para baixar as planilhas necessárias para repetir esse tutorial podem ser encontrados na seção <a href="bases.html#arqs">Arquivos disponíveis</a> do Capítulo <a href="bases.html#bases">Bases de dados</a>.</p>
+<div class="center">
+<p>Ou, baixe aqui o arquivo <a href="https://docs.google.com/spreadsheets/d/1CXcIx3vzNmVlaq87Mp_FLcmymLncb8P_/edit?usp=sharing&amp;ouid=101766125969589673518&amp;rtpof=true&amp;sd=true">tucuna.xlsx</a></p>
+</div>
+</div>
+<p>Vamos importar a planilha de dados univariados <code>tucuna.xlsx</code>. Note que o símbolo <span style="color:green"><code>#</code></span> em programação R significa que o texto que vem depois dele é um comentário e não será executado pelo programa. Isso é útil para explicar o código ou deixar anotações. Ajuste a segunda linha do código abaixo para refletir <span style="color:blue">“C:/Seu/Diretório/De/Trabalho/Planilha.xlsx”</span>.</p>
+<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="unigr.html#cb236-1" tabindex="-1"></a><span class="fu">library</span>(openxlsx)</span>
+<span id="cb236-2"><a href="unigr.html#cb236-2" tabindex="-1"></a>univ_all <span class="ot">&lt;-</span> <span class="fu">read.xlsx</span>(<span class="st">&quot;D:/Elvio/OneDrive/Disciplinas/_EcoNumerica/5.Matrizes/tucuna.xlsx&quot;</span>,</span>
+<span id="cb236-3"><a href="unigr.html#cb236-3" tabindex="-1"></a>                    <span class="at">rowNames =</span> T, <span class="at">colNames =</span> T,</span>
+<span id="cb236-4"><a href="unigr.html#cb236-4" tabindex="-1"></a>                    <span class="at">sheet =</span> <span class="st">&quot;tucuna&quot;</span>)</span>
+<span id="cb236-5"><a href="unigr.html#cb236-5" tabindex="-1"></a><span class="fu">head</span>(univ_all,<span class="dv">10</span>)</span>
+<span id="cb236-6"><a href="unigr.html#cb236-6" tabindex="-1"></a><span class="fu">head</span>(univ_all[, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>], <span class="dv">10</span>)</span></code></pre></div>
+<pre><code>##       CT_cm  PT_g CP_cm Ctubo_cm  PC_g      %PT Pest_g Cest_cm gr_est    ir_est
+## TU001  32.4 468.8  27.2     39.8 458.9 2.111775    3.9     7.7      I 0.8319113
+## TU002  33.4 520.0  28.8     14.3 507.4 2.423077    5.9    10.0      I 1.1346154
+## TU003  27.3 301.5  23.8     13.0 283.4 6.003317   15.5    10.2    III 5.1409619
+## TU004  13.2  28.2  11.0     16.5  27.7 1.773050    0.3     4.3      I 1.0638298
+## TU005  14.3  38.9  11.9     15.5  37.7 3.084833    0.8     4.5    III 2.0565553
+## TU006  22.7 431.7  20.5     24.2 418.7 3.011350    9.9     6.4    III 2.2932592
+## TU007  23.2 544.0  19.2     25.0 520.1 4.393382    6.8     7.5     II 1.2500000
+## TU008  13.5 161.6  11.5     17.5 157.0 2.846535    4.1     6.8     II 2.5371287
+## TU009  24.6 200.5  20.5     25.7 195.9 2.294264    2.5     7.6     II 1.2468828
+## TU010  19.4  86.7  16.0     18.3  84.5 2.537486    0.7     5.1      I 0.8073818
+##       Pint_g Cint_cm gr_int    ir_int Pgon_g Cgon_cm          emg         ig
+## TU001    4.8    38.3     II 1.0238908    1.2       7      IMATURO 0.25597270
+## TU002    5.3    13.3     II 1.0192308    1.4     6.5       MADURO 0.26923077
+## TU003    2.4    12.0     II 0.7960199    0.2     7.7 EM MATURACAO 0.06633499
+## TU004    0.1    16.0     II 0.3546099    0.1       5      IMATURO 0.35460993
+## TU005    0.3    15.0     II 0.7712082    0.1     3.2      IMATURO 0.25706941
+## TU006    2.7    23.7     II 0.6254343    0.4     7.8 EM MATURACAO 0.09265694
+## TU007    3.3    24.5     II 0.6066176   13.8     7.9       MADURO 2.53676471
+## TU008    0.4    17.0      I 0.2475248    0.1     2.5      IMATURO 0.06188119
+## TU009    2.0    25.3     II 0.9975062    0.1     6.5 EM MATURACAO 0.04987531
+## TU010    1.4    17.7     II 1.6147636    0.1       6      IMATURO 0.11534025
+##       mes periodo   estação    sexo
+## TU001 ago chuvoso   inverno   MACHO
+## TU002 ago chuvoso   inverno   MACHO
+## TU003 ago chuvoso   inverno   MACHO
+## TU004 ago chuvoso   inverno   MACHO
+## TU005 ago chuvoso   inverno   MACHO
+## TU006 set chuvoso   inverno   MACHO
+## TU007 set chuvoso   inverno   FEMEA
+## TU008 set chuvoso   inverno imaturo
+## TU009 set chuvoso   inverno   MACHO
+## TU010 set chuvoso   inverno   MACHO
+##       CT_cm  PT_g CP_cm Ctubo_cm  PC_g
+## TU001  32.4 468.8  27.2     39.8 458.9
+## TU002  33.4 520.0  28.8     14.3 507.4
+## TU003  27.3 301.5  23.8     13.0 283.4
+## TU004  13.2  28.2  11.0     16.5  27.7
+## TU005  14.3  38.9  11.9     15.5  37.7
+## TU006  22.7 431.7  20.5     24.2 418.7
+## TU007  23.2 544.0  19.2     25.0 520.1
+## TU008  13.5 161.6  11.5     17.5 157.0
+## TU009  24.6 200.5  20.5     25.7 195.9
+## TU010  19.4  86.7  16.0     18.3  84.5</code></pre>
+<p>Exibindo os dados importados (esses comando são “case-sensitive” <code>ignore.case(object)</code>).</p>
+<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb238-1"><a href="unigr.html#cb238-1" tabindex="-1"></a><span class="co">#View(univ)</span></span>
+<span id="cb238-2"><a href="unigr.html#cb238-2" tabindex="-1"></a><span class="fu">print</span>(univ_all[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>])</span>
+<span id="cb238-3"><a href="unigr.html#cb238-3" tabindex="-1"></a>univ_all</span>
+<span id="cb238-4"><a href="unigr.html#cb238-4" tabindex="-1"></a><span class="fu">str</span>(univ_all)</span>
+<span id="cb238-5"><a href="unigr.html#cb238-5" tabindex="-1"></a><span class="fu">mode</span>(univ_all)</span>
+<span id="cb238-6"><a href="unigr.html#cb238-6" tabindex="-1"></a><span class="fu">class</span>(univ_all)</span></code></pre></div>
+</div>
+<div id="reset-point" class="section level2 hasAnchor" number="10.4">
+<h2><span class="header-section-number">10.4</span> Reset point<a href="unigr.html#reset-point" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb239-1"><a href="unigr.html#cb239-1" tabindex="-1"></a>univ <span class="ot">&lt;-</span> univ_all</span>
+<span id="cb239-2"><a href="unigr.html#cb239-2" tabindex="-1"></a>univ <span class="ot">&lt;-</span> univ_all[, <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>]</span>
+<span id="cb239-3"><a href="unigr.html#cb239-3" tabindex="-1"></a><span class="co">#univ_all &lt;- univ_all</span></span>
+<span id="cb239-4"><a href="unigr.html#cb239-4" tabindex="-1"></a><span class="co">#var &lt;- &quot;&quot;</span></span></code></pre></div>
+</div>
+<div id="gráficos-de-dispersão" class="section level2 hasAnchor" number="10.5">
+<h2><span class="header-section-number">10.5</span> Gráficos de dispersão<a href="unigr.html#gráficos-de-dispersão" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>(<a href="https://mda.tools/docs/datasets--simple-plots.html" class="uri">https://mda.tools/docs/datasets--simple-plots.html</a>)</p>
+<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb240-1"><a href="unigr.html#cb240-1" tabindex="-1"></a><span class="fu">library</span>(mdatools)</span>
+<span id="cb240-2"><a href="unigr.html#cb240-2" tabindex="-1"></a><span class="co">#removendo linhas ou coluns por nome</span></span>
+<span id="cb240-3"><a href="unigr.html#cb240-3" tabindex="-1"></a><span class="fu">attr</span>(univ, <span class="st">&quot;name&quot;</span>) <span class="ot">=</span> <span class="st">&quot;Tucunaré&quot;</span></span>
+<span id="cb240-4"><a href="unigr.html#cb240-4" tabindex="-1"></a><span class="fu">attr</span>(univ, <span class="st">&quot;xaxis.name&quot;</span>) <span class="ot">=</span> <span class="st">&quot;Eixo X&quot;</span></span>
+<span id="cb240-5"><a href="unigr.html#cb240-5" tabindex="-1"></a><span class="fu">attr</span>(univ, <span class="st">&quot;yaxis.name&quot;</span>) <span class="ot">=</span> <span class="st">&quot;Eixo Y&quot;</span></span>
+<span id="cb240-6"><a href="unigr.html#cb240-6" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
+<span id="cb240-7"><a href="unigr.html#cb240-7" tabindex="-1"></a><span class="co"># show plot for the whole dataset (columns 1 and 2 will be taken)</span></span>
+<span id="cb240-8"><a href="unigr.html#cb240-8" tabindex="-1"></a><span class="fu">mdaplot</span>(univ, <span class="at">type =</span> <span class="st">&quot;p&quot;</span>)</span>
+<span id="cb240-9"><a href="unigr.html#cb240-9" tabindex="-1"></a><span class="co"># subset the dataset and keep only columns 6 and 7 and then make a plot</span></span>
+<span id="cb240-10"><a href="unigr.html#cb240-10" tabindex="-1"></a><span class="fu">mdaplot</span>(<span class="fu">mda.subset</span>(univ, <span class="at">select =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>)), <span class="at">type =</span> <span class="st">&quot;p&quot;</span>)</span>
+<span id="cb240-11"><a href="unigr.html#cb240-11" tabindex="-1"></a></span>
+<span id="cb240-12"><a href="unigr.html#cb240-12" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
+<span id="cb240-13"><a href="unigr.html#cb240-13" tabindex="-1"></a><span class="co"># show Height vs Weight and color points by the Beer consumption</span></span>
+<span id="cb240-14"><a href="unigr.html#cb240-14" tabindex="-1"></a><span class="fu">mdaplot</span>(univ, <span class="at">type =</span> <span class="st">&quot;p&quot;</span>, <span class="at">cgroup =</span> univ_all[, var])</span>
+<span id="cb240-15"><a href="unigr.html#cb240-15" tabindex="-1"></a><span class="co"># do the same but do not show colorbar</span></span>
+<span id="cb240-16"><a href="unigr.html#cb240-16" tabindex="-1"></a><span class="fu">mdaplot</span>(univ, <span class="at">type =</span> <span class="st">&quot;p&quot;</span>, <span class="at">cgroup =</span> univ_all[, var],</span>
+<span id="cb240-17"><a href="unigr.html#cb240-17" tabindex="-1"></a>        <span class="at">show.colorbar =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb240-18"><a href="unigr.html#cb240-18" tabindex="-1"></a><span class="co"># do the same but use grayscale color map</span></span>
+<span id="cb240-19"><a href="unigr.html#cb240-19" tabindex="-1"></a><span class="fu">mdaplot</span>(univ, <span class="at">type =</span> <span class="st">&quot;p&quot;</span>, <span class="at">cgroup =</span> univ_all[, var], <span class="at">colmap =</span> <span class="st">&quot;gray&quot;</span>)</span>
+<span id="cb240-20"><a href="unigr.html#cb240-20" tabindex="-1"></a><span class="co"># do the same but using colormap with gradients between red, yellow and green colors</span></span>
+<span id="cb240-21"><a href="unigr.html#cb240-21" tabindex="-1"></a><span class="fu">mdaplot</span>(univ, <span class="at">type =</span> <span class="st">&quot;p&quot;</span>, <span class="at">cgroup =</span> univ_all[, var],</span>
+<span id="cb240-22"><a href="unigr.html#cb240-22" tabindex="-1"></a>        <span class="at">colmap =</span> <span class="fu">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;yellow&quot;</span>, <span class="st">&quot;green&quot;</span>))</span>
+<span id="cb240-23"><a href="unigr.html#cb240-23" tabindex="-1"></a><span class="co"># make a factor using values of variable Sex and define labels for the factor levels</span></span>
+<span id="cb240-24"><a href="unigr.html#cb240-24" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">factor</span>(univ_all[, <span class="st">&quot;sexo&quot;</span>],</span>
+<span id="cb240-25"><a href="unigr.html#cb240-25" tabindex="-1"></a>           <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;MACHO&quot;</span>, <span class="st">&quot;FEMEA&quot;</span>, <span class="st">&quot;imaturo&quot;</span>))</span>
+<span id="cb240-26"><a href="unigr.html#cb240-26" tabindex="-1"></a>g</span>
+<span id="cb240-27"><a href="unigr.html#cb240-27" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
+<span id="cb240-28"><a href="unigr.html#cb240-28" tabindex="-1"></a><span class="fu">mdaplot</span>(univ, <span class="at">type =</span> <span class="st">&quot;p&quot;</span>, <span class="at">cgroup =</span> g)</span>
+<span id="cb240-29"><a href="unigr.html#cb240-29" tabindex="-1"></a><span class="fu">mdaplot</span>(univ, <span class="at">type =</span> <span class="st">&quot;p&quot;</span>, <span class="at">cgroup =</span> g, <span class="at">colmap =</span> <span class="st">&quot;gray&quot;</span>)</span>
+<span id="cb240-30"><a href="unigr.html#cb240-30" tabindex="-1"></a></span>
+<span id="cb240-31"><a href="unigr.html#cb240-31" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
+<span id="cb240-32"><a href="unigr.html#cb240-32" tabindex="-1"></a><span class="co"># default way - color grouping is used for borders and &quot;bg&quot; for background</span></span>
+<span id="cb240-33"><a href="unigr.html#cb240-33" tabindex="-1"></a><span class="fu">mdaplot</span>(univ, <span class="at">type =</span> <span class="st">&quot;p&quot;</span>, <span class="at">cgroup =</span> univ_all[, var], <span class="at">pch =</span> <span class="dv">21</span>, <span class="at">bg =</span> <span class="st">&quot;white&quot;</span>)</span>
+<span id="cb240-34"><a href="unigr.html#cb240-34" tabindex="-1"></a><span class="co"># inverse - color grouping is used for background and &quot;bg&quot; for border</span></span>
+<span id="cb240-35"><a href="unigr.html#cb240-35" tabindex="-1"></a><span class="fu">mdaplot</span>(univ, <span class="at">type =</span> <span class="st">&quot;p&quot;</span>, <span class="at">cgroup =</span> univ_all[, var], <span class="at">pch =</span> <span class="dv">21</span>, <span class="at">bg =</span> <span class="st">&quot;white&quot;</span>, <span class="at">pch.colinv =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb240-36"><a href="unigr.html#cb240-36" tabindex="-1"></a></span>
+<span id="cb240-37"><a href="unigr.html#cb240-37" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
+<span id="cb240-38"><a href="unigr.html#cb240-38" tabindex="-1"></a><span class="co"># by default row names will be used as labels</span></span>
+<span id="cb240-39"><a href="unigr.html#cb240-39" tabindex="-1"></a><span class="fu">mdaplot</span>(univ, <span class="at">type =</span> <span class="st">&quot;p&quot;</span>, <span class="at">show.labels =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb240-40"><a href="unigr.html#cb240-40" tabindex="-1"></a><span class="co"># here we tell to use indices as labels instead</span></span>
+<span id="cb240-41"><a href="unigr.html#cb240-41" tabindex="-1"></a><span class="fu">mdaplot</span>(univ, <span class="at">type =</span> <span class="st">&quot;p&quot;</span>, <span class="at">show.labels =</span> <span class="cn">TRUE</span>, <span class="at">labels =</span> <span class="st">&quot;indices&quot;</span>)</span>
+<span id="cb240-42"><a href="unigr.html#cb240-42" tabindex="-1"></a><span class="co"># here we use names again but change color and size of the labels</span></span>
+<span id="cb240-43"><a href="unigr.html#cb240-43" tabindex="-1"></a><span class="fu">mdaplot</span>(univ, <span class="at">type =</span> <span class="st">&quot;p&quot;</span>, <span class="at">show.labels =</span> <span class="cn">TRUE</span>, <span class="at">labels =</span> <span class="st">&quot;names&quot;</span>, <span class="at">lab.col =</span> <span class="st">&quot;red&quot;</span>, <span class="at">lab.cex =</span> <span class="fl">0.5</span>)</span>
+<span id="cb240-44"><a href="unigr.html#cb240-44" tabindex="-1"></a><span class="co"># finally we provide a vector with manual values to be used as the labels</span></span>
+<span id="cb240-45"><a href="unigr.html#cb240-45" tabindex="-1"></a><span class="fu">mdaplot</span>(univ, <span class="at">type =</span> <span class="st">&quot;p&quot;</span>, <span class="at">show.labels =</span> <span class="cn">TRUE</span>, <span class="at">labels =</span> <span class="fu">paste0</span>(<span class="st">&quot;T&quot;</span>, <span class="fu">seq_len</span>(<span class="fu">nrow</span>(univ))))</span>
+<span id="cb240-46"><a href="unigr.html#cb240-46" tabindex="-1"></a></span>
+<span id="cb240-47"><a href="unigr.html#cb240-47" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
+<span id="cb240-48"><a href="unigr.html#cb240-48" tabindex="-1"></a><span class="co"># manual values and tick labels for the x-axis</span></span>
+<span id="cb240-49"><a href="unigr.html#cb240-49" tabindex="-1"></a><span class="fu">mdaplot</span>(univ, <span class="at">xticks =</span> <span class="fu">c</span>(<span class="dv">10</span>,<span class="dv">30</span>,<span class="dv">40</span>), <span class="at">xticklabels =</span> <span class="fu">c</span>(<span class="st">&quot;Small&quot;</span>, <span class="st">&quot;Medium&quot;</span>, <span class="st">&quot;Large&quot;</span>))</span>
+<span id="cb240-50"><a href="unigr.html#cb240-50" tabindex="-1"></a><span class="co"># same but with rotation of the tick labels</span></span>
+<span id="cb240-51"><a href="unigr.html#cb240-51" tabindex="-1"></a><span class="fu">mdaplot</span>(univ, <span class="at">xticks =</span> <span class="fu">c</span>(<span class="dv">10</span>,<span class="dv">30</span>,<span class="dv">40</span>), <span class="at">xticklabels =</span> <span class="fu">c</span>(<span class="st">&quot;Small&quot;</span>, <span class="st">&quot;Medium&quot;</span>, <span class="st">&quot;Large&quot;</span>), <span class="at">xlas =</span> <span class="dv">2</span>)</span>
+<span id="cb240-52"><a href="unigr.html#cb240-52" tabindex="-1"></a><span class="co"># manual values and tick labels for the y-axis</span></span>
+<span id="cb240-53"><a href="unigr.html#cb240-53" tabindex="-1"></a><span class="fu">mdaplot</span>(univ, <span class="at">yticks =</span> <span class="fu">c</span>(<span class="dv">200</span>,<span class="dv">600</span>,<span class="dv">900</span>), <span class="at">yticklabels =</span> <span class="fu">c</span>(<span class="st">&quot;Light&quot;</span>, <span class="st">&quot;Medium&quot;</span>, <span class="st">&quot;Heavy&quot;</span>))</span>
+<span id="cb240-54"><a href="unigr.html#cb240-54" tabindex="-1"></a><span class="co"># same but with rotation of the tick labels</span></span>
+<span id="cb240-55"><a href="unigr.html#cb240-55" tabindex="-1"></a><span class="fu">mdaplot</span>(univ, <span class="at">yticks =</span> <span class="fu">c</span>(<span class="dv">200</span>,<span class="dv">600</span>,<span class="dv">900</span>), <span class="at">yticklabels =</span> <span class="fu">c</span>(<span class="st">&quot;Light&quot;</span>, <span class="st">&quot;Medium&quot;</span>, <span class="st">&quot;Heavy&quot;</span>), <span class="at">ylas =</span> <span class="dv">2</span>)</span>
+<span id="cb240-56"><a href="unigr.html#cb240-56" tabindex="-1"></a></span>
+<span id="cb240-57"><a href="unigr.html#cb240-57" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
+<span id="cb240-58"><a href="unigr.html#cb240-58" tabindex="-1"></a><span class="co"># change margin for bottom part</span></span>
+<span id="cb240-59"><a href="unigr.html#cb240-59" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">2</span>) <span class="sc">+</span> <span class="fl">0.1</span>)</span>
+<span id="cb240-60"><a href="unigr.html#cb240-60" tabindex="-1"></a><span class="fu">mdaplot</span>(univ, <span class="at">xticks =</span> <span class="fu">c</span>(<span class="dv">10</span>,<span class="dv">30</span>,<span class="dv">40</span>),</span>
+<span id="cb240-61"><a href="unigr.html#cb240-61" tabindex="-1"></a>        <span class="at">xticklabels =</span> <span class="fu">c</span>(<span class="st">&quot;Small&quot;</span>, <span class="st">&quot;Medium&quot;</span>, <span class="st">&quot;Large&quot;</span>),</span>
+<span id="cb240-62"><a href="unigr.html#cb240-62" tabindex="-1"></a>        <span class="at">xlas =</span> <span class="dv">2</span>, <span class="at">xlab =</span> <span class="st">&quot;&quot;</span>)</span>
+<span id="cb240-63"><a href="unigr.html#cb240-63" tabindex="-1"></a><span class="fu">mtext</span>(<span class="st">&quot;Comprimento&quot;</span>, <span class="at">side =</span> <span class="dv">1</span>, <span class="at">line =</span> <span class="dv">5</span>)</span>
+<span id="cb240-64"><a href="unigr.html#cb240-64" tabindex="-1"></a><span class="co"># change margin for left part</span></span>
+<span id="cb240-65"><a href="unigr.html#cb240-65" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">4</span>, <span class="dv">1</span>) <span class="sc">+</span> <span class="fl">0.1</span>)</span>
+<span id="cb240-66"><a href="unigr.html#cb240-66" tabindex="-1"></a><span class="fu">mdaplot</span>(univ, <span class="at">yticks =</span> <span class="fu">c</span>(<span class="dv">200</span>,<span class="dv">600</span>,<span class="dv">900</span>), <span class="at">yticklabels =</span> <span class="fu">c</span>(<span class="st">&quot;Light&quot;</span>, <span class="st">&quot;Medium&quot;</span>, <span class="st">&quot;Heavy&quot;</span>),</span>
+<span id="cb240-67"><a href="unigr.html#cb240-67" tabindex="-1"></a>        <span class="at">ylas =</span> <span class="dv">2</span>, <span class="at">ylab =</span> <span class="st">&quot;&quot;</span>)</span>
+<span id="cb240-68"><a href="unigr.html#cb240-68" tabindex="-1"></a><span class="fu">mtext</span>(<span class="st">&quot;Peso&quot;</span>, <span class="at">side =</span> <span class="dv">2</span>, <span class="at">line =</span> <span class="dv">5</span>)</span>
+<span id="cb240-69"><a href="unigr.html#cb240-69" tabindex="-1"></a></span>
+<span id="cb240-70"><a href="unigr.html#cb240-70" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
+<span id="cb240-71"><a href="unigr.html#cb240-71" tabindex="-1"></a><span class="fu">mdaplot</span>(univ, <span class="at">show.grid =</span> <span class="cn">FALSE</span>, <span class="at">show.lines =</span> <span class="fu">c</span>(<span class="dv">20</span>,<span class="dv">200</span>))</span>
+<span id="cb240-72"><a href="unigr.html#cb240-72" tabindex="-1"></a><span class="fu">mdaplot</span>(univ, <span class="at">show.lines =</span> <span class="fu">c</span>(<span class="dv">40</span>, <span class="cn">NA</span>))</span>
+<span id="cb240-73"><a href="unigr.html#cb240-73" tabindex="-1"></a><span class="co"># define a factor using values of variable Sex and simple labels</span></span>
+<span id="cb240-74"><a href="unigr.html#cb240-74" tabindex="-1"></a>g</span>
+<span id="cb240-75"><a href="unigr.html#cb240-75" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
+<span id="cb240-76"><a href="unigr.html#cb240-76" tabindex="-1"></a><span class="co"># make a scatter plot grouping points by the factor and then show convex hull for each group</span></span>
+<span id="cb240-77"><a href="unigr.html#cb240-77" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">mdaplot</span>(univ, <span class="at">cgroup =</span> g)</span>
+<span id="cb240-78"><a href="unigr.html#cb240-78" tabindex="-1"></a><span class="fu">plotConvexHull</span>(p)</span>
+<span id="cb240-79"><a href="unigr.html#cb240-79" tabindex="-1"></a><span class="co"># make a scatter plot grouping points by the factor and then show 90% confidence intervals</span></span>
+<span id="cb240-80"><a href="unigr.html#cb240-80" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">mdaplot</span>(univ, <span class="at">cgroup =</span> g)</span>
+<span id="cb240-81"><a href="unigr.html#cb240-81" tabindex="-1"></a><span class="fu">plotConfidenceEllipse</span>(p, <span class="at">conf.level =</span> <span class="fl">0.90</span>)</span>
+<span id="cb240-82"><a href="unigr.html#cb240-82" tabindex="-1"></a></span>
+<span id="cb240-83"><a href="unigr.html#cb240-83" tabindex="-1"></a><span class="co"># média agrupada por fator</span></span>
+<span id="cb240-84"><a href="unigr.html#cb240-84" tabindex="-1"></a>media <span class="ot">&lt;-</span> <span class="fu">tapply</span>(univ<span class="sc">$</span>CT_cm, g, mean)</span>
+<span id="cb240-85"><a href="unigr.html#cb240-85" tabindex="-1"></a>media</span>
+<span id="cb240-86"><a href="unigr.html#cb240-86" tabindex="-1"></a>anova <span class="ot">&lt;-</span> <span class="fu">aov</span>(CT_cm <span class="sc">~</span> g, <span class="at">data =</span> univ_all)</span>
+<span id="cb240-87"><a href="unigr.html#cb240-87" tabindex="-1"></a><span class="fu">summary</span>(anova)</span>
+<span id="cb240-88"><a href="unigr.html#cb240-88" tabindex="-1"></a><span class="fu">plot</span>(anova,<span class="dv">1</span>)</span></code></pre></div>
+</div>
+<div id="gráficos-de-linha" class="section level2 hasAnchor" number="10.6">
+<h2><span class="header-section-number">10.6</span> Gráficos de linha<a href="unigr.html#gráficos-de-linha" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb241-1"><a href="unigr.html#cb241-1" tabindex="-1"></a><span class="fu">library</span>(mdatools)</span>
+<span id="cb241-2"><a href="unigr.html#cb241-2" tabindex="-1"></a>var <span class="ot">&lt;-</span> univ<span class="sc">$</span>CT_cm</span>
+<span id="cb241-3"><a href="unigr.html#cb241-3" tabindex="-1"></a><span class="fu">attr</span>(univ<span class="sc">$</span>CT_cm, <span class="st">&quot;yaxis.name&quot;</span>) <span class="ot">=</span> <span class="st">&quot;CT_cm&quot;</span></span>
+<span id="cb241-4"><a href="unigr.html#cb241-4" tabindex="-1"></a><span class="fu">attr</span>(univ<span class="sc">$</span>CT_cm, <span class="st">&quot;xaxis.name&quot;</span>) <span class="ot">=</span> <span class="st">&quot;Indivíduo&quot;</span></span>
+<span id="cb241-5"><a href="unigr.html#cb241-5" tabindex="-1"></a></span>
+<span id="cb241-6"><a href="unigr.html#cb241-6" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">1</span>))</span>
+<span id="cb241-7"><a href="unigr.html#cb241-7" tabindex="-1"></a><span class="fu">mdaplot</span>(univ<span class="sc">$</span>CT_cm, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>)</span>
+<span id="cb241-8"><a href="unigr.html#cb241-8" tabindex="-1"></a><span class="fu">mdaplot</span>(univ<span class="sc">$</span>CT_cm, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>, <span class="at">col =</span> <span class="st">&quot;darkgray&quot;</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span></code></pre></div>
+<p><img src="fundamentos_de_ecologia_numerica_files/figure-html/unnamed-chunk-105-1.png" width="672" /></p>
+<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb242-1"><a href="unigr.html#cb242-1" tabindex="-1"></a><span class="co">#mdaplot(univ$CT_cm, type = &quot;l&quot;, cgroup = g)</span></span></code></pre></div>
+</div>
+<div id="gráficos-de-barra" class="section level2 hasAnchor" number="10.7">
+<h2><span class="header-section-number">10.7</span> Gráficos de barra<a href="unigr.html#gráficos-de-barra" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb243-1"><a href="unigr.html#cb243-1" tabindex="-1"></a><span class="co"># make a simple two rows matrix with values</span></span>
+<span id="cb243-2"><a href="unigr.html#cb243-2" tabindex="-1"></a>d <span class="ot">=</span> <span class="fu">rbind</span>(</span>
+<span id="cb243-3"><a href="unigr.html#cb243-3" tabindex="-1"></a>   <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">50</span>, <span class="dv">60</span>, <span class="dv">90</span>),</span>
+<span id="cb243-4"><a href="unigr.html#cb243-4" tabindex="-1"></a>   <span class="fu">c</span>(<span class="dv">14</span>, <span class="dv">45</span>, <span class="dv">59</span>, <span class="dv">88</span>)</span>
+<span id="cb243-5"><a href="unigr.html#cb243-5" tabindex="-1"></a>)</span>
+<span id="cb243-6"><a href="unigr.html#cb243-6" tabindex="-1"></a></span>
+<span id="cb243-7"><a href="unigr.html#cb243-7" tabindex="-1"></a><span class="co"># add some names and attributes</span></span>
+<span id="cb243-8"><a href="unigr.html#cb243-8" tabindex="-1"></a><span class="fu">colnames</span>(d) <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">&quot;PC&quot;</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>)</span>
+<span id="cb243-9"><a href="unigr.html#cb243-9" tabindex="-1"></a><span class="fu">rownames</span>(d) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;Cal&quot;</span>, <span class="st">&quot;CV&quot;</span>)</span>
+<span id="cb243-10"><a href="unigr.html#cb243-10" tabindex="-1"></a><span class="fu">attr</span>(d, <span class="st">&quot;xaxis.name&quot;</span>) <span class="ot">=</span> <span class="st">&quot;Components&quot;</span></span>
+<span id="cb243-11"><a href="unigr.html#cb243-11" tabindex="-1"></a><span class="fu">attr</span>(d, <span class="st">&quot;name&quot;</span>) <span class="ot">=</span> <span class="st">&quot;Explained variance&quot;</span></span>
+<span id="cb243-12"><a href="unigr.html#cb243-12" tabindex="-1"></a></span>
+<span id="cb243-13"><a href="unigr.html#cb243-13" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
+<span id="cb243-14"><a href="unigr.html#cb243-14" tabindex="-1"></a></span>
+<span id="cb243-15"><a href="unigr.html#cb243-15" tabindex="-1"></a><span class="co"># make a default bar plot</span></span>
+<span id="cb243-16"><a href="unigr.html#cb243-16" tabindex="-1"></a><span class="fu">mdaplot</span>(d, <span class="at">type =</span> <span class="st">&quot;h&quot;</span>)</span>
+<span id="cb243-17"><a href="unigr.html#cb243-17" tabindex="-1"></a></span>
+<span id="cb243-18"><a href="unigr.html#cb243-18" tabindex="-1"></a><span class="co"># make a bar plot with manual xtick labels, color and labels for data values</span></span>
+<span id="cb243-19"><a href="unigr.html#cb243-19" tabindex="-1"></a><span class="fu">mdaplot</span>(d, <span class="at">type =</span> <span class="st">&quot;h&quot;</span>, <span class="at">xticks =</span> <span class="fu">seq_len</span>(<span class="fu">ncol</span>(d)), <span class="at">xticklabels =</span> <span class="fu">colnames</span>(d), <span class="at">col =</span> <span class="st">&quot;red&quot;</span>,</span>
+<span id="cb243-20"><a href="unigr.html#cb243-20" tabindex="-1"></a>   <span class="at">show.labels =</span> <span class="cn">TRUE</span>, <span class="at">labels =</span> <span class="st">&quot;values&quot;</span>, <span class="at">xlas =</span> <span class="dv">2</span>, <span class="at">xlab =</span> <span class="st">&quot;&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Variance, %&quot;</span>)</span></code></pre></div>
+<p><img src="fundamentos_de_ecologia_numerica_files/figure-html/unnamed-chunk-106-1.png" width="672" /></p>
+<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb244-1"><a href="unigr.html#cb244-1" tabindex="-1"></a>d <span class="ot">=</span> <span class="fu">rbind</span>(</span>
+<span id="cb244-2"><a href="unigr.html#cb244-2" tabindex="-1"></a>   <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">60</span>, <span class="dv">70</span>, <span class="dv">75</span>),</span>
+<span id="cb244-3"><a href="unigr.html#cb244-3" tabindex="-1"></a>   <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">3</span>)</span>
+<span id="cb244-4"><a href="unigr.html#cb244-4" tabindex="-1"></a>)</span>
+<span id="cb244-5"><a href="unigr.html#cb244-5" tabindex="-1"></a></span>
+<span id="cb244-6"><a href="unigr.html#cb244-6" tabindex="-1"></a><span class="co"># add names and attributes</span></span>
+<span id="cb244-7"><a href="unigr.html#cb244-7" tabindex="-1"></a><span class="fu">rownames</span>(d) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;Mean&quot;</span>, <span class="st">&quot;Std&quot;</span>)</span>
+<span id="cb244-8"><a href="unigr.html#cb244-8" tabindex="-1"></a><span class="fu">colnames</span>(d) <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">&quot;PC&quot;</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>)</span>
+<span id="cb244-9"><a href="unigr.html#cb244-9" tabindex="-1"></a><span class="fu">attr</span>(d, <span class="st">&#39;name&#39;</span>) <span class="ot">=</span> <span class="st">&quot;Statistics&quot;</span></span>
+<span id="cb244-10"><a href="unigr.html#cb244-10" tabindex="-1"></a></span>
+<span id="cb244-11"><a href="unigr.html#cb244-11" tabindex="-1"></a></span>
+<span id="cb244-12"><a href="unigr.html#cb244-12" tabindex="-1"></a><span class="co"># show the plots</span></span>
+<span id="cb244-13"><a href="unigr.html#cb244-13" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
+<span id="cb244-14"><a href="unigr.html#cb244-14" tabindex="-1"></a><span class="fu">mdaplot</span>(d, <span class="at">type =</span> <span class="st">&quot;e&quot;</span>)</span>
+<span id="cb244-15"><a href="unigr.html#cb244-15" tabindex="-1"></a><span class="fu">mdaplot</span>(d, <span class="at">type =</span> <span class="st">&quot;e&quot;</span>, <span class="at">xticks =</span> <span class="fu">seq_len</span>(<span class="fu">ncol</span>(d)),</span>
+<span id="cb244-16"><a href="unigr.html#cb244-16" tabindex="-1"></a>   <span class="at">xticklabels =</span> <span class="fu">colnames</span>(d), <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, <span class="at">xlas =</span> <span class="dv">2</span>, <span class="at">xlab =</span> <span class="st">&quot;&quot;</span>)</span></code></pre></div>
+<p><img src="fundamentos_de_ecologia_numerica_files/figure-html/unnamed-chunk-106-2.png" width="672" /></p>
+<div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb245-1"><a href="unigr.html#cb245-1" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
+<span id="cb245-2"><a href="unigr.html#cb245-2" tabindex="-1"></a></span>
+<span id="cb245-3"><a href="unigr.html#cb245-3" tabindex="-1"></a><span class="fu">mdaplot</span>(<span class="fu">mda.subset</span>(d, <span class="dv">1</span>), <span class="at">type =</span> <span class="st">&quot;h&quot;</span>, <span class="at">col =</span> <span class="st">&quot;lightgray&quot;</span>)</span>
+<span id="cb245-4"><a href="unigr.html#cb245-4" tabindex="-1"></a><span class="fu">mdaplot</span>(d, <span class="at">type =</span> <span class="st">&quot;e&quot;</span>, <span class="at">show.axes =</span> <span class="cn">FALSE</span>, <span class="at">pch =</span> <span class="cn">NA</span>)</span>
+<span id="cb245-5"><a href="unigr.html#cb245-5" tabindex="-1"></a></span>
+<span id="cb245-6"><a href="unigr.html#cb245-6" tabindex="-1"></a><span class="fu">mdaplot</span>(<span class="fu">mda.subset</span>(d, <span class="dv">1</span>), <span class="at">type =</span> <span class="st">&quot;b&quot;</span>)</span>
+<span id="cb245-7"><a href="unigr.html#cb245-7" tabindex="-1"></a><span class="fu">mdaplot</span>(d, <span class="at">type =</span> <span class="st">&quot;e&quot;</span>, <span class="at">show.axes =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<p><img src="fundamentos_de_ecologia_numerica_files/figure-html/unnamed-chunk-106-3.png" width="672" /></p>
+</div>
+<div id="gráficos-de-grupos" class="section level2 hasAnchor" number="10.8">
+<h2><span class="header-section-number">10.8</span> Gráficos de grupos<a href="unigr.html#gráficos-de-grupos" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb246-1"><a href="unigr.html#cb246-1" tabindex="-1"></a><span class="co"># let&#39;s create a simple dataset with 3 rows</span></span>
+<span id="cb246-2"><a href="unigr.html#cb246-2" tabindex="-1"></a>p <span class="ot">=</span> <span class="fu">rbind</span>(</span>
+<span id="cb246-3"><a href="unigr.html#cb246-3" tabindex="-1"></a>   <span class="fu">c</span>(<span class="fl">0.40</span>, <span class="fl">0.69</span>, <span class="fl">0.88</span>, <span class="fl">0.95</span>),</span>
+<span id="cb246-4"><a href="unigr.html#cb246-4" tabindex="-1"></a>   <span class="fu">c</span>(<span class="fl">0.34</span>, <span class="fl">0.64</span>, <span class="fl">0.81</span>, <span class="fl">0.92</span>),</span>
+<span id="cb246-5"><a href="unigr.html#cb246-5" tabindex="-1"></a>   <span class="fu">c</span>(<span class="fl">0.30</span>, <span class="fl">0.61</span>, <span class="fl">0.80</span>, <span class="fl">0.88</span>)</span>
+<span id="cb246-6"><a href="unigr.html#cb246-6" tabindex="-1"></a>)</span>
+<span id="cb246-7"><a href="unigr.html#cb246-7" tabindex="-1"></a></span>
+<span id="cb246-8"><a href="unigr.html#cb246-8" tabindex="-1"></a><span class="co"># add some names and attributes</span></span>
+<span id="cb246-9"><a href="unigr.html#cb246-9" tabindex="-1"></a><span class="fu">rownames</span>(p) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;Cal&quot;</span>, <span class="st">&quot;CV&quot;</span>, <span class="st">&quot;Test&quot;</span>)</span>
+<span id="cb246-10"><a href="unigr.html#cb246-10" tabindex="-1"></a><span class="fu">colnames</span>(p) <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">&quot;PC&quot;</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>)</span>
+<span id="cb246-11"><a href="unigr.html#cb246-11" tabindex="-1"></a><span class="fu">attr</span>(p, <span class="st">&quot;name&quot;</span>) <span class="ot">=</span> <span class="st">&quot;Cumulative variance&quot;</span></span>
+<span id="cb246-12"><a href="unigr.html#cb246-12" tabindex="-1"></a><span class="fu">attr</span>(p, <span class="st">&quot;xaxis.name&quot;</span>) <span class="ot">=</span> <span class="st">&quot;Components&quot;</span></span>
+<span id="cb246-13"><a href="unigr.html#cb246-13" tabindex="-1"></a></span>
+<span id="cb246-14"><a href="unigr.html#cb246-14" tabindex="-1"></a><span class="co"># and make group plots of different types</span></span>
+<span id="cb246-15"><a href="unigr.html#cb246-15" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
+<span id="cb246-16"><a href="unigr.html#cb246-16" tabindex="-1"></a><span class="fu">mdaplotg</span>(p, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>)</span>
+<span id="cb246-17"><a href="unigr.html#cb246-17" tabindex="-1"></a><span class="fu">mdaplotg</span>(p, <span class="at">type =</span> <span class="st">&quot;b&quot;</span>)</span>
+<span id="cb246-18"><a href="unigr.html#cb246-18" tabindex="-1"></a><span class="fu">mdaplotg</span>(p, <span class="at">type =</span> <span class="st">&quot;h&quot;</span>, <span class="at">xticks =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>)</span>
+<span id="cb246-19"><a href="unigr.html#cb246-19" tabindex="-1"></a><span class="fu">mdaplotg</span>(p, <span class="at">type =</span> <span class="st">&quot;b&quot;</span>, <span class="at">lty =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>), <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;green&quot;</span>, <span class="st">&quot;blue&quot;</span>), <span class="at">pch =</span> <span class="dv">1</span>,</span>
+<span id="cb246-20"><a href="unigr.html#cb246-20" tabindex="-1"></a>         <span class="at">xticks =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">xticklabels =</span> <span class="fu">colnames</span>(p))</span></code></pre></div>
+<p><img src="fundamentos_de_ecologia_numerica_files/figure-html/unnamed-chunk-107-1.png" width="672" /></p>
+<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb247-1"><a href="unigr.html#cb247-1" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
+<span id="cb247-2"><a href="unigr.html#cb247-2" tabindex="-1"></a><span class="fu">mdaplotg</span>(p, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>, <span class="at">legend.position =</span> <span class="st">&quot;top&quot;</span>)</span>
+<span id="cb247-3"><a href="unigr.html#cb247-3" tabindex="-1"></a><span class="fu">mdaplotg</span>(p, <span class="at">type =</span> <span class="st">&quot;b&quot;</span>, <span class="at">legend.position =</span> <span class="st">&quot;bottomleft&quot;</span>)</span>
+<span id="cb247-4"><a href="unigr.html#cb247-4" tabindex="-1"></a><span class="fu">mdaplotg</span>(p, <span class="at">type =</span> <span class="st">&quot;h&quot;</span>, <span class="at">legend.position =</span> <span class="st">&quot;bottom&quot;</span>)</span>
+<span id="cb247-5"><a href="unigr.html#cb247-5" tabindex="-1"></a><span class="fu">mdaplotg</span>(p, <span class="at">type =</span> <span class="st">&quot;b&quot;</span>, <span class="at">show.legend =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<p><img src="fundamentos_de_ecologia_numerica_files/figure-html/unnamed-chunk-107-2.png" width="672" /></p>
+<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb248-1"><a href="unigr.html#cb248-1" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
+<span id="cb248-2"><a href="unigr.html#cb248-2" tabindex="-1"></a><span class="fu">mdaplotg</span>(p, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>, <span class="at">show.labels =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb248-3"><a href="unigr.html#cb248-3" tabindex="-1"></a><span class="fu">mdaplotg</span>(p, <span class="at">type =</span> <span class="st">&quot;b&quot;</span>, <span class="at">show.labels =</span> <span class="cn">TRUE</span>, <span class="at">labels =</span> <span class="st">&quot;indices&quot;</span>)</span>
+<span id="cb248-4"><a href="unigr.html#cb248-4" tabindex="-1"></a><span class="fu">mdaplotg</span>(p, <span class="at">type =</span> <span class="st">&quot;h&quot;</span>, <span class="at">show.labels =</span> <span class="cn">TRUE</span>, <span class="at">labels =</span> <span class="st">&quot;values&quot;</span>)</span>
+<span id="cb248-5"><a href="unigr.html#cb248-5" tabindex="-1"></a><span class="fu">mdaplotg</span>(p, <span class="at">type =</span> <span class="st">&quot;b&quot;</span>, <span class="at">show.labels =</span> <span class="cn">TRUE</span>, <span class="at">labels =</span> <span class="st">&quot;values&quot;</span>)</span></code></pre></div>
+<p><img src="fundamentos_de_ecologia_numerica_files/figure-html/unnamed-chunk-107-3.png" width="672" /></p>
+<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb249-1"><a href="unigr.html#cb249-1" tabindex="-1"></a><span class="co"># load data and exclude column with income</span></span>
+<span id="cb249-2"><a href="unigr.html#cb249-2" tabindex="-1"></a><span class="fu">data</span>(people)</span>
+<span id="cb249-3"><a href="unigr.html#cb249-3" tabindex="-1"></a>people <span class="ot">=</span> <span class="fu">mda.exclcols</span>(people, <span class="st">&quot;Income&quot;</span>)</span>
+<span id="cb249-4"><a href="unigr.html#cb249-4" tabindex="-1"></a></span>
+<span id="cb249-5"><a href="unigr.html#cb249-5" tabindex="-1"></a><span class="co"># use values of sex variable to split data into two subsets</span></span>
+<span id="cb249-6"><a href="unigr.html#cb249-6" tabindex="-1"></a>sex <span class="ot">=</span> people[, <span class="st">&quot;Sex&quot;</span>]</span>
+<span id="cb249-7"><a href="unigr.html#cb249-7" tabindex="-1"></a>m <span class="ot">=</span> <span class="fu">mda.subset</span>(people, <span class="at">subset =</span> sex <span class="sc">==</span> <span class="sc">-</span><span class="dv">1</span>)</span>
+<span id="cb249-8"><a href="unigr.html#cb249-8" tabindex="-1"></a>f <span class="ot">=</span> <span class="fu">mda.subset</span>(people, <span class="at">subset =</span> sex <span class="sc">==</span>  <span class="dv">1</span>)</span>
+<span id="cb249-9"><a href="unigr.html#cb249-9" tabindex="-1"></a></span>
+<span id="cb249-10"><a href="unigr.html#cb249-10" tabindex="-1"></a><span class="co"># combine the two subsets into a named list</span></span>
+<span id="cb249-11"><a href="unigr.html#cb249-11" tabindex="-1"></a>d <span class="ot">=</span> <span class="fu">list</span>(<span class="at">male =</span> m, <span class="at">female =</span> f)</span>
+<span id="cb249-12"><a href="unigr.html#cb249-12" tabindex="-1"></a></span>
+<span id="cb249-13"><a href="unigr.html#cb249-13" tabindex="-1"></a><span class="co"># make plots for the list</span></span>
+<span id="cb249-14"><a href="unigr.html#cb249-14" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
+<span id="cb249-15"><a href="unigr.html#cb249-15" tabindex="-1"></a><span class="fu">mdaplotg</span>(d, <span class="at">type =</span> <span class="st">&quot;p&quot;</span>)</span>
+<span id="cb249-16"><a href="unigr.html#cb249-16" tabindex="-1"></a><span class="fu">mdaplotg</span>(d, <span class="at">type =</span> <span class="st">&quot;b&quot;</span>)</span>
+<span id="cb249-17"><a href="unigr.html#cb249-17" tabindex="-1"></a><span class="fu">mdaplotg</span>(d, <span class="at">type =</span> <span class="st">&quot;h&quot;</span>)</span>
+<span id="cb249-18"><a href="unigr.html#cb249-18" tabindex="-1"></a><span class="fu">mdaplotg</span>(d, <span class="at">type =</span> <span class="st">&quot;b&quot;</span>, <span class="at">lty =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;blue&quot;</span>), <span class="at">pch =</span> <span class="dv">1</span>)</span></code></pre></div>
+<p><img src="fundamentos_de_ecologia_numerica_files/figure-html/unnamed-chunk-107-4.png" width="672" /></p>
+<div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb250-1"><a href="unigr.html#cb250-1" tabindex="-1"></a>sex <span class="ot">=</span> <span class="fu">factor</span>(people[, <span class="st">&quot;Sex&quot;</span>], <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;M&quot;</span>, <span class="st">&quot;F&quot;</span>))</span>
+<span id="cb250-2"><a href="unigr.html#cb250-2" tabindex="-1"></a>reg <span class="ot">=</span> <span class="fu">factor</span>(people[, <span class="st">&quot;Region&quot;</span>], <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;S&quot;</span>, <span class="st">&quot;M&quot;</span>))</span>
+<span id="cb250-3"><a href="unigr.html#cb250-3" tabindex="-1"></a>groups <span class="ot">=</span> <span class="fu">data.frame</span>(sex, reg)</span>
+<span id="cb250-4"><a href="unigr.html#cb250-4" tabindex="-1"></a></span>
+<span id="cb250-5"><a href="unigr.html#cb250-5" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
+<span id="cb250-6"><a href="unigr.html#cb250-6" tabindex="-1"></a><span class="fu">mdaplotg</span>(people, <span class="at">type =</span> <span class="st">&quot;p&quot;</span>, <span class="at">groupby =</span> groups)</span>
+<span id="cb250-7"><a href="unigr.html#cb250-7" tabindex="-1"></a><span class="fu">mdaplotg</span>(people, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>, <span class="at">groupby =</span> groups)</span>
+<span id="cb250-8"><a href="unigr.html#cb250-8" tabindex="-1"></a><span class="fu">mdaplotg</span>(people, <span class="at">type =</span> <span class="st">&quot;b&quot;</span>, <span class="at">groupby =</span> groups)</span>
+<span id="cb250-9"><a href="unigr.html#cb250-9" tabindex="-1"></a><span class="fu">mdaplotg</span>(people, <span class="at">type =</span> <span class="st">&quot;h&quot;</span>, <span class="at">groupby =</span> groups)</span></code></pre></div>
+<p><img src="fundamentos_de_ecologia_numerica_files/figure-html/unnamed-chunk-107-5.png" width="672" /></p>
+</div>
+<div id="apêndices-6" class="section level2 unnumbered hasAnchor">
+<h2>Apêndices<a href="unigr.html#apêndices-6" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+</div>
+<div id="sites-para-consulta" class="section level2 unnumbered hasAnchor">
+<h2>Sites para consulta<a href="unigr.html#sites-para-consulta" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><a href="https://www.geeksforgeeks.org/break-axis-of-plot-in-r/" class="uri">https://www.geeksforgeeks.org/break-axis-of-plot-in-r/</a>
+<a href="https://stackoverflow.com/questions/72498597/add-a-break-to-a-bar-chart-when-one-value-is-very-large" class="uri">https://stackoverflow.com/questions/72498597/add-a-break-to-a-bar-chart-when-one-value-is-very-large</a></p>
+</div>
+<div id="script-limpo-4" class="section level2 unnumbered hasAnchor">
+<h2>Script limpo<a href="unigr.html#script-limpo-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Aqui apresento o scrip na íntegra sem os textos ou outros comentários. Você pode copiar e colar no R para executa-lo. Lembre de remover os <span style="color:green"><code>#</code></span> ou <span style="color:green"><code>##</code></span> caso necessite executar essas linhas.</p>
+</div>
+<div id="referências-8" class="section level2 unnumbered hasAnchor">
+<h2>Referências<a href="unigr.html#referências-8" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+
+</div>
+</div>
+<h3>Bibliografia Geral<a href="bibliografia-geral.html#bibliografia-geral" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="refs" class="references csl-bib-body" entry-spacing="1">
+<div id="ref-RN3024" class="csl-entry">
+MEDEIROS, E. S. F.; ROSA, I. L. Reprodução de tucunaré Cichla ocellaris (Perciformes: Cichlidae) Bloch &amp; Schneider, 1801 na represa do rio Gramame, Alhandra / PB. <strong>Resumos. II Encontro de Iniciação Científica da UFPB</strong>, [s. l.], p. 82–82, 1994.
+</div>
+<div id="ref-RN2774" class="csl-entry">
+TEAM, R. D. C. <strong>R: A language and environment for statistical computing</strong>. Austria: R Foundation for Statistical Computing, 2017. Disponível em: &lt;<a href="https://www.r-project.org/">https://www.r-project.org/</a>&gt;
+</div>
+<div id="ref-RN358" class="csl-entry">
+TEAM, R. S. <strong>RStudio: Integrated Development Environment for R</strong>. Boston, MA: RStudio, PBC, 2022. Disponível em: &lt;<a href="https://posit.co/products/open-source/rstudio/">https://posit.co/products/open-source/rstudio/</a>&gt;
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="univ2.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="estrcom.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/rstudio/bookdown-demo/edit/master/3-03-3-rmd3_unigr.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["fundamentos_de_ecologia_numerica.pdf", "fundamentos_de_ecologia_numerica.epub"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "section"
+  }
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
