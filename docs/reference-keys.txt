@@ -1,6 +1,5 @@
 fig:rm1fig102
 fig:R-eng102
-fig:102extensoes
 fig:ppbio001
 apres
 motivação
