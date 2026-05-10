@@ -9,21 +9,20 @@
 <meta name="author" content="Laboratório de Ecologia">
 <meta name="author" content="Universidade Estadual da Paraíba">
 <meta name="author" content="Campus V, João Pessoa, PB">
-<meta name="description" content="Apresentação O R é uma linguagem de expressão com uma sintaxe muito simples (veja TEAM (1999-2024)). Ela é sensível a maiúsculas e minúsculas, como a maioria dos pacotes baseados em UNIX, então A...">
+<meta name="description" content="Apresentação O R é uma linguagem de expressão com uma sintaxe muito simples (veja VENABLES; SMITH; R CORE TEAM (2026)). Ela é sensível a maiúsculas e minúsculas, como a maioria dos pacotes...">
 <meta name="generator" content="bookdown 0.46 with bs4_book()">
 <meta property="og:title" content=" 10 R Módulo 1 - Sintaxe e Tipos de dados no R | Fundamentos de Ecologia Numérica">
 <meta property="og:type" content="book">
-<meta property="og:description" content="Apresentação O R é uma linguagem de expressão com uma sintaxe muito simples (veja TEAM (1999-2024)). Ela é sensível a maiúsculas e minúsculas, como a maioria dos pacotes baseados em UNIX, então A...">
+<meta property="og:description" content="Apresentação O R é uma linguagem de expressão com uma sintaxe muito simples (veja VENABLES; SMITH; R CORE TEAM (2026)). Ela é sensível a maiúsculas e minúsculas, como a maioria dos pacotes...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content=" 10 R Módulo 1 - Sintaxe e Tipos de dados no R | Fundamentos de Ecologia Numérica">
-<meta name="twitter:description" content="Apresentação O R é uma linguagem de expressão com uma sintaxe muito simples (veja TEAM (1999-2024)). Ela é sensível a maiúsculas e minúsculas, como a maioria dos pacotes baseados em UNIX, então A...">
+<meta name="twitter:description" content="Apresentação O R é uma linguagem de expressão com uma sintaxe muito simples (veja VENABLES; SMITH; R CORE TEAM (2026)). Ela é sensível a maiúsculas e minúsculas, como a maioria dos pacotes...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.10.0/transition.js"></script><script src="libs/bs3compat-0.10.0/tabs.js"></script><script src="libs/bs3compat-0.10.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 <link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet">
-<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script><script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script><script src="libs/rglWebGL-binding-1.3.36/rglWebGL.js"></script><link href="libs/rglwidgetClass-1.3.36/rgl.css" rel="stylesheet">
-<script src="libs/rglwidgetClass-1.3.36/rglClass.src.js"></script><script src="libs/rglwidgetClass-1.3.36/utils.src.js"></script><script src="libs/rglwidgetClass-1.3.36/buffer.src.js"></script><script src="libs/rglwidgetClass-1.3.36/subscenes.src.js"></script><script src="libs/rglwidgetClass-1.3.36/shaders.src.js"></script><script src="libs/rglwidgetClass-1.3.36/shadersrc.src.js"></script><script src="libs/rglwidgetClass-1.3.36/textures.src.js"></script><script src="libs/rglwidgetClass-1.3.36/projection.src.js"></script><script src="libs/rglwidgetClass-1.3.36/mouse.src.js"></script><script src="libs/rglwidgetClass-1.3.36/init.src.js"></script><script src="libs/rglwidgetClass-1.3.36/pieces.src.js"></script><script src="libs/rglwidgetClass-1.3.36/draw.src.js"></script><script src="libs/rglwidgetClass-1.3.36/controls.src.js"></script><script src="libs/rglwidgetClass-1.3.36/selection.src.js"></script><script src="libs/rglwidgetClass-1.3.36/rglTimer.src.js"></script><script src="libs/rglwidgetClass-1.3.36/pretty.src.js"></script><script src="libs/rglwidgetClass-1.3.36/axes.src.js"></script><script src="libs/rglwidgetClass-1.3.36/animation.src.js"></script><script src="libs/CanvasMatrix4-1.3.36/CanvasMatrix.src.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
   </style>
@@ -87,21 +86,6 @@
 <li><a class="" href="basehab.html"><span class="header-section-number">9</span> Base de dados II - Habitat</a></li>
 <li class="book-part">IV. ESTATÍSTICAS DESCRITIVAS</li>
 <li><a class="active" href="tiposR.html"><span class="header-section-number">10</span> R Módulo 1 - Sintaxe e Tipos de dados no R</a></li>
-<li><a class="" href="xls.html"><span class="header-section-number">11</span> R Módulo 2 - Importando planilhas de dados</a></li>
-<li><a class="" href="univ.html"><span class="header-section-number">12</span> R Módulo 3.1 - Estatísticas descritivas e normalidade</a></li>
-<li><a class="" href="univ2.html"><span class="header-section-number">13</span> R Módulo 3.2 - Testes estatísticos</a></li>
-<li><a class="" href="unigr.html"><span class="header-section-number">14</span> R Modulo 3.3 - Gráficos univariados</a></li>
-<li><a class="" href="estrcom.html"><span class="header-section-number">15</span> R Módulo 4.1 - Estrutura da comunidade</a></li>
-<li><a class="" href="partdiv.html"><span class="header-section-number">16</span> R Modulo 4.2 - Decomposição da diversidade</a></li>
-<li><a class="" href="estrhab.html"><span class="header-section-number">17</span> R Módulo 4.3 - Estrutura do habitat</a></li>
-<li><a class="" href="reltrns.html"><span class="header-section-number">18</span> R Modulo 5 - Relativizações e transformações</a></li>
-<li><a class="" href="outcentr.html"><span class="header-section-number">19</span> R Módulo 6 - Análise de outliers baseada no desvio padrão do centróide</a></li>
-<li class="book-part">V. ANÁLISES MULTIVARIADAS</li>
-<li><a class="" href="upgma.html"><span class="header-section-number">20</span> R Módulo 7 - Análise de Classificação Hierárquica - SAHN</a></li>
-<li><a class="" href="kmeans.html"><span class="header-section-number">21</span> R Módulo 8 - Análise de Classificação Não-hierárquica - K-Means</a></li>
-<li><a class="" href="pca.html"><span class="header-section-number">22</span> R Módulo 9 - Análise de Componentes Principais - PCA</a></li>
-<li><a class="" href="nmds.html"><span class="header-section-number">23</span> R Módulo 10.1 - Análise de Ordenação - NMDS</a></li>
-<li><a class="" href="nmds2.html"><span class="header-section-number">24</span> R Modulo 10.2 - Análise de Ordenação - NMDS</a></li>
 <li class="book-part">VI. INFORMAÇÕES GERAIS</li>
 <li><a class="" href="bibliografia-geral.html">Bibliografia Geral</a></li>
 </ul>
@@ -118,10 +102,9 @@
 <div id="apresentação-4" class="section level3 unnumbered">
 <h3>Apresentação<a class="anchor" aria-label="anchor" href="#apresenta%C3%A7%C3%A3o-4"><i class="fas fa-link"></i></a>
 </h3>
-<p>O R é uma <strong>linguagem de expressão</strong> com uma sintaxe muito simples (veja <span class="citation">TEAM (<a href="#ref-RN1787">1999-2024</a>)</span>). Ela é sensível a maiúsculas e minúsculas, como a maioria dos pacotes baseados em UNIX, então <code>A</code> e <code>a</code> são símbolos diferentes e se refeririam a variáveis diferentes. O conjunto de símbolos que podem ser usados nos nomes do R depende do sistema operacional e do país em que o R está sendo executado (tecnicamente, da localidade em uso). Normalmente, todos os símbolos alfanuméricos são permitidos (e em alguns países isso inclui letras acentuadas), além de <code>.</code> e <code>_</code>, com a restrição de que um nome deve começar com <code>.</code> ou uma letra, e se começar com <code>.</code>, o segundo caractere não deve ser um dígito. Os nomes são efetivamente ilimitados em comprimento.</p>
+<p>O R é uma <strong>linguagem de expressão</strong> com uma sintaxe muito simples (veja <span class="citation">VENABLES; SMITH; R CORE TEAM (<a href="#ref-venables2026">2026</a>)</span>). Ela é sensível a maiúsculas e minúsculas, como a maioria dos pacotes baseados em UNIX, então <code>A</code> e <code>a</code> são símbolos diferentes e se refeririam a variáveis diferentes. O conjunto de símbolos que podem ser usados nos nomes do R depende do sistema operacional e do país em que o R está sendo executado (tecnicamente, da localidade em uso). Normalmente, todos os símbolos alfanuméricos são permitidos (e em alguns países isso inclui letras acentuadas), além de <code>.</code> e <code>_</code>, com a restrição de que um nome deve começar com <code>.</code> ou uma letra, e se começar com <code>.</code>, o segundo caractere não deve ser um dígito. Os nomes são efetivamente ilimitados em comprimento.</p>
 <div id="hello" class="greeting message" style="color: green;">
-<p><span style="color:red">ATENÇÃO</span>
-Evite usar nomes longos e complicados</p>
+<p><span style="color:red">ATENÇÃO</span> Evite usar nomes longos e complicados</p>
 </div>
 <p><strong>Comandos elementares consistem em expressões ou atribuições</strong>. Se uma <code>expressão</code> for dada como um comando, ela é avaliada, impressa (a menos que seja especificamente tornada invisível) e o valor é perdido. Uma <code>atribuição</code> também avalia uma expressão e passa o valor para uma variável, mas o resultado não é automaticamente impresso.</p>
 <p>Os comandos são separados por um ponto e vírgula (<code>;</code>) ou por uma nova linha (<code>Enter</code>). Comandos elementares podem ser agrupados em uma única expressão composta por chaves (<code>{' and '}</code>).</p>
@@ -129,6 +112,12 @@ Evite usar nomes longos e complicados</p>
 <p>Se um comando não estiver completo no final de uma linha, o R fornecerá um prompt diferente, por padrão <code>+</code> (ao invés do tradiocional <code>&gt;</code>, nas linhas seguintes e continuará a ler a entrada até que o comando seja sintaticamente completo. Este prompt pode ser alterado pelo usuário. Geralmente, omitiremos o prompt de continuação e indicaremos a continuação apenas recuando.</p>
 <p>As linhas de comando digitadas no console são limitadas a cerca de 4095 bytes (não caracteres).</p>
 <p>No R, uma linguagem de programação amplamente utilizada para análise de dados e estatísticas, os tipos e estruturas de dados desempenham um papel fundamental na manipulação e organização das informações.</p>
+<div class="infobox warning">
+<div class="center">
+<p><strong>IMPORTANTE</strong></p>
+</div>
+<p>Relembre o <a href="@essencial">Essencial</a> sobre o R no Capítulo de <a href="rrstu.html#rrstu">Introdução ao R/RStudio</a>.</p>
+</div>
 </div>
 <div id="tipos-e-estruturas-de-dados-no-r" class="section level2" number="10.1">
 <h2>
@@ -142,51 +131,6 @@ Evite usar nomes longos e complicados</p>
 Figura 10.1: Interface típica do RStudio e nome dos paineis ou janelas.
 </p>
 </div>
-</div>
-<div id="mensagens-de-erro-e-avisos-no-r-1" class="section level2" number="10.2">
-<h2>
-<span class="header-section-number">10.2</span> Mensagens de erro e avisos no R<a class="anchor" aria-label="anchor" href="#mensagens-de-erro-e-avisos-no-r-1"><i class="fas fa-link"></i></a>
-</h2>
-<p>No contexto da linguagem de programação R, mensagens de erro (errors) e mensagens de aviso (warnings) que <span style="color:red">aparecem em vermelho no painel de console</span>. Elas são formas de feedback do sistema que indicam problemas ou situações potencialmente problemáticas durante a execução do código. Aqui está uma breve explicação de cada um:</p>
-<ol style="list-style-type: decimal">
-<li>
-<strong>Erro (<span style="color:red">Error</span>):</strong>
-<ul>
-<li>Um erro ocorre quando algo no código não está correto ou não pode ser executado como esperado.</li>
-<li>Isso pode ser causado por sintaxe incorreta, uso incorreto de funções, operações inválidas, referências a objetos que não existem, entre outros problemas.</li>
-<li>Quando ocorre um erro, a execução do código é interrompida e uma mensagem de erro é exibida no console em vermelho, indicando o tipo de erro e, muitas vezes, a linha onde ocorreu.</li>
-</ul>
-</li>
-<li>
-<strong>Aviso (<span style="color:red">Warning</span>):</strong>
-<ul>
-<li>Não indica erro. Um aviso é emitido quando algo no código pode resultar em um comportamento indesejado ou em resultados inesperados, mas não interrompe necessariamente a execução do código.</li>
-<li>Os avisos geralmente indicam situações que merecem atenção, como conversões de tipos de dados que podem perder informações ou funções que estão sendo usadas de maneira que pode levar a resultados questionáveis.</li>
-<li>Os avisos são exibidos em vermelho no console e fornecem informações sobre a natureza do aviso e, possivelmente, como abordá-lo.</li>
-</ul>
-</li>
-</ol>
-<p>É importante prestar atenção a mensagens de erro e avisos, pois eles fornecem insights sobre problemas em seu código ou potenciais fontes de comportamento inesperado. Resolver erros é fundamental para que o código funcione conforme o esperado. Embora os avisos não interrompam a execução, investigá-los pode ajudar a evitar problemas futuros ou melhorar a qualidade do código.</p>
-</div>
-<div id="o-que-é-um-script-e-qual-sua-diferença-para-um-código" class="section level2" number="10.3">
-<h2>
-<span class="header-section-number">10.3</span> O que é um <code>script</code> e qual sua diferença para um <code>código</code>?<a class="anchor" aria-label="anchor" href="#o-que-%C3%A9-um-script-e-qual-sua-diferen%C3%A7a-para-um-c%C3%B3digo"><i class="fas fa-link"></i></a>
-</h2>
-<p>Em programação R, tanto “código” quanto “script” se referem a sequências de instruções escritas na linguagem de programação R (veja também <a href="tiposR.html#snippet-e-chunk">Snippet e chunk</a>). No entanto, há uma diferença sutil em como esses termos são geralmente usados:</p>
-<ol style="list-style-type: decimal">
-<li>Código:</li>
-</ol>
-<p>Em R, “código” geralmente se refere a linhas individuais ou blocos de instruções de programação R que realizam tarefas ou operações específicas.
-O código pode ser escrito de forma interativa em um console R ou dentro de um arquivo de script.
-O código pode consistir em declarações simples, como atribuir valores a variáveis, realizar cálculos, definir funções ou chamar funções de pacotes.</p>
-<ol start="2" style="list-style-type: decimal">
-<li>Script:</li>
-</ol>
-<p>Um “script” em R refere-se a um arquivo contendo uma série de instruções de código R.
-Scripts R são essencialmente arquivos de texto contendo uma sequência de comandos e declarações R que podem ser executados em conjunto.
-Os scripts R permitem que os usuários organizem seu código em unidades reutilizáveis e estruturadas.
-Os scripts R geralmente têm a extensão de arquivo “.R”.</p>
-<p>Em resumo, enquanto “código” se refere a instruções individuais de programação R, “script” se refere a um arquivo contendo uma coleção de código R, geralmente usado para executar tarefas ou análises maiores de forma estruturada e organizada.</p>
 <p>Agora você pode começar a escrever seu código no console. Digite “Início do R Módulo” no console clique em <code>Run</code> (no canto superior direito do painel de edição de código) ou <code>Ctrl+Enter</code> e veja o que acontece:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="st">"Início do R Módulo"</span></span></code></pre></div>
@@ -217,16 +161,16 @@ Os scripts R geralmente têm a extensão de arquivo “.R”.</p>
 `^` Potência
 `sqrt` Raiz quadrada (função)
 `log` Logarítmo (função)</code></pre>
-<p>Teste agora outras possibilidades com as operações básicas (veja <span class="citation">BEASLEY (<a href="#ref-RN1484">2004</a>)</span> pags 7-10 para outros exemplos de cáculos básicos).</p>
-<div id="hello" class="greeting message" style="color: green;">
+<p>Teste agora outras possibilidades com as operações básicas (veja <span class="citation">BEASLEY (<a href="#ref-beasley2004">2004</a>)</span> pags 7-10 para outros exemplos de cáculos básicos).</p>
+<div class="greeting message" style="color: green;">
 <p>Você já deve estar percebendo o potencial da programação em R como ferramenta para aprender estatística ou análise de dados, duas áreas com muita demanda de profissionais.</p>
 </div>
-<p>Em sua apostila “<em>Conversando com o R usando 57 palavras</em>” <span class="citation">MELO (<a href="#ref-RN2785">2014</a>)</span> ressalta que a programação em R “ajuda no sentido de prover métodos para resolvermos um problema ou entendermos uma análise”. Isso porque, primeiro, temos que reunir os elementos fundamentais e informações necessários, depois identificar e dar nomes a esses elementos, para apenas depois disso, decompor nosso problema em suas partes e, finalmente, colocar essas partes em sequência lógica <span class="citation">(<a href="#ref-RN2785">MELO, 2014</a>)</span>.</p>
+<p>Em sua apostila “<em>Conversando com o R usando 57 palavras</em>”, <span class="citation">MELO (<a href="#ref-melo2014">2014</a>)</span> ressalta que a programação em R “ajuda no sentido de prover métodos para resolvermos um problema ou entendermos uma análise”. Isso porque, primeiro, temos que reunir os elementos fundamentais e informações necessários, depois identificar e dar nomes a esses elementos, para apenas depois disso, decompor nosso problema em suas partes e, finalmente, colocar essas partes em sequência lógica.</p>
 <p>A forma linear (passo-a-passo), mas hierarquicamente estruturada, da programação em R, permite uma construção intuitiva e lógica do raciocínio associado a cada análise, que, com o tempo, se torna parte cotidiano das nossas análises de dados. Assim como, na Língua Portuguesa, aprendemos o alfabeto, depois as palavras e eventualmente conversamos sem precisar pensar sobre a gramática e construção das frases.</p>
 </div>
-<div id="tipos-e-estruturas-de-dados-no-r-1" class="section level2" number="10.4">
+<div id="tipos-e-estruturas-de-dados-no-r-1" class="section level2" number="10.2">
 <h2>
-<span class="header-section-number">10.4</span> Tipos e estruturas de dados no R<a class="anchor" aria-label="anchor" href="#tipos-e-estruturas-de-dados-no-r-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.2</span> Tipos e estruturas de dados no R<a class="anchor" aria-label="anchor" href="#tipos-e-estruturas-de-dados-no-r-1"><i class="fas fa-link"></i></a>
 </h2>
 <p>O R oferece uma variedade de tipos e estruturas de dados que permitem aos cientistas de dados e analistas manipular e organizar informações de forma eficiente. A escolha da estrutura de dados correta depende das necessidades específicas de análise e do tipo de dados que você está lidando.</p>
 <ol style="list-style-type: decimal">
@@ -301,13 +245,13 @@ Os scripts R geralmente têm a extensão de arquivo “.R”.</p>
 </li>
 </ol>
 </div>
-<div id="tipos-de-dados-no-r" class="section level2" number="10.5">
+<div id="tipos-de-dados-no-r" class="section level2" number="10.3">
 <h2>
-<span class="header-section-number">10.5</span> Tipos de dados no R<a class="anchor" aria-label="anchor" href="#tipos-de-dados-no-r"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.3</span> Tipos de dados no R<a class="anchor" aria-label="anchor" href="#tipos-de-dados-no-r"><i class="fas fa-link"></i></a>
 </h2>
-<div id="variáveis-e-tipos-básicos-de-dados-figura-reffignucleos" class="section level3" number="10.5.1">
+<div id="variáveis-e-tipos-básicos-de-dados-figura-reffignucleos" class="section level3" number="10.3.1">
 <h3>
-<span class="header-section-number">10.5.1</span> Variáveis e tipos básicos de dados (Figura <a href="tiposR.html#fig:nucleos">10.2</a>)<a class="anchor" aria-label="anchor" href="#vari%C3%A1veis-e-tipos-b%C3%A1sicos-de-dados-figura-reffignucleos"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.3.1</span> Variáveis e tipos básicos de dados (Figura <a href="tiposR.html#fig:nucleos">10.2</a>)<a class="anchor" aria-label="anchor" href="#vari%C3%A1veis-e-tipos-b%C3%A1sicos-de-dados-figura-reffignucleos"><i class="fas fa-link"></i></a>
 </h3>
 <ol style="list-style-type: decimal">
 <li>
@@ -334,7 +278,7 @@ Os scripts R geralmente têm a extensão de arquivo “.R”.</p>
 <pre><code>## [1] 8
 ## [1] 8
 ## [1] "numeric"</code></pre>
-<p>Criamos um <strong>objeto</strong> do R chamado <code>a</code> que armazena o resultado de <code>5+3</code>. Objetos são palavras ou letras às quais são atribuídos dados. A atribuição possibilita a manipulação de dados ou armazenamento dos resultados de análises <span class="citation">(<a href="#ref-RN2940"><strong>RN2940?</strong></a>)</span>.</p>
+<p>Criamos um <strong>objeto</strong> do R chamado <code>a</code> que armazena o resultado de <code>5+3</code>. Objetos são palavras ou letras às quais são atribuídos dados. A atribuição possibilita a manipulação de dados ou armazenamento dos resultados de análises <span class="citation">(<a href="#ref-silva2022">SILVA et al., 2022</a>)</span>.</p>
 <p>O objeto <code>a</code> é uma variável numérica, como você pode ver ao usar a função <code><a href="https://rdrr.io/r/base/class.html">class()</a></code>. Se quiser trabalhar com inteiros (<code>integer</code>), você deve defini-los como <code>integer</code>, através da função <code><a href="https://rdrr.io/r/base/integer.html">as.integer()</a></code>.</p>
 <p>Vejamos:</p>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
@@ -354,7 +298,7 @@ Os scripts R geralmente têm a extensão de arquivo “.R”.</p>
 <span><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">c</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] "character"
 ## [1] "logical"</code></pre>
-<div id="hello" class="greeting message" style="color: green;">
+<div class="greeting message" style="color: green;">
 <p>Como você já deve ter percebido, uma grande parte da sua interação com o R é feita por comandos ou <code>funções</code>, onde cada função realiza um determinado papel. Seja comandar o R a mostrar uma variável recem criada, função <code><a href="https://rdrr.io/r/base/print.html">print()</a></code>, seja para informar o resultado de uma operação, função <code><a href="https://rdrr.io/r/base/Log.html">log()</a></code>.</p>
 </div>
 <p>Uma <code>função</code> vem sempre seguida de parênteses <code>()</code> (no formato, <code>função(x)</code>), dentro dos quais colocamos os <code>argumentos</code> da função. Os argumentos, por sua vês, devem ser separados por vírgula <code>,</code>. Os argumentos são informações adicionais que especificam certas particularidades para serem executadas pelas <code>funções</code>.</p>
@@ -370,9 +314,9 @@ Os scripts R geralmente têm a extensão de arquivo “.R”.</p>
 <p>Muitas funções possuem opções padrões (<em>default</em>) para alguns de seus argumentos. No caso do log, se não for dado nenhum argumento o <code>default</code> do R é usar o log natural do valor entre parêntesis.</p>
 </div>
 </div>
-<div id="estruturas-de-dados-no-r" class="section level2" number="10.6">
+<div id="estruturas-de-dados-no-r" class="section level2" number="10.4">
 <h2>
-<span class="header-section-number">10.6</span> Estruturas de dados no R<a class="anchor" aria-label="anchor" href="#estruturas-de-dados-no-r"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.4</span> Estruturas de dados no R<a class="anchor" aria-label="anchor" href="#estruturas-de-dados-no-r"><i class="fas fa-link"></i></a>
 </h2>
 <p>Agora vamos falar das estruturas de dados no R (Figura <a href="tiposR.html#fig:tipos">10.3</a>).</p>
 <ol start="2" style="list-style-type: decimal">
@@ -409,8 +353,7 @@ Os scripts R geralmente têm a extensão de arquivo “.R”.</p>
 <pre><code>## [1]   3.0   6.0   7.8 332.0
 ## [1] "Ola"  "tudo" "bem" 
 ## [1]  TRUE FALSE  TRUE  TRUE FALSE FALSE  TRUE  TRUE  TRUE</code></pre>
-<p>Caso você tente misturar os tipos, o R irá forçar para que os elementos sejam
-todos do mesmo tipo. Veja alguns exemplos:</p>
+<p>Caso você tente misturar os tipos, o R irá forçar para que os elementos sejam todos do mesmo tipo. Veja alguns exemplos:</p>
 <ol start="3" style="list-style-type: decimal">
 <li>
 <strong>Matrizes</strong>:
@@ -454,14 +397,14 @@ todos do mesmo tipo. Veja alguns exemplos:</p>
 <span><span class="va">df1</span></span></code></pre></div>
 <pre><code>##    a  b  c
 ## 1  0 20 10
-## 2  5 20 10
-## 3  1  0 10
-## 4  5 20  0
-## 5  1 10 10
-## 6  5  0  0
-## 7  0 10 10
-## 8  0  0  5
-## 9  1 20  0
+## 2  0 10  0
+## 3  0 20  0
+## 4  1 20  5
+## 5  5 10 10
+## 6  0  0  0
+## 7  0 20  0
+## 8  1 20  5
+## 9  0 20 10
 ## 10 5 10 10</code></pre>
 <p>Na primeira forma, definimos os elementos da matriz, o número de linhas e colunas através dos <code>argumentos</code> <code>nrow</code> e <code>ncol</code>, e se os elementos serão preenchidos ao longo das linhas (<code>byrow = TRUE</code>) ou ao longo das colunas (<code>byrow = FALSE</code>).</p>
 <p>Na segunda forma, criamos dois vetores e então os juntamos através da função <code><a href="https://rdrr.io/r/base/cbind.html">rbind()</a></code>. Repare que na segunda matriz, o R nomeou automaticamente as linhas da matriz com os nomes dos vetores, ao invés de definir seus números.</p>
@@ -783,8 +726,7 @@ todos do mesmo tipo. Veja alguns exemplos:</p>
 ##  Mean   :0.4062   Mean   :3.688   Mean   :2.812  
 ##  3rd Qu.:1.0000   3rd Qu.:4.000   3rd Qu.:4.000  
 ##  Max.   :1.0000   Max.   :5.000   Max.   :8.000</code></pre>
-<p>As funções <code><a href="https://rdrr.io/r/utils/str.html">str()</a></code> e <code><a href="https://rdrr.io/r/base/summary.html">summary()</a></code> trazem algumas informaçoes úteis sobre o data frame, de uma forma geral. É comum utiliza-las ao importar uma base de dados para o R, para se ter uma ideia do que está sendo analisado.
-O <code><a href="https://rdrr.io/r/utils/str.html">str()</a></code> conta as linhas e colunas e mostra os seus tipos e alguns valores de exemplo. Já o <code><a href="https://rdrr.io/r/base/summary.html">summary()</a></code> traz médias, medianas, máximos, mínimos e quantidade de valores indisponíveis em cada coluna.</p>
+<p>As funções <code><a href="https://rdrr.io/r/utils/str.html">str()</a></code> e <code><a href="https://rdrr.io/r/base/summary.html">summary()</a></code> trazem algumas informaçoes úteis sobre o data frame, de uma forma geral. É comum utiliza-las ao importar uma base de dados para o R, para se ter uma ideia do que está sendo analisado. O <code><a href="https://rdrr.io/r/utils/str.html">str()</a></code> conta as linhas e colunas e mostra os seus tipos e alguns valores de exemplo. Já o <code><a href="https://rdrr.io/r/base/summary.html">summary()</a></code> traz médias, medianas, máximos, mínimos e quantidade de valores indisponíveis em cada coluna.</p>
 <ol start="5" style="list-style-type: decimal">
 <li>
 <strong>Fatores</strong>:
@@ -964,13 +906,13 @@ Figura 10.3: Resumo visual dos tipos de dados no ambiente de programação R. (D
 </p>
 </div>
 </div>
-<div id="como-pedir-ajuda" class="section level2" number="10.7">
+<div id="como-pedir-ajuda" class="section level2" number="10.5">
 <h2>
-<span class="header-section-number">10.7</span> Como pedir ajuda?<a class="anchor" aria-label="anchor" href="#como-pedir-ajuda"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.5</span> Como pedir ajuda?<a class="anchor" aria-label="anchor" href="#como-pedir-ajuda"><i class="fas fa-link"></i></a>
 </h2>
-<div id="dentro-do-r" class="section level3" number="10.7.1">
+<div id="dentro-do-r" class="section level3" number="10.5.1">
 <h3>
-<span class="header-section-number">10.7.1</span> Dentro do R<a class="anchor" aria-label="anchor" href="#dentro-do-r"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.5.1</span> Dentro do R<a class="anchor" aria-label="anchor" href="#dentro-do-r"><i class="fas fa-link"></i></a>
 </h3>
 <p>No R, você pode solicitar ajuda de várias maneiras:</p>
 <ol style="list-style-type: decimal">
@@ -1000,9 +942,9 @@ Figura 10.3: Resumo visual dos tipos de dados no ambiente de programação R. (D
 <div class="sourceCode" id="cb115"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/example.html">example</a></span><span class="op">(</span><span class="va">mean</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="fora-do-r" class="section level3" number="10.7.2">
+<div id="fora-do-r" class="section level3" number="10.5.2">
 <h3>
-<span class="header-section-number">10.7.2</span> Fora do R<a class="anchor" aria-label="anchor" href="#fora-do-r"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.5.2</span> Fora do R<a class="anchor" aria-label="anchor" href="#fora-do-r"><i class="fas fa-link"></i></a>
 </h3>
 <ol start="4" style="list-style-type: decimal">
 <li>
@@ -1019,16 +961,15 @@ Figura 10.3: Resumo visual dos tipos de dados no ambiente de programação R. (D
 <strong>Livros e Tutoriais</strong>:</li>
 </ol>
 <p>Existem muitos livros e tutoriais disponíveis que podem ajudá-lo a aprender R, desde os conceitos básicos até técnicas avançadas. Os livros em Português mais importantes são <span class="citation">FERREIRA; OLIVEIRA (<a href="#ref-RN2942">2020</a>)</span>.</p>
-<div id="hello" class="greeting message" style="color: green;">
+<div class="greeting message" style="color: green;">
 <p>Ao usar esses recursos, certifique-se de fornecer informações claras sobre sua dúvida ou problema, incluindo detalhes como o código que você está usando, mensagens de erro (se houver) e o que você já tentou fazer para resolver o problema. Isso ajudará os outros a entenderem melhor sua situação e fornecer uma resposta mais útil.</p>
 </div>
 </div>
-<div id="chatgpt" class="section level3" number="10.7.3">
+<div id="chatgpt" class="section level3" number="10.5.3">
 <h3>
-<span class="header-section-number">10.7.3</span> ChatGPT<a class="anchor" aria-label="anchor" href="#chatgpt"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.5.3</span> ChatGPT<a class="anchor" aria-label="anchor" href="#chatgpt"><i class="fas fa-link"></i></a>
 </h3>
-<p>Pergunte ao ChatGPT
-<a href="https://chat.openai.com/" class="uri">https://chat.openai.com/</a></p>
+<p>Pergunte ao ChatGPT <a href="https://chat.openai.com/" class="uri">https://chat.openai.com/</a></p>
 <p><em>Para usar o ChatGPT para pedir ajuda ao R, você pode solicitar assistência na elaboração de código, depurar problemas, ou mesmo pedir orientação sobre como realizar uma determinada tarefa em R. Aqui está um exemplo de como você pode pedir ajuda ao R:</em></p>
 <pre><code>Oi ChatGPT! Estou enfrentando um problema ao tentar realizar uma análise de regressão linear no R.
 Eu tenho um conjunto de dados chamado "dados.csv" e estou tentando ajustar um modelo linear simples
@@ -1047,14 +988,14 @@ Figura 10.4: Usando o ChatGPT para pedir ajuda sobre o R.
 </div>
 </div>
 </div>
-<div id="work-flow" class="section level2" number="10.8">
+<div id="work-flow" class="section level2" number="10.6">
 <h2>
-<span class="header-section-number">10.8</span> Work flow<a class="anchor" aria-label="anchor" href="#work-flow"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.6</span> Work flow<a class="anchor" aria-label="anchor" href="#work-flow"><i class="fas fa-link"></i></a>
 </h2>
-<div id="hello" class="greeting message" style="color: green;">
+<div class="greeting message" style="color: green;">
 <p>Você já deve estar percebendo que a programação em R pode se tornar confusa, pela quantidade de possibilidades disponíveis e formas diferentes de se obter o mesmo resultado.</p>
 </div>
-<p>Por isso é necessário que o usuário tenha um workflow que permita o reconhecimento de uma <strong>sequência lógica para estruturar e aplicar</strong> os devidos testes estatísticos e construção de gráficos e tabelas, após a organização e manipulação dos dados. Uma sugestão de workflow preliminar e vista na figura <a href="tiposR.html#fig:22wf">10.5</a> (modificada de <span class="citation">OLIVEIRA; GUERRA; MCDONNELL (<a href="#ref-RN2941">2018</a>)</span>):</p>
+<p>Por isso é necessário que o usuário tenha um workflow que permita o reconhecimento de uma <strong>sequência lógica para estruturar e aplicar</strong> os devidos testes estatísticos e construção de gráficos e tabelas, após a organização e manipulação dos dados. Uma sugestão de workflow preliminar e vista na figura <a href="tiposR.html#fig:22wf">10.5</a> (modificada de <span class="citation">OLIVEIRA; GUERRA; MCDONNELL (<a href="#ref-oliveira2018">2018b</a>)</span>; <span class="citation">OLIVEIRA; GUERRA; MCDONNELL (<a href="#ref-RN2941">2018a</a>)</span>):</p>
 <p>• Carregar os dados<br>
 • Limpar os dados<br>
 • Transformar, visualizar e modelar (fase exploratória)<br>
@@ -1062,7 +1003,7 @@ Figura 10.4: Usando o ChatGPT para pedir ajuda sobre o R.
 <div class="figure">
 <span style="display:block;" id="fig:22wf"></span>
 <img src="imagens/wf.png" alt="Exemplo de workflow para análises no R (modificada de [@RN2941])" width="450px"><p class="caption">
-Figura 10.5: Exemplo de workflow para análises no R (modificada de <span class="citation">(<a href="#ref-RN2941">OLIVEIRA; GUERRA; MCDONNELL, 2018</a>)</span>)
+Figura 10.5: Exemplo de workflow para análises no R (modificada de <span class="citation">(<a href="#ref-RN2941">OLIVEIRA; GUERRA; MCDONNELL, 2018a</a>)</span>)
 </p>
 </div>
 </div>
@@ -1200,27 +1141,36 @@ Estrutura de dados I (Parte 11): <a href="https://www.youtube.com/watch?v=aEaSzl
 
 </div>
 </div>
+
+
+
 <h3>Bibliografia Geral</h3>
 <div id="refs" class="references csl-bib-body" entry-spacing="1">
-<div id="ref-RN1484" class="csl-entry">
+<div id="ref-beasley2004" class="csl-entry">
 BEASLEY, C. R. <strong>Bioestatística usando R. Apostila de exemplos para o biólogo</strong>. [s.l: s.n.]. Disponível em: &lt;<a href="http://www.ead.unicamp.br/minicurso/bw/texto/fdl.pt.html">http://www.ead.unicamp.br/minicurso/bw/texto/fdl.pt.html</a>&gt;.
 </div>
 <div id="ref-RN2942" class="csl-entry">
 FERREIRA, E. B.; OLIVEIRA, M. S. de. <strong>Introdução à Estatística com R</strong>. Alfenas, MG: Editora Universidade Federal de Alfenas, 2020. p. 194 Disponível em: &lt;<a href="https://www.unifal-mg.edu.br/bibliotecas/wp-content/uploads/sites/125/2021/12/32-EBR_Unifal.pdf">https://www.unifal-mg.edu.br/bibliotecas/wp-content/uploads/sites/125/2021/12/32-EBR_Unifal.pdf</a>&gt;
 </div>
-<div id="ref-RN2785" class="csl-entry">
+<div id="ref-melo2014" class="csl-entry">
 MELO, A. S. <strong>Conversando com o R usando 57 palavras: Introdução à programação com exemplos em Ecologia</strong>. [s.l: s.n.]. Disponível em: &lt;<a href="https://ecoevol.ufg.br/adrimelo/prog/Conversando_com_o_R_usando_57_palavras-v13.pdf">https://ecoevol.ufg.br/adrimelo/prog/Conversando_com_o_R_usando_57_palavras-v13.pdf</a>&gt;.
 </div>
 <div id="ref-RN2941" class="csl-entry">
-OLIVEIRA, P. F. de; GUERRA, S.; MCDONNELL, R. <strong>Ciência de dados com R: Introdução</strong>. Brasília, DF: Editora IBPAD, 2018. p. 240 Disponível em: &lt;<a href="https://cdr.ibpad.com.br/">https://cdr.ibpad.com.br/</a>&gt;
+OLIVEIRA, P. F. de; GUERRA, S.; MCDONNELL, R. <strong>Ciência de dados com R: Introdução</strong>. Brasília, DF: Editora IBPAD, 2018.a. p. 240 Disponível em: &lt;<a href="https://cdr.ibpad.com.br/">https://cdr.ibpad.com.br/</a>&gt;
 </div>
-<div id="ref-RN1787" class="csl-entry">
-TEAM, R. D. C. <strong>An Introduction to R</strong>. [s.l: s.n.]. Disponível em: &lt;<a href="https://cran.r-project.org/doc/manuals/r-release/R-intro.html">https://cran.r-project.org/doc/manuals/r-release/R-intro.html</a>&gt;.
+<div id="ref-oliveira2018" class="csl-entry">
+OLIVEIRA, P. F. de; GUERRA, S.; MCDONNELL, R. <strong>Ciência de dados com R: Introdução</strong>. Brasília, DF: Editora IBPAD, 2018.b. Type: Book. Disponível em: &lt;<a href="https://cdr.ibpad.com.br/">https://cdr.ibpad.com.br/</a>&gt;
+</div>
+<div id="ref-silva2022" class="csl-entry">
+SILVA, F. R.; GONÇALVES-SOUZA, T.; PATERNO, G. B.; PROVETE, D. B.; VANCINE, M. H. <strong>Análises Ecológicas no R</strong>. 1. ed. Bauru - SP: Canal 6 Editora. NUPEEA., 2022. Disponível em: &lt;<a href="https://canal6.com.br/livreacesso/livro/analises-ecologicas-no-r/">https://canal6.com.br/livreacesso/livro/analises-ecologicas-no-r/</a>&gt;
+</div>
+<div id="ref-venables2026" class="csl-entry">
+VENABLES, W. N.; SMITH, D. M.; R CORE TEAM. <strong>An Introduction to R. Notes on R: A Programming Environment for Data Analysis and Graphics Version 4.6.0</strong>. [s.l: s.n.]. Disponível em: &lt;<a href="https://cran.r-project.org/doc/manuals/r-release/R-intro.html">https://cran.r-project.org/doc/manuals/r-release/R-intro.html</a>&gt;.
 </div>
 </div>
   <div class="chapter-nav">
 <div class="prev"><a href="basehab.html"><span class="header-section-number">9</span> Base de dados II - Habitat</a></div>
-<div class="next"><a href="xls.html"><span class="header-section-number">11</span> R Módulo 2 - Importando planilhas de dados</a></div>
+<div class="next"><a href="bibliografia-geral.html">Bibliografia Geral</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
@@ -1228,21 +1178,19 @@ TEAM, R. D. C. <strong>An Introduction to R</strong>. [s.l: s.n.]. Disponível e
 <a class="nav-link" href="#tiposR"><span class="header-section-number">10</span> R Módulo 1 - Sintaxe e Tipos de dados no R</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#apresenta%C3%A7%C3%A3o-4">Apresentação</a></li></ul>
 </li>
 <li><a class="nav-link" href="#tipos-e-estruturas-de-dados-no-r"><span class="header-section-number">10.1</span> Tipos e estruturas de dados no R</a></li>
-<li><a class="nav-link" href="#mensagens-de-erro-e-avisos-no-r-1"><span class="header-section-number">10.2</span> Mensagens de erro e avisos no R</a></li>
-<li><a class="nav-link" href="#o-que-%C3%A9-um-script-e-qual-sua-diferen%C3%A7a-para-um-c%C3%B3digo"><span class="header-section-number">10.3</span> O que é um script e qual sua diferença para um código?</a></li>
-<li><a class="nav-link" href="#tipos-e-estruturas-de-dados-no-r-1"><span class="header-section-number">10.4</span> Tipos e estruturas de dados no R</a></li>
+<li><a class="nav-link" href="#tipos-e-estruturas-de-dados-no-r-1"><span class="header-section-number">10.2</span> Tipos e estruturas de dados no R</a></li>
 <li>
-<a class="nav-link" href="#tipos-de-dados-no-r"><span class="header-section-number">10.5</span> Tipos de dados no R</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#vari%C3%A1veis-e-tipos-b%C3%A1sicos-de-dados-figura-reffignucleos"><span class="header-section-number">10.5.1</span> Variáveis e tipos básicos de dados (Figura @ref(fig:nucleos))</a></li></ul>
+<a class="nav-link" href="#tipos-de-dados-no-r"><span class="header-section-number">10.3</span> Tipos de dados no R</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#vari%C3%A1veis-e-tipos-b%C3%A1sicos-de-dados-figura-reffignucleos"><span class="header-section-number">10.3.1</span> Variáveis e tipos básicos de dados (Figura @ref(fig:nucleos))</a></li></ul>
 </li>
-<li><a class="nav-link" href="#estruturas-de-dados-no-r"><span class="header-section-number">10.6</span> Estruturas de dados no R</a></li>
+<li><a class="nav-link" href="#estruturas-de-dados-no-r"><span class="header-section-number">10.4</span> Estruturas de dados no R</a></li>
 <li>
-<a class="nav-link" href="#como-pedir-ajuda"><span class="header-section-number">10.7</span> Como pedir ajuda?</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#dentro-do-r"><span class="header-section-number">10.7.1</span> Dentro do R</a></li>
-<li><a class="nav-link" href="#fora-do-r"><span class="header-section-number">10.7.2</span> Fora do R</a></li>
-<li><a class="nav-link" href="#chatgpt"><span class="header-section-number">10.7.3</span> ChatGPT</a></li>
+<a class="nav-link" href="#como-pedir-ajuda"><span class="header-section-number">10.5</span> Como pedir ajuda?</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#dentro-do-r"><span class="header-section-number">10.5.1</span> Dentro do R</a></li>
+<li><a class="nav-link" href="#fora-do-r"><span class="header-section-number">10.5.2</span> Fora do R</a></li>
+<li><a class="nav-link" href="#chatgpt"><span class="header-section-number">10.5.3</span> ChatGPT</a></li>
 </ul>
 </li>
-<li><a class="nav-link" href="#work-flow"><span class="header-section-number">10.8</span> Work flow</a></li>
+<li><a class="nav-link" href="#work-flow"><span class="header-section-number">10.6</span> Work flow</a></li>
 <li>
 <a class="nav-link" href="#ap%C3%AAndices-3">Apêndices</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#snippet-e-chunk">Snippet e chunk</a></li></ul>
 </li>
@@ -1265,7 +1213,7 @@ TEAM, R. D. C. <strong>An Introduction to R</strong>. [s.l: s.n.]. Disponível e
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Fundamentos de Ecologia Numérica</strong>: Disciplina de Ecologia Numérica do Curso de Ciências Biológicas do Campus V da UEPB" was written by Prof. Elvio S. F. Medeiros, Laboratório de Ecologia, Universidade Estadual da Paraíba, Campus V, João Pessoa, PB. It was last built on Last updated: 09/05/2026 12:41:51.</p>
+    <p>"<strong>Fundamentos de Ecologia Numérica</strong>: Disciplina de Ecologia Numérica do Curso de Ciências Biológicas do Campus V da UEPB" was written by Prof. Elvio S. F. Medeiros, Laboratório de Ecologia, Universidade Estadual da Paraíba, Campus V, João Pessoa, PB. It was last built on Last updated: 09/05/2026 21:16:40.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
@@ -1273,34 +1221,6 @@ TEAM, R. D. C. <strong>An Introduction to R</strong>. [s.l: s.n.]. Disponível e
   </div>
 
 </div></div>
-</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "true";
-    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:")
-      if (/^https?:/.test(src))
-        src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
-for (let popover of popovers) {
-  const div = document.createElement('div');
-  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
-  div.innerHTML = popover.getAttribute('data-content');
-
-  var has_math = div.querySelector("span.math");
-  if (has_math) {
-    document.body.appendChild(div);
-    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
-    MathJax.Hub.Queue(function() {
-      popover.setAttribute('data-content', div.innerHTML);
-      document.body.removeChild(div);
-    })
-  }
-}
-</script>
+</footer>
 </body>
 </html>

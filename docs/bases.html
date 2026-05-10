@@ -84,6 +84,8 @@
 <li><a class="active" href="bases.html"><span class="header-section-number">7</span> Bases de dados. Dados do PPBio Semiárido</a></li>
 <li><a class="" href="basepeixes.html"><span class="header-section-number">8</span> Base de dados I - Peixes</a></li>
 <li><a class="" href="basehab.html"><span class="header-section-number">9</span> Base de dados II - Habitat</a></li>
+<li class="book-part">IV. ESTATÍSTICAS DESCRITIVAS</li>
+<li><a class="" href="tiposR.html"><span class="header-section-number">10</span> R Módulo 1 - Sintaxe e Tipos de dados no R</a></li>
 <li class="book-part">VI. INFORMAÇÕES GERAIS</li>
 <li><a class="" href="bibliografia-geral.html">Bibliografia Geral</a></li>
 </ul>
@@ -162,23 +164,23 @@ Figura 7.6: Associação entre a planilha de dados brutos do PPBio e o delineame
 </h2>
 <p>A seguir, apresento uma tabela com as informações essenciais sobre as matrizes de dados que serão utilizadas ao longo deste livro (Tabela <a href="bases.html#tab:300arqs">7.1</a>). Nela, estão descritos os diferentes tipos de matrizes, suas finalidades analíticas e o tipo de dado para cada uma delas. Essas informações servirão de referência para compreender a origem, a estrutura e o tratamento recomendado para os dados empregados nas análises subsequentes.</p>
 <p>Você pode baixar essas matrizes clicando no link para o arquivo em <code>.xlsx</code> na coluna <code>Arquivo</code>. Ao vizualizar a matriz que deseja baixar, clique em <code>Arquivo</code> &gt; <code>Baixar</code> &gt; <code>Microsoft Excel (.xlsx)</code>. Atente para a pasta onde seu computador baixa o arquivo desejado, você vai precisar dessa informação depois.</p>
-<div id="ljeqefvfvs" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#ljeqefvfvs table {
+<div id="xnbqtspkhj" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#xnbqtspkhj table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#ljeqefvfvs thead, #ljeqefvfvs tbody, #ljeqefvfvs tfoot, #ljeqefvfvs tr, #ljeqefvfvs td, #ljeqefvfvs th {
+#xnbqtspkhj thead, #xnbqtspkhj tbody, #xnbqtspkhj tfoot, #xnbqtspkhj tr, #xnbqtspkhj td, #xnbqtspkhj th {
   border-style: none;
 }
 
-#ljeqefvfvs p {
+#xnbqtspkhj p {
   margin: 0;
   padding: 0;
 }
 
-#ljeqefvfvs .gt_table {
+#xnbqtspkhj .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -204,12 +206,12 @@ Figura 7.6: Associação entre a planilha de dados brutos do PPBio e o delineame
   border-left-color: #D3D3D3;
 }
 
-#ljeqefvfvs .gt_caption {
+#xnbqtspkhj .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#ljeqefvfvs .gt_title {
+#xnbqtspkhj .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -221,7 +223,7 @@ Figura 7.6: Associação entre a planilha de dados brutos do PPBio e o delineame
   border-bottom-width: 0;
 }
 
-#ljeqefvfvs .gt_subtitle {
+#xnbqtspkhj .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -233,7 +235,7 @@ Figura 7.6: Associação entre a planilha de dados brutos do PPBio e o delineame
   border-top-width: 0;
 }
 
-#ljeqefvfvs .gt_heading {
+#xnbqtspkhj .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -245,13 +247,13 @@ Figura 7.6: Associação entre a planilha de dados brutos do PPBio e o delineame
   border-right-color: #D3D3D3;
 }
 
-#ljeqefvfvs .gt_bottom_border {
+#xnbqtspkhj .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ljeqefvfvs .gt_col_headings {
+#xnbqtspkhj .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -266,7 +268,7 @@ Figura 7.6: Associação entre a planilha de dados brutos do PPBio e o delineame
   border-right-color: #D3D3D3;
 }
 
-#ljeqefvfvs .gt_col_heading {
+#xnbqtspkhj .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -286,7 +288,7 @@ Figura 7.6: Associação entre a planilha de dados brutos do PPBio e o delineame
   overflow-x: hidden;
 }
 
-#ljeqefvfvs .gt_column_spanner_outer {
+#xnbqtspkhj .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -298,15 +300,15 @@ Figura 7.6: Associação entre a planilha de dados brutos do PPBio e o delineame
   padding-right: 4px;
 }
 
-#ljeqefvfvs .gt_column_spanner_outer:first-child {
+#xnbqtspkhj .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ljeqefvfvs .gt_column_spanner_outer:last-child {
+#xnbqtspkhj .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ljeqefvfvs .gt_column_spanner {
+#xnbqtspkhj .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -318,11 +320,11 @@ Figura 7.6: Associação entre a planilha de dados brutos do PPBio e o delineame
   width: 100%;
 }
 
-#ljeqefvfvs .gt_spanner_row {
+#xnbqtspkhj .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#ljeqefvfvs .gt_group_heading {
+#xnbqtspkhj .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -348,7 +350,7 @@ Figura 7.6: Associação entre a planilha de dados brutos do PPBio e o delineame
   text-align: left;
 }
 
-#ljeqefvfvs .gt_empty_group_heading {
+#xnbqtspkhj .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -363,15 +365,15 @@ Figura 7.6: Associação entre a planilha de dados brutos do PPBio e o delineame
   vertical-align: middle;
 }
 
-#ljeqefvfvs .gt_from_md > :first-child {
+#xnbqtspkhj .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ljeqefvfvs .gt_from_md > :last-child {
+#xnbqtspkhj .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ljeqefvfvs .gt_row {
+#xnbqtspkhj .gt_row {
   padding-top: 6px;
   padding-bottom: 6px;
   padding-left: 5px;
@@ -390,7 +392,7 @@ Figura 7.6: Associação entre a planilha de dados brutos do PPBio e o delineame
   overflow-x: hidden;
 }
 
-#ljeqefvfvs .gt_stub {
+#xnbqtspkhj .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -403,7 +405,7 @@ Figura 7.6: Associação entre a planilha de dados brutos do PPBio e o delineame
   padding-right: 5px;
 }
 
-#ljeqefvfvs .gt_stub_row_group {
+#xnbqtspkhj .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -417,15 +419,15 @@ Figura 7.6: Associação entre a planilha de dados brutos do PPBio e o delineame
   vertical-align: top;
 }
 
-#ljeqefvfvs .gt_row_group_first td {
+#xnbqtspkhj .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ljeqefvfvs .gt_row_group_first th {
+#xnbqtspkhj .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#ljeqefvfvs .gt_summary_row {
+#xnbqtspkhj .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -435,16 +437,16 @@ Figura 7.6: Associação entre a planilha de dados brutos do PPBio e o delineame
   padding-right: 5px;
 }
 
-#ljeqefvfvs .gt_first_summary_row {
+#xnbqtspkhj .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ljeqefvfvs .gt_first_summary_row.thick {
+#xnbqtspkhj .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ljeqefvfvs .gt_last_summary_row {
+#xnbqtspkhj .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -454,7 +456,7 @@ Figura 7.6: Associação entre a planilha de dados brutos do PPBio e o delineame
   border-bottom-color: #D3D3D3;
 }
 
-#ljeqefvfvs .gt_grand_summary_row {
+#xnbqtspkhj .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -464,7 +466,7 @@ Figura 7.6: Associação entre a planilha de dados brutos do PPBio e o delineame
   padding-right: 5px;
 }
 
-#ljeqefvfvs .gt_first_grand_summary_row {
+#xnbqtspkhj .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -474,7 +476,7 @@ Figura 7.6: Associação entre a planilha de dados brutos do PPBio e o delineame
   border-top-color: #D3D3D3;
 }
 
-#ljeqefvfvs .gt_last_grand_summary_row_top {
+#xnbqtspkhj .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -484,11 +486,11 @@ Figura 7.6: Associação entre a planilha de dados brutos do PPBio e o delineame
   border-bottom-color: #D3D3D3;
 }
 
-#ljeqefvfvs .gt_striped {
+#xnbqtspkhj .gt_striped {
   background-color: #F2F2F2;
 }
 
-#ljeqefvfvs .gt_table_body {
+#xnbqtspkhj .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -497,7 +499,7 @@ Figura 7.6: Associação entre a planilha de dados brutos do PPBio e o delineame
   border-bottom-color: #D3D3D3;
 }
 
-#ljeqefvfvs .gt_footnotes {
+#xnbqtspkhj .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -511,7 +513,7 @@ Figura 7.6: Associação entre a planilha de dados brutos do PPBio e o delineame
   border-right-color: #D3D3D3;
 }
 
-#ljeqefvfvs .gt_footnote {
+#xnbqtspkhj .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -520,7 +522,7 @@ Figura 7.6: Associação entre a planilha de dados brutos do PPBio e o delineame
   padding-right: 5px;
 }
 
-#ljeqefvfvs .gt_sourcenotes {
+#xnbqtspkhj .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -534,7 +536,7 @@ Figura 7.6: Associação entre a planilha de dados brutos do PPBio e o delineame
   border-right-color: #D3D3D3;
 }
 
-#ljeqefvfvs .gt_sourcenote {
+#xnbqtspkhj .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -542,72 +544,72 @@ Figura 7.6: Associação entre a planilha de dados brutos do PPBio e o delineame
   padding-right: 5px;
 }
 
-#ljeqefvfvs .gt_left {
+#xnbqtspkhj .gt_left {
   text-align: left;
 }
 
-#ljeqefvfvs .gt_center {
+#xnbqtspkhj .gt_center {
   text-align: center;
 }
 
-#ljeqefvfvs .gt_right {
+#xnbqtspkhj .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ljeqefvfvs .gt_font_normal {
+#xnbqtspkhj .gt_font_normal {
   font-weight: normal;
 }
 
-#ljeqefvfvs .gt_font_bold {
+#xnbqtspkhj .gt_font_bold {
   font-weight: bold;
 }
 
-#ljeqefvfvs .gt_font_italic {
+#xnbqtspkhj .gt_font_italic {
   font-style: italic;
 }
 
-#ljeqefvfvs .gt_super {
+#xnbqtspkhj .gt_super {
   font-size: 65%;
 }
 
-#ljeqefvfvs .gt_footnote_marks {
+#xnbqtspkhj .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#ljeqefvfvs .gt_asterisk {
+#xnbqtspkhj .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ljeqefvfvs .gt_indent_1 {
+#xnbqtspkhj .gt_indent_1 {
   text-indent: 5px;
 }
 
-#ljeqefvfvs .gt_indent_2 {
+#xnbqtspkhj .gt_indent_2 {
   text-indent: 10px;
 }
 
-#ljeqefvfvs .gt_indent_3 {
+#xnbqtspkhj .gt_indent_3 {
   text-indent: 15px;
 }
 
-#ljeqefvfvs .gt_indent_4 {
+#xnbqtspkhj .gt_indent_4 {
   text-indent: 20px;
 }
 
-#ljeqefvfvs .gt_indent_5 {
+#xnbqtspkhj .gt_indent_5 {
   text-indent: 25px;
 }
 
-#ljeqefvfvs .katex-display {
+#xnbqtspkhj .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#ljeqefvfvs div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#xnbqtspkhj div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -876,7 +878,7 @@ SILVA, M. J.; FIGUEIREDO, B. R. S.; RAMOS, R. T. C.; MEDEIROS, E. S. F. <a href=
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Fundamentos de Ecologia Numérica</strong>: Disciplina de Ecologia Numérica do Curso de Ciências Biológicas do Campus V da UEPB" was written by Prof. Elvio S. F. Medeiros, Laboratório de Ecologia, Universidade Estadual da Paraíba, Campus V, João Pessoa, PB. It was last built on Last updated: 09/05/2026 17:16:44.</p>
+    <p>"<strong>Fundamentos de Ecologia Numérica</strong>: Disciplina de Ecologia Numérica do Curso de Ciências Biológicas do Campus V da UEPB" was written by Prof. Elvio S. F. Medeiros, Laboratório de Ecologia, Universidade Estadual da Paraíba, Campus V, João Pessoa, PB. It was last built on Last updated: 09/05/2026 21:16:40.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
