@@ -86,6 +86,7 @@
 <li><a class="" href="basehab.html"><span class="header-section-number">9</span> Base de dados II - Habitat</a></li>
 <li class="book-part">IV. ESTATÍSTICAS DESCRITIVAS</li>
 <li><a class="active" href="tiposR.html"><span class="header-section-number">10</span> R Módulo 1 - Sintaxe e Tipos de dados no R</a></li>
+<li><a class="" href="xls.html"><span class="header-section-number">11</span> R Módulo 2 - Importando planilhas de dados</a></li>
 <li class="book-part">VI. INFORMAÇÕES GERAIS</li>
 <li><a class="" href="bibliografia-geral.html">Bibliografia Geral</a></li>
 </ul>
@@ -396,16 +397,16 @@ Figura 10.1: Interface típica do RStudio e nome dos paineis ou janelas.
 <span><span class="va">df1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="va">a</span>,<span class="va">b</span>,<span class="va">c</span><span class="op">)</span></span>
 <span><span class="va">df1</span></span></code></pre></div>
 <pre><code>##    a  b  c
-## 1  0 20 10
-## 2  0 10  0
-## 3  0 20  0
-## 4  1 20  5
-## 5  5 10 10
-## 6  0  0  0
-## 7  0 20  0
-## 8  1 20  5
-## 9  0 20 10
-## 10 5 10 10</code></pre>
+## 1  1  0 10
+## 2  1 10  5
+## 3  1 10  0
+## 4  1 20  0
+## 5  0  0 10
+## 6  0  0  5
+## 7  1  0 10
+## 8  1 20  0
+## 9  0 20  0
+## 10 0 10 10</code></pre>
 <p>Na primeira forma, definimos os elementos da matriz, o número de linhas e colunas através dos <code>argumentos</code> <code>nrow</code> e <code>ncol</code>, e se os elementos serão preenchidos ao longo das linhas (<code>byrow = TRUE</code>) ou ao longo das colunas (<code>byrow = FALSE</code>).</p>
 <p>Na segunda forma, criamos dois vetores e então os juntamos através da função <code><a href="https://rdrr.io/r/base/cbind.html">rbind()</a></code>. Repare que na segunda matriz, o R nomeou automaticamente as linhas da matriz com os nomes dos vetores, ao invés de definir seus números.</p>
 <p>Para selecionar itens de matrizes também utilizamos os colchetes, primeiro especificando a linha e depois a coluna que desejamos retornar:</p>
@@ -960,7 +961,7 @@ Figura 10.3: Resumo visual dos tipos de dados no ambiente de programação R. (D
 <li>
 <strong>Livros e Tutoriais</strong>:</li>
 </ol>
-<p>Existem muitos livros e tutoriais disponíveis que podem ajudá-lo a aprender R, desde os conceitos básicos até técnicas avançadas. Os livros em Português mais importantes são <span class="citation">FERREIRA; OLIVEIRA (<a href="#ref-RN2942">2020</a>)</span>.</p>
+<p>Existem muitos livros e tutoriais disponíveis que podem ajudá-lo a aprender R, desde os conceitos básicos até técnicas avançadas. Os livros em Português mais importantes são <span class="citation">(<a href="#ref-ferreira2020">FERREIRA; OLIVEIRA, 2020</a>; <a href="#ref-oliveira2018">OLIVEIRA; GUERRA; MCDONNELL, 2018</a>; <a href="#ref-silva2022">SILVA et al., 2022</a>)</span>.</p>
 <div class="greeting message" style="color: green;">
 <p>Ao usar esses recursos, certifique-se de fornecer informações claras sobre sua dúvida ou problema, incluindo detalhes como o código que você está usando, mensagens de erro (se houver) e o que você já tentou fazer para resolver o problema. Isso ajudará os outros a entenderem melhor sua situação e fornecer uma resposta mais útil.</p>
 </div>
@@ -995,7 +996,7 @@ Figura 10.4: Usando o ChatGPT para pedir ajuda sobre o R.
 <div class="greeting message" style="color: green;">
 <p>Você já deve estar percebendo que a programação em R pode se tornar confusa, pela quantidade de possibilidades disponíveis e formas diferentes de se obter o mesmo resultado.</p>
 </div>
-<p>Por isso é necessário que o usuário tenha um workflow que permita o reconhecimento de uma <strong>sequência lógica para estruturar e aplicar</strong> os devidos testes estatísticos e construção de gráficos e tabelas, após a organização e manipulação dos dados. Uma sugestão de workflow preliminar e vista na figura <a href="tiposR.html#fig:22wf">10.5</a> (modificada de <span class="citation">OLIVEIRA; GUERRA; MCDONNELL (<a href="#ref-oliveira2018">2018b</a>)</span>; <span class="citation">OLIVEIRA; GUERRA; MCDONNELL (<a href="#ref-RN2941">2018a</a>)</span>):</p>
+<p>Por isso é necessário que o usuário tenha um workflow que permita o reconhecimento de uma <strong>sequência lógica para estruturar e aplicar</strong> os devidos testes estatísticos e construção de gráficos e tabelas, após a organização e manipulação dos dados. Uma sugestão de workflow preliminar e vista na figura <a href="tiposR.html#fig:22wf">10.5</a> (modificada de <span class="citation">OLIVEIRA; GUERRA; MCDONNELL (<a href="#ref-oliveira2018">2018</a>)</span>):</p>
 <p>• Carregar os dados<br>
 • Limpar os dados<br>
 • Transformar, visualizar e modelar (fase exploratória)<br>
@@ -1003,7 +1004,7 @@ Figura 10.4: Usando o ChatGPT para pedir ajuda sobre o R.
 <div class="figure">
 <span style="display:block;" id="fig:22wf"></span>
 <img src="imagens/wf.png" alt="Exemplo de workflow para análises no R (modificada de [@RN2941])" width="450px"><p class="caption">
-Figura 10.5: Exemplo de workflow para análises no R (modificada de <span class="citation">(<a href="#ref-RN2941">OLIVEIRA; GUERRA; MCDONNELL, 2018a</a>)</span>)
+Figura 10.5: Exemplo de workflow para análises no R (modificada de <span class="citation">(<a href="#ref-RN2941"><strong>RN2941?</strong></a>)</span>)
 </p>
 </div>
 </div>
@@ -1141,25 +1142,19 @@ Estrutura de dados I (Parte 11): <a href="https://www.youtube.com/watch?v=aEaSzl
 
 </div>
 </div>
-
-
-
 <h3>Bibliografia Geral</h3>
 <div id="refs" class="references csl-bib-body" entry-spacing="1">
 <div id="ref-beasley2004" class="csl-entry">
 BEASLEY, C. R. <strong>Bioestatística usando R. Apostila de exemplos para o biólogo</strong>. [s.l: s.n.]. Disponível em: &lt;<a href="http://www.ead.unicamp.br/minicurso/bw/texto/fdl.pt.html">http://www.ead.unicamp.br/minicurso/bw/texto/fdl.pt.html</a>&gt;.
 </div>
-<div id="ref-RN2942" class="csl-entry">
-FERREIRA, E. B.; OLIVEIRA, M. S. de. <strong>Introdução à Estatística com R</strong>. Alfenas, MG: Editora Universidade Federal de Alfenas, 2020. p. 194 Disponível em: &lt;<a href="https://www.unifal-mg.edu.br/bibliotecas/wp-content/uploads/sites/125/2021/12/32-EBR_Unifal.pdf">https://www.unifal-mg.edu.br/bibliotecas/wp-content/uploads/sites/125/2021/12/32-EBR_Unifal.pdf</a>&gt;
+<div id="ref-ferreira2020" class="csl-entry">
+FERREIRA, E. B.; OLIVEIRA, M. S. de. <strong>Introdução à Estatística com R</strong>. Alfenas, MG: Editora UNIFAL-MG, 2020.
 </div>
 <div id="ref-melo2014" class="csl-entry">
 MELO, A. S. <strong>Conversando com o R usando 57 palavras: Introdução à programação com exemplos em Ecologia</strong>. [s.l: s.n.]. Disponível em: &lt;<a href="https://ecoevol.ufg.br/adrimelo/prog/Conversando_com_o_R_usando_57_palavras-v13.pdf">https://ecoevol.ufg.br/adrimelo/prog/Conversando_com_o_R_usando_57_palavras-v13.pdf</a>&gt;.
 </div>
-<div id="ref-RN2941" class="csl-entry">
-OLIVEIRA, P. F. de; GUERRA, S.; MCDONNELL, R. <strong>Ciência de dados com R: Introdução</strong>. Brasília, DF: Editora IBPAD, 2018.a. p. 240 Disponível em: &lt;<a href="https://cdr.ibpad.com.br/">https://cdr.ibpad.com.br/</a>&gt;
-</div>
 <div id="ref-oliveira2018" class="csl-entry">
-OLIVEIRA, P. F. de; GUERRA, S.; MCDONNELL, R. <strong>Ciência de dados com R: Introdução</strong>. Brasília, DF: Editora IBPAD, 2018.b. Type: Book. Disponível em: &lt;<a href="https://cdr.ibpad.com.br/">https://cdr.ibpad.com.br/</a>&gt;
+OLIVEIRA, P. F. de; GUERRA, S.; MCDONNELL, R. <strong>Ciência de dados com R: Introdução</strong>. Brasília, DF: Editora IBPAD, 2018. Type: Book. Disponível em: &lt;<a href="https://cdr.ibpad.com.br/">https://cdr.ibpad.com.br/</a>&gt;
 </div>
 <div id="ref-silva2022" class="csl-entry">
 SILVA, F. R.; GONÇALVES-SOUZA, T.; PATERNO, G. B.; PROVETE, D. B.; VANCINE, M. H. <strong>Análises Ecológicas no R</strong>. 1. ed. Bauru - SP: Canal 6 Editora. NUPEEA., 2022. Disponível em: &lt;<a href="https://canal6.com.br/livreacesso/livro/analises-ecologicas-no-r/">https://canal6.com.br/livreacesso/livro/analises-ecologicas-no-r/</a>&gt;
@@ -1170,7 +1165,7 @@ VENABLES, W. N.; SMITH, D. M.; R CORE TEAM. <strong>An Introduction to R. Notes 
 </div>
   <div class="chapter-nav">
 <div class="prev"><a href="basehab.html"><span class="header-section-number">9</span> Base de dados II - Habitat</a></div>
-<div class="next"><a href="bibliografia-geral.html">Bibliografia Geral</a></div>
+<div class="next"><a href="xls.html"><span class="header-section-number">11</span> R Módulo 2 - Importando planilhas de dados</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
@@ -1213,7 +1208,7 @@ VENABLES, W. N.; SMITH, D. M.; R CORE TEAM. <strong>An Introduction to R. Notes 
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Fundamentos de Ecologia Numérica</strong>: Disciplina de Ecologia Numérica do Curso de Ciências Biológicas do Campus V da UEPB" was written by Prof. Elvio S. F. Medeiros, Laboratório de Ecologia, Universidade Estadual da Paraíba, Campus V, João Pessoa, PB. It was last built on Last updated: 09/05/2026 21:16:40.</p>
+    <p>"<strong>Fundamentos de Ecologia Numérica</strong>: Disciplina de Ecologia Numérica do Curso de Ciências Biológicas do Campus V da UEPB" was written by Prof. Elvio S. F. Medeiros, Laboratório de Ecologia, Universidade Estadual da Paraíba, Campus V, João Pessoa, PB. It was last built on Last updated: 09/05/2026 22:45:08.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

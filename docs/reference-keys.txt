@@ -32,6 +32,10 @@ fig:nucleos
 fig:tipos
 fig:22chat
 fig:22wf
+fig:301ppbio
+fig:402rm1
+fig:401asbim
+fig:401hmala
 apres
 motivação
 plano-de-estudo
@@ -112,3 +116,15 @@ dentro-do-r
 fora-do-r
 chatgpt
 work-flow
+xls
+sobre-os-dados-do-ppbio-2
+importando-a-planilha-de-trabalho
+organização-básica
+prefira-sempre-códigos-e-scripts-do-que-mouse-e-menus-de-janelas-no-r
+importando-a-planilha
+outra-forma-de-achar-e-importar-uma-planilha
+importando-.ods-do-libreoffice-calc
+manipulando-matrizes-de-dados
+colunas-com-o-mesmo-nome
+removendo-linhas-ou-colunas-por-nome
+criando-uma-matriz-de-médias
