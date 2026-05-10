@@ -36,6 +36,7 @@ fig:301ppbio
 fig:402rm1
 fig:401asbim
 fig:401hmala
+fig:rmd3banks
 apres
 motivação
 plano-de-estudo
@@ -128,3 +129,17 @@ manipulando-matrizes-de-dados
 colunas-com-o-mesmo-nome
 removendo-linhas-ou-colunas-por-nome
 criando-uma-matriz-de-médias
+univ
+sobre-os-dados
+organização-básica-1
+importando-a-planilha-1
+averiguando-normalidade
+tabela-de-frequências-e-gráfico-stem-and-leaf
+assimetria-e-curtose
+gráficos-de-histograma-e-boxplot
+gráfico-de-probabilidade-normal-normal-probability-plot-ou-normal-q-q-plot
+algumas-informações-sobre-o-q-q-plot-e-porquê-ele-é-importante
+sumário-estatístico-geral
+estatística-de-shapiro-wilk
+estatística-de-kolmogorov-smirnov-com-nível-de-significância-de-lilliefors
+transformação-de-variáveis
