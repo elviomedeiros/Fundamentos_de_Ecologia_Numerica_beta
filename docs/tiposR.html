@@ -88,6 +88,7 @@
 <li><a class="active" href="tiposR.html"><span class="header-section-number">10</span> R Módulo 1 - Sintaxe e Tipos de dados no R</a></li>
 <li><a class="" href="xls.html"><span class="header-section-number">11</span> R Módulo 2 - Importando planilhas de dados</a></li>
 <li><a class="" href="univ.html"><span class="header-section-number">12</span> R Módulo 3.1 - Estatísticas descritivas e normalidade</a></li>
+<li><a class="" href="univ2.html"><span class="header-section-number">13</span> R Módulo 3.2 - Testes estatísticos</a></li>
 <li class="book-part">VI. INFORMAÇÕES GERAIS</li>
 <li><a class="" href="bibliografia-geral.html">Bibliografia Geral</a></li>
 </ul>
@@ -398,16 +399,16 @@ Figura 10.1: Interface típica do RStudio e nome dos paineis ou janelas.
 <span><span class="va">df1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="va">a</span>,<span class="va">b</span>,<span class="va">c</span><span class="op">)</span></span>
 <span><span class="va">df1</span></span></code></pre></div>
 <pre><code>##    a  b  c
-## 1  1  0 10
-## 2  0 20 10
-## 3  1 20  0
-## 4  5 10 10
-## 5  5  0  5
-## 6  0  0 10
-## 7  5  0  5
-## 8  0  0 10
-## 9  5  0 10
-## 10 0 10 10</code></pre>
+## 1  5 10  0
+## 2  5 20  5
+## 3  0 10  5
+## 4  1  0  5
+## 5  5 10  5
+## 6  0 20  5
+## 7  1 10 10
+## 8  5  0  0
+## 9  0  0  5
+## 10 1 20  0</code></pre>
 <p>Na primeira forma, definimos os elementos da matriz, o número de linhas e colunas através dos <code>argumentos</code> <code>nrow</code> e <code>ncol</code>, e se os elementos serão preenchidos ao longo das linhas (<code>byrow = TRUE</code>) ou ao longo das colunas (<code>byrow = FALSE</code>).</p>
 <p>Na segunda forma, criamos dois vetores e então os juntamos através da função <code><a href="https://rdrr.io/r/base/cbind.html">rbind()</a></code>. Repare que na segunda matriz, o R nomeou automaticamente as linhas da matriz com os nomes dos vetores, ao invés de definir seus números.</p>
 <p>Para selecionar itens de matrizes também utilizamos os colchetes, primeiro especificando a linha e depois a coluna que desejamos retornar:</p>
@@ -1209,7 +1210,7 @@ VENABLES, W. N.; SMITH, D. M.; R CORE TEAM. <strong>An Introduction to R. Notes 
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Fundamentos de Ecologia Numérica</strong>: Disciplina de Ecologia Numérica do Curso de Ciências Biológicas do Campus V da UEPB" was written by Prof. Elvio S. F. Medeiros, Laboratório de Ecologia, Universidade Estadual da Paraíba, Campus V, João Pessoa, PB. It was last built on Last updated: 09/05/2026 22:58:01.</p>
+    <p>"<strong>Fundamentos de Ecologia Numérica</strong>: Disciplina de Ecologia Numérica do Curso de Ciências Biológicas do Campus V da UEPB" was written by Prof. Elvio S. F. Medeiros, Laboratório de Ecologia, Universidade Estadual da Paraíba, Campus V, João Pessoa, PB. It was last built on Last updated: 09/05/2026 23:28:34.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

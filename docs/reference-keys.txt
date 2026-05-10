@@ -37,6 +37,7 @@ fig:402rm1
 fig:401asbim
 fig:401hmala
 fig:rmd3banks
+fig:rmd232tucu
 apres
 motivação
 plano-de-estudo
@@ -143,3 +144,18 @@ sumário-estatístico-geral
 estatística-de-shapiro-wilk
 estatística-de-kolmogorov-smirnov-com-nível-de-significância-de-lilliefors
 transformação-de-variáveis
+univ2
+sobre-os-dados-1
+organização-básica-2
+importando-a-planilha-2
+gráficos-de-histograma-e-boxplot-1
+sumário-estatístico-geral-1
+testando-normalidade
+q-q-plots
+testes-de-shapiro-wilk-e-kolmogorov-smirnov
+testando-diferenças-entre-médias
+testando-homogeneidade-de-variâncias
+teste-entre-duas-médias-t-student
+teste-entre-três-médias-anova
+teste-entre-três-médias-e-dois-fatores-two-way-anova
+correlação-e-regressão-simples
