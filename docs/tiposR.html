@@ -107,7 +107,8 @@
 </h3>
 <p>O R é uma <strong>linguagem de expressão</strong> com uma sintaxe muito simples (veja <span class="citation">VENABLES; SMITH; R CORE TEAM (<a href="#ref-venables2026">2026</a>)</span>). Ela é sensível a maiúsculas e minúsculas, como a maioria dos pacotes baseados em UNIX, então <code>A</code> e <code>a</code> são símbolos diferentes e se refeririam a variáveis diferentes. O conjunto de símbolos que podem ser usados nos nomes do R depende do sistema operacional e do país em que o R está sendo executado (tecnicamente, da localidade em uso). Normalmente, todos os símbolos alfanuméricos são permitidos (e em alguns países isso inclui letras acentuadas), além de <code>.</code> e <code>_</code>, com a restrição de que um nome deve começar com <code>.</code> ou uma letra, e se começar com <code>.</code>, o segundo caractere não deve ser um dígito. Os nomes são efetivamente ilimitados em comprimento.</p>
 <div id="hello" class="greeting message" style="color: green;">
-<p><span style="color:red">ATENÇÃO</span> Evite usar nomes longos e complicados</p>
+<p><span style="color:red">ATENÇÃO</span></p>
+<p>Evite usar nomes longos e complicados</p>
 </div>
 <p><strong>Comandos elementares consistem em expressões ou atribuições</strong>. Se uma <code>expressão</code> for dada como um comando, ela é avaliada, impressa (a menos que seja especificamente tornada invisível) e o valor é perdido. Uma <code>atribuição</code> também avalia uma expressão e passa o valor para uma variável, mas o resultado não é automaticamente impresso.</p>
 <p>Os comandos são separados por um ponto e vírgula (<code>;</code>) ou por uma nova linha (<code>Enter</code>). Comandos elementares podem ser agrupados em uma única expressão composta por chaves (<code>{' and '}</code>).</p>
@@ -142,18 +143,17 @@ Figura 10.1: Interface típica do RStudio e nome dos paineis ou janelas.
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fl">600</span><span class="op">+</span><span class="fl">66</span></span></code></pre></div>
 <pre><code>## [1] 666</code></pre>
-<p>Cálculos repetitivos podem ser automatizados usando um <code>loop</code></p>
+<p>Cálculos repetitivos podem ser automatizados usando um <code>loop</code>.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">10</span></span>
+<span><span class="va">x</span></span>
+<span><span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">)</span> <span class="op">{</span><span class="va">x</span><span class="op">+</span><span class="fl">1</span><span class="op">-&gt;</span><span class="va">x</span><span class="op">}</span></span>
 <span><span class="va">x</span></span></code></pre></div>
-<pre><code>## [1] 10</code></pre>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">)</span> <span class="op">{</span><span class="va">x</span><span class="op">+</span><span class="fl">1</span><span class="op">-&gt;</span><span class="va">x</span><span class="op">}</span></span>
-<span><span class="va">x</span></span></code></pre></div>
-<pre><code>## [1] 15</code></pre>
+<pre><code>## [1] 10
+## [1] 15</code></pre>
 <p>Aqui o número 1 foi somado cinco vezes ao valor de <code>x</code> que foi armazenado cada vez como <code>x</code> (substituindo o valor anterior) até chegar em 15. Na prática o R calculou 10+1=11, 11+1=12, 12+1=13, 13+1=14, 14+1=15.</p>
-<p>Note que os <code>:</code> foi usado para produzir uma seqüência de números de 1 a 5.</p>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<p>Note que o <code>:</code> foi usado para produzir uma seqüência de números de 1 a 5.</p>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span></span></code></pre></div>
 <pre><code>## [1] 1 2 3 4 5</code></pre>
 <p>O R usa os seguintes símbolos para as operações básicas:</p>
@@ -273,7 +273,7 @@ Figura 10.1: Interface típica do RStudio e nome dos paineis ou janelas.
 </ol>
 <p>Para guardar os valores em uma variável em R, usamos <code>&lt;-</code> (operador de atribuição). Neste caso, o print automático não ocorre, e caso queira checar qual é o valor daquela variável, basta digitar seu nome novamente, ou utilizar o comando <code>print(nome_da_variavel)</code>.</p>
 <p>Vejamos:</p>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">a</span> <span class="op">&lt;-</span> <span class="fl">5</span> <span class="op">+</span> <span class="fl">3</span></span>
 <span><span class="va">a</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">a</span><span class="op">)</span></span>
@@ -284,7 +284,7 @@ Figura 10.1: Interface típica do RStudio e nome dos paineis ou janelas.
 <p>Criamos um <strong>objeto</strong> do R chamado <code>a</code> que armazena o resultado de <code>5+3</code>. Objetos são palavras ou letras às quais são atribuídos dados. A atribuição possibilita a manipulação de dados ou armazenamento dos resultados de análises <span class="citation">(<a href="#ref-silva2022">SILVA et al., 2022</a>)</span>.</p>
 <p>O objeto <code>a</code> é uma variável numérica, como você pode ver ao usar a função <code><a href="https://rdrr.io/r/base/class.html">class()</a></code>. Se quiser trabalhar com inteiros (<code>integer</code>), você deve defini-los como <code>integer</code>, através da função <code><a href="https://rdrr.io/r/base/integer.html">as.integer()</a></code>.</p>
 <p>Vejamos:</p>
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">var1</span> <span class="op">&lt;-</span> <span class="fl">3</span></span>
 <span><span class="va">var2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/integer.html">as.integer</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">var1</span><span class="op">)</span></span>
@@ -294,7 +294,7 @@ Figura 10.1: Interface típica do RStudio e nome dos paineis ou janelas.
 <p>A função <code><a href="https://rdrr.io/r/base/class.html">class()</a></code> tem o mesmo efeito que a função <code><a href="https://rdrr.io/r/base/mode.html">mode()</a></code>. Faça o teste.</p>
 <p>Em R, os dados também podem ser do tipo <code>character</code>, que é uma variável de texto (em outras linguagens pode ser conhecida como <code>string</code>) e <code>logical</code> (que em outras linguagens pode ser conhecida como <code>boolean</code>), e que assume os valores <code>TRUE</code> ou <code>FALSE</code>.</p>
 <p>Exemplos:</p>
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">b</span> <span class="op">&lt;-</span> <span class="st">"Ola mundo"</span></span>
 <span><span class="va">c</span> <span class="op">&lt;-</span> <span class="cn">TRUE</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">b</span><span class="op">)</span></span>
@@ -306,12 +306,12 @@ Figura 10.1: Interface típica do RStudio e nome dos paineis ou janelas.
 </div>
 <p>Uma <code>função</code> vem sempre seguida de parênteses <code>()</code> (no formato, <code>função(x)</code>), dentro dos quais colocamos os <code>argumentos</code> da função. Os argumentos, por sua vês, devem ser separados por vírgula <code>,</code>. Os argumentos são informações adicionais que especificam certas particularidades para serem executadas pelas <code>funções</code>.</p>
 <p>Usando a função <code><a href="https://rdrr.io/r/base/Log.html">log()</a></code> como exemplo, temos:</p>
-<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span>x<span class="op">=</span><span class="fl">20</span>, base<span class="op">=</span><span class="fl">10</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] 1.30103</code></pre>
 <p>O argumento <code>x=</code> indica de qual valor queremos o log e o argumento <code>base=</code> indica qual base para o logaritmo o R vai usar.</p>
 <p>Ou, em um segundo caso, podemos ter simplesmente a função sem nenhuma indicação de argumento:</p>
-<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="fl">20</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] 2.995732</code></pre>
 <p>Muitas funções possuem opções padrões (<em>default</em>) para alguns de seus argumentos. No caso do log, se não for dado nenhum argumento o <code>default</code> do R é usar o log natural do valor entre parêntesis.</p>
@@ -334,20 +334,20 @@ Figura 10.1: Interface típica do RStudio e nome dos paineis ou janelas.
 </ol>
 <p>Como ja foi dito, os vetores são uma sequência simples de elementos do mesmo tipo. Quando definimos uma variável como fizemos anteriormente, é criado um vetor com um elemento (vetor numérico, vetor de caractere, etc.).</p>
 <p>O R opera em <strong>estruturas de dados nomeadas</strong>. A estrutura mais simples é o <strong>vetor numérico</strong>, que é uma entidade única consistindo de uma coleção ordenada de números. Para configurar um vetor chamado x, por exemplo, consistindo de cinco números, a saber, 1.4, 6.5, 3, 4 e 71.2, usa-se o comando R:</p>
-<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1.4</span>, <span class="fl">6.5</span>, <span class="fl">3</span>, <span class="fl">4</span>, <span class="fl">71.2</span><span class="op">)</span></span></code></pre></div>
 <p>Esta é uma instrução de atribuição usando a função <code><a href="https://rdrr.io/r/base/c.html">c()</a></code> (“combinar”), que neste contexto pode receber um número arbitrário de argumentos de vetor e cujo valor é um vetor obtido pela concatenação de seus argumentos de ponta a ponta.</p>
 <p>Observe que o operador de atribuição (<code>&lt;-</code>), que consiste nos dois caracteres ‘&lt;’ (“menor que”) e ‘-’ (“menos”) ocorrendo estritamente lado a lado, e ele “aponta” para o objeto que recebe o valor da expressão. Na maioria dos contextos, o operador ‘=’ pode ser usado como uma alternativa.</p>
 <p>Observe:</p>
-<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">var1</span> <span class="op">&lt;-</span> <span class="fl">3</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/vector.html">is.vector</a></span><span class="op">(</span><span class="va">var1</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 <p>Isso explica aquele <code>[1]</code> que vimos no início do módulo. Quando você associa uma variável dessa forma, o R cria um vetor, e o valor que você definiu será o primeiro item deste vetor.</p>
 <p>Para criarmos vetores com mais de um elemento, incluiremos os valores desejados dentro de um <code><a href="https://rdrr.io/r/base/c.html">c()</a></code> que significa <code>combinar</code>.</p>
 <p>Veja o exemplo:</p>
-<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">var1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>,<span class="fl">6</span>, <span class="fl">7.8</span>, <span class="fl">332</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">var1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>,<span class="fl">6</span>,<span class="fl">7.8</span>,<span class="fl">332</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">var1</span><span class="op">)</span></span>
 <span><span class="va">var2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Ola"</span>,<span class="st">"tudo"</span>,<span class="st">"bem"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">var2</span><span class="op">)</span></span>
@@ -368,7 +368,7 @@ Figura 10.1: Interface típica do RStudio e nome dos paineis ou janelas.
 </li>
 </ol>
 <p>As matrizes são estruturas que correspondem às matrizes matemáticas, conjuntos de elementos com linhas e colunas. Assim como os vetores, todos os seus elementos sao do mesmo tipo. Existem algumas formas de criar uma matriz:</p>
-<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">mat1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">5</span>,<span class="fl">10</span>,<span class="fl">30</span>,<span class="fl">15</span>,<span class="fl">8</span><span class="op">)</span>,</span>
 <span> nrow<span class="op">=</span><span class="fl">3</span>,</span>
 <span> ncol<span class="op">=</span><span class="fl">2</span>,</span>
@@ -379,7 +379,7 @@ Figura 10.1: Interface típica do RStudio e nome dos paineis ou janelas.
 ## [2,]   10   30
 ## [3,]   15    8</code></pre>
 <p>Ou</p>
-<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">vec1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">5</span><span class="op">)</span></span>
 <span><span class="va">vec2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">30</span><span class="op">)</span></span>
 <span><span class="va">vec3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">15</span>, <span class="fl">8</span><span class="op">)</span> </span>
@@ -392,27 +392,28 @@ Figura 10.1: Interface típica do RStudio e nome dos paineis ou janelas.
 ## vec3   15    8
 ## [1] "matrix" "array"</code></pre>
 <p>Ou</p>
-<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">a</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">1</span>,<span class="fl">5</span><span class="op">)</span>,<span class="fl">10</span>,replace<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="va">b</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">10</span>,<span class="fl">20</span><span class="op">)</span>,<span class="fl">10</span>,replace<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="va">c</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">5</span>,<span class="fl">10</span><span class="op">)</span>,<span class="fl">10</span>,replace<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="va">df1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="va">a</span>,<span class="va">b</span>,<span class="va">c</span><span class="op">)</span></span>
 <span><span class="va">df1</span></span></code></pre></div>
 <pre><code>##    a  b  c
-## 1  5 10  0
-## 2  5 20  5
-## 3  0 10  5
-## 4  1  0  5
+## 1  5 20 10
+## 2  0 10  5
+## 3  5 10  0
+## 4  5 20 10
 ## 5  5 10  5
-## 6  0 20  5
-## 7  1 10 10
-## 8  5  0  0
-## 9  0  0  5
-## 10 1 20  0</code></pre>
+## 6  5  0 10
+## 7  0 10  5
+## 8  0 10  5
+## 9  0 20 10
+## 10 1 20 10</code></pre>
 <p>Na primeira forma, definimos os elementos da matriz, o número de linhas e colunas através dos <code>argumentos</code> <code>nrow</code> e <code>ncol</code>, e se os elementos serão preenchidos ao longo das linhas (<code>byrow = TRUE</code>) ou ao longo das colunas (<code>byrow = FALSE</code>).</p>
 <p>Na segunda forma, criamos dois vetores e então os juntamos através da função <code><a href="https://rdrr.io/r/base/cbind.html">rbind()</a></code>. Repare que na segunda matriz, o R nomeou automaticamente as linhas da matriz com os nomes dos vetores, ao invés de definir seus números.</p>
+<p>No terceiro caso, a função <code><a href="https://rdrr.io/r/base/sample.html">sample()</a></code> realiza uma amostragem aleatória de elementos. No caso de <code>a</code>, são sorteados 10 valores do conjunto {0, 1, 5}, permitindo repetições (<code>replace = TRUE</code>). O resultado é armazenado no vetor <code>a</code>.</p>
 <p>Para selecionar itens de matrizes também utilizamos os colchetes, primeiro especificando a linha e depois a coluna que desejamos retornar:</p>
-<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">mat1</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span></span></code></pre></div>
 <pre><code>## [1] 10</code></pre>
 <ol start="4" style="list-style-type: decimal">
@@ -427,7 +428,7 @@ Figura 10.1: Interface típica do RStudio e nome dos paineis ou janelas.
 </li>
 </ol>
 <p>O <code>Data Frame</code> é a estrutura do R utilizada para armazenar elementos em forma de tabela, organizados em linhas e colunas. As colunas e linhas podem ser nomeadas. Você pode criar um data frame com a função <code><a href="https://rdrr.io/r/base/data.frame.html">data.frame()</a></code>:</p>
-<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span><span class="op">)</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"baixo"</span>,<span class="st">"medio"</span>,<span class="st">"alto"</span><span class="op">)</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">TRUE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">df1</span><span class="op">)</span></span></code></pre></div>
 <pre><code>##   c.1..2..3. c..baixo....medio....alto.. c.TRUE..TRUE..FALSE.
@@ -435,7 +436,7 @@ Figura 10.1: Interface típica do RStudio e nome dos paineis ou janelas.
 ## 2          2                       medio                 TRUE
 ## 3          3                        alto                FALSE</code></pre>
 <p>Ou</p>
-<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>Sp1<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">5</span>,<span class="fl">2</span>,<span class="fl">5</span>,<span class="fl">3</span><span class="op">)</span>, Sp2<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">21</span>,<span class="fl">8</span>,<span class="fl">10</span>,<span class="fl">7</span>,<span class="fl">18</span><span class="op">)</span><span class="op">)</span> </span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/row.names.html">row.names</a></span><span class="op">(</span><span class="va">df2</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">LETTERS</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span></span>
 <span><span class="va">df2</span></span></code></pre></div>
@@ -446,11 +447,11 @@ Figura 10.1: Interface típica do RStudio e nome dos paineis ou janelas.
 ## D   5   7
 ## E   3  18</code></pre>
 <p>É possivel plotar esse dataframe:</p>
-<div class="sourceCode" id="cb42"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">df2</span>, type<span class="op">=</span><span class="st">'n'</span><span class="op">)</span>; <span class="fu"><a href="https://rdrr.io/r/graphics/text.html">text</a></span><span class="op">(</span><span class="va">df2</span>, <span class="fu"><a href="https://rdrr.io/r/base/row.names.html">row.names</a></span><span class="op">(</span><span class="va">df2</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="fundamentos_de_ecologia_numerica_files/figure-html/unnamed-chunk-20-1.png" alt="" width="672"></div>
 <p><code>Dataframes</code> ou <code>Matrizes</code> muito grandes são inviáveis de serem inseridas no ambiente do R através de digitação simples como mostrado anteriormente. Uma opção é usar a função <code>read.table(text="")</code> e colar a matriz de dados entre as aspas <code>"..."</code></p>
-<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.table</a></span><span class="op">(</span>text <span class="op">=</span> <span class="st">"</span></span>
 <span><span class="st">Sp1 Sp2 Sp3 Sp4 Sp5 Sp6 Sp7</span></span>
 <span><span class="st">A 0 0 0 0 0 0 6</span></span>
@@ -471,7 +472,7 @@ Figura 10.1: Interface típica do RStudio e nome dos paineis ou janelas.
 ## F   0   0   1   0   0   1   0
 ## G   0   2   0   2   0   0   0</code></pre>
 <p>O R vem com alguns conjuntos de dados organizados em Data Frame na sua base, para a finalidade de testes e aprendizado. Um deles é o <code>mtcars</code>:</p>
-<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span></span></code></pre></div>
 <pre><code>##                      mpg cyl  disp  hp drat    wt  qsec vs am gear carb
 ## Mazda RX4           21.0   6 160.0 110 3.90 2.620 16.46  0  1    4    4
@@ -507,25 +508,32 @@ Figura 10.1: Interface típica do RStudio e nome dos paineis ou janelas.
 ## Maserati Bora       15.0   8 301.0 335 3.54 3.570 14.60  0  1    5    8
 ## Volvo 142E          21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    2</code></pre>
 <p>Algumas funções úteis para conjuntos muito grandes de dados que você deve conhecer:</p>
-<div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">mtcars</span><span class="op">[</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">]</span></span></code></pre></div>
-<pre><code>## [1] 6</code></pre>
-<div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">mtcars</span><span class="op">[</span><span class="st">"Mazda RX4"</span>,<span class="st">"gear"</span><span class="op">]</span></span></code></pre></div>
-<pre><code>## [1] 4</code></pre>
-<div class="sourceCode" id="cb51"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">mtcars</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>,<span class="fl">1</span><span class="op">]</span></span></code></pre></div>
-<pre><code>## [1] 21.0 21.0 22.8 21.4 18.7</code></pre>
-<div class="sourceCode" id="cb53"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">mtcars</span><span class="op">[</span>,<span class="fl">2</span><span class="op">]</span></span></code></pre></div>
-<pre><code>##  [1] 6 6 4 6 8 6 8 4 4 6 6 8 8 8 8 8 8 4 4 4 4 8 8 8 8 4 4 4 8 6 8 4</code></pre>
-<div class="sourceCode" id="cb55"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">mtcars</span><span class="op">[</span><span class="fl">3</span>,<span class="op">]</span></span></code></pre></div>
-<pre><code>##             mpg cyl disp hp drat   wt  qsec vs am gear carb
-## Datsun 710 22.8   4  108 93 3.85 2.32 18.61  1  1    4    1</code></pre>
-<div class="sourceCode" id="cb57"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span></span></code></pre></div>
-<pre><code>##  [1] "Mazda RX4"           "Mazda RX4 Wag"       "Datsun 710"         
+<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">mtcars</span><span class="op">[</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">]</span></span>
+<span><span class="va">mtcars</span><span class="op">[</span><span class="st">"Mazda RX4"</span>,<span class="st">"gear"</span><span class="op">]</span></span>
+<span><span class="va">mtcars</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>,<span class="fl">1</span><span class="op">]</span></span>
+<span><span class="va">mtcars</span><span class="op">[</span>,<span class="fl">2</span><span class="op">]</span></span>
+<span><span class="va">mtcars</span><span class="op">[</span><span class="fl">3</span>,<span class="op">]</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span></span>
+<span><span class="va">mtcars</span><span class="op">$</span><span class="va">gear</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/t.html">t</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">ncol</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span></span>
+<span><span class="va">mtcars</span><span class="op">[</span><span class="va">mtcars</span><span class="op">&lt;=</span><span class="fl">3</span><span class="op">]</span></span>
+<span><span class="va">mtcars</span><span class="op">[</span><span class="va">mtcars</span><span class="op">==</span><span class="fl">0</span><span class="op">]</span> </span>
+<span><span class="va">mtcars</span><span class="op">[</span><span class="va">mtcars</span><span class="op">!=</span><span class="fl">0</span><span class="op">]</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">as.matrix</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">[</span><span class="va">mtcars</span><span class="op">==</span><span class="fl">0</span><span class="op">]</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span></span></code></pre></div>
+<pre><code>## [1] 6
+## [1] 4
+## [1] 21.0 21.0 22.8 21.4 18.7
+##  [1] 6 6 4 6 8 6 8 4 4 6 6 8 8 8 8 8 8 4 4 4 4 8 8 8 8 4 4 4 8 6 8 4
+##             mpg cyl disp hp drat   wt  qsec vs am gear carb
+## Datsun 710 22.8   4  108 93 3.85 2.32 18.61  1  1    4    1
+##  [1] "Mazda RX4"           "Mazda RX4 Wag"       "Datsun 710"         
 ##  [4] "Hornet 4 Drive"      "Hornet Sportabout"   "Valiant"            
 ##  [7] "Duster 360"          "Merc 240D"           "Merc 230"           
 ## [10] "Merc 280"            "Merc 280C"           "Merc 450SE"         
@@ -535,13 +543,9 @@ Figura 10.1: Interface típica do RStudio e nome dos paineis ou janelas.
 ## [22] "Dodge Challenger"    "AMC Javelin"         "Camaro Z28"         
 ## [25] "Pontiac Firebird"    "Fiat X1-9"           "Porsche 914-2"      
 ## [28] "Lotus Europa"        "Ford Pantera L"      "Ferrari Dino"       
-## [31] "Maserati Bora"       "Volvo 142E"</code></pre>
-<div class="sourceCode" id="cb59"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">mtcars</span><span class="op">$</span><span class="va">gear</span></span></code></pre></div>
-<pre><code>##  [1] 4 4 4 3 3 3 3 4 4 4 4 3 3 3 3 3 3 4 4 4 3 3 3 3 3 4 5 5 5 5 5 4</code></pre>
-<div class="sourceCode" id="cb61"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/t.html">t</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span></span></code></pre></div>
-<pre><code>##      Mazda RX4 Mazda RX4 Wag Datsun 710 Hornet 4 Drive Hornet Sportabout
+## [31] "Maserati Bora"       "Volvo 142E"         
+##  [1] 4 4 4 3 3 3 3 4 4 4 4 3 3 3 3 3 3 4 4 4 3 3 3 3 3 4 5 5 5 5 5 4
+##      Mazda RX4 Mazda RX4 Wag Datsun 710 Hornet 4 Drive Hornet Sportabout
 ## mpg      21.00        21.000      22.80         21.400             18.70
 ## cyl       6.00         6.000       4.00          6.000              8.00
 ## disp    160.00       160.000     108.00        258.000            360.00
@@ -624,16 +628,10 @@ Figura 10.1: Interface típica do RStudio e nome dos paineis ou janelas.
 ## vs         1.00
 ## am         1.00
 ## gear       4.00
-## carb       2.00</code></pre>
-<div class="sourceCode" id="cb63"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span></span></code></pre></div>
-<pre><code>## [1] 32</code></pre>
-<div class="sourceCode" id="cb65"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">ncol</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span></span></code></pre></div>
-<pre><code>## [1] 11</code></pre>
-<div class="sourceCode" id="cb67"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">mtcars</span><span class="op">[</span><span class="va">mtcars</span><span class="op">&lt;=</span><span class="fl">3</span><span class="op">]</span></span></code></pre></div>
-<pre><code>##   [1] 2.760 2.930 3.000 2.760 2.620 2.875 2.320 2.200 1.615 1.835 2.465 1.935
+## carb       2.00
+## [1] 32
+## [1] 11
+##   [1] 2.760 2.930 3.000 2.760 2.620 2.875 2.320 2.200 1.615 1.835 2.465 1.935
 ##  [13] 2.140 1.513 2.770 2.780 0.000 0.000 1.000 1.000 0.000 1.000 0.000 1.000
 ##  [25] 1.000 1.000 1.000 0.000 0.000 0.000 0.000 0.000 0.000 1.000 1.000 1.000
 ##  [37] 1.000 0.000 0.000 0.000 0.000 1.000 0.000 1.000 0.000 0.000 0.000 1.000
@@ -642,13 +640,9 @@ Figura 10.1: Interface típica do RStudio e nome dos paineis ou janelas.
 ##  [73] 0.000 1.000 1.000 1.000 1.000 1.000 1.000 1.000 3.000 3.000 3.000 3.000
 ##  [85] 3.000 3.000 3.000 3.000 3.000 3.000 3.000 3.000 3.000 3.000 3.000 1.000
 ##  [97] 1.000 2.000 1.000 2.000 2.000 3.000 3.000 3.000 1.000 2.000 1.000 1.000
-## [109] 2.000 2.000 2.000 1.000 2.000 2.000 2.000</code></pre>
-<div class="sourceCode" id="cb69"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">mtcars</span><span class="op">[</span><span class="va">mtcars</span><span class="op">==</span><span class="fl">0</span><span class="op">]</span> </span></code></pre></div>
-<pre><code>##  [1] 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0</code></pre>
-<div class="sourceCode" id="cb71"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">mtcars</span><span class="op">[</span><span class="va">mtcars</span><span class="op">!=</span><span class="fl">0</span><span class="op">]</span></span></code></pre></div>
-<pre><code>##   [1]  21.000  21.000  22.800  21.400  18.700  18.100  14.300  24.400  22.800
+## [109] 2.000 2.000 2.000 1.000 2.000 2.000 2.000
+##  [1] 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+##   [1]  21.000  21.000  22.800  21.400  18.700  18.100  14.300  24.400  22.800
 ##  [10]  19.200  17.800  16.400  17.300  15.200  10.400  10.400  14.700  32.400
 ##  [19]  30.400  33.900  21.500  15.500  15.200  13.300  19.200  27.300  26.000
 ##  [28]  30.400  15.800  19.700  15.000  21.400   6.000   6.000   4.000   6.000
@@ -682,19 +676,11 @@ Figura 10.1: Interface típica do RStudio e nome dos paineis ou janelas.
 ## [280]   5.000   5.000   5.000   4.000   4.000   4.000   1.000   1.000   2.000
 ## [289]   1.000   4.000   2.000   2.000   4.000   4.000   3.000   3.000   3.000
 ## [298]   4.000   4.000   4.000   1.000   2.000   1.000   1.000   2.000   2.000
-## [307]   4.000   2.000   1.000   2.000   2.000   4.000   6.000   8.000   2.000</code></pre>
-<div class="sourceCode" id="cb73"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">as.matrix</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<pre><code>## [1] 352</code></pre>
-<div class="sourceCode" id="cb75"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span></span></code></pre></div>
-<pre><code>## [1] 32 11</code></pre>
-<div class="sourceCode" id="cb77"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">[</span><span class="va">mtcars</span><span class="op">==</span><span class="fl">0</span><span class="op">]</span><span class="op">)</span></span></code></pre></div>
-<pre><code>## [1] 37</code></pre>
-<div class="sourceCode" id="cb79"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span></span></code></pre></div>
-<pre><code>## 'data.frame':    32 obs. of  11 variables:
+## [307]   4.000   2.000   1.000   2.000   2.000   4.000   6.000   8.000   2.000
+## [1] 352
+## [1] 32 11
+## [1] 37
+## 'data.frame':    32 obs. of  11 variables:
 ##  $ mpg : num  21 21 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 ...
 ##  $ cyl : num  6 6 4 6 8 6 8 4 4 6 ...
 ##  $ disp: num  160 160 108 258 360 ...
@@ -705,10 +691,8 @@ Figura 10.1: Interface típica do RStudio e nome dos paineis ou janelas.
 ##  $ vs  : num  0 0 1 1 0 1 0 1 1 1 ...
 ##  $ am  : num  1 1 1 0 0 0 0 0 0 0 ...
 ##  $ gear: num  4 4 4 3 3 3 3 4 4 4 ...
-##  $ carb: num  4 4 1 1 2 1 4 2 2 4 ...</code></pre>
-<div class="sourceCode" id="cb81"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span></span></code></pre></div>
-<pre><code>##       mpg             cyl             disp             hp       
+##  $ carb: num  4 4 1 1 2 1 4 2 2 4 ...
+##       mpg             cyl             disp             hp       
 ##  Min.   :10.40   Min.   :4.000   Min.   : 71.1   Min.   : 52.0  
 ##  1st Qu.:15.43   1st Qu.:4.000   1st Qu.:120.8   1st Qu.: 96.5  
 ##  Median :19.20   Median :6.000   Median :196.3   Median :123.0  
@@ -741,48 +725,46 @@ Figura 10.1: Interface típica do RStudio e nome dos paineis ou janelas.
 </li>
 </ol>
 <p>Por fim, temos os fatores (<code>factors</code>). Fatores são usados para representar categorias. Isso quer dizer que em uma variável do tipo <code>factor</code>, aquele valor terá uma quantidade limitada de valores. Pense, por exemplo, nos meses do ano ou letras do alfabeto. Existe um número definido de meses, e o valor estará dentro destas possibilidades. Um nome de uma pessoa, ao contrário, tem infinitas possibilidades, pois não existe uma lista pré-definida de nomes de pessoas, e qualquer um pode criar um novo nome. Para criar um fator, vamos aproveitar o exemplo dos meses do ano e utilizar a função <code><a href="https://rdrr.io/r/base/factor.html">factor()</a></code>:</p>
-<div class="sourceCode" id="cb83"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">meses</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Jan"</span>,<span class="st">"Jan"</span>,<span class="st">"Feb"</span>,<span class="st">"Mar"</span>,<span class="st">"Apr"</span>,<span class="st">"Apr"</span>,<span class="st">"May"</span>,<span class="st">"Jan"</span>,<span class="st">"Jan"</span>,<span class="st">"May"</span>,<span class="st">"May"</span>,<span class="st">"Jun"</span><span class="op">)</span></span>
-<span><span class="va">meses</span></span></code></pre></div>
-<pre><code>##  [1] "Jan" "Jan" "Feb" "Mar" "Apr" "Apr" "May" "Jan" "Jan" "May" "May" "Jun"</code></pre>
-<div class="sourceCode" id="cb85"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">meses</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">meses</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">meses</span><span class="op">)</span></span></code></pre></div>
-<pre><code>##  [1] Jan Jan Feb Mar Apr Apr May Jan Jan May May Jun
-## Levels: Apr Feb Jan Jun Mar May</code></pre>
-<div class="sourceCode" id="cb87"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">meses</span><span class="op">)</span></span></code></pre></div>
-<pre><code>## meses
+<span><span class="va">meses</span></span>
+<span><span class="va">meses</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">meses</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">meses</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">meses</span><span class="op">)</span></span></code></pre></div>
+<pre><code>##  [1] "Jan" "Jan" "Feb" "Mar" "Apr" "Apr" "May" "Jan" "Jan" "May" "May" "Jun"
+##  [1] Jan Jan Feb Mar Apr Apr May Jan Jan May May Jun
+## Levels: Apr Feb Jan Jun Mar May
+## meses
 ## Apr Feb Jan Jun Mar May 
 ##   2   1   4   1   1   3</code></pre>
 <p>Um <code>vector</code> ou “vetor” é uma estrutura de dados fundamental que armazena uma sequência ordenada de elementos do mesmo tipo. Ao imprimir (<code><a href="https://rdrr.io/r/base/print.html">print()</a></code>) o vetor <code>meses</code>, vemos que o R nos indica os níveis (<code>levels</code>), que nada mais são do que os valores únicos que existem naquele vetor. Usando a função <code><a href="https://rdrr.io/r/base/table.html">table()</a></code>, podemos ver a contagem de cada uma das categorias. Vemos que elas estão ordenadas em ordem alfabética.</p>
 <p>Como isso pode ser aplicado?</p>
-<div class="sourceCode" id="cb89"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">meses</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Jan"</span>, <span class="st">"Jan"</span>, <span class="st">"Jan"</span>, <span class="st">"Feb"</span>, <span class="st">"Feb"</span>, <span class="st">"Feb"</span>, <span class="st">"Feb"</span>, <span class="st">"Mar"</span>, <span class="st">"Mar"</span>, <span class="st">"Mar"</span>, <span class="st">"Apr"</span>, <span class="st">"Apr"</span>, <span class="st">"Apr"</span>, <span class="st">"May"</span>, <span class="st">"May"</span>, <span class="st">"May"</span>, <span class="st">"Jun"</span>, <span class="st">"Jun"</span>, <span class="st">"Jun"</span><span class="op">)</span></span>
-<span><span class="va">meses</span></span></code></pre></div>
-<pre><code>##  [1] "Jan" "Jan" "Jan" "Feb" "Feb" "Feb" "Feb" "Mar" "Mar" "Mar" "Apr" "Apr"
-## [13] "Apr" "May" "May" "May" "Jun" "Jun" "Jun"</code></pre>
-<div class="sourceCode" id="cb91"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">meses</span><span class="op">)</span></span></code></pre></div>
-<pre><code>##  [1] Jan Jan Jan Feb Feb Feb Feb Mar Mar Mar Apr Apr Apr May May May Jun Jun Jun
-## Levels: Apr Feb Jan Jun Mar May</code></pre>
-<div class="sourceCode" id="cb93"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">meses</span><span class="op">)</span></span></code></pre></div>
-<pre><code>##  [1] "Jan" "Jan" "Jan" "Feb" "Feb" "Feb" "Feb" "Mar" "Mar" "Mar" "Apr" "Apr"
-## [13] "Apr" "May" "May" "May" "Jun" "Jun" "Jun"</code></pre>
-<div class="sourceCode" id="cb95"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">meses</span><span class="op">)</span></span></code></pre></div>
-<pre><code>## meses
-## Apr Feb Jan Jun Mar May 
-##   3   4   3   3   3   3</code></pre>
-<div class="sourceCode" id="cb97"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">riq</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">5</span>, <span class="fl">7</span>, <span class="fl">6</span>, <span class="fl">8</span>, <span class="fl">9</span>, <span class="fl">0</span>, <span class="fl">4</span>, <span class="fl">6</span>, <span class="fl">9</span>, <span class="fl">2</span>, <span class="fl">6</span>, <span class="fl">3</span>, <span class="fl">9</span>, <span class="fl">6</span>, <span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">6</span>, <span class="fl">7</span><span class="op">)</span></span>
+<span><span class="va">meses</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">meses</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">meses</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">meses</span><span class="op">)</span></span>
+<span><span class="va">riq</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">5</span>, <span class="fl">7</span>, <span class="fl">6</span>, <span class="fl">8</span>, <span class="fl">9</span>, <span class="fl">0</span>, <span class="fl">4</span>, <span class="fl">6</span>, <span class="fl">9</span>, <span class="fl">2</span>, <span class="fl">6</span>, <span class="fl">3</span>, <span class="fl">9</span>, <span class="fl">6</span>, <span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">6</span>, <span class="fl">7</span><span class="op">)</span></span>
 <span><span class="va">dados</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>Mes <span class="op">=</span> <span class="va">meses</span>, Riqueza <span class="op">=</span> <span class="va">riq</span><span class="op">)</span></span>
-<span><span class="va">riq</span></span></code></pre></div>
-<pre><code>##  [1] 3 5 7 6 8 9 0 4 6 9 2 6 3 9 6 0 1 6 7</code></pre>
-<div class="sourceCode" id="cb99"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">dados</span></span></code></pre></div>
-<pre><code>##    Mes Riqueza
+<span><span class="va">riq</span></span>
+<span><span class="va">dados</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">meses</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">meses</span><span class="op">)</span>,<span class="va">riq</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="fundamentos_de_ecologia_numerica_files/figure-html/unnamed-chunk-25-1.png" alt="" width="672"></div>
+<div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/by.html">by</a></span><span class="op">(</span><span class="va">riq</span>, <span class="va">meses</span>, <span class="va">mean</span><span class="op">)</span></span></code></pre></div>
+<pre><code>##  [1] "Jan" "Jan" "Jan" "Feb" "Feb" "Feb" "Feb" "Mar" "Mar" "Mar" "Apr" "Apr"
+## [13] "Apr" "May" "May" "May" "Jun" "Jun" "Jun"
+##  [1] Jan Jan Jan Feb Feb Feb Feb Mar Mar Mar Apr Apr Apr May May May Jun Jun Jun
+## Levels: Apr Feb Jan Jun Mar May
+##  [1] "Jan" "Jan" "Jan" "Feb" "Feb" "Feb" "Feb" "Mar" "Mar" "Mar" "Apr" "Apr"
+## [13] "Apr" "May" "May" "May" "Jun" "Jun" "Jun"
+## meses
+## Apr Feb Jan Jun Mar May 
+##   3   4   3   3   3   3 
+##  [1] 3 5 7 6 8 9 0 4 6 9 2 6 3 9 6 0 1 6 7
+##    Mes Riqueza
 ## 1  Jan       3
 ## 2  Jan       5
 ## 3  Jan       7
@@ -801,17 +783,10 @@ Figura 10.1: Interface típica do RStudio e nome dos paineis ou janelas.
 ## 16 May       0
 ## 17 Jun       1
 ## 18 Jun       6
-## 19 Jun       7</code></pre>
-<div class="sourceCode" id="cb101"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">meses</span><span class="op">)</span></span></code></pre></div>
-<pre><code>##  [1] Jan Jan Jan Feb Feb Feb Feb Mar Mar Mar Apr Apr Apr May May May Jun Jun Jun
-## Levels: Apr Feb Jan Jun Mar May</code></pre>
-<div class="sourceCode" id="cb103"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">meses</span><span class="op">)</span>,<span class="va">riq</span><span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="fundamentos_de_ecologia_numerica_files/figure-html/unnamed-chunk-25-1.png" alt="" width="672"></div>
-<div class="sourceCode" id="cb104"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/by.html">by</a></span><span class="op">(</span><span class="va">riq</span>, <span class="va">meses</span>, <span class="va">mean</span><span class="op">)</span></span></code></pre></div>
-<pre><code>## meses: Apr
+## 19 Jun       7
+##  [1] Jan Jan Jan Feb Feb Feb Feb Mar Mar Mar Apr Apr Apr May May May Jun Jun Jun
+## Levels: Apr Feb Jan Jun Mar May
+## meses: Apr
 ## [1] 3.666667
 ## ------------------------------------------------------------ 
 ## meses: Feb
@@ -829,7 +804,7 @@ Figura 10.1: Interface típica do RStudio e nome dos paineis ou janelas.
 ## meses: May
 ## [1] 5</code></pre>
 <p>Uma situação diferente ocorre quando tem-se colunas com o mesmo nome.</p>
-<div class="sourceCode" id="cb106"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb52"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span></span>
 <span>  A <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span><span class="op">)</span>,</span>
 <span>  B <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">4</span>, <span class="fl">5</span>, <span class="fl">6</span><span class="op">)</span>,</span>
@@ -848,7 +823,7 @@ Figura 10.1: Interface típica do RStudio e nome dos paineis ou janelas.
 ## 2 2 5 8 0 1 0 12 2 1
 ## 3 3 6 9 1 0 0 13 0 1</code></pre>
 <p>Por exemplo, nesse dataframe temos colunas duplicadas. Nesse caso, encontrar e resolver colunas com o mesmo nome é crucial para garantir a integridade dos dados e realizar uma análise precisa. Você deve consolidar essas colunas duplicadas, somando-as ou fazendo sua média.</p>
-<div class="sourceCode" id="cb108"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb54"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Achando colunas com nomes duplicados</span></span>
 <span><span class="va">dup_cols</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/duplicated.html">duplicated</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span><span class="op">)</span><span class="op">]</span></span>
 <span><span class="co"># Somando colunas com o mesmo nome</span></span>
@@ -870,7 +845,7 @@ Figura 10.1: Interface típica do RStudio e nome dos paineis ou janelas.
 <li>Listas</li>
 </ol>
 <p>Listas são um tipo especial de vetor, que podem conter elementos de diferentes tipos, incluindo vetores. Veja a lista baseada em alguns vetores, a seguir:</p>
-<div class="sourceCode" id="cb110"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb56"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">a</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>,<span class="fl">6</span>,<span class="fl">9</span><span class="op">)</span></span>
 <span><span class="va">b</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"a"</span>,<span class="st">"b"</span>,<span class="st">"c"</span>,<span class="st">"d"</span><span class="op">)</span></span>
 <span><span class="va">c</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>, <span class="cn">TRUE</span><span class="op">)</span></span>
@@ -924,10 +899,10 @@ Figura 10.3: Resumo visual dos tipos de dados no ambiente de programação R. (D
 <p>Você pode usar a função <code><a href="https://rdrr.io/r/utils/help.html">help()</a></code> seguida pelo nome da função ou pacote sobre o qual você precisa de ajuda. Por exemplo:</p>
 </li>
 </ol>
-<div class="sourceCode" id="cb112"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb58"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/help.html">help</a></span><span class="op">(</span><span class="va">mean</span><span class="op">)</span></span></code></pre></div>
 <p>Ou, de forma mais concisa:</p>
-<div class="sourceCode" id="cb113"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb59"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">?</span><span class="fu"><a href="https://rdrr.io/r/base/getwd.html">getwd</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p>O símbolo <code>?</code> é usado para acessar a documentação de uma função ou um pacote no R. Como mostrado acima você pode saber mais sobre a função <code><a href="https://rdrr.io/r/base/getwd.html">getwd()</a></code>, usando o comando <code><a href="https://rdrr.io/r/base/getwd.html">?getwd</a></code>. Isso vai abrir uma página no menu de ajuda com a descrição, os argumentos, os valores de retorno e os exemplos da função <code><a href="https://rdrr.io/r/base/getwd.html">getwd()</a></code>. Você também pode usar o símbolo <code>?</code> para obter informações sobre um pacote inteiro. Por exemplo, se você quiser saber mais sobre o pacote <code>openxlsx</code>, você pode digitar <code><a href="https://rdrr.io/pkg/openxlsx/man/openxlsx.html">?openxlsx</a></code>. Isso vai abrir uma página com a visão geral, a instalação, os recursos e as referências do pacote solicitado. Se você recebeu uma mensagem de erro, talvez precise instalar esse pacote (<code>install.packages("openxlsx")</code>)</p>
 <ol start="2" style="list-style-type: decimal">
@@ -935,14 +910,14 @@ Figura 10.3: Resumo visual dos tipos de dados no ambiente de programação R. (D
 <strong><code><a href="https://rdrr.io/r/utils/help.search.html">help.search()</a></code></strong>:</li>
 </ol>
 <p>Você pode pesquisar por termos relacionados à sua dúvida usando a função <code><a href="https://rdrr.io/r/utils/help.search.html">help.search()</a></code>.</p>
-<div class="sourceCode" id="cb114"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb60"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/help.search.html">help.search</a></span><span class="op">(</span><span class="st">"linear regression"</span><span class="op">)</span></span></code></pre></div>
 <ol start="3" style="list-style-type: decimal">
 <li>
 <strong><code><a href="https://rdrr.io/r/utils/example.html">example()</a></code></strong>:</li>
 </ol>
 <p>Para ver exemplos de como usar uma função, você pode usar a função <code><a href="https://rdrr.io/r/utils/example.html">example()</a></code>.</p>
-<div class="sourceCode" id="cb115"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb61"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/example.html">example</a></span><span class="op">(</span><span class="va">mean</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div id="fora-do-r" class="section level3" number="10.5.2">
@@ -980,7 +955,7 @@ com a função lm(). No entanto, estou recebendo um erro que não consigo entend
 Você poderia me ajudar a resolver isso?</code></pre>
 <p><em>Ao fazer uma pergunta específica e fornecer detalhes sobre o que você está tentando alcançar e quais problemas está enfrentando, o ChatGPT pode oferecer orientações úteis e sugestões para ajudá-lo com o seu código em R.</em></p>
 <p>Detalhe, o texto acima foi gerado pelo próprio ChatGPT (Figura <a href="tiposR.html#fig:22chat">10.4</a>). Você pode chamar o ChatGPT pelo próprio R:</p>
-<div class="sourceCode" id="cb117"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb63"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Abrir o link para o site do ChatGPT</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/browseURL.html">browseURL</a></span><span class="op">(</span><span class="st">"https://chat.openai.com/"</span><span class="op">)</span></span></code></pre></div>
 <div class="figure">
@@ -1005,8 +980,8 @@ Figura 10.4: Usando o ChatGPT para pedir ajuda sobre o R.
 • Comunicar o resultado</p>
 <div class="figure">
 <span style="display:block;" id="fig:22wf"></span>
-<img src="imagens/wf.png" alt="Exemplo de workflow para análises no R (modificada de [@RN2941])" width="450px"><p class="caption">
-Figura 10.5: Exemplo de workflow para análises no R (modificada de <span class="citation">(<a href="#ref-RN2941"><strong>RN2941?</strong></a>)</span>)
+<img src="imagens/wf.png" alt="Exemplo de workflow para análises no R (modificada de @oliveira2018)" width="500px"><p class="caption">
+Figura 10.5: Exemplo de workflow para análises no R (modificada de <span class="citation">OLIVEIRA; GUERRA; MCDONNELL (<a href="#ref-oliveira2018">2018</a>)</span>)
 </p>
 </div>
 </div>
@@ -1056,7 +1031,7 @@ Estrutura de dados I (Parte 11): <a href="https://www.youtube.com/watch?v=aEaSzl
 <h2>Script limpo<a class="anchor" aria-label="anchor" href="#script-limpo"><i class="fas fa-link"></i></a>
 </h2>
 <p>Aqui apresento o scrip na íntegra sem os textos ou outros comentários. Você pode copiar e colar no R para executa-lo. Lembre de remover os <span style="color:green"><code>#</code></span> ou <span style="color:green"><code>##</code></span> caso necessite executar essas linhas.</p>
-<div class="sourceCode" id="cb118"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb64"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="st">"Início do R Módulo"</span></span>
 <span><span class="fl">600</span><span class="op">+</span><span class="fl">66</span></span>
 <span><span class="va">a</span> <span class="op">&lt;-</span> <span class="fl">5</span> <span class="op">+</span> <span class="fl">3</span></span>
@@ -1210,7 +1185,7 @@ VENABLES, W. N.; SMITH, D. M.; R CORE TEAM. <strong>An Introduction to R. Notes 
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Fundamentos de Ecologia Numérica</strong>: Disciplina de Ecologia Numérica do Curso de Ciências Biológicas do Campus V da UEPB" was written by Prof. Elvio S. F. Medeiros, Laboratório de Ecologia, Universidade Estadual da Paraíba, Campus V, João Pessoa, PB. It was last built on Last updated: 09/05/2026 23:28:34.</p>
+    <p>"<strong>Fundamentos de Ecologia Numérica</strong>: Disciplina de Ecologia Numérica do Curso de Ciências Biológicas do Campus V da UEPB" was written by Prof. Elvio S. F. Medeiros, Laboratório de Ecologia, Universidade Estadual da Paraíba, Campus V, João Pessoa, PB. It was last built on Last updated: 14/05/2026 14:59:48.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
