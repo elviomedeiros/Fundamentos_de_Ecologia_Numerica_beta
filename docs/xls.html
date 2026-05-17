@@ -138,19 +138,6 @@ Figura 11.1: Parte da planilha de dados brutos do PPBio.
 Figura 11.2: Associação entre a planilha de dados brutos do PPBio e o delineamento amostral do estudo.
 </p>
 </div>
-<p>Várias das espécies nessa matriz tem grande importância ecológica, como é o caso de <em>Astyanax bimaculatus</em> <a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;A etimologia do gênero &lt;em&gt;Astyanax&lt;/em&gt; vem da mitologia Grega. Heitor personagem da “Ilíada”, tinha um filho chamado Astíanax.&lt;/p&gt;"><sup>11</sup></a> (Figura <a href="xls.html#fig:401asbim">11.3</a>), que é muito comum em rios intermitentes e serve de alimento para predadores maiores como a espécie <em>Hoplias malabaricus</em> <a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Do Grego, &lt;em&gt;hoplon&lt;/em&gt;, arma ou armadura, em referência aos dentes caniniformes muito desenvolvidos, e forte estrutura óssea na cabeça.&lt;/p&gt;"><sup>12</sup></a> (Figura <a href="xls.html#fig:401hmala">11.4</a>).</p>
-<div class="figure">
-<span style="display:block;" id="fig:401asbim"></span>
-<img src="imagens/spp/Asbim_u4.jpg" alt="*Astyanax bimaculatus*, a espécie mais comum da matriz de dados ppbio. Peru, by Eakins, R. Fonte: &lt;https://www.fishbase.se/summary/Astianax-bimaculatus.html&gt;" width="450px"><p class="caption">
-Figura 11.3: <em>Astyanax bimaculatus</em>, a espécie mais comum da matriz de dados ppbio. Peru, by Eakins, R. Fonte: <a href="https://www.fishbase.se/summary/Astianax-bimaculatus.html" class="uri">https://www.fishbase.se/summary/Astianax-bimaculatus.html</a>
-</p>
-</div>
-<div class="figure">
-<span style="display:block;" id="fig:401hmala"></span>
-<img src="imagens/spp/Homal_u6.jpg" alt="*Hoplias malabaricus*, espécie que cresce para se tornar um importante predador. Brazil, by Roselet, F.F.G. Fonte: &lt;https://www.fishbase.se/summary/Hoplias-malabaricus.html&gt;" width="450px"><p class="caption">
-Figura 11.4: <em>Hoplias malabaricus</em>, espécie que cresce para se tornar um importante predador. Brazil, by Roselet, F.F.G. Fonte: <a href="https://www.fishbase.se/summary/Hoplias-malabaricus.html" class="uri">https://www.fishbase.se/summary/Hoplias-malabaricus.html</a>
-</p>
-</div>
 <div class="infobox note">
 <div class="center">
 <p><strong>NOTA</strong></p>
@@ -178,26 +165,63 @@ Figura 11.4: <em>Hoplias malabaricus</em>, espécie que cresce para se tornar um
 <span class="header-section-number">11.3</span> Organização básica<a class="anchor" aria-label="anchor" href="#organiza%C3%A7%C3%A3o-b%C3%A1sica"><i class="fas fa-link"></i></a>
 </h2>
 <p>No ambiente do RStudio no painel de edição de código execute (<code>Ctrl+Enter</code> com o teclado ou <code>Run</code> no editor de código) os comandos a seguir, para instalar os pacotes necessários para este módulo.</p>
-<div class="sourceCode" id="cb65"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb83"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"readxl"</span><span class="op">)</span> <span class="co">#importa arquivos do excel</span></span></code></pre></div>
 <p>E em seguida,</p>
-<div class="sourceCode" id="cb66"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb84"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://readxl.tidyverse.org">readxl</a></span><span class="op">)</span></span></code></pre></div>
-<p>Os códigos acima, são usados para instalar e carregar os pacotes necessários para este módulo. Esses códigos são comandos para instalar pacotes no R. Um pacote é uma coleção de funções, dados e documentação que ampliam as capacidades do R (<a href="https://cran.r-project.org/">R CRAN</a>) <span class="citation">(<a href="#ref-team2022"><strong>team2022?</strong></a>)</span>, e <a href="https://posit.co/download/rstudio-desktop/">RStudio</a> <span class="citation">(<a href="#ref-rstudioteam2022">R STUDIO TEAM, 2022</a>)</span>. No exemplo acima, o pacote <code>readxl</code> permite ler e escrever arquivos Excel no R.</p>
+<p>Os códigos acima, são usados para instalar e carregar os pacotes necessários para este módulo. Esses códigos são comandos para instalar pacotes no R. Um pacote é uma coleção de funções, dados e documentação que ampliam as capacidades do R (<a href="https://cran.r-project.org/">R CRAN</a>) <span class="citation">(<a href="#ref-rdevelopmentcoreteam2017">R DEVELOPMENT CORE TEAM, 2017</a>)</span>, e <a href="https://posit.co/download/rstudio-desktop/">RStudio</a> <span class="citation">(<a href="#ref-rstudioteam2022">R STUDIO TEAM, 2022</a>)</span>. No exemplo acima, o pacote <code>readxl</code> permite ler e escrever arquivos Excel no R.</p>
 <p>Para instalar um pacote no R, você precisa usar a função <code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code>. Depois de instalar um pacote, você precisa carregá-lo na sua sessão R com a função <code><a href="https://rdrr.io/r/base/library.html">library()</a></code>.</p>
 <p>Por exemplo, para carregar o pacote <code>readxl</code>, você precisa executar a função <code><a href="https://readxl.tidyverse.org">library(readxl)</a></code>. Isso irá permitir que você use as funções do pacote na sua sessão R. Você precisa carregar um pacote toda vez que iniciar uma nova sessão R e quiser usar um pacote instalado.</p>
-<p>Agora vamos <strong>definir o diretório de trabalho</strong>. Esse código é usado para obter e definir o diretório de trabalho atual no R. O comando <code><a href="https://rdrr.io/r/base/getwd.html">getwd()</a></code> retorna o caminho do diretório onde o R está lendo e salvando arquivos. O comando <code><a href="https://rdrr.io/r/base/getwd.html">setwd()</a></code> muda esse diretório de trabalho para o caminho especificado entre aspas. No seu caso, você deve ajustar o caminho para o seu próprio diretório de trabalho. <strong>Lembre de usar a barra “/” entre os diretórios. E não a contra-barra “\”.</strong></p>
+<div id="definindo-diretório-de-trabalho-ou-criando-um-projeto-no-r-.rproj" class="section level3" number="11.3.1">
+<h3>
+<span class="header-section-number">11.3.1</span> Definindo diretório de trabalho ou criando um projeto no R (<code>.Rproj</code>)<a class="anchor" aria-label="anchor" href="#definindo-diret%C3%B3rio-de-trabalho-ou-criando-um-projeto-no-r-.rproj"><i class="fas fa-link"></i></a>
+</h3>
+<div class="infobox note">
+<div class="center">
+<p><strong>NOTA</strong></p>
+</div>
+<p>Se você ainda não criou um projeto no R vá até a seção <a href="ferram.html#vercontrl">Criando um Controle de Versões no RStudio</a> do Capítulo <a href="ferram.html#ferram">Ferramentas</a> e veja como criar um projeto associado ao Github.</p>
+<p>Se preferir criar um projeto exclusivamente local (no seu computador) siga os passos a seguir.</p>
+</div>
+<div id="criando-um-projeto-no-r" class="section level4" number="11.3.1.1">
+<h4>
+<span class="header-section-number">11.3.1.1</span> Criando um projeto no R<a class="anchor" aria-label="anchor" href="#criando-um-projeto-no-r"><i class="fas fa-link"></i></a>
+</h4>
+<p>No RStudio siga as seguintes opções:</p>
+<p><code>File &gt; New Project &gt; New Directory &gt; New project</code></p>
+<ol style="list-style-type: decimal">
+<li>Em <code>Give your directory name</code> digite o nome do seu diretório. Esse também será o nome do seu projeto.</li>
+<li>Em <code>Create project as subdirectory of</code> escolha a pasta local onde será mantido seu projeto, clicando na opção <code>Browse</code>.</li>
+<li>Marque a opção <code>Open in new session</code>
+</li>
+<li>Clique em <code>Create Project</code>
+</li>
+</ol>
+<p>Após esse passos o RStudio abrirá uma nova sessão com seu projeto. O RStudio vai criar uma subpasta com o seu projeto (nome do repositório) na pasta que você definir em <code>Project directory name</code>.</p>
+<p>Para carregar seu projeto clique duas vezes no arquivo <code>.Rproj</code>a partir do Explorador de Arquivos do Windows ou
+<code>File &gt; Open Project</code> e escolha o nome do seu projeto.</p>
+</div>
+<div id="definindo-o-diretório-de-trabalho" class="section level4" number="11.3.1.2">
+<h4>
+<span class="header-section-number">11.3.1.2</span> Definindo o diretório de trabalho<a class="anchor" aria-label="anchor" href="#definindo-o-diret%C3%B3rio-de-trabalho"><i class="fas fa-link"></i></a>
+</h4>
+<p>Se você prefere não criar um projeto, e nã está usando o Github, pode <strong>definir o diretório de trabalho</strong>. Isso facilita o uso e manuseio dos seus aquivos.</p>
+<p>Essa função é usada para obter e definir o diretório de trabalho atual no R. A função <code><a href="https://rdrr.io/r/base/getwd.html">getwd()</a></code> retorna o caminho do diretório onde o R está lendo e salvando seus arquivos no momento. O comando <code><a href="https://rdrr.io/r/base/getwd.html">setwd()</a></code> muda esse diretório de trabalho para o caminho especificado entre aspas.</p>
+<p>No seu caso, você deve ajustar o caminho para o seu próprio diretório de trabalho. <strong>Lembre de usar a barra “/” entre os diretórios. E não a contra-barra “\”.</strong></p>
 <p>Usaremos uma matriz multivariada (sítios x espécies, matriz comunitária) do Projeto PPBio chamada ppbio**.xlsx que está no diretório <span style="color:blue">“C:/Meu/Diretório/De/Trabalho/Planilha.xlsx”</span></p>
 <p>Lembre que o símbolo <span style="color:green"><code>#</code></span> em programação R significa que o texto que vem depois dele é um comentário e não será executado pelo programa. Isso é útil para explicar o código ou deixar anotações.</p>
 <p>Ajuste a segunda linha do código abaixo para refletir <span style="color:red">“C:/Seu/Diretório/De/Trabalho/Planilha.xlsx”</span>.</p>
 <p>Definindo o diretório de trabalho e installando os pacotes necessários:</p>
-<div class="sourceCode" id="cb67"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb85"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/getwd.html">getwd</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/getwd.html">setwd</a></span><span class="op">(</span><span class="st">"C:/Seu/Diretório/De/Trabalho"</span><span class="op">)</span></span></code></pre></div>
 <p>Alternativamente você pode ir na barra de tarefas e escolhes as opções:\SESSION -&gt; SET WORKING DIRECTORY -&gt; CHOOSE DIRECTORY</p>
-<div id="prefira-sempre-códigos-e-scripts-do-que-mouse-e-menus-de-janelas-no-r" class="section level3" number="11.3.1">
+</div>
+</div>
+<div id="prefira-sempre-códigos-e-scripts-do-que-mouse-e-menus-de-janelas-no-r" class="section level3" number="11.3.2">
 <h3>
-<span class="header-section-number">11.3.1</span> Prefira sempre códigos e scripts do que mouse e menus de janelas no R<a class="anchor" aria-label="anchor" href="#prefira-sempre-c%C3%B3digos-e-scripts-do-que-mouse-e-menus-de-janelas-no-r"><i class="fas fa-link"></i></a>
+<span class="header-section-number">11.3.2</span> Prefira sempre códigos e scripts do que mouse e menus de janelas no R<a class="anchor" aria-label="anchor" href="#prefira-sempre-c%C3%B3digos-e-scripts-do-que-mouse-e-menus-de-janelas-no-r"><i class="fas fa-link"></i></a>
 </h3>
 <div class="infobox note">
 <div class="center">
@@ -211,7 +235,7 @@ Figura 11.4: <em>Hoplias malabaricus</em>, espécie que cresce para se tornar um
 <h2>
 <span class="header-section-number">11.4</span> Importando a planilha<a class="anchor" aria-label="anchor" href="#importando-a-planilha"><i class="fas fa-link"></i></a>
 </h2>
-<div class="sourceCode" id="cb68"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb86"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://readxl.tidyverse.org">readxl</a></span><span class="op">)</span></span>
 <span><span class="va">ppbio06</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span><span class="st">"D:/Elvio/OneDrive/Disciplinas/_EcoNumerica/5.Matrizes/ppbio06c-peixes.xlsx"</span>,</span>
 <span>                      sheet <span class="op">=</span> <span class="st">"Sheet1"</span>,</span>
@@ -220,15 +244,15 @@ Figura 11.4: <em>Hoplias malabaricus</em>, espécie que cresce para se tornar um
 <span><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">ppbio06</span><span class="op">)</span></span></code></pre></div>
 <p>Com essas linhas de código a primeira coluna da matriz importada apresenta texto. Não queremos assim porque vamos fazer cálculos matemáticos na matriz.</p>
 <p>Resolvemos o problema com mais algumas linhas de código.</p>
-<div class="sourceCode" id="cb69"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb87"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ppbio06</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="va">ppbio06</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">ppbio06</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="va">ppbio06</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">ppbio06</span><span class="op">[</span>,<span class="fl">1</span><span class="op">]</span> <span class="co">#tem  que ser um df</span></span>
 <span><span class="va">ppbio06</span><span class="op">[</span>,<span class="fl">1</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="cn">NULL</span></span></code></pre></div>
 <p>Ou podemos instalar esse pacote de importação de arquivos .xlsx para o R.</p>
-<div class="sourceCode" id="cb70"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb88"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"openxlsx"</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb71"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb89"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ycphs.github.io/openxlsx/index.html">openxlsx</a></span><span class="op">)</span></span>
 <span><span class="va">ppbio</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/openxlsx/man/read.xlsx.html">read.xlsx</a></span><span class="op">(</span><span class="st">"D:/Elvio/OneDrive/Disciplinas/_EcoNumerica/5.Matrizes/ppbio06c-peixes.xlsx"</span>,</span>
 <span>                   rowNames <span class="op">=</span> <span class="cn">T</span>,</span>
@@ -242,12 +266,12 @@ Figura 11.4: <em>Hoplias malabaricus</em>, espécie que cresce para se tornar um
 <span><span class="co">#ppbio</span></span>
 <span><span class="co">#ppbio_ma</span></span></code></pre></div>
 <p>Compare as diferenças. Agora podemos exportar os dados como uma matriz de dados em formato de <code>valores separados por vírgula (.csv)</code>.</p>
-<div class="sourceCode" id="cb72"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb90"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/write.table.html">write.table</a></span><span class="op">(</span><span class="va">ppbio</span>, <span class="st">"ppbiocsv.txt"</span>, append <span class="op">=</span> <span class="cn">F</span>, quote <span class="op">=</span> <span class="cn">T</span>, <span class="st">";"</span>, row.names <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></span>
 <span><span class="va">dir</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/getwd.html">getwd</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/shell.exec.html">shell.exec</a></span><span class="op">(</span><span class="va">dir</span><span class="op">)</span> <span class="co">#abre o diretorio de trabalho no Windows Explorer</span></span></code></pre></div>
 <p>Podemos abrir o arquivo .csv criado <code>ppbiocsv.txt</code> usando os códigos abaixo.</p>
-<div class="sourceCode" id="cb73"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb91"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ppbiocsv</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">"ppbiocsv.txt"</span>,</span>
 <span>                     sep <span class="op">=</span> <span class="st">";"</span>, dec <span class="op">=</span> <span class="st">","</span>, <span class="co">#definimos o dígito separador</span></span>
 <span>                     header <span class="op">=</span> <span class="cn">T</span>,</span>
@@ -258,7 +282,7 @@ Figura 11.4: <em>Hoplias malabaricus</em>, espécie que cresce para se tornar um
 <p>Lembre de prestar atenção no dígito separador de decimais ” , ” ou ” . ” . Além disso, só estaamos usando <code>ppbio**.***</code> porque o diretório de trabalho ja fo definido no início. Se não deveríamos estar usando <code>C:/Seu/Diretório/De/Trabalho/ppbio**.***</code></p>
 <p>Alguns comandos para exibir a planilha são “case-sensitive” <code>(ignore.case(object))</code></p>
 <p>Atente para os resultados dos comandos a seguir.</p>
-<div class="sourceCode" id="cb74"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb92"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#View(ppbio)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">ppbio06</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">]</span><span class="op">)</span></span>
 <span><span class="co">#ppbio</span></span>
@@ -342,7 +366,7 @@ Figura 11.4: <em>Hoplias malabaricus</em>, espécie que cresce para se tornar um
 <span class="header-section-number">11.4.1</span> Outra forma de achar e importar uma planilha<a class="anchor" aria-label="anchor" href="#outra-forma-de-achar-e-importar-uma-planilha"><i class="fas fa-link"></i></a>
 </h3>
 <p>Essa forma é desaconselhavel porque é demorada e sujeita a erros. Além de precisar ser refeita sempre que se quiser abrir uma nova planilha ou reabrir a última planilha importada.</p>
-<div class="sourceCode" id="cb76"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb94"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/getwd.html">getwd</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="va">ppbio</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/openxlsx/man/read.xlsx.html">read.xlsx</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/file.choose.html">file.choose</a></span><span class="op">(</span><span class="op">)</span>,  <span class="co">#abre o windows explorer</span></span>
 <span>                   rowNames <span class="op">=</span> <span class="cn">T</span>, colNames <span class="op">=</span> <span class="cn">T</span>,</span>
@@ -354,9 +378,9 @@ Figura 11.4: <em>Hoplias malabaricus</em>, espécie que cresce para se tornar um
 <span class="header-section-number">11.5</span> Importando <code>.ods</code> do LibreOffice Calc<a class="anchor" aria-label="anchor" href="#importando-.ods-do-libreoffice-calc"><i class="fas fa-link"></i></a>
 </h2>
 <p>A planilha a seguir pode ser baixada da seção <a href="@arqs">Arquivos disponíveis</a>.</p>
-<div class="sourceCode" id="cb77"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb95"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#install.packages("readODS")</span></span></code></pre></div>
-<div class="sourceCode" id="cb78"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb96"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://docs.ropensci.org/readODS/">readODS</a></span><span class="op">)</span></span>
 <span><span class="va">ppbio06.ods</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://docs.ropensci.org/readODS/reference/read_ods.html">read_ods</a></span><span class="op">(</span><span class="st">"D:/Elvio/OneDrive/Disciplinas/_EcoNumerica/5.Matrizes/ppbio06c-peixes.ods"</span>,</span>
 <span>                   row_names <span class="op">=</span> <span class="cn">TRUE</span>,</span>
@@ -383,7 +407,7 @@ Figura 11.4: <em>Hoplias malabaricus</em>, espécie que cresce para se tornar um
 </h3>
 <p>Em algumas situações é necessário encontrar colunas com o mesmo nome em um conjunto de dados e soma-las ou fazer sua média. Isso pode ocorrer quando se está trabalhando com dados de várias fontes e é necessário combinar esses diferentes conjuntos de dados.</p>
 <p>Considere por exemplo um cenário onde se está trabalhando em um projeto de análise de dados ecológicos e você recebeu conjuntos de dados de diferentes locais de amostragens enviados por diferentes pesquisadores, e cada pesquiador enviou seu conjunto de dados que contém informações sobre as mesmas espécies (ou variáveis ambientais). Devido a diferentes sistemas de registro ou a falta de comunicação entre os pesquisadores, pode haver repetição nos nomes das colunas.</p>
-<div class="sourceCode" id="cb79"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb97"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#Dados de mamíferos roedores</span></span>
 <span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span></span>
 <span>  Rato <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span><span class="op">)</span>,</span>
@@ -404,7 +428,7 @@ Figura 11.4: <em>Hoplias malabaricus</em>, espécie que cresce para se tornar um
 ## 3    3         6    9       1     0      0    13       0      1</code></pre>
 <p>Por exemplo, no estudo sobre mamíferos roedores acima, quando se combina o conjunto geral de dados para realizar uma análise abrangente, depara-se com colunas duplicadas, onde a matriz com o conjunto total de dados contém espécies repetidas.</p>
 <p>Nesse caso, encontrar e resolver colunas com o mesmo nome é crucial para garantir a integridade dos dados e realizar uma análise precisa. Você deve consolidar essas colunas duplicadas, somando-as ou fazendo sua média.</p>
-<div class="sourceCode" id="cb81"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb99"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Achando colunas com nomes duplicados</span></span>
 <span><span class="va">dup_cols</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/duplicated.html">duplicated</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span><span class="op">)</span><span class="op">]</span></span>
 <span><span class="co"># Somando colunas com o mesmo nome</span></span>
@@ -427,7 +451,7 @@ Figura 11.4: <em>Hoplias malabaricus</em>, espécie que cresce para se tornar um
 <h3>
 <span class="header-section-number">11.6.2</span> Removendo linhas ou colunas por nome<a class="anchor" aria-label="anchor" href="#removendo-linhas-ou-colunas-por-nome"><i class="fas fa-link"></i></a>
 </h3>
-<div class="sourceCode" id="cb83"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb101"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#Colunas</span></span>
 <span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html">subset</a></span><span class="op">(</span><span class="va">df</span>, select <span class="op">=</span> <span class="op">-</span><span class="va">Lec.mono</span><span class="op">)</span> <span class="co">#escolhendo uma coluna pelo nome</span></span>
 <span></span>
@@ -442,7 +466,7 @@ Figura 11.4: <em>Hoplias malabaricus</em>, espécie que cresce para se tornar um
 <span class="header-section-number">11.6.3</span> Criando uma matriz de médias<a class="anchor" aria-label="anchor" href="#criando-uma-matriz-de-m%C3%A9dias"><i class="fas fa-link"></i></a>
 </h3>
 <p>Por razões diferentes o precedimento anterior pode vir a ser necessário de ser aplicado às linhas. Por exemplo, quando se quer somar ou fazer a média de amostras diferentes do mesmo ambiente de coleta. Veja a matriz abaixo.</p>
-<div class="sourceCode" id="cb84"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb102"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.table</a></span><span class="op">(</span>text <span class="op">=</span> <span class="st">"</span></span>
 <span><span class="st">Sp1 Sp2 Sp3 Sp4 Sp5 Sp6 Sp7 Sp8</span></span>
 <span><span class="st">A1 0 0 0 0 0 0 6 1</span></span>
@@ -462,7 +486,7 @@ Figura 11.4: <em>Hoplias malabaricus</em>, espécie que cresce para se tornar um
 ## C1   0   0   0   0   1   0   0   1
 ## C2   0   0   1   0   0   1   0   1
 ## C3   0   2   0   2   0   0   0   1</code></pre>
-<div class="sourceCode" id="cb86"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb104"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://tidyverse.tidyverse.org">"tidyverse"</a></span><span class="op">)</span></span>
 <span><span class="co">#Inserindo coluna para agrupamentos</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span>; <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">ncol</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span> <span class="co">#no. de N colunas x M linhas</span></span>
@@ -523,7 +547,7 @@ Figura 11.4: <em>Hoplias malabaricus</em>, espécie que cresce para se tornar um
 <h2>Script limpo<a class="anchor" aria-label="anchor" href="#script-limpo-1"><i class="fas fa-link"></i></a>
 </h2>
 <p>Aqui apresento o scrip na íntegra sem os textos ou outros comentários. Você pode copiar e colar no R para executa-lo. Lembre de remover os <span style="color:green"><code>#</code></span> ou <span style="color:green"><code>##</code></span> caso necessite executar essas linhas.</p>
-<div class="sourceCode" id="cb87"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb105"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## install.packages("readxl") #importa arquivos do excel</span></span>
 <span><span class="co">## library(readxl)</span></span>
 <span><span class="co">## getwd()</span></span>
@@ -581,11 +605,13 @@ Figura 11.4: <em>Hoplias malabaricus</em>, espécie que cresce para se tornar um
 </div>
 <h3>Bibliografia Geral</h3>
 <div id="refs" class="references csl-bib-body" entry-spacing="1">
+<div id="ref-rdevelopmentcoreteam2017" class="csl-entry">
+R DEVELOPMENT CORE TEAM. <strong>R: A language and environment for statistical computing</strong>. Austria: R Foundation for Statistical Computing, 2017. Disponível em: &lt;<a href="https://www.r-project.org/">https://www.r-project.org/</a>&gt;
+</div>
 <div id="ref-rstudioteam2022" class="csl-entry">
 R STUDIO TEAM. <strong>RStudio: Integrated Development Environment for R</strong>. Boston, MA: RStudio, PBC, 2022. Type: Book. Disponível em: &lt;<a href="https://posit.co/products/open-source/rstudio/">https://posit.co/products/open-source/rstudio/</a>&gt;
 </div>
 </div>
-
   <div class="chapter-nav">
 <div class="prev"><a href="tiposR.html"><span class="header-section-number">10</span> R Módulo 1 - Sintaxe e Tipos de dados no R</a></div>
 <div class="next"><a href="univ.html"><span class="header-section-number">12</span> R Módulo 3.1 - Estatísticas descritivas e normalidade</a></div>
@@ -601,7 +627,10 @@ R STUDIO TEAM. <strong>RStudio: Integrated Development Environment for R</strong
 <li><a class="nav-link" href="#sobre-os-dados-do-ppbio-2"><span class="header-section-number">11.1</span> Sobre os dados do PPBio</a></li>
 <li><a class="nav-link" href="#importando-a-planilha-de-trabalho"><span class="header-section-number">11.2</span> Importando a planilha de trabalho</a></li>
 <li>
-<a class="nav-link" href="#organiza%C3%A7%C3%A3o-b%C3%A1sica"><span class="header-section-number">11.3</span> Organização básica</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#prefira-sempre-c%C3%B3digos-e-scripts-do-que-mouse-e-menus-de-janelas-no-r"><span class="header-section-number">11.3.1</span> Prefira sempre códigos e scripts do que mouse e menus de janelas no R</a></li></ul>
+<a class="nav-link" href="#organiza%C3%A7%C3%A3o-b%C3%A1sica"><span class="header-section-number">11.3</span> Organização básica</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#definindo-diret%C3%B3rio-de-trabalho-ou-criando-um-projeto-no-r-.rproj"><span class="header-section-number">11.3.1</span> Definindo diretório de trabalho ou criando um projeto no R (.Rproj)</a></li>
+<li><a class="nav-link" href="#prefira-sempre-c%C3%B3digos-e-scripts-do-que-mouse-e-menus-de-janelas-no-r"><span class="header-section-number">11.3.2</span> Prefira sempre códigos e scripts do que mouse e menus de janelas no R</a></li>
+</ul>
 </li>
 <li>
 <a class="nav-link" href="#importando-a-planilha"><span class="header-section-number">11.4</span> Importando a planilha</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#outra-forma-de-achar-e-importar-uma-planilha"><span class="header-section-number">11.4.1</span> Outra forma de achar e importar uma planilha</a></li></ul>
@@ -635,7 +664,7 @@ R STUDIO TEAM. <strong>RStudio: Integrated Development Environment for R</strong
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Fundamentos de Ecologia Numérica</strong>: Disciplina de Ecologia Numérica do Curso de Ciências Biológicas do Campus V da UEPB" was written by Prof. Elvio S. F. Medeiros, Laboratório de Ecologia, Universidade Estadual da Paraíba, Campus V, João Pessoa, PB. It was last built on Last updated: 14/05/2026 14:59:48.</p>
+    <p>"<strong>Fundamentos de Ecologia Numérica</strong>: Disciplina de Ecologia Numérica do Curso de Ciências Biológicas do Campus V da UEPB" was written by Prof. Elvio S. F. Medeiros, Laboratório de Ecologia, Universidade Estadual da Paraíba, Campus V, João Pessoa, PB. It was last built on Last updated: 17/05/2026 13:34:36.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

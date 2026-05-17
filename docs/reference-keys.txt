@@ -1,3 +1,4 @@
+tab:unnamed-chunk-1
 fig:rm1fig102
 fig:R-eng102
 fig:ppbio001
@@ -16,7 +17,7 @@ fig:301hmala
 fig:301apdavis
 fig:301pgen
 fig:301comcodes
-fig:unnamed-chunk-1
+fig:unnamed-chunk-6
 fig:202mapa
 fig:202hab1
 fig:202habitat
@@ -34,10 +35,8 @@ fig:22chat
 fig:22wf
 fig:301ppbio
 fig:402rm1
-fig:401asbim
-fig:401hmala
 fig:rmd3banks
-fig:rmd232tucu
+fig:rmd4032tucu
 apres
 motivação
 plano-de-estudo
@@ -51,7 +50,7 @@ rstudio
 rstudio-na-nuvem
 criando-uma-conta-no-github
 criando-um-repositório-no-github
-criando-um-controle-de-versões-no-rstudio
+vercontrl
 ativação-do-git-no-rstudio
 configurando-usuário-e-e-mail-do-git-no-rstudio
 fluxo-básico-stage-commit-e-push
@@ -122,6 +121,9 @@ xls
 sobre-os-dados-do-ppbio-2
 importando-a-planilha-de-trabalho
 organização-básica
+definindo-diretório-de-trabalho-ou-criando-um-projeto-no-r-.rproj
+criando-um-projeto-no-r
+definindo-o-diretório-de-trabalho
 prefira-sempre-códigos-e-scripts-do-que-mouse-e-menus-de-janelas-no-r
 importando-a-planilha
 outra-forma-de-achar-e-importar-uma-planilha
