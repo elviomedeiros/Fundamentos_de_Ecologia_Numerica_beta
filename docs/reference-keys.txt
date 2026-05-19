@@ -36,6 +36,7 @@ fig:22wf
 fig:301ppbio
 fig:402rm1
 fig:rmd3banks
+fig:rmd4032testes
 fig:rmd4032tucu
 apres
 motivação
@@ -132,8 +133,6 @@ manipulando-matrizes-de-dados
 colunas-com-o-mesmo-nome
 removendo-linhas-ou-colunas-por-nome
 criando-uma-matriz-de-médias
-univ
-sobre-os-dados
 organização-básica-1
 importando-a-planilha-1
 averiguando-normalidade
@@ -145,9 +144,9 @@ algumas-informações-sobre-o-q-q-plot-e-porquê-ele-é-importante
 sumário-estatístico-geral
 estatística-de-shapiro-wilk
 estatística-de-kolmogorov-smirnov-com-nível-de-significância-de-lilliefors
-transformação-de-variáveis
+transformação-de-variáveis-e-outros-tipos-de-conjuntos-de-dados
 univ2
-sobre-os-dados-1
+sobre-os-dados
 organização-básica-2
 importando-a-planilha-2
 gráficos-de-histograma-e-boxplot-1

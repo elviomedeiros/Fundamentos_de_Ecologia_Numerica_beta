@@ -4,18 +4,18 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title> 13 R Módulo 3.2 - Testes estatísticos | Fundamentos de Ecologia Numérica</title>
+<title> 12 R Módulo 3.2 - Testes estatísticos | Fundamentos de Ecologia Numérica</title>
 <meta name="author" content="Prof. Elvio S. F. Medeiros">
 <meta name="author" content="Laboratório de Ecologia">
 <meta name="author" content="Universidade Estadual da Paraíba">
 <meta name="author" content="Campus V, João Pessoa, PB">
 <meta name="description" content="RESUMO A estatística descritiva tem um papel importante a desempenhar na ciência. Quando problemas específicos são tratados na ciência, os dados precisam ser coletados, analisados e apresentados...">
 <meta name="generator" content="bookdown 0.46 with bs4_book()">
-<meta property="og:title" content=" 13 R Módulo 3.2 - Testes estatísticos | Fundamentos de Ecologia Numérica">
+<meta property="og:title" content=" 12 R Módulo 3.2 - Testes estatísticos | Fundamentos de Ecologia Numérica">
 <meta property="og:type" content="book">
 <meta property="og:description" content="RESUMO A estatística descritiva tem um papel importante a desempenhar na ciência. Quando problemas específicos são tratados na ciência, os dados precisam ser coletados, analisados e apresentados...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content=" 13 R Módulo 3.2 - Testes estatísticos | Fundamentos de Ecologia Numérica">
+<meta name="twitter:title" content=" 12 R Módulo 3.2 - Testes estatísticos | Fundamentos de Ecologia Numérica">
 <meta name="twitter:description" content="RESUMO A estatística descritiva tem um papel importante a desempenhar na ciência. Quando problemas específicos são tratados na ciência, os dados precisam ser coletados, analisados e apresentados...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
@@ -87,8 +87,7 @@
 <li class="book-part">IV. ESTATÍSTICAS DESCRITIVAS</li>
 <li><a class="" href="tiposR.html"><span class="header-section-number">10</span> R Módulo 1 - Sintaxe e Tipos de dados no R</a></li>
 <li><a class="" href="xls.html"><span class="header-section-number">11</span> R Módulo 2 - Importando planilhas de dados</a></li>
-<li><a class="" href="univ.html"><span class="header-section-number">12</span> R Módulo 3.1 - Estatísticas descritivas e normalidade</a></li>
-<li><a class="active" href="univ2.html"><span class="header-section-number">13</span> R Módulo 3.2 - Testes estatísticos</a></li>
+<li><a class="active" href="univ2.html"><span class="header-section-number">12</span> R Módulo 3.2 - Testes estatísticos</a></li>
 <li class="book-part">VI. INFORMAÇÕES GERAIS</li>
 <li><a class="" href="bibliografia-geral.html">Bibliografia Geral</a></li>
 </ul>
@@ -98,58 +97,61 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="univ2" class="section level1" number="13">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="univ2" class="section level1" number="12">
 <h1>
-<span class="header-section-number"> 13</span> R Módulo 3.2 - Testes estatísticos<a class="anchor" aria-label="anchor" href="#univ2"><i class="fas fa-link"></i></a>
+<span class="header-section-number"> 12</span> R Módulo 3.2 - Testes estatísticos<a class="anchor" aria-label="anchor" href="#univ2"><i class="fas fa-link"></i></a>
 </h1>
-<div id="resumo-7" class="section level3 unnumbered">
-<h3>RESUMO<a class="anchor" aria-label="anchor" href="#resumo-7"><i class="fas fa-link"></i></a>
+<div id="resumo-6" class="section level3 unnumbered">
+<h3>RESUMO<a class="anchor" aria-label="anchor" href="#resumo-6"><i class="fas fa-link"></i></a>
 </h3>
 <p>A estatística descritiva tem um papel importante a desempenhar na ciência. Quando problemas específicos são tratados na ciência, os dados precisam ser coletados, analisados e apresentados de forma concisa para que outros possam se beneficiar do que foi encontrado.</p>
 </div>
-<div id="apresentação-7" class="section level3 unnumbered">
-<h3>Apresentação<a class="anchor" aria-label="anchor" href="#apresenta%C3%A7%C3%A3o-7"><i class="fas fa-link"></i></a>
+<div id="apresentação-6" class="section level3 unnumbered">
+<h3>Apresentação<a class="anchor" aria-label="anchor" href="#apresenta%C3%A7%C3%A3o-6"><i class="fas fa-link"></i></a>
 </h3>
 <p>A estatística descritiva tem um papel importante a desempenhar na ciência. Quando problemas específicos são tratados na ciência, os dados precisam ser coletados, analisados e apresentados de forma concisa para que outros possam se beneficiar do que foi encontrado. Geralmente não é possível apresentar um conjunto de dados completo em uma publicação ou em um seminário e, mesmo que fosse, é improvável isso permitisse uma boa comunicação dos resultados da pesquisa. Em vez disso, os dados são geralmente resumidos como tabelas de frequência, histogramas e estatísticas descritivas que os leitores ou ouvintes podem assimilar prontamente, mas que ainda transmitem os elementos essenciais do conjunto de dados original. O principal objetivo do cálculo das estatísticas descritivas é transmitir informações essenciais contidas em um conjunto de dados da forma mais concisa e clara possível.</p>
-</div>
-<div id="sobre-os-dados-1" class="section level2" number="13.1">
-<h2>
-<span class="header-section-number">13.1</span> Sobre os dados<a class="anchor" aria-label="anchor" href="#sobre-os-dados-1"><i class="fas fa-link"></i></a>
-</h2>
-<p>Considere os dados merísticos (ou médições morfológicas) da espécie de peixe <em>Cichla ocellaris</em> (tucunaré amarelo) do reservatório da barragem de Gramame, PB <span class="citation">(<a href="#ref-medeiros1994">MEDEIROS; ROSA, 1994</a>)</span> (Figura <a href="univ2.html#fig:rmd4032tucu">13.1</a>). Existem 421 medições do comprimemto total (CT), comprimento padrão (CP) e peso total (PT), além do sexo (MACHO, FÊMEA ou imaturo), e outros descritores da estrutura populacional da pespécie, um conjunto de dados formidável.</p>
 <div class="figure">
-<span style="display:block;" id="fig:rmd4032tucu"></span>
-<img src="imagens/tucuna.png" alt="Dados merísticos da espécie de peixe *Cichla ocellaris* (tucunaré amarelo) do reservatório da barragem  de Gramame, PB." width="450px"><p class="caption">
-Figura 13.1: Dados merísticos da espécie de peixe <em>Cichla ocellaris</em> (tucunaré amarelo) do reservatório da barragem de Gramame, PB.
+<span style="display:block;" id="fig:rmd4032testes"></span>
+<img src="imagens/testes.png" alt="Resumo esquemático dos possíveis testes estatísticos paramétricos univariados de acordo com a pergunta científica. No detalhe, suas respectivas alternativas não-paramétricas." width="450px"><p class="caption">
+Figura 12.1: Resumo esquemático dos possíveis testes estatísticos paramétricos univariados de acordo com a pergunta científica. No detalhe, suas respectivas alternativas não-paramétricas.
 </p>
 </div>
 </div>
-<div id="organização-básica-2" class="section level2" number="13.2">
+<div id="sobre-os-dados" class="section level2" number="12.1">
 <h2>
-<span class="header-section-number">13.2</span> Organização básica<a class="anchor" aria-label="anchor" href="#organiza%C3%A7%C3%A3o-b%C3%A1sica-2"><i class="fas fa-link"></i></a>
+<span class="header-section-number">12.1</span> Sobre os dados<a class="anchor" aria-label="anchor" href="#sobre-os-dados"><i class="fas fa-link"></i></a>
 </h2>
-<div class="sourceCode" id="cb127"><pre class="downlit sourceCode r">
+<p>Considere os dados merísticos (ou médições morfológicas) da espécie de peixe <em>Cichla ocellaris</em> (tucunaré amarelo) do reservatório da barragem de Gramame, PB <span class="citation">(<a href="#ref-medeiros1994">MEDEIROS; ROSA, 1994</a>)</span> (Figura <a href="univ2.html#fig:rmd4032tucu">12.2</a>). Existem 421 medições do comprimemto total (CT), comprimento padrão (CP) e peso total (PT), além do sexo (MACHO, FÊMEA ou imaturo), e outros descritores da estrutura populacional da espécie, um conjunto de dados formidável.</p>
+<div class="figure">
+<span style="display:block;" id="fig:rmd4032tucu"></span>
+<img src="imagens/tucuna.png" alt="Dados merísticos da espécie de peixe *Cichla ocellaris* (tucunaré amarelo) do reservatório da barragem  de Gramame, PB." width="450px"><p class="caption">
+Figura 12.2: Dados merísticos da espécie de peixe <em>Cichla ocellaris</em> (tucunaré amarelo) do reservatório da barragem de Gramame, PB.
+</p>
+</div>
+</div>
+<div id="organização-básica-2" class="section level2" number="12.2">
+<h2>
+<span class="header-section-number">12.2</span> Organização básica<a class="anchor" aria-label="anchor" href="#organiza%C3%A7%C3%A3o-b%C3%A1sica-2"><i class="fas fa-link"></i></a>
+</h2>
+<div class="sourceCode" id="cb128"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/grDevices/dev.html">dev.off</a></span><span class="op">(</span><span class="op">)</span> <span class="co">#apaga os graficos, se houver algum</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/rm.html">rm</a></span><span class="op">(</span>list<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/ls.html">ls</a></span><span class="op">(</span>all<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="co">#limpa a memória</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"\014"</span><span class="op">)</span> <span class="co">#limpa o console </span></span></code></pre></div>
 <p>Instalando os pacotes necessários para esse módulo</p>
-<div class="sourceCode" id="cb128"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb129"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"openxlsx"</span><span class="op">)</span> <span class="co">#importa arquivos do excel</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"fdth"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"ggpubr"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"multcomp"</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb129"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ycphs.github.io/openxlsx/index.html">openxlsx</a></span><span class="op">)</span></span></code></pre></div>
-<p>Os códigos acima, são usados para instalar e carregar os pacotes necessários para este módulo. Esses códigos são comandos para instalar pacotes no R. Um pacote é uma coleção de funções, dados e documentação que ampliam as capacidades do R (<a href="https://cran.r-project.org/">R CRAN</a> <span class="citation">(<a href="#ref-rdevelopmentcoreteam2017">R DEVELOPMENT CORE TEAM, 2017</a>)</span> e <a href="https://posit.co/download/rstudio-desktop/">RStudio</a> <span class="citation">(<a href="#ref-rstudioteam2022">R STUDIO TEAM, 2022</a>)</span>). No exemplo acima, o pacote <code>openxlsx</code> permite ler e escrever arquivos Excel no R. Para instalar um pacote no R, você precisa usar a função <code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code>.</p>
-<p>Depois de instalar um pacote, você precisa carregá-lo na sua sessão R com a função <code><a href="https://rdrr.io/r/base/library.html">library()</a></code>. Por exemplo, para carregar o pacote <code>openxlsx</code>, você precisa executar a função <code><a href="https://ycphs.github.io/openxlsx/index.html">library(openxlsx)</a></code>. Isso irá permitir que você use as funções do pacote na sua sessão R. Você precisa carregar um pacote toda vez que iniciar uma nova sessão R e quiser usar um pacote instalado.</p>
-<p>Agora vamos <strong>definir o diretório de trabalho</strong>. Esse código é usado para obter e definir o diretório de trabalho atual no R. O comando <code><a href="https://rdrr.io/r/base/getwd.html">getwd()</a></code> retorna o caminho do diretório onde o R está lendo e salvando arquivos. O comando <code><a href="https://rdrr.io/r/base/getwd.html">setwd()</a></code> muda esse diretório de trabalho para o caminho especificado entre aspas. No seu caso, você deve ajustar o caminho para o seu próprio diretório de trabalho. <strong>Lembre de usar a barra “/” entre os diretórios. E não a contra-barra “\”.</strong></p>
 <div class="sourceCode" id="cb130"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ycphs.github.io/openxlsx/index.html">openxlsx</a></span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb131"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/getwd.html">getwd</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/getwd.html">setwd</a></span><span class="op">(</span><span class="st">"C:/Seu/Diretório/De/Trabalho"</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="importando-a-planilha-2" class="section level2" number="13.3">
+<div id="importando-a-planilha-2" class="section level2" number="12.3">
 <h2>
-<span class="header-section-number">13.3</span> Importando a planilha<a class="anchor" aria-label="anchor" href="#importando-a-planilha-2"><i class="fas fa-link"></i></a>
+<span class="header-section-number">12.3</span> Importando a planilha<a class="anchor" aria-label="anchor" href="#importando-a-planilha-2"><i class="fas fa-link"></i></a>
 </h2>
 <div class="infobox2 stopred">
 <div class="center">
@@ -161,14 +163,14 @@ Figura 13.1: Dados merísticos da espécie de peixe <em>Cichla ocellaris</em> (t
 </div>
 </div>
 <p>Vamos importar a planilha de dados univariados <code>tucuna.xlsx</code>. Note que o símbolo <span style="color:green"><code>#</code></span> em programação R significa que o texto que vem depois dele é um comentário e não será executado pelo programa. Isso é útil para explicar o código ou deixar anotações. Ajuste a segunda linha do código abaixo para refletir <span style="color:blue">“C:/Seu/Diretório/De/Trabalho/Planilha.xlsx”</span>.</p>
-<div class="sourceCode" id="cb131"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb132"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ycphs.github.io/openxlsx/index.html">openxlsx</a></span><span class="op">)</span></span>
 <span><span class="va">univ</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/openxlsx/man/read.xlsx.html">read.xlsx</a></span><span class="op">(</span><span class="st">"D:/Elvio/OneDrive/Disciplinas/_EcoNumerica/5.Matrizes/tucuna.xlsx"</span>,</span>
 <span>                    rowNames <span class="op">=</span> <span class="cn">F</span>, colNames <span class="op">=</span> <span class="cn">T</span>,</span>
 <span>                    sheet <span class="op">=</span> <span class="st">"tucuna"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">univ</span>,<span class="fl">10</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">univ</span><span class="op">[</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span>, <span class="fl">10</span><span class="op">)</span></span></code></pre></div>
-<pre><code>##    n.=.434 CT_cm  PT_g CP_cm Ctubo_cm  PC_g      %PT Pest_g Cest_cm gr_est
+<pre><code>##    n.=.434 CT_cm  PT_g CP_cm Ctubo_cm  PC_g     p_PT Pest_g Cest_cm gr_est
 ## 1    TU001  32.4 468.8  27.2     39.8 458.9 2.111775    3.9     7.7      I
 ## 2    TU002  33.4 520.0  28.8     14.3 507.4 2.423077    5.9    10.0      I
 ## 3    TU003  27.3 301.5  23.8     13.0 283.4 6.003317   15.5    10.2    III
@@ -213,7 +215,7 @@ Figura 13.1: Dados merísticos da espécie de peixe <em>Cichla ocellaris</em> (t
 ## 9    TU009  24.6 200.5  20.5     25.7
 ## 10   TU010  19.4  86.7  16.0     18.3</code></pre>
 <p>Exibindo os dados importados (esses comando são “case-sensitive” <code>ignore.case(object)</code>).</p>
-<div class="sourceCode" id="cb133"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb134"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#View(univ)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">univ</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span><span class="op">)</span></span>
 <span><span class="va">univ</span></span>
@@ -221,13 +223,13 @@ Figura 13.1: Dados merísticos da espécie de peixe <em>Cichla ocellaris</em> (t
 <span><span class="fu"><a href="https://rdrr.io/r/base/mode.html">mode</a></span><span class="op">(</span><span class="va">univ</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">univ</span><span class="op">)</span></span></code></pre></div>
 <p>Vamos escolher uma coluna como a variável de interesse para trabalhar com ela. No código abaixo, essa coluna é descrita pelo seu nome apresentado depois do <code>$</code>. Antes do <code>$</code> especificamos e qual data frame está a variável. Depois disso, a convertemos para um vertor.</p>
-<div class="sourceCode" id="cb134"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb135"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">var</span> <span class="op">&lt;-</span> <span class="va">univ</span><span class="op">$</span><span class="va">CP_cm</span></span>
 <span><span class="va">var_v</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/vector.html">as.vector</a></span><span class="op">(</span><span class="va">var</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/range.html">range</a></span><span class="op">(</span><span class="va">var_v</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1]  3.5 36.1</code></pre>
 <p>E agora visualizando nossos dados.</p>
-<div class="sourceCode" id="cb136"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb137"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#View(var)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">var_v</span><span class="op">)</span></span>
 <span><span class="va">var_v</span></span>
@@ -239,7 +241,7 @@ Figura 13.1: Dados merísticos da espécie de peixe <em>Cichla ocellaris</em> (t
 <p>A coluna de frequência será obtida contando o número de medições que existem dentro de cada classe. A coluna de frequência percentual será obtida representando cada contagem como uma porcentagem da contagem total. A frequência cumulativa e as frequências percentuais cumulativas serão obtidas somando progressivamente as frequências correspondentes.</p>
 <p>Tendo em mãos o conjunto total de 434 valores merísticos da variável de interesse agora <strong>podemos tirar uma subamostra aleatória de uma parte dos 434 valores</strong>. Essa subamostra é tirada usando o comando <code>size=</code> no código subsequente, que estabelece o tamanho da subamostra a ser tirada do total de dados. Esse tamanho é estabelecido no quiz. Inclua esse valor de acordo com o que é pedido no quiz. Por exemplo, se for pedido uma subamostra de 150 comprimentos, então <code>size = 150</code>. Nesse tutorial usaremos todos os 434 comprimentos. Podemos ainda escolher uma das colunas da base de dados, no caso desse vamos usar a coluna</p>
 <p>Subsitua em <code>n &lt;-</code> o valor de <code>size=</code> desejado. Aqui <code>n &lt;-</code> será todo o conjunto de dados <code>length(var_v)</code>.</p>
-<div class="sourceCode" id="cb137"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb138"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">var_v</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">666</span><span class="op">)</span></span>
 <span><span class="va">var_sub</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="va">var_v</span>, size <span class="op">=</span> <span class="va">n</span>, replace <span class="op">=</span> <span class="cn">F</span><span class="op">)</span> <span class="co">#atualize o valor de 'size=' se necessário</span></span>
@@ -247,13 +249,13 @@ Figura 13.1: Dados merísticos da espécie de peixe <em>Cichla ocellaris</em> (t
 <span><span class="co">#var_sub &lt;- univ[univ$CP_cm &gt;0 &amp; univ$CP_cm &lt;20,] #data.frame</span></span>
 <span><span class="co">#var_sub &lt;- var_v[var_v&gt;=5 &amp; var_v &lt;=15] #vector</span></span></code></pre></div>
 <p>Para fazermos uma tabela de frequência dos valores merísticos carregamos o pacote <code>fdth</code> e pedimos a função <code>range</code> que retorna o valor máximo e mínimo no vetor.</p>
-<div class="sourceCode" id="cb138"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb139"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/jcfaria/fdth">fdth</a></span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/range.html">range</a></span><span class="op">(</span><span class="va">var_sub</span><span class="op">)</span> <span class="co">#retorna o valor máximo e mínimo</span></span>
 <span><span class="co">#?range</span></span></code></pre></div>
 <pre><code>## [1]  3.5 36.1</code></pre>
 <p>Agora é necessário que você substitua os valores de range 3.5, 36.1 nos valores de início e fim da distribuição de frequência. Os comandos abaixo criam uma tabela de frequência chamada <code>tf</code> com valores máximos e mínimos definidos por <code>range(var_v)</code> em intervalor definidos por <code>h=5</code>, e o comando <code>print(tf)</code> exibe a tabela de frequência.</p>
-<div class="sourceCode" id="cb140"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb141"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">tf</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/fdth/man/fdt.html">fdt</a></span><span class="op">(</span><span class="va">var_sub</span>, start<span class="op">=</span><span class="fl">0</span>, end<span class="op">=</span><span class="fl">40</span>, h<span class="op">=</span><span class="fl">5</span><span class="op">)</span> <span class="co">#tabela de frequência</span></span>
 <span><span class="co">#?fdt #atente para o uso de k, por exemplo tf &lt;- fdt(var_sub, k=5)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">tf</span><span class="op">)</span></span></code></pre></div>
@@ -269,27 +271,27 @@ Figura 13.1: Dados merísticos da espécie de peixe <em>Cichla ocellaris</em> (t
 <p>Class limits = limites de classe, f = frequência de classe, rf = frequência relativa da classe, rf(%) = frequência relativa percentual da classe, cf = frequência cumulativa da classe, cf(%) = frequência cumulativa percentual da classe.</p>
 <p>Se contarmos o número de brotos que se encontram em cada um dos sete intervalos, temos a base para a tabulação da frequência. Essa tabulação é mostrada na tabela gerada pelos códigos acima. A coluna de frequência foi obtida contando o número de medições que existem dentro de cada classe. A coluna de frequência percentual foi obtida representando cada contagem como uma porcentagem da contagem total. A frequência cumulativa e as frequências percentuais cumulativas foram obtidas somando progressivamente as frequências correspondentes.</p>
 </div>
-<div id="gráficos-de-histograma-e-boxplot-1" class="section level2" number="13.4">
+<div id="gráficos-de-histograma-e-boxplot-1" class="section level2" number="12.4">
 <h2>
-<span class="header-section-number">13.4</span> Gráficos de histograma e boxplot<a class="anchor" aria-label="anchor" href="#gr%C3%A1ficos-de-histograma-e-boxplot-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">12.4</span> Gráficos de histograma e boxplot<a class="anchor" aria-label="anchor" href="#gr%C3%A1ficos-de-histograma-e-boxplot-1"><i class="fas fa-link"></i></a>
 </h2>
 <p>No código abaixo se define o layout dos gráficos para serem exibidos lado a lado, e na sequência criamos um gráfico de histograma com base na tabela de frequência <code>tf</code>. O comando <code><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot()</a></code> cria um gráfico de boxplot para os valores em <code>var_v</code>. O argumento “horizontal = TRUE” indica que o boxplot deve ser horizontal.</p>
-<div class="sourceCode" id="cb142"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb143"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">)</span><span class="op">)</span> <span class="co">#gráficos lado a lado</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">tf</span><span class="op">)</span> <span class="co">#distribuição de frequências</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot</a></span><span class="op">(</span><span class="va">var_sub</span>, horizontal <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>        xlab<span class="op">=</span><span class="st">"Class limits"</span><span class="op">)</span> <span class="co">#boxplot</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">1</span><span class="op">)</span><span class="op">)</span> <span class="co">#gráficos de volta ao normal</span></span></code></pre></div>
-<div class="inline-figure"><img src="fundamentos_de_ecologia_numerica_files/figure-html/unnamed-chunk-93-1.png" alt="" width="672"></div>
+<div class="inline-figure"><img src="fundamentos_de_ecologia_numerica_files/figure-html/unnamed-chunk-94-1.png" alt="" width="672"></div>
 <div id="hello" class="greeting message" style="color: black;">
 <p><span style="color:red">IMPORTANTE</span> Se você recebeu a mensagem de erro <span style="color:red">“Error in plot.new() : figure margins too large”</span>, aumente o tamanho da janela do gráfico e execute as últimas três linhas de comando novamente.</p>
 </div>
 </div>
-<div id="sumário-estatístico-geral-1" class="section level2" number="13.5">
+<div id="sumário-estatístico-geral-1" class="section level2" number="12.5">
 <h2>
-<span class="header-section-number">13.5</span> Sumário estatístico geral<a class="anchor" aria-label="anchor" href="#sum%C3%A1rio-estat%C3%ADstico-geral-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">12.5</span> Sumário estatístico geral<a class="anchor" aria-label="anchor" href="#sum%C3%A1rio-estat%C3%ADstico-geral-1"><i class="fas fa-link"></i></a>
 </h2>
-<div class="sourceCode" id="cb143"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb144"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">var_sub</span><span class="op">)</span></span>
 <span><span class="co">#?summary</span></span>
 <span><span class="fu">sd</span><span class="op">(</span><span class="va">var_sub</span><span class="op">)</span> <span class="co">#desvio padrão</span></span>
@@ -299,15 +301,15 @@ Figura 13.1: Dados merísticos da espécie de peixe <em>Cichla ocellaris</em> (t
 ## [1] 7.845708
 ## [1] 61.55514</code></pre>
 </div>
-<div id="testando-normalidade" class="section level2" number="13.6">
+<div id="testando-normalidade" class="section level2" number="12.6">
 <h2>
-<span class="header-section-number">13.6</span> Testando normalidade<a class="anchor" aria-label="anchor" href="#testando-normalidade"><i class="fas fa-link"></i></a>
+<span class="header-section-number">12.6</span> Testando normalidade<a class="anchor" aria-label="anchor" href="#testando-normalidade"><i class="fas fa-link"></i></a>
 </h2>
-<div id="q-q-plots" class="section level3" number="13.6.1">
+<div id="q-q-plots" class="section level3" number="12.6.1">
 <h3>
-<span class="header-section-number">13.6.1</span> Q-Q plots<a class="anchor" aria-label="anchor" href="#q-q-plots"><i class="fas fa-link"></i></a>
+<span class="header-section-number">12.6.1</span> Q-Q plots<a class="anchor" aria-label="anchor" href="#q-q-plots"><i class="fas fa-link"></i></a>
 </h3>
-<div class="sourceCode" id="cb145"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb146"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>,<span class="fl">1</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/qqnorm.html">qqnorm</a></span><span class="op">(</span><span class="va">var_sub</span>, main<span class="op">=</span><span class="st">'Normal'</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/qqnorm.html">qqline</a></span><span class="op">(</span><span class="va">var_sub</span><span class="op">)</span></span>
@@ -321,13 +323,13 @@ Figura 13.1: Dados merísticos da espécie de peixe <em>Cichla ocellaris</em> (t
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/bprice2652/car_repo">car</a></span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/car/man/qqPlot.html">qqPlot</a></span><span class="op">(</span><span class="va">var_sub</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] 265 434</code></pre>
-<p><img src="fundamentos_de_ecologia_numerica_files/figure-html/unnamed-chunk-95-1.png" alt="" width="672"><img src="fundamentos_de_ecologia_numerica_files/figure-html/unnamed-chunk-95-2.png" alt="" width="672"><img src="fundamentos_de_ecologia_numerica_files/figure-html/unnamed-chunk-95-3.png" alt="" width="672"><img src="fundamentos_de_ecologia_numerica_files/figure-html/unnamed-chunk-95-4.png" alt="" width="672"></p>
+<p><img src="fundamentos_de_ecologia_numerica_files/figure-html/unnamed-chunk-96-1.png" alt="" width="672"><img src="fundamentos_de_ecologia_numerica_files/figure-html/unnamed-chunk-96-2.png" alt="" width="672"><img src="fundamentos_de_ecologia_numerica_files/figure-html/unnamed-chunk-96-3.png" alt="" width="672"><img src="fundamentos_de_ecologia_numerica_files/figure-html/unnamed-chunk-96-4.png" alt="" width="672"></p>
 </div>
-<div id="testes-de-shapiro-wilk-e-kolmogorov-smirnov" class="section level3" number="13.6.2">
+<div id="testes-de-shapiro-wilk-e-kolmogorov-smirnov" class="section level3" number="12.6.2">
 <h3>
-<span class="header-section-number">13.6.2</span> Testes de Shapiro-Wilk e Kolmogorov-Smirnov<a class="anchor" aria-label="anchor" href="#testes-de-shapiro-wilk-e-kolmogorov-smirnov"><i class="fas fa-link"></i></a>
+<span class="header-section-number">12.6.2</span> Testes de Shapiro-Wilk e Kolmogorov-Smirnov<a class="anchor" aria-label="anchor" href="#testes-de-shapiro-wilk-e-kolmogorov-smirnov"><i class="fas fa-link"></i></a>
 </h3>
-<div class="sourceCode" id="cb147"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb148"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">shap</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/shapiro.test.html">shapiro.test</a></span><span class="op">(</span><span class="va">var_sub</span><span class="op">)</span></span>
 <span><span class="va">shap</span></span>
 <span><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/format.html">format</a></span><span class="op">(</span><span class="va">shap</span><span class="op">$</span><span class="va">p.value</span>, scientific <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
@@ -350,15 +352,15 @@ Figura 13.1: Dados merísticos da espécie de peixe <em>Cichla ocellaris</em> (t
 ## alternative hypothesis: two-sided</code></pre>
 </div>
 </div>
-<div id="testando-diferenças-entre-médias" class="section level2" number="13.7">
+<div id="testando-diferenças-entre-médias" class="section level2" number="12.7">
 <h2>
-<span class="header-section-number">13.7</span> Testando diferenças entre médias<a class="anchor" aria-label="anchor" href="#testando-diferen%C3%A7as-entre-m%C3%A9dias"><i class="fas fa-link"></i></a>
+<span class="header-section-number">12.7</span> Testando diferenças entre médias<a class="anchor" aria-label="anchor" href="#testando-diferen%C3%A7as-entre-m%C3%A9dias"><i class="fas fa-link"></i></a>
 </h2>
-<div id="testando-homogeneidade-de-variâncias" class="section level3" number="13.7.1">
+<div id="testando-homogeneidade-de-variâncias" class="section level3" number="12.7.1">
 <h3>
-<span class="header-section-number">13.7.1</span> Testando homogeneidade de variâncias<a class="anchor" aria-label="anchor" href="#testando-homogeneidade-de-vari%C3%A2ncias"><i class="fas fa-link"></i></a>
+<span class="header-section-number">12.7.1</span> Testando homogeneidade de variâncias<a class="anchor" aria-label="anchor" href="#testando-homogeneidade-de-vari%C3%A2ncias"><i class="fas fa-link"></i></a>
 </h3>
-<div class="sourceCode" id="cb150"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb151"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># F-test</span></span>
 <span><span class="co">#var.test(CT_cm ~ sexo, data = univ) com erro</span></span>
 <span><span class="co">#Interpretação: Um valor de p maior que o nível de significância de 0.05 significa que, NÃO HÁ diferença significativa entre as duas variâncias.</span></span>
@@ -369,7 +371,7 @@ Figura 13.1: Dados merísticos da espécie de peixe <em>Cichla ocellaris</em> (t
 <span><span class="va">lev</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/car/man/leveneTest.html">leveneTest</a></span><span class="op">(</span><span class="va">CT_cm</span> <span class="op">~</span> <span class="va">sexo</span>, data <span class="op">=</span> <span class="va">univ</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## Warning in leveneTest.default(y = y, group = group, ...): group coerced to
 ## factor.</code></pre>
-<div class="sourceCode" id="cb152"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb153"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">lev</span></span>
 <span></span>
 <span><span class="co"># Teste de Levene entre dois de tres grupos</span></span>
@@ -379,7 +381,7 @@ Figura 13.1: Dados merísticos da espécie de peixe <em>Cichla ocellaris</em> (t
 <span><span class="va">lev2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/car/man/leveneTest.html">leveneTest</a></span><span class="op">(</span><span class="va">CT_cm</span> <span class="op">~</span> <span class="va">sexo</span>, data <span class="op">=</span> <span class="va">univ</span><span class="op">[</span><span class="va">univ</span><span class="op">$</span><span class="va">sexo</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"MACHO"</span>, <span class="st">"FEMEA"</span><span class="op">)</span>, <span class="op">]</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## Warning in leveneTest.default(y = y, group = group, ...): group coerced to
 ## factor.</code></pre>
-<div class="sourceCode" id="cb154"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb155"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">lev2</span></span>
 <span><span class="co">#Interpretação: Um valor de p maior que o nível de significância de 0.05 significa que, a hipótese nula é mantida e NÃO HÁ diferença significativa entre as variâncias.</span></span>
 <span><span class="va">univ</span><span class="op">$</span><span class="va">sexo</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">univ</span><span class="op">$</span><span class="va">sexo</span>, levels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"MACHO"</span>, <span class="st">"FEMEA"</span>, <span class="st">"imaturo"</span><span class="op">)</span><span class="op">)</span></span>
@@ -396,13 +398,13 @@ Figura 13.1: Dados merísticos da espécie de peixe <em>Cichla ocellaris</em> (t
 ##       211                    
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
-<div class="inline-figure"><img src="fundamentos_de_ecologia_numerica_files/figure-html/unnamed-chunk-97-1.png" alt="" width="672"></div>
+<div class="inline-figure"><img src="fundamentos_de_ecologia_numerica_files/figure-html/unnamed-chunk-98-1.png" alt="" width="672"></div>
 </div>
-<div id="teste-entre-duas-médias-t-student" class="section level3" number="13.7.2">
+<div id="teste-entre-duas-médias-t-student" class="section level3" number="12.7.2">
 <h3>
-<span class="header-section-number">13.7.2</span> Teste entre duas médias (t-Student)<a class="anchor" aria-label="anchor" href="#teste-entre-duas-m%C3%A9dias-t-student"><i class="fas fa-link"></i></a>
+<span class="header-section-number">12.7.2</span> Teste entre duas médias (t-Student)<a class="anchor" aria-label="anchor" href="#teste-entre-duas-m%C3%A9dias-t-student"><i class="fas fa-link"></i></a>
 </h3>
-<div class="sourceCode" id="cb156"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb157"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="va">machos_CT_cm</span>, <span class="va">femeas_CT_cm</span>,</span>
 <span>      alternative <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"two.sided"</span>, <span class="st">"less"</span>, <span class="st">"greater"</span><span class="op">)</span>,</span>
 <span>      mu <span class="op">=</span> <span class="fl">0</span>, paired <span class="op">=</span> <span class="cn">FALSE</span>, var.equal <span class="op">=</span> <span class="cn">FALSE</span>,</span>
@@ -419,11 +421,11 @@ Figura 13.1: Dados merísticos da espécie de peixe <em>Cichla ocellaris</em> (t
 ## mean of x mean of y 
 ##  22.70984  18.60769</code></pre>
 </div>
-<div id="teste-entre-três-médias-anova" class="section level3" number="13.7.3">
+<div id="teste-entre-três-médias-anova" class="section level3" number="12.7.3">
 <h3>
-<span class="header-section-number">13.7.3</span> Teste entre três médias (ANOVA)<a class="anchor" aria-label="anchor" href="#teste-entre-tr%C3%AAs-m%C3%A9dias-anova"><i class="fas fa-link"></i></a>
+<span class="header-section-number">12.7.3</span> Teste entre três médias (ANOVA)<a class="anchor" aria-label="anchor" href="#teste-entre-tr%C3%AAs-m%C3%A9dias-anova"><i class="fas fa-link"></i></a>
 </h3>
-<div class="sourceCode" id="cb158"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb159"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/levels.html">levels</a></span><span class="op">(</span><span class="va">univ</span><span class="op">$</span><span class="va">sexo</span><span class="op">)</span></span>
 <span><span class="va">univ</span><span class="op">$</span><span class="va">sexo</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">ordered</a></span><span class="op">(</span><span class="va">univ</span><span class="op">$</span><span class="va">sexo</span>,</span>
 <span>                         levels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"MACHO"</span>, <span class="st">"FEMEA"</span>, <span class="st">"imaturo"</span><span class="op">)</span><span class="op">)</span></span>
@@ -565,13 +567,13 @@ Figura 13.1: Dados merísticos da espécie de peixe <em>Cichla ocellaris</em> (t
 ## 
 ## data:  CP_cm by sexo
 ## Kruskal-Wallis chi-squared = 217.39, df = 2, p-value &lt; 2.2e-16</code></pre>
-<p><img src="fundamentos_de_ecologia_numerica_files/figure-html/unnamed-chunk-99-1.png" alt="" width="672"><img src="fundamentos_de_ecologia_numerica_files/figure-html/unnamed-chunk-99-2.png" alt="" width="672"><img src="fundamentos_de_ecologia_numerica_files/figure-html/unnamed-chunk-99-3.png" alt="" width="672"><img src="fundamentos_de_ecologia_numerica_files/figure-html/unnamed-chunk-99-4.png" alt="" width="672"><img src="fundamentos_de_ecologia_numerica_files/figure-html/unnamed-chunk-99-5.png" alt="" width="672"><img src="fundamentos_de_ecologia_numerica_files/figure-html/unnamed-chunk-99-6.png" alt="" width="672"></p>
+<p><img src="fundamentos_de_ecologia_numerica_files/figure-html/unnamed-chunk-100-1.png" alt="" width="672"><img src="fundamentos_de_ecologia_numerica_files/figure-html/unnamed-chunk-100-2.png" alt="" width="672"><img src="fundamentos_de_ecologia_numerica_files/figure-html/unnamed-chunk-100-3.png" alt="" width="672"><img src="fundamentos_de_ecologia_numerica_files/figure-html/unnamed-chunk-100-4.png" alt="" width="672"><img src="fundamentos_de_ecologia_numerica_files/figure-html/unnamed-chunk-100-5.png" alt="" width="672"><img src="fundamentos_de_ecologia_numerica_files/figure-html/unnamed-chunk-100-6.png" alt="" width="672"></p>
 </div>
-<div id="teste-entre-três-médias-e-dois-fatores-two-way-anova" class="section level3" number="13.7.4">
+<div id="teste-entre-três-médias-e-dois-fatores-two-way-anova" class="section level3" number="12.7.4">
 <h3>
-<span class="header-section-number">13.7.4</span> Teste entre três médias e dois fatores (Two-Way ANOVA)<a class="anchor" aria-label="anchor" href="#teste-entre-tr%C3%AAs-m%C3%A9dias-e-dois-fatores-two-way-anova"><i class="fas fa-link"></i></a>
+<span class="header-section-number">12.7.4</span> Teste entre três médias e dois fatores (Two-Way ANOVA)<a class="anchor" aria-label="anchor" href="#teste-entre-tr%C3%AAs-m%C3%A9dias-e-dois-fatores-two-way-anova"><i class="fas fa-link"></i></a>
 </h3>
-<div class="sourceCode" id="cb160"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb161"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">univ</span><span class="op">$</span><span class="va">sexo</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">univ</span><span class="op">$</span><span class="va">sexo</span>,</span>
 <span>                  labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"MACHO"</span>, <span class="st">"FEMEA"</span>, <span class="st">"imaturo"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">univ</span><span class="op">$</span><span class="va">periodo</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">univ</span><span class="op">$</span><span class="va">periodo</span>,</span>
@@ -587,7 +589,7 @@ Figura 13.1: Dados merísticos da espécie de peixe <em>Cichla ocellaris</em> (t
 <span>       palette <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"#00AFBB"</span>, <span class="st">"#E7B800"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## Bin width defaults to 1/30 of the range of the data. Pick better value with
 ## `binwidth`.</code></pre>
-<div class="sourceCode" id="cb162"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb163"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot</a></span><span class="op">(</span><span class="va">CP_cm</span> <span class="op">~</span> <span class="va">periodo</span> <span class="op">*</span> <span class="va">sexo</span>, data<span class="op">=</span><span class="va">univ</span>, frame <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>        col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"#00AFBB"</span>, <span class="st">"#E7B800"</span><span class="op">)</span>, ylab<span class="op">=</span><span class="st">"CP_cm"</span><span class="op">)</span></span>
 <span></span>
@@ -620,9 +622,8 @@ Figura 13.1: Dados merísticos da espécie de peixe <em>Cichla ocellaris</em> (t
 ## ℹ Summaries were computed grouped by periodo and sexo.
 ## ℹ Output is grouped by periodo.
 ## ℹ Use `summarise(.groups = "drop_last")` to silence this message.
-## ℹ Use `summarise(.by = c(periodo, sexo))` for per-operation grouping
-##   (`?dplyr::dplyr_by`) instead.</code></pre>
-<div class="sourceCode" id="cb164"><pre class="downlit sourceCode r">
+## ℹ Use `summarise(.by = c(periodo, sexo))` for per-operation grouping (`?dplyr::dplyr_by`) instead.</code></pre>
+<div class="sourceCode" id="cb165"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Comparações múltiplas pares: Tukey</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/TukeyHSD.html">TukeyHSD</a></span><span class="op">(</span><span class="va">anova3</span>, which <span class="op">=</span> <span class="st">"sexo"</span><span class="op">)</span></span>
 <span></span>
@@ -656,7 +657,7 @@ Figura 13.1: Dados merísticos da espécie de peixe <em>Cichla ocellaris</em> (t
 ##  $ CP_cm   : num  27.2 28.8 23.8 11 11.9 20.5 19.2 11.5 20.5 16 ...
 ##  $ Ctubo_cm: num  39.8 14.3 13 16.5 15.5 24.2 25 17.5 25.7 18.3 ...
 ##  $ PC_g    : num  458.9 507.4 283.4 27.7 37.7 ...
-##  $ %PT     : num  2.11 2.42 6 1.77 3.08 ...
+##  $ p_PT    : num  2.11 2.42 6 1.77 3.08 ...
 ##  $ Pest_g  : num  3.9 5.9 15.5 0.3 0.8 9.9 6.8 4.1 2.5 0.7 ...
 ##  $ Cest_cm : num  7.7 10 10.2 4.3 4.5 6.4 7.5 6.8 7.6 5.1 ...
 ##  $ gr_est  : chr  "I" "I" "III" "I" ...
@@ -762,14 +763,14 @@ Figura 13.1: Dados merísticos da espécie de peixe <em>Cichla ocellaris</em> (t
 ## Residuals    15724.6 428                    
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
-<p><img src="fundamentos_de_ecologia_numerica_files/figure-html/unnamed-chunk-100-1.png" alt="" width="672"><img src="fundamentos_de_ecologia_numerica_files/figure-html/unnamed-chunk-100-2.png" alt="" width="672"><img src="fundamentos_de_ecologia_numerica_files/figure-html/unnamed-chunk-100-3.png" alt="" width="672"><img src="fundamentos_de_ecologia_numerica_files/figure-html/unnamed-chunk-100-4.png" alt="" width="672"><img src="fundamentos_de_ecologia_numerica_files/figure-html/unnamed-chunk-100-5.png" alt="" width="672"><img src="fundamentos_de_ecologia_numerica_files/figure-html/unnamed-chunk-100-6.png" alt="" width="672"></p>
+<p><img src="fundamentos_de_ecologia_numerica_files/figure-html/unnamed-chunk-101-1.png" alt="" width="672"><img src="fundamentos_de_ecologia_numerica_files/figure-html/unnamed-chunk-101-2.png" alt="" width="672"><img src="fundamentos_de_ecologia_numerica_files/figure-html/unnamed-chunk-101-3.png" alt="" width="672"><img src="fundamentos_de_ecologia_numerica_files/figure-html/unnamed-chunk-101-4.png" alt="" width="672"><img src="fundamentos_de_ecologia_numerica_files/figure-html/unnamed-chunk-101-5.png" alt="" width="672"><img src="fundamentos_de_ecologia_numerica_files/figure-html/unnamed-chunk-101-6.png" alt="" width="672"></p>
 </div>
 </div>
-<div id="correlação-e-regressão-simples" class="section level2" number="13.8">
+<div id="correlação-e-regressão-simples" class="section level2" number="12.8">
 <h2>
-<span class="header-section-number">13.8</span> Correlação e regressão simples<a class="anchor" aria-label="anchor" href="#correla%C3%A7%C3%A3o-e-regress%C3%A3o-simples"><i class="fas fa-link"></i></a>
+<span class="header-section-number">12.8</span> Correlação e regressão simples<a class="anchor" aria-label="anchor" href="#correla%C3%A7%C3%A3o-e-regress%C3%A3o-simples"><i class="fas fa-link"></i></a>
 </h2>
-<div class="sourceCode" id="cb166"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb167"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="va">univ</span><span class="op">$</span><span class="va">CT_cm</span>, <span class="va">univ</span><span class="op">$</span><span class="va">CP_cm</span>, <span class="va">univ</span><span class="op">$</span><span class="va">PT_g</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">df</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/cor.html">cor</a></span><span class="op">(</span><span class="va">df</span>,method<span class="op">=</span><span class="st">"pearson"</span><span class="op">)</span></span>
@@ -788,7 +789,7 @@ Figura 13.1: Dados merísticos da espécie de peixe <em>Cichla ocellaris</em> (t
 <span><span class="fu"><a href="https://rdrr.io/pkg/car/man/Anova.html">Anova</a></span><span class="op">(</span><span class="va">m1</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/car/man/Anova.html">Anova</a></span><span class="op">(</span><span class="va">m1</span>, white.adjust<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## Coefficient covariances computed by hccm()</code></pre>
-<div class="sourceCode" id="cb168"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb169"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">univ</span> <span class="op">&lt;-</span> <span class="va">univ</span><span class="op">[</span><span class="va">univ</span><span class="op">$</span><span class="va">CT_cm</span><span class="op">!=</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">univ</span><span class="op">$</span><span class="va">CT_cm</span><span class="op">)</span>,<span class="op">]</span></span></code></pre></div>
 <pre><code>##            univ.CT_cm univ.CP_cm univ.PT_g
 ## univ.CT_cm  1.0000000  0.9990120 0.9057485
@@ -863,7 +864,7 @@ Figura 13.1: Dados merísticos da espécie de peixe <em>Cichla ocellaris</em> (t
 ## Residuals  432                    
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
-<p><img src="fundamentos_de_ecologia_numerica_files/figure-html/unnamed-chunk-101-1.png" alt="" width="672"><img src="fundamentos_de_ecologia_numerica_files/figure-html/unnamed-chunk-101-2.png" alt="" width="672"><img src="fundamentos_de_ecologia_numerica_files/figure-html/unnamed-chunk-101-3.png" alt="" width="672"></p>
+<p><img src="fundamentos_de_ecologia_numerica_files/figure-html/unnamed-chunk-102-1.png" alt="" width="672"><img src="fundamentos_de_ecologia_numerica_files/figure-html/unnamed-chunk-102-2.png" alt="" width="672"><img src="fundamentos_de_ecologia_numerica_files/figure-html/unnamed-chunk-102-3.png" alt="" width="672"></p>
 </div>
 <div id="apêndices-6" class="section level2 unnumbered">
 <h2>Apêndices<a class="anchor" aria-label="anchor" href="#ap%C3%AAndices-6"><i class="fas fa-link"></i></a>
@@ -879,8 +880,8 @@ Figura 13.1: Dados merísticos da espécie de peixe <em>Cichla ocellaris</em> (t
 </h2>
 <p>Aqui apresento o scrip na íntegra sem os textos ou outros comentários. Você pode copiar e colar no R para executa-lo. Lembre de remover os <span style="color:green"><code>#</code></span> ou <span style="color:green"><code>##</code></span> caso necessite executar essas linhas.</p>
 </div>
-<div id="referências-9" class="section level2 unnumbered">
-<h2>Referências<a class="anchor" aria-label="anchor" href="#refer%C3%AAncias-9"><i class="fas fa-link"></i></a>
+<div id="referências-8" class="section level2 unnumbered">
+<h2>Referências<a class="anchor" aria-label="anchor" href="#refer%C3%AAncias-8"><i class="fas fa-link"></i></a>
 </h2>
 
 </div>
@@ -893,49 +894,43 @@ Figura 13.1: Dados merísticos da espécie de peixe <em>Cichla ocellaris</em> (t
 <div id="ref-medeiros1994" class="csl-entry">
 MEDEIROS, E. S. F.; ROSA, I. L. Reprodução de tucunaré Cichla ocellaris (Perciformes: Cichlidae) Bloch &amp; Schneider, 1801 na represa do rio Gramame, Alhandra / PB. <strong>Resumos. II Encontro de Iniciação Científica da UFPB</strong>, [s. l.], p. 82–82, 1994.
 </div>
-<div id="ref-rdevelopmentcoreteam2017" class="csl-entry">
-R DEVELOPMENT CORE TEAM. <strong>R: A language and environment for statistical computing</strong>. Austria: R Foundation for Statistical Computing, 2017. Disponível em: &lt;<a href="https://www.r-project.org/">https://www.r-project.org/</a>&gt;
-</div>
-<div id="ref-rstudioteam2022" class="csl-entry">
-R STUDIO TEAM. <strong>RStudio: Integrated Development Environment for R</strong>. Boston, MA: RStudio, PBC, 2022. Type: Book. Disponível em: &lt;<a href="https://posit.co/products/open-source/rstudio/">https://posit.co/products/open-source/rstudio/</a>&gt;
-</div>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="univ.html"><span class="header-section-number">12</span> R Módulo 3.1 - Estatísticas descritivas e normalidade</a></div>
+<div class="prev"><a href="xls.html"><span class="header-section-number">11</span> R Módulo 2 - Importando planilhas de dados</a></div>
 <div class="next"><a href="bibliografia-geral.html">Bibliografia Geral</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
 <li>
-<a class="nav-link" href="#univ2"><span class="header-section-number">13</span> R Módulo 3.2 - Testes estatísticos</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#resumo-7">RESUMO</a></li>
-<li><a class="nav-link" href="#apresenta%C3%A7%C3%A3o-7">Apresentação</a></li>
+<a class="nav-link" href="#univ2"><span class="header-section-number">12</span> R Módulo 3.2 - Testes estatísticos</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#resumo-6">RESUMO</a></li>
+<li><a class="nav-link" href="#apresenta%C3%A7%C3%A3o-6">Apresentação</a></li>
 </ul>
 </li>
-<li><a class="nav-link" href="#sobre-os-dados-1"><span class="header-section-number">13.1</span> Sobre os dados</a></li>
-<li><a class="nav-link" href="#organiza%C3%A7%C3%A3o-b%C3%A1sica-2"><span class="header-section-number">13.2</span> Organização básica</a></li>
-<li><a class="nav-link" href="#importando-a-planilha-2"><span class="header-section-number">13.3</span> Importando a planilha</a></li>
-<li><a class="nav-link" href="#gr%C3%A1ficos-de-histograma-e-boxplot-1"><span class="header-section-number">13.4</span> Gráficos de histograma e boxplot</a></li>
-<li><a class="nav-link" href="#sum%C3%A1rio-estat%C3%ADstico-geral-1"><span class="header-section-number">13.5</span> Sumário estatístico geral</a></li>
+<li><a class="nav-link" href="#sobre-os-dados"><span class="header-section-number">12.1</span> Sobre os dados</a></li>
+<li><a class="nav-link" href="#organiza%C3%A7%C3%A3o-b%C3%A1sica-2"><span class="header-section-number">12.2</span> Organização básica</a></li>
+<li><a class="nav-link" href="#importando-a-planilha-2"><span class="header-section-number">12.3</span> Importando a planilha</a></li>
+<li><a class="nav-link" href="#gr%C3%A1ficos-de-histograma-e-boxplot-1"><span class="header-section-number">12.4</span> Gráficos de histograma e boxplot</a></li>
+<li><a class="nav-link" href="#sum%C3%A1rio-estat%C3%ADstico-geral-1"><span class="header-section-number">12.5</span> Sumário estatístico geral</a></li>
 <li>
-<a class="nav-link" href="#testando-normalidade"><span class="header-section-number">13.6</span> Testando normalidade</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#q-q-plots"><span class="header-section-number">13.6.1</span> Q-Q plots</a></li>
-<li><a class="nav-link" href="#testes-de-shapiro-wilk-e-kolmogorov-smirnov"><span class="header-section-number">13.6.2</span> Testes de Shapiro-Wilk e Kolmogorov-Smirnov</a></li>
+<a class="nav-link" href="#testando-normalidade"><span class="header-section-number">12.6</span> Testando normalidade</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#q-q-plots"><span class="header-section-number">12.6.1</span> Q-Q plots</a></li>
+<li><a class="nav-link" href="#testes-de-shapiro-wilk-e-kolmogorov-smirnov"><span class="header-section-number">12.6.2</span> Testes de Shapiro-Wilk e Kolmogorov-Smirnov</a></li>
 </ul>
 </li>
 <li>
-<a class="nav-link" href="#testando-diferen%C3%A7as-entre-m%C3%A9dias"><span class="header-section-number">13.7</span> Testando diferenças entre médias</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#testando-homogeneidade-de-vari%C3%A2ncias"><span class="header-section-number">13.7.1</span> Testando homogeneidade de variâncias</a></li>
-<li><a class="nav-link" href="#teste-entre-duas-m%C3%A9dias-t-student"><span class="header-section-number">13.7.2</span> Teste entre duas médias (t-Student)</a></li>
-<li><a class="nav-link" href="#teste-entre-tr%C3%AAs-m%C3%A9dias-anova"><span class="header-section-number">13.7.3</span> Teste entre três médias (ANOVA)</a></li>
-<li><a class="nav-link" href="#teste-entre-tr%C3%AAs-m%C3%A9dias-e-dois-fatores-two-way-anova"><span class="header-section-number">13.7.4</span> Teste entre três médias e dois fatores (Two-Way ANOVA)</a></li>
+<a class="nav-link" href="#testando-diferen%C3%A7as-entre-m%C3%A9dias"><span class="header-section-number">12.7</span> Testando diferenças entre médias</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#testando-homogeneidade-de-vari%C3%A2ncias"><span class="header-section-number">12.7.1</span> Testando homogeneidade de variâncias</a></li>
+<li><a class="nav-link" href="#teste-entre-duas-m%C3%A9dias-t-student"><span class="header-section-number">12.7.2</span> Teste entre duas médias (t-Student)</a></li>
+<li><a class="nav-link" href="#teste-entre-tr%C3%AAs-m%C3%A9dias-anova"><span class="header-section-number">12.7.3</span> Teste entre três médias (ANOVA)</a></li>
+<li><a class="nav-link" href="#teste-entre-tr%C3%AAs-m%C3%A9dias-e-dois-fatores-two-way-anova"><span class="header-section-number">12.7.4</span> Teste entre três médias e dois fatores (Two-Way ANOVA)</a></li>
 </ul>
 </li>
-<li><a class="nav-link" href="#correla%C3%A7%C3%A3o-e-regress%C3%A3o-simples"><span class="header-section-number">13.8</span> Correlação e regressão simples</a></li>
+<li><a class="nav-link" href="#correla%C3%A7%C3%A3o-e-regress%C3%A3o-simples"><span class="header-section-number">12.8</span> Correlação e regressão simples</a></li>
 <li><a class="nav-link" href="#ap%C3%AAndices-6">Apêndices</a></li>
 <li><a class="nav-link" href="#sites-para-consulta">Sites para consulta</a></li>
 <li><a class="nav-link" href="#script-limpo-3">Script limpo</a></li>
-<li><a class="nav-link" href="#refer%C3%AAncias-9">Referências</a></li>
+<li><a class="nav-link" href="#refer%C3%AAncias-8">Referências</a></li>
 </ul>
 
       <div class="book-extra">
@@ -952,7 +947,7 @@ R STUDIO TEAM. <strong>RStudio: Integrated Development Environment for R</strong
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Fundamentos de Ecologia Numérica</strong>: Disciplina de Ecologia Numérica do Curso de Ciências Biológicas do Campus V da UEPB" was written by Prof. Elvio S. F. Medeiros, Laboratório de Ecologia, Universidade Estadual da Paraíba, Campus V, João Pessoa, PB. It was last built on Last updated: 17/05/2026 14:01:48.</p>
+    <p>"<strong>Fundamentos de Ecologia Numérica</strong>: Disciplina de Ecologia Numérica do Curso de Ciências Biológicas do Campus V da UEPB" was written by Prof. Elvio S. F. Medeiros, Laboratório de Ecologia, Universidade Estadual da Paraíba, Campus V, João Pessoa, PB. It was last built on Last updated: 19/05/2026 11:04:05.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
