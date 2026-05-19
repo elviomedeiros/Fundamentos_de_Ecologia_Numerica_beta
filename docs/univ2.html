@@ -112,7 +112,7 @@
 <p>A estatística descritiva tem um papel importante a desempenhar na ciência. Quando problemas específicos são tratados na ciência, os dados precisam ser coletados, analisados e apresentados de forma concisa para que outros possam se beneficiar do que foi encontrado. Geralmente não é possível apresentar um conjunto de dados completo em uma publicação ou em um seminário e, mesmo que fosse, é improvável isso permitisse uma boa comunicação dos resultados da pesquisa. Em vez disso, os dados são geralmente resumidos como tabelas de frequência, histogramas e estatísticas descritivas que os leitores ou ouvintes podem assimilar prontamente, mas que ainda transmitem os elementos essenciais do conjunto de dados original. O principal objetivo do cálculo das estatísticas descritivas é transmitir informações essenciais contidas em um conjunto de dados da forma mais concisa e clara possível.</p>
 <div class="figure">
 <span style="display:block;" id="fig:rmd4032testes"></span>
-<img src="imagens/testes.png" alt="Resumo esquemático dos possíveis testes estatísticos paramétricos univariados de acordo com a pergunta científica. No detalhe, suas respectivas alternativas não-paramétricas." width="450px"><p class="caption">
+<img src="imagens/testes.png" alt="Resumo esquemático dos possíveis testes estatísticos paramétricos univariados de acordo com a pergunta científica. No detalhe, suas respectivas alternativas não-paramétricas." width="500px"><p class="caption">
 Figura 12.1: Resumo esquemático dos possíveis testes estatísticos paramétricos univariados de acordo com a pergunta científica. No detalhe, suas respectivas alternativas não-paramétricas.
 </p>
 </div>
@@ -166,54 +166,54 @@ Figura 12.2: Dados merísticos da espécie de peixe <em>Cichla ocellaris</em> (t
 <div class="sourceCode" id="cb132"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ycphs.github.io/openxlsx/index.html">openxlsx</a></span><span class="op">)</span></span>
 <span><span class="va">univ</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/openxlsx/man/read.xlsx.html">read.xlsx</a></span><span class="op">(</span><span class="st">"D:/Elvio/OneDrive/Disciplinas/_EcoNumerica/5.Matrizes/tucuna.xlsx"</span>,</span>
-<span>                    rowNames <span class="op">=</span> <span class="cn">F</span>, colNames <span class="op">=</span> <span class="cn">T</span>,</span>
+<span>                    rowNames <span class="op">=</span> <span class="cn">T</span>, colNames <span class="op">=</span> <span class="cn">T</span>,</span>
 <span>                    sheet <span class="op">=</span> <span class="st">"tucuna"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">univ</span>,<span class="fl">10</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">univ</span>, <span class="fl">10</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">univ</span><span class="op">[</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span>, <span class="fl">10</span><span class="op">)</span></span></code></pre></div>
-<pre><code>##    n.=.434 CT_cm  PT_g CP_cm Ctubo_cm  PC_g     p_PT Pest_g Cest_cm gr_est
-## 1    TU001  32.4 468.8  27.2     39.8 458.9 2.111775    3.9     7.7      I
-## 2    TU002  33.4 520.0  28.8     14.3 507.4 2.423077    5.9    10.0      I
-## 3    TU003  27.3 301.5  23.8     13.0 283.4 6.003317   15.5    10.2    III
-## 4    TU004  13.2  28.2  11.0     16.5  27.7 1.773050    0.3     4.3      I
-## 5    TU005  14.3  38.9  11.9     15.5  37.7 3.084833    0.8     4.5    III
-## 6    TU006  22.7 431.7  20.5     24.2 418.7 3.011350    9.9     6.4    III
-## 7    TU007  23.2 544.0  19.2     25.0 520.1 4.393382    6.8     7.5     II
-## 8    TU008  13.5 161.6  11.5     17.5 157.0 2.846535    4.1     6.8     II
-## 9    TU009  24.6 200.5  20.5     25.7 195.9 2.294264    2.5     7.6     II
-## 10   TU010  19.4  86.7  16.0     18.3  84.5 2.537486    0.7     5.1      I
-##       ir_est Pint_g Cint_cm gr_int    ir_int Pgon_g Cgon_cm          emg
-## 1  0.8319113    4.8    38.3     II 1.0238908    1.2       7      IMATURO
-## 2  1.1346154    5.3    13.3     II 1.0192308    1.4     6.5       MADURO
-## 3  5.1409619    2.4    12.0     II 0.7960199    0.2     7.7 EM MATURACAO
-## 4  1.0638298    0.1    16.0     II 0.3546099    0.1       5      IMATURO
-## 5  2.0565553    0.3    15.0     II 0.7712082    0.1     3.2      IMATURO
-## 6  2.2932592    2.7    23.7     II 0.6254343    0.4     7.8 EM MATURACAO
-## 7  1.2500000    3.3    24.5     II 0.6066176   13.8     7.9       MADURO
-## 8  2.5371287    0.4    17.0      I 0.2475248    0.1     2.5      IMATURO
-## 9  1.2468828    2.0    25.3     II 0.9975062    0.1     6.5 EM MATURACAO
-## 10 0.8073818    1.4    17.7     II 1.6147636    0.1       6      IMATURO
-##            ig mes periodo estação    sexo
-## 1  0.25597270 ago chuvoso inverno   MACHO
-## 2  0.26923077 ago chuvoso inverno   MACHO
-## 3  0.06633499 ago chuvoso inverno   MACHO
-## 4  0.35460993 ago chuvoso inverno   MACHO
-## 5  0.25706941 ago chuvoso inverno   MACHO
-## 6  0.09265694 set chuvoso inverno   MACHO
-## 7  2.53676471 set chuvoso inverno   FEMEA
-## 8  0.06188119 set chuvoso inverno imaturo
-## 9  0.04987531 set chuvoso inverno   MACHO
-## 10 0.11534025 set chuvoso inverno   MACHO
-##    n.=.434 CT_cm  PT_g CP_cm Ctubo_cm
-## 1    TU001  32.4 468.8  27.2     39.8
-## 2    TU002  33.4 520.0  28.8     14.3
-## 3    TU003  27.3 301.5  23.8     13.0
-## 4    TU004  13.2  28.2  11.0     16.5
-## 5    TU005  14.3  38.9  11.9     15.5
-## 6    TU006  22.7 431.7  20.5     24.2
-## 7    TU007  23.2 544.0  19.2     25.0
-## 8    TU008  13.5 161.6  11.5     17.5
-## 9    TU009  24.6 200.5  20.5     25.7
-## 10   TU010  19.4  86.7  16.0     18.3</code></pre>
+<pre><code>##       CT_cm  PT_g CP_cm Ctubo_cm  PC_g     p_PT Pest_g Cest_cm gr_est    ir_est
+## TU001  32.4 468.8  27.2     39.8 458.9 2.111775    3.9     7.7      I 0.8319113
+## TU002  33.4 520.0  28.8     14.3 507.4 2.423077    5.9    10.0      I 1.1346154
+## TU003  27.3 301.5  23.8     13.0 283.4 6.003317   15.5    10.2    III 5.1409619
+## TU004  13.2  28.2  11.0     16.5  27.7 1.773050    0.3     4.3      I 1.0638298
+## TU005  14.3  38.9  11.9     15.5  37.7 3.084833    0.8     4.5    III 2.0565553
+## TU006  22.7 431.7  20.5     24.2 418.7 3.011350    9.9     6.4    III 2.2932592
+## TU007  23.2 544.0  19.2     25.0 520.1 4.393382    6.8     7.5     II 1.2500000
+## TU008  13.5 161.6  11.5     17.5 157.0 2.846535    4.1     6.8     II 2.5371287
+## TU009  24.6 200.5  20.5     25.7 195.9 2.294264    2.5     7.6     II 1.2468828
+## TU010  19.4  86.7  16.0     18.3  84.5 2.537486    0.7     5.1      I 0.8073818
+##       Pint_g Cint_cm gr_int    ir_int Pgon_g Cgon_cm          emg         ig
+## TU001    4.8    38.3     II 1.0238908    1.2       7      IMATURO 0.25597270
+## TU002    5.3    13.3     II 1.0192308    1.4     6.5       MADURO 0.26923077
+## TU003    2.4    12.0     II 0.7960199    0.2     7.7 EM MATURACAO 0.06633499
+## TU004    0.1    16.0     II 0.3546099    0.1       5      IMATURO 0.35460993
+## TU005    0.3    15.0     II 0.7712082    0.1     3.2      IMATURO 0.25706941
+## TU006    2.7    23.7     II 0.6254343    0.4     7.8 EM MATURACAO 0.09265694
+## TU007    3.3    24.5     II 0.6066176   13.8     7.9       MADURO 2.53676471
+## TU008    0.4    17.0      I 0.2475248    0.1     2.5      IMATURO 0.06188119
+## TU009    2.0    25.3     II 0.9975062    0.1     6.5 EM MATURACAO 0.04987531
+## TU010    1.4    17.7     II 1.6147636    0.1       6      IMATURO 0.11534025
+##       mes periodo estação    sexo
+## TU001 ago chuvoso inverno   MACHO
+## TU002 ago chuvoso inverno   MACHO
+## TU003 ago chuvoso inverno   MACHO
+## TU004 ago chuvoso inverno   MACHO
+## TU005 ago chuvoso inverno   MACHO
+## TU006 set chuvoso inverno   MACHO
+## TU007 set chuvoso inverno   FEMEA
+## TU008 set chuvoso inverno imaturo
+## TU009 set chuvoso inverno   MACHO
+## TU010 set chuvoso inverno   MACHO
+##       CT_cm  PT_g CP_cm Ctubo_cm  PC_g
+## TU001  32.4 468.8  27.2     39.8 458.9
+## TU002  33.4 520.0  28.8     14.3 507.4
+## TU003  27.3 301.5  23.8     13.0 283.4
+## TU004  13.2  28.2  11.0     16.5  27.7
+## TU005  14.3  38.9  11.9     15.5  37.7
+## TU006  22.7 431.7  20.5     24.2 418.7
+## TU007  23.2 544.0  19.2     25.0 520.1
+## TU008  13.5 161.6  11.5     17.5 157.0
+## TU009  24.6 200.5  20.5     25.7 195.9
+## TU010  19.4  86.7  16.0     18.3  84.5</code></pre>
 <p>Exibindo os dados importados (esses comando são “case-sensitive” <code>ignore.case(object)</code>).</p>
 <div class="sourceCode" id="cb134"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#View(univ)</span></span>
@@ -224,10 +224,15 @@ Figura 12.2: Dados merísticos da espécie de peixe <em>Cichla ocellaris</em> (t
 <span><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">univ</span><span class="op">)</span></span></code></pre></div>
 <p>Vamos escolher uma coluna como a variável de interesse para trabalhar com ela. No código abaixo, essa coluna é descrita pelo seu nome apresentado depois do <code>$</code>. Antes do <code>$</code> especificamos e qual data frame está a variável. Depois disso, a convertemos para um vertor.</p>
 <div class="sourceCode" id="cb135"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">var</span> <span class="op">&lt;-</span> <span class="va">univ</span><span class="op">$</span><span class="va">CP_cm</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">univ</span><span class="op">)</span></span>
+<span><span class="va">var</span> <span class="op">&lt;-</span> <span class="va">univ</span><span class="op">$</span><span class="va">CP_cm</span></span>
 <span><span class="va">var_v</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/vector.html">as.vector</a></span><span class="op">(</span><span class="va">var</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/range.html">range</a></span><span class="op">(</span><span class="va">var_v</span><span class="op">)</span></span></code></pre></div>
-<pre><code>## [1]  3.5 36.1</code></pre>
+<pre><code>##  [1] "CT_cm"    "PT_g"     "CP_cm"    "Ctubo_cm" "PC_g"     "p_PT"    
+##  [7] "Pest_g"   "Cest_cm"  "gr_est"   "ir_est"   "Pint_g"   "Cint_cm" 
+## [13] "gr_int"   "ir_int"   "Pgon_g"   "Cgon_cm"  "emg"      "ig"      
+## [19] "mes"      "periodo"  "estação"  "sexo"    
+## [1]  3.5 36.1</code></pre>
 <p>E agora visualizando nossos dados.</p>
 <div class="sourceCode" id="cb137"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#View(var)</span></span>
@@ -236,10 +241,11 @@ Figura 12.2: Dados merísticos da espécie de peixe <em>Cichla ocellaris</em> (t
 <span><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">var_v</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/mode.html">mode</a></span><span class="op">(</span><span class="va">var_v</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">var_v</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/range.html">range</a></span><span class="op">(</span><span class="va">var_v</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/r/base/range.html">range</a></span><span class="op">(</span><span class="va">var_v</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">var_v</span><span class="op">)</span></span></code></pre></div>
 <p>Por inspeção, o comprimento total mínimo do peixe é 3.5 cm e o máximo é 36.1 cm. Esses valores definem o intervalo da amostra. Agora precisamos subdividir os dados em intervalos ou classes, cada um com o mesmo tamanho. Geralmente, é aconselhável arredondar o valor mínimo para baixo e o valor máximo para cima, para valores apropriados ao decidir as classes de intervalos. Nesse caso, parece sensato dividir a faixa de <code>range(var_v)</code> cm em sete intervalos a cada 5 cm de largura. Se contarmos o número de peixes que se encontram em cada um dos sete intervalos, temos a base para a tabulação da frequência.</p>
 <p>A coluna de frequência será obtida contando o número de medições que existem dentro de cada classe. A coluna de frequência percentual será obtida representando cada contagem como uma porcentagem da contagem total. A frequência cumulativa e as frequências percentuais cumulativas serão obtidas somando progressivamente as frequências correspondentes.</p>
-<p>Tendo em mãos o conjunto total de 434 valores merísticos da variável de interesse agora <strong>podemos tirar uma subamostra aleatória de uma parte dos 434 valores</strong>. Essa subamostra é tirada usando o comando <code>size=</code> no código subsequente, que estabelece o tamanho da subamostra a ser tirada do total de dados. Esse tamanho é estabelecido no quiz. Inclua esse valor de acordo com o que é pedido no quiz. Por exemplo, se for pedido uma subamostra de 150 comprimentos, então <code>size = 150</code>. Nesse tutorial usaremos todos os 434 comprimentos. Podemos ainda escolher uma das colunas da base de dados, no caso desse vamos usar a coluna</p>
+<p>Tendo em mãos o conjunto total de 434 valores merísticos da variável de interesse agora <strong>podemos tirar uma subamostra aleatória de uma parte dos 434 valores</strong>. Essa subamostra é tirada usando o comando <code>size=</code> no código subsequente, que estabelece o tamanho da subamostra a ser tirada do total de dados. Por exemplo, para uma subamostra de 150 comprimentos, então <code>size = 150</code>. Nesse tutorial usaremos todos os 434 comprimentos. Podemos ainda escolher uma das colunas da base de dados, nesse caso vamos usar a coluna</p>
 <p>Subsitua em <code>n &lt;-</code> o valor de <code>size=</code> desejado. Aqui <code>n &lt;-</code> será todo o conjunto de dados <code>length(var_v)</code>.</p>
 <div class="sourceCode" id="cb138"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">var_v</span><span class="op">)</span></span>
@@ -254,20 +260,40 @@ Figura 12.2: Dados merísticos da espécie de peixe <em>Cichla ocellaris</em> (t
 <span><span class="fu"><a href="https://rdrr.io/r/base/range.html">range</a></span><span class="op">(</span><span class="va">var_sub</span><span class="op">)</span> <span class="co">#retorna o valor máximo e mínimo</span></span>
 <span><span class="co">#?range</span></span></code></pre></div>
 <pre><code>## [1]  3.5 36.1</code></pre>
-<p>Agora é necessário que você substitua os valores de range 3.5, 36.1 nos valores de início e fim da distribuição de frequência. Os comandos abaixo criam uma tabela de frequência chamada <code>tf</code> com valores máximos e mínimos definidos por <code>range(var_v)</code> em intervalor definidos por <code>h=5</code>, e o comando <code>print(tf)</code> exibe a tabela de frequência.</p>
+<p>Agora é necessário que você substitua os valores de range 3.5, 36.1 nos valores de início e fim da distribuição de frequência. Os comandos abaixo criam uma tabela de frequência chamada <code>tf</code> com valores máximos e mínimos definidos por <code>range(var_v)</code> em intervalos definidos por <code>h=5</code>, e o comando <code>print(tf)</code> exibe a tabela de frequência.</p>
+<p>Para definirmos o valor de <code>h</code> (largura das classes) precisamos ter o valor de <code>k</code> (número de classes). Para isso dividimos a amplitude total dos dados pelo número de classes (<code>k</code>). A amplitude corresponde à diferença entre o maior e o menor valor do conjunto de dados. Essa relação é dada por:</p>
+<p><span class="math display">\[
+h = \frac{\max(x)-\min(x)}{k}
+\]</span></p>
+<p>onde,
+h = largura das classes;
+max(x) = maior valor observado;
+min(x) = menor valor observado;
+k = número de classes.</p>
+<p>Essa fórmula é amplamente utilizada na construção de distribuições de frequência e histogramas, pois permite definir intervalos de classe aproximadamente uniformes.</p>
+<p>Podemos ainda usar a <strong>Regra de Sturges</strong> para decidir em quantos intervalos (<code>k</code>) os dados devem ser divididos, através da fórmula:,</p>
+<p><span class="math display">\[
+k = 1 + 3.3\log_{10}(n)
+\]</span>
+onde, k = número de classes e n = tamanho da amostra</p>
 <div class="sourceCode" id="cb141"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">tf</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/fdth/man/fdt.html">fdt</a></span><span class="op">(</span><span class="va">var_sub</span>, start<span class="op">=</span><span class="fl">0</span>, end<span class="op">=</span><span class="fl">40</span>, h<span class="op">=</span><span class="fl">5</span><span class="op">)</span> <span class="co">#tabela de frequência</span></span>
+<code class="sourceCode R"><span><span class="co">#Regra de Sturges</span></span>
+<span><span class="va">k</span> <span class="op">&lt;-</span> <span class="fl">1</span> <span class="op">+</span> <span class="fl">3.3</span><span class="op">*</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log10</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">var_v</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">k</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">ceiling</a></span><span class="op">(</span><span class="va">k</span><span class="op">)</span> <span class="co">#ver a função round()</span></span>
+<span><span class="va">h</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">var_sub</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">var_sub</span><span class="op">)</span><span class="op">)</span><span class="op">/</span><span class="va">k</span></span>
+<span><span class="va">h</span> </span>
+<span><span class="va">tf</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/fdth/man/fdt.html">fdt</a></span><span class="op">(</span><span class="va">var_sub</span>, start<span class="op">=</span><span class="fl">3.5</span>, end<span class="op">=</span><span class="fl">37</span>, h<span class="op">=</span><span class="fl">5</span><span class="op">)</span> <span class="co">#tabela de frequência</span></span>
 <span><span class="co">#?fdt #atente para o uso de k, por exemplo tf &lt;- fdt(var_sub, k=5)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">tf</span><span class="op">)</span></span></code></pre></div>
-<pre><code>##  Class limits   f   rf rf(%)  cf  cf(%)
-##         [0,5)  57 0.13 13.13  57  13.13
-##        [5,10) 154 0.35 35.48 211  48.62
-##       [10,15) 109 0.25 25.12 320  73.73
-##       [15,20)  38 0.09  8.76 358  82.49
-##       [20,25)  33 0.08  7.60 391  90.09
-##       [25,30)  23 0.05  5.30 414  95.39
-##       [30,35)  15 0.03  3.46 429  98.85
-##       [35,40)   5 0.01  1.15 434 100.00</code></pre>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">tf</span><span class="op">)</span></span>
+<span><span class="co">#Para escolher o numero de classes (k)</span></span></code></pre></div>
+<pre><code>## [1] 3.26
+##  Class limits   f   rf rf(%)  cf cf(%)
+##     [3.5,8.5) 172 0.40 39.63 172 39.63
+##      [8.5,14) 129 0.30 29.72 301 69.35
+##       [14,18)  41 0.09  9.45 342 78.80
+##       [18,24)  39 0.09  8.99 381 87.79
+##       [24,28)  23 0.05  5.30 404 93.09
+##       [28,34)  24 0.06  5.53 428 98.62</code></pre>
 <p>Class limits = limites de classe, f = frequência de classe, rf = frequência relativa da classe, rf(%) = frequência relativa percentual da classe, cf = frequência cumulativa da classe, cf(%) = frequência cumulativa percentual da classe.</p>
 <p>Se contarmos o número de brotos que se encontram em cada um dos sete intervalos, temos a base para a tabulação da frequência. Essa tabulação é mostrada na tabela gerada pelos códigos acima. A coluna de frequência foi obtida contando o número de medições que existem dentro de cada classe. A coluna de frequência percentual foi obtida representando cada contagem como uma porcentagem da contagem total. A frequência cumulativa e as frequências percentuais cumulativas foram obtidas somando progressivamente as frequências correspondentes.</p>
 </div>
@@ -650,8 +676,7 @@ Figura 12.2: Dados merísticos da espécie de peixe <em>Cichla ocellaris</em> (t
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/bprice2652/car_repo">car</a></span><span class="op">)</span></span>
 <span><span class="va">nb_anova</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/aov.html">aov</a></span><span class="op">(</span><span class="va">CP_cm</span> <span class="op">~</span> <span class="va">periodo</span> <span class="op">*</span> <span class="va">sexo</span>, data <span class="op">=</span> <span class="va">univ</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/car/man/Anova.html">Anova</a></span><span class="op">(</span><span class="va">nb_anova</span>, type <span class="op">=</span> <span class="st">"III"</span><span class="op">)</span></span></code></pre></div>
-<pre><code>## 'data.frame':    434 obs. of  23 variables:
-##  $ n.=.434 : chr  "TU001" "TU002" "TU003" "TU004" ...
+<pre><code>## 'data.frame':    434 obs. of  22 variables:
 ##  $ CT_cm   : num  32.4 33.4 27.3 13.2 14.3 22.7 23.2 13.5 24.6 19.4 ...
 ##  $ PT_g    : num  468.8 520 301.5 28.2 38.9 ...
 ##  $ CP_cm   : num  27.2 28.8 23.8 11 11.9 20.5 19.2 11.5 20.5 16 ...
@@ -947,7 +972,7 @@ MEDEIROS, E. S. F.; ROSA, I. L. Reprodução de tucunaré Cichla ocellaris (Perc
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Fundamentos de Ecologia Numérica</strong>: Disciplina de Ecologia Numérica do Curso de Ciências Biológicas do Campus V da UEPB" was written by Prof. Elvio S. F. Medeiros, Laboratório de Ecologia, Universidade Estadual da Paraíba, Campus V, João Pessoa, PB. It was last built on Last updated: 19/05/2026 11:04:05.</p>
+    <p>"<strong>Fundamentos de Ecologia Numérica</strong>: Disciplina de Ecologia Numérica do Curso de Ciências Biológicas do Campus V da UEPB" was written by Prof. Elvio S. F. Medeiros, Laboratório de Ecologia, Universidade Estadual da Paraíba, Campus V, João Pessoa, PB. It was last built on Last updated: 19/05/2026 12:24:58.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
