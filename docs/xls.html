@@ -928,7 +928,9 @@ Figura 11.3: Comprimentos (cm) de 500 brotos do arbusto <em>Banksia ericifolia</
 <span><span class="va">brotos_v</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">brotos_v</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/mode.html">mode</a></span><span class="op">(</span><span class="va">brotos_v</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">brotos_v</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">brotos_v</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/range.html">range</a></span><span class="op">(</span><span class="va">brotos_v</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">brotos_v</span><span class="op">)</span></span></code></pre></div>
 <p>Tendo em mãos o conjunto total de 500 comprimentos medidos de brotos de <em>Banksia</em>, agora <strong>vamos tirar uma subamostra aleatória de uma parte dos 500 valores</strong>. Essa subamostra é tirada usando o comando <code>size=</code> no código subsequente, que estabelece o tamanho da subamostra a ser tirada do total de dados. Por exemplo, para uma subamostra de 150 comprimentos, então <code>size = 150</code>. Nesse tutorial usaremos todos os 500 comprimentos.</p>
 <div class="sourceCode" id="cb105"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">666</span><span class="op">)</span></span>
@@ -993,12 +995,14 @@ Figura 11.3: Comprimentos (cm) de 500 brotos do arbusto <em>Banksia ericifolia</
 <div class="sourceCode" id="cb107"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/jcfaria/fdth">fdth</a></span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/range.html">range</a></span><span class="op">(</span><span class="va">brotos_sub</span><span class="op">)</span> <span class="co">#retorna o valor máximo e mínimo</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">brotos_sub</span><span class="op">)</span></span>
 <span><span class="co">#?range</span></span></code></pre></div>
-<pre><code>## [1] 10.0 44.9</code></pre>
+<pre><code>## [1] 10.0 44.9
+## [1] 500</code></pre>
 <p>Agora é necessário que você substitua os valores de range 10, 44.9 nos valores de início e fim da distribuição de frequência. Os comandos abaixo criam uma tabela de frequência chamada <code>tf</code> com valores máximos e mínimos definidos por <code>range(brotos_v)</code> em intervalor definidos por <code>h=5</code>, e o comando <code>print(tf)</code> exibe a tabela de frequência.</p>
 <div class="sourceCode" id="cb109"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">tf</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/fdth/man/fdt.html">fdt</a></span><span class="op">(</span><span class="va">brotos_sub</span>, start<span class="op">=</span><span class="fl">10</span>, end<span class="op">=</span><span class="fl">45</span>, h<span class="op">=</span><span class="fl">5</span><span class="op">)</span> <span class="co">#tabela de frequência</span></span>
-<span><span class="co">#?fdt #atente para o uso de k, por exemplo tf &lt;- fdt(brotosv, k=5)</span></span>
+<span><span class="co">#?fdt #atente para o uso de k, por exemplo tf &lt;- fdt(brotos_sub, k=7)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">tf</span><span class="op">)</span></span></code></pre></div>
 <pre><code>##  Class limits   f   rf rf(%)  cf cf(%)
 ##       [10,15)   6 0.01   1.2   6   1.2
@@ -1010,8 +1014,48 @@ Figura 11.3: Comprimentos (cm) de 500 brotos do arbusto <em>Banksia ericifolia</
 ##       [40,45)  24 0.05   4.8 500 100.0</code></pre>
 <p>Class limits = limites de classe, f = frequência de classe, rf = frequência relativa da classe, rf(%) = frequência relativa percentual da classe, cf = frequência cumulativa da classe, cf(%) = frequência cumulativa percentual da classe.</p>
 <p>Se contarmos o número de brotos que se encontram em cada um dos sete intervalos, temos a base para a tabulação da frequência. Essa tabulação é mostrada na tabela gerada pelos códigos acima. A coluna de frequência foi obtida contando o número de medições que existem dentro de cada classe. A coluna de frequência percentual foi obtida representando cada contagem como uma porcentagem da contagem total. A frequência cumulativa e as frequências percentuais cumulativas foram obtidas somando progressivamente as frequências correspondentes.</p>
-<p>Podemos agora entender melhor o que é o gráfico Stem-and-leaf.</p>
+<div id="sobre-tabelas-de-frequência" class="section level3" number="11.10.1">
+<h3>
+<span class="header-section-number">11.10.1</span> Sobre tabelas de frequência<a class="anchor" aria-label="anchor" href="#sobre-tabelas-de-frequ%C3%AAncia"><i class="fas fa-link"></i></a>
+</h3>
+<p>O valor de <code>h</code> definido anteriormente foi arbitrário. Em boa estatística, precisamos ser mais critériosos. Para definirmos o valor de <code>h</code> (largura das classes) precisamos ter o valor de <code>k</code> (número de classes). Para isso dividimos a amplitude total dos dados pelo número de classes (<code>k</code>). A amplitude corresponde à diferença entre o maior e o menor valor do conjunto de dados. Essa relação é dada por:</p>
+<p><span class="math display">\[
+h = \frac{\max(x)-\min(x)}{k}
+\]</span></p>
+<p>onde, h = largura das classes; max(x) = maior valor observado; min(x) = menor valor observado; k = número de classes.</p>
+<p>Essa fórmula é amplamente utilizada na construção de distribuições de frequência e histogramas, pois permite definir intervalos de classe aproximadamente uniformes (ver <span class="citation">MOORE; MCCABE; BRUCE A. CRAIG (<a href="#ref-moore2017">2017</a>)</span>).</p>
+<p>Podemos ainda usar a <strong>Regra de Sturges</strong> para decidir em quantos intervalos (<code>k</code>) os dados devem ser divididos, através da fórmula:</p>
+<p><span class="math display">\[
+k = 1 + 3.3\log_{10}(n)
+\]</span> onde, k = número de classes e n = tamanho da amostra</p>
 <div class="sourceCode" id="cb111"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">#Regra de Sturges</span></span>
+<span><span class="va">k</span> <span class="op">&lt;-</span> <span class="fl">1</span> <span class="op">+</span> <span class="fl">3.3</span><span class="op">*</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log10</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">brotos_sub</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">k</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">ceiling</a></span><span class="op">(</span><span class="va">k</span><span class="op">)</span> <span class="co">#ver as funções floor() e round()</span></span>
+<span><span class="va">h</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">brotos_sub</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">brotos_sub</span><span class="op">)</span><span class="op">)</span><span class="op">/</span><span class="va">k</span></span>
+<span><span class="va">h</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">floor</a></span><span class="op">(</span><span class="va">h</span><span class="op">)</span></span>
+<span><span class="va">tf</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/fdth/man/fdt.html">fdt</a></span><span class="op">(</span><span class="va">brotos_sub</span>, start<span class="op">=</span><span class="fl">10</span>, end<span class="op">=</span><span class="fl">45</span>, h<span class="op">=</span><span class="va">h</span><span class="op">)</span> <span class="co">#tabela de frequência</span></span>
+<span><span class="co">#?fdt #atente para o uso de k, por exemplo tf &lt;- fdt(brotos_sub, k=k)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">tf</span><span class="op">)</span></span></code></pre></div>
+<pre><code>##  Class limits  f   rf rf(%)  cf cf(%)
+##       [10,13)  2 0.00   0.4   2   0.4
+##       [13,16)  7 0.01   1.4   9   1.8
+##       [16,19) 14 0.03   2.8  23   4.6
+##       [19,22) 48 0.10   9.6  71  14.2
+##       [22,25) 63 0.13  12.6 134  26.8
+##       [25,28) 82 0.16  16.4 216  43.2
+##       [28,31) 98 0.20  19.6 314  62.8
+##       [31,34) 78 0.16  15.6 392  78.4
+##       [34,37) 52 0.10  10.4 444  88.8
+##       [37,40) 32 0.06   6.4 476  95.2
+##       [40,43) 15 0.03   3.0 491  98.2</code></pre>
+</div>
+<div id="sobre-o-gráfico-stem-and-leaf" class="section level3" number="11.10.2">
+<h3>
+<span class="header-section-number">11.10.2</span> Sobre o gráfico <em>stem-and-leaf</em><a class="anchor" aria-label="anchor" href="#sobre-o-gr%C3%A1fico-stem-and-leaf"><i class="fas fa-link"></i></a>
+</h3>
+<p>Podemos agora entender melhor o que é o gráfico Stem-and-leaf.</p>
+<div class="sourceCode" id="cb113"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/stem.html">stem</a></span><span class="op">(</span><span class="va">brotos_sub</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/sort.html">sort</a></span><span class="op">(</span><span class="va">brotos_sub</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## 
@@ -1079,6 +1123,7 @@ Figura 11.3: Comprimentos (cm) de 500 brotos do arbusto <em>Banksia ericifolia</
 <p>28.0 28.0 28.1 28.1 28.2 28.2 … 28.9</p>
 <p>Ou seja, cada dígito após | completa o número.</p>
 </div>
+</div>
 <div id="assimetria-e-curtose" class="section level2" number="11.11">
 <h2>
 <span class="header-section-number">11.11</span> Assimetria e curtose<a class="anchor" aria-label="anchor" href="#assimetria-e-curtose"><i class="fas fa-link"></i></a>
@@ -1086,7 +1131,7 @@ Figura 11.3: Comprimentos (cm) de 500 brotos do arbusto <em>Banksia ericifolia</
 <p>A assimetria mede a falta de simetria em uma distribuição de frequência. Uma distribuição é simétrica se as duas metades à esquerda e à direita da média são cópias espelhadas uma da outra. Se a distribuição não é simétrica, então é assimétrica. A assimetria pode ser positiva, negativa ou nula (simétrica). Uma assimetria positiva indica que a cauda da distribuição se estende mais para a direita em relação à média (média &gt; mediana &gt; moda), enquanto uma assimetria negativa indica que a cauda da distribuição se estende mais para a esquerda em relação à média (média &lt; mediana &lt; moda).</p>
 <p>A curtose descreve o pico ou a “pontiagudez” de uma distribuição. Uma distribuição com alta curtose tem uma alta concentração de valores ao redor da média e caudas mais pesadas (ou seja, valores extremos são mais prováveis). Uma distribuição com baixa curtose é mais achatada e dispersa, com caudas mais leves. A curtose pode ser positiva (distribuição leptocúrtica, com alta concentração em torno da média e caudas pesadas), negativa (distribuição platicúrtica, com dispersão alta e caudas mais leves) ou nula (mesocúrtica, similar à distribuição normal).</p>
 <p>Essas medidas são úteis para compreender as propriedades e características de diferentes conjuntos de dados e distribuições de frequência. Elas ajudam a compreender a forma e o comportamento dos dados em uma amostra ou população <span class="citation">(<a href="#ref-zar2010">ZAR, 2010</a>)</span>.</p>
-<div class="sourceCode" id="cb113"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb115"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://www.r-project.org">moments</a></span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/moments/man/skewness.html">skewness</a></span><span class="op">(</span><span class="va">brotos_sub</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/moments/man/kurtosis.html">kurtosis</a></span><span class="op">(</span><span class="va">brotos_sub</span><span class="op">)</span></span></code></pre></div>
@@ -1098,36 +1143,78 @@ Figura 11.3: Comprimentos (cm) de 500 brotos do arbusto <em>Banksia ericifolia</
 <span class="header-section-number">11.12</span> Gráficos de histograma e boxplot<a class="anchor" aria-label="anchor" href="#gr%C3%A1ficos-de-histograma-e-boxplot"><i class="fas fa-link"></i></a>
 </h2>
 <p>No código abaixo se define o layout dos gráficos para serem exibidos lado a lado, e na sequência criamos um gráfico de histograma com base na tabela de frequência <code>tf</code>. O comando <code><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot()</a></code> cria um gráfico de boxplot para os valores em <code>brotos_v</code>. O argumento “horizontal = TRUE” indica que o boxplot deve ser horizontal.</p>
-<div class="sourceCode" id="cb115"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb117"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">)</span><span class="op">)</span> <span class="co">#gráficos lado a lado</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">tf</span><span class="op">)</span> <span class="co">#distribuição de frequências</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot</a></span><span class="op">(</span><span class="va">brotos_sub</span>, horizontal <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>        xlab<span class="op">=</span><span class="st">"Class limits"</span><span class="op">)</span> <span class="co">#boxplot</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">1</span><span class="op">)</span><span class="op">)</span> <span class="co">#gráficos de volta ao normal</span></span></code></pre></div>
-<div class="inline-figure"><img src="fundamentos_de_ecologia_numerica_files/figure-html/unnamed-chunk-74-1.png" alt="" width="672"></div>
+<div class="inline-figure"><img src="fundamentos_de_ecologia_numerica_files/figure-html/unnamed-chunk-75-1.png" alt="" width="672"></div>
 <p>Se você recebeu a mensagem de erro <span style="color:red">“Error in plot.new() : figure margins too large”</span>, aumente o tamanho da janela do gráfico e execute as últimas três linhas de comando novamente.</p>
 <p>No boxplot, a linha localizada no interior da caixa representa a mediana, isto é, o valor central da distribuição dos dados. A base da caixa corresponde ao primeiro quartil (Q1), abaixo do qual se encontram 25% das observações, enquanto o topo da caixa corresponde ao terceiro quartil (Q3), abaixo do qual estão 75% dos dados. A própria caixa representa o intervalo interquartil (IQR = Q3 − Q1), contendo os 50% centrais da distribuição. Os bigodes (whiskers) indicam os valores mínimos e máximos que não são considerados outliers, enquanto os pontos isolados representam possíveis valores discrepantes ou outliers.</p>
-<p>Outra forma de ver a distribuição de frequência:</p>
-<div class="sourceCode" id="cb116"><pre class="downlit sourceCode r">
+<div id="histograma-de-densidade" class="section level3" number="11.12.1">
+<h3>
+<span class="header-section-number">11.12.1</span> Histograma de densidade<a class="anchor" aria-label="anchor" href="#histograma-de-densidade"><i class="fas fa-link"></i></a>
+</h3>
+<p>Outra forma de ver a distribuição de frequência é através do histograma de densidade de probabilidade e curva normal teórica sobreposta.</p>
+<div class="sourceCode" id="cb118"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">brotos_sub</span>, probability <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="co">#adicionamos a função densidade</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/curve.html">curve</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">dnorm</a></span><span class="op">(</span><span class="va">x</span>, mean <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">brotos_sub</span><span class="op">)</span>, </span>
 <span>            sd <span class="op">=</span> <span class="fu">sd</span><span class="op">(</span><span class="va">brotos_sub</span><span class="op">)</span><span class="op">)</span>, <span class="co">#cria valores de x dentro do intervalo do gráfico</span></span>
 <span>      col <span class="op">=</span> <span class="st">"red"</span>,</span>
 <span>      add <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="co">#adiciona ao gráfico atual</span></span></code></pre></div>
-<div class="inline-figure"><img src="fundamentos_de_ecologia_numerica_files/figure-html/unnamed-chunk-75-1.png" alt="" width="672"></div>
+<div class="inline-figure"><img src="fundamentos_de_ecologia_numerica_files/figure-html/unnamed-chunk-76-1.png" alt="" width="672"></div>
+<p>Esse código adiciona uma <strong>curva da distribuição normal</strong> sobre um gráfico já existente, nesse caso o histograma. Ou seja, ele desenha a <strong>função densidade da distribuição normal</strong> usando a média e o desvio padrão dos seus dados. Normalmente essa curva é usada para verificar visualmente se os dados se aproximam de uma distribuição normal. Mas ela só pode ser sobreposta ao histograma de densidade, e não a de frequências, porque ambos passam a estar na mesma escala.</p>
+<p>Vejamos:</p>
+<p>Nem sempre o gráfico produzido com método acima, com a função <code><a href="https://rdrr.io/r/graphics/hist.html">hist()</a></code> e <code>probability = TRUE</code> fica igual ao método anterior usando simplesmente a função <code><a href="https://rdrr.io/r/graphics/plot.default.html">plot()</a></code> e a tabela de frequência criada por <code><a href="https://rdrr.io/pkg/fdth/man/fdt.html">fdt()</a></code>. Principalmente quando temos distribuições de frequências assimétricas.</p>
+<p>Isso ocorre porque o histograma produzido pela função <code><a href="https://rdrr.io/r/graphics/hist.html">hist()</a></code> e a tabela de frequência produzida pela função <code><a href="https://rdrr.io/pkg/fdth/man/fdt.html">fdt()</a></code>, embora conceitualmente consistentes, representam quantidades diferentes. A principal fonte da diferença está no argumento utilizado no histograma:</p>
+<pre><code>hist(var_sub, probability = TRUE)</code></pre>
+<p>Quando utilizamos <code>probability = TRUE</code> o eixo y do histograma deixa de representar frequências absolutas e passa a representar <code>densidade de probabilidade</code>. Por isso, o gráfico apresenta valores pequenos no eixo vertical (0.00-0.06) em vez das frequências maiores esperadas (mostradas por números inteiros).</p>
+<p>Isso acontece porque a tabela <code><a href="https://rdrr.io/pkg/fdth/man/fdt.html">fdt()</a></code> apresenta as frequências absolutas ou relativas (%), a partir de:</p>
+<pre><code>fdt(brotos_sub, start=10, end=45, h=5)</code></pre>
+<p>[15,20) -&gt; 35 observações, o que indica que existem 35 valores entre 15 e 20. Já a frequência relativa (rf) é 0.07, e significa que aproximadamente 7% dos dados estão nesse intervalo.</p>
+<p>O histograma com <code>probability = TRUE</code> é ajustado para que a área total das barras seja igual a 1 (<strong>área total = 1</strong>). Nesse caso, o gráfico representa uma <strong>densidade de probabilidade</strong>, e não frequências absolutas (ou relativas). Uma consequência importante, é que a altura das barras NÃO corresponde diretamente à frequência (nem a forma geral do histograma).</p>
+<p>No histograma de densidade temos:</p>
+<p><span class="math display">\[
+\text{Área} = \text{base} \times \text{altura}
+\]</span></p>
+<p>então,</p>
+<p><span class="math display">\[
+\text{altura} =
+\frac{\text{frequência relativa}}{\text{largura da classe}}
+\]</span></p>
+<p>Na tabela <code><a href="https://rdrr.io/pkg/fdth/man/fdt.html">fdt()</a></code> desse exmplo foi utilizado <code>h=5</code>, portanto cada classe possui amplitude igual a 5. Para a classe [15,20), a frequência relativa foi 0.07. Assim, a altura esperada da barra no histograma de densidade é aproximadamente:</p>
+<p><span class="math display">\[
+\frac{0.07}{5} = 0.014
+\]</span></p>
+<p>É importante lembrar que em histogramas de densidade, as alturas precisam ser ajustadas para garantir que a área total sob o histograma deve ser igual a 1.</p>
+<p>Podemos usar a função <code><a href="https://rdrr.io/r/graphics/hist.html">hist()</a></code> para criar um histograma manualmente mostrando as frequências absolutas. Se o objetivo for visualizar frequências absolutas diretamente, basta estabelecer o argumento <code>probability = FALSE</code>. Nesse caso, o eixo y representará contagens/frequências. Podemos ainda definir os intervalos das classes manualmente na função <code><a href="https://rdrr.io/r/graphics/hist.html">hist()</a></code></p>
+<div class="sourceCode" id="cb121"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span></span>
+<span>  <span class="va">brotos_sub</span>,</span>
+<span>  probability <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">45</span>, by <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/curve.html">curve</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">dnorm</a></span><span class="op">(</span><span class="va">x</span>, mean <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">brotos_sub</span><span class="op">)</span>, </span>
+<span>            sd <span class="op">=</span> <span class="fu">sd</span><span class="op">(</span><span class="va">brotos_sub</span><span class="op">)</span><span class="op">)</span>, <span class="co">#cria valores de x dentro do intervalo do gráfico</span></span>
+<span>      col <span class="op">=</span> <span class="st">"red"</span>,</span>
+<span>      add <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="co">#adiciona ao gráfico atual</span></span></code></pre></div>
+<div class="inline-figure"><img src="fundamentos_de_ecologia_numerica_files/figure-html/unnamed-chunk-77-1.png" alt="" width="672"></div>
+<p>Por fim, deve-se ter em mente que nenhum desses métodos gera exatamente o mesmo histograma por que todos usam parâmetros levemente diferentes. O que é importante é a forma da distribuição de frequência e os demais critérios para determinação de normalidade.</p>
+</div>
 </div>
 <div id="gráfico-de-probabilidade-normal-normal-probability-plot-ou-normal-q-q-plot" class="section level2" number="11.13">
 <h2>
 <span class="header-section-number">11.13</span> Gráfico de probabilidade normal (<em>Normal probability plot</em> ou <em>Normal Q-Q plot</em>)<a class="anchor" aria-label="anchor" href="#gr%C3%A1fico-de-probabilidade-normal-normal-probability-plot-ou-normal-q-q-plot"><i class="fas fa-link"></i></a>
 </h2>
 <p>Em um gráfico Q-Q normal, pontos próximos da reta indicam que os dados seguem aproximadamente uma distribuição normal. Quando os pontos apresentam curvaturas acentuadas, isso sugere assimetria ou desvios importantes da normalidade. Já pontos muito afastados da reta podem indicar a presença de valores discrepantes (<em>outliers</em>).</p>
-<div class="sourceCode" id="cb117"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb122"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/qqnorm.html">qqnorm</a></span><span class="op">(</span><span class="va">brotos_sub</span>,</span>
 <span>       main <span class="op">=</span> <span class="st">"Normal Q-Q Plot dos Brotos"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/qqnorm.html">qqline</a></span><span class="op">(</span><span class="va">brotos_sub</span>,</span>
 <span>       col <span class="op">=</span> <span class="st">"red"</span>,</span>
 <span>       lwd <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="fundamentos_de_ecologia_numerica_files/figure-html/unnamed-chunk-76-1.png" alt="" width="672"></div>
+<div class="inline-figure"><img src="fundamentos_de_ecologia_numerica_files/figure-html/unnamed-chunk-78-1.png" alt="" width="672"></div>
 <div id="algumas-informações-sobre-o-q-q-plot-e-porquê-ele-é-importante" class="section level3" number="11.13.1">
 <h3>
 <span class="header-section-number">11.13.1</span> Algumas informações sobre o Q-Q plot e porquê ele é importante<a class="anchor" aria-label="anchor" href="#algumas-informa%C3%A7%C3%B5es-sobre-o-q-q-plot-e-porqu%C3%AA-ele-%C3%A9-importante"><i class="fas fa-link"></i></a>
@@ -1150,15 +1237,17 @@ e nessa distribuição, a média é 0 e o desvio padrão é 1.</p>
 <h2>
 <span class="header-section-number">11.14</span> Sumário estatístico geral<a class="anchor" aria-label="anchor" href="#sum%C3%A1rio-estat%C3%ADstico-geral"><i class="fas fa-link"></i></a>
 </h2>
-<div class="sourceCode" id="cb118"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb123"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">brotos_sub</span><span class="op">)</span></span>
 <span><span class="co">#?summary</span></span>
 <span><span class="fu">sd</span><span class="op">(</span><span class="va">brotos_sub</span><span class="op">)</span> <span class="co">#desvio padrão</span></span>
-<span><span class="fu">var</span><span class="op">(</span><span class="va">brotos_sub</span><span class="op">)</span> <span class="co">#variância</span></span></code></pre></div>
+<span><span class="fu">var</span><span class="op">(</span><span class="va">brotos_sub</span><span class="op">)</span> <span class="co">#variância</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sort.html">sort</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">var_sub</span><span class="op">)</span>, decreasing <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span> <span class="co">#moda</span></span></code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 ##   10.00   24.70   29.10   28.97   33.23   44.90 
 ## [1] 6.373581
-## [1] 40.62254</code></pre>
+## [1] 40.62254
+## [1] "4.5"</code></pre>
 </div>
 <div id="estatística-de-shapiro-wilk" class="section level2" number="11.15">
 <h2>
@@ -1167,7 +1256,7 @@ e nessa distribuição, a média é 0 e o desvio padrão é 1.</p>
 <p>O Shapiro-Wilk é mais utilizado para amostras pequenas e médias. Testa as hipóteses:</p>
 <p>H<sub>0</sub>: os dados seguem distribuição normal<br>
 H<sub>1</sub>: os dados não seguem distribuição normal</p>
-<div class="sourceCode" id="cb120"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb125"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/shapiro.test.html">shapiro.test</a></span><span class="op">(</span><span class="va">brotos_sub</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## 
 ##  Shapiro-Wilk normality test
@@ -1181,7 +1270,7 @@ H<sub>1</sub>: os dados não seguem distribuição normal</p>
 <h2>
 <span class="header-section-number">11.16</span> Estatística de Kolmogorov-Smirnov, com nível de significância de Lilliefors<a class="anchor" aria-label="anchor" href="#estat%C3%ADstica-de-kolmogorov-smirnov-com-n%C3%ADvel-de-signific%C3%A2ncia-de-lilliefors"><i class="fas fa-link"></i></a>
 </h2>
-<div class="sourceCode" id="cb122"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb127"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/ks.test.html">ks.test</a></span><span class="op">(</span><span class="va">brotos_sub</span>,</span>
 <span>        <span class="st">"pnorm"</span>,</span>
 <span>        <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">brotos_sub</span><span class="op">)</span>,</span>
@@ -1198,7 +1287,7 @@ H<sub>1</sub>: os dados não seguem distribuição normal</p>
 <p>O teste Kolmogorov-Smirnov clássico foi desenvolvido para distribuições contínuas sem empates. No código acima foi estimada média e desvio usando a própria amostra.</p>
 <p>Como o Kolmogorov-Smirnov clássico assume parâmetros conhecidos previamente, isso torna o teste “otimista”.</p>
 <p>O teste ideal nesse caso é o <code>Lilliefors</code></p>
-<div class="sourceCode" id="cb125"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb130"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#install.packages("nortest")</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">nortest</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/nortest/man/lillie.test.html">lillie.test</a></span><span class="op">(</span><span class="va">brotos_sub</span><span class="op">)</span></span></code></pre></div>
@@ -1229,7 +1318,7 @@ H<sub>1</sub>: os dados não seguem distribuição normal</p>
 <h2>Script limpo<a class="anchor" aria-label="anchor" href="#script-limpo-2"><i class="fas fa-link"></i></a>
 </h2>
 <p>Aqui apresento o scrip na íntegra sem os textos ou outros comentários. Você pode copiar e colar no R para executa-lo. Lembre de remover os <span style="color:green"><code>#</code></span> ou <span style="color:green"><code>##</code></span> caso necessite executar essas linhas.</p>
-<div class="sourceCode" id="cb127"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb132"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># rm(list=ls(all=TRUE)) #limpa a memória</span></span>
 <span><span class="co"># install.packages("openxlsx") #importa arquivos do excel</span></span>
 <span><span class="co"># install.packages("fdth")</span></span>
@@ -1309,6 +1398,9 @@ H<sub>1</sub>: os dados não seguem distribuição normal</p>
 <div id="ref-coakes2001" class="csl-entry">
 COAKES, S. J.; STEED, L. G. <strong>SPSS: Analysis Without Anguish: version 10.0 for Windows</strong>. Milton, Qld: John Wiley &amp; Sons Australia, Ltd, 2001.
 </div>
+<div id="ref-moore2017" class="csl-entry">
+MOORE, D. S.; MCCABE, G. P.; BRUCE A. CRAIG. <strong>Introduction to the Practice of Statistics</strong>. 9. ed. New York, NY: W.H. Freeman; Company, 2017.
+</div>
 <div id="ref-rdevelopmentcoreteam2017" class="csl-entry">
 R DEVELOPMENT CORE TEAM. <strong>R: A language and environment for statistical computing</strong>. Austria: R Foundation for Statistical Computing, 2017. Disponível em: &lt;<a href="https://www.r-project.org/">https://www.r-project.org/</a>&gt;
 </div>
@@ -1363,9 +1455,16 @@ ZAR, J. H. <strong>Biostatistical Analysis</strong>. 5. ed. Upper Saddle River, 
 <li><a class="nav-link" href="#organiza%C3%A7%C3%A3o-b%C3%A1sica-1"><span class="header-section-number">11.7</span> Organização básica</a></li>
 <li><a class="nav-link" href="#importando-a-planilha-1"><span class="header-section-number">11.8</span> Importando a planilha</a></li>
 <li><a class="nav-link" href="#averiguando-normalidade"><span class="header-section-number">11.9</span> Averiguando normalidade</a></li>
-<li><a class="nav-link" href="#tabela-de-frequ%C3%AAncias-e-gr%C3%A1fico-stem-and-leaf"><span class="header-section-number">11.10</span> Tabela de frequências e gráfico stem-and-leaf</a></li>
+<li>
+<a class="nav-link" href="#tabela-de-frequ%C3%AAncias-e-gr%C3%A1fico-stem-and-leaf"><span class="header-section-number">11.10</span> Tabela de frequências e gráfico stem-and-leaf</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#sobre-tabelas-de-frequ%C3%AAncia"><span class="header-section-number">11.10.1</span> Sobre tabelas de frequência</a></li>
+<li><a class="nav-link" href="#sobre-o-gr%C3%A1fico-stem-and-leaf"><span class="header-section-number">11.10.2</span> Sobre o gráfico stem-and-leaf</a></li>
+</ul>
+</li>
 <li><a class="nav-link" href="#assimetria-e-curtose"><span class="header-section-number">11.11</span> Assimetria e curtose</a></li>
-<li><a class="nav-link" href="#gr%C3%A1ficos-de-histograma-e-boxplot"><span class="header-section-number">11.12</span> Gráficos de histograma e boxplot</a></li>
+<li>
+<a class="nav-link" href="#gr%C3%A1ficos-de-histograma-e-boxplot"><span class="header-section-number">11.12</span> Gráficos de histograma e boxplot</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#histograma-de-densidade"><span class="header-section-number">11.12.1</span> Histograma de densidade</a></li></ul>
+</li>
 <li>
 <a class="nav-link" href="#gr%C3%A1fico-de-probabilidade-normal-normal-probability-plot-ou-normal-q-q-plot"><span class="header-section-number">11.13</span> Gráfico de probabilidade normal (Normal probability plot ou Normal Q-Q plot)</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#algumas-informa%C3%A7%C3%B5es-sobre-o-q-q-plot-e-porqu%C3%AA-ele-%C3%A9-importante"><span class="header-section-number">11.13.1</span> Algumas informações sobre o Q-Q plot e porquê ele é importante</a></li></ul>
 </li>
@@ -1393,7 +1492,7 @@ ZAR, J. H. <strong>Biostatistical Analysis</strong>. 5. ed. Upper Saddle River, 
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Fundamentos de Ecologia Numérica</strong>: Disciplina de Ecologia Numérica do Curso de Ciências Biológicas do Campus V da UEPB" was written by Prof. Elvio S. F. Medeiros, Laboratório de Ecologia, Universidade Estadual da Paraíba, Campus V, João Pessoa, PB. It was last built on Last updated: 19/05/2026 12:24:58.</p>
+    <p>"<strong>Fundamentos de Ecologia Numérica</strong>: Disciplina de Ecologia Numérica do Curso de Ciências Biológicas do Campus V da UEPB" was written by Prof. Elvio S. F. Medeiros, Laboratório de Ecologia, Universidade Estadual da Paraíba, Campus V, João Pessoa, PB. It was last built on Last updated: 20/05/2026 07:13:54.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

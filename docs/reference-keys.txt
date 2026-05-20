@@ -137,8 +137,11 @@ organização-básica-1
 importando-a-planilha-1
 averiguando-normalidade
 tabela-de-frequências-e-gráfico-stem-and-leaf
+sobre-tabelas-de-frequência
+sobre-o-gráfico-stem-and-leaf
 assimetria-e-curtose
 gráficos-de-histograma-e-boxplot
+histograma-de-densidade
 gráfico-de-probabilidade-normal-normal-probability-plot-ou-normal-q-q-plot
 algumas-informações-sobre-o-q-q-plot-e-porquê-ele-é-importante
 sumário-estatístico-geral
@@ -149,7 +152,11 @@ univ2
 sobre-os-dados
 organização-básica-2
 importando-a-planilha-2
-gráficos-de-histograma-e-boxplot-1
+averiguando-normalidade-1
+tabela-de-frequências-e-gráfico-stem-and-leaf-1
+gráfico-stem-and-leaf
+assimetria-e-curtose-1
+histograma-e-boxplot
 sumário-estatístico-geral-1
 testando-normalidade
 q-q-plots
