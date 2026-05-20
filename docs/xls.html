@@ -87,7 +87,8 @@
 <li class="book-part">IV. ESTATÍSTICAS DESCRITIVAS</li>
 <li><a class="" href="tiposR.html"><span class="header-section-number">10</span> R Módulo 1 - Sintaxe e Tipos de dados no R</a></li>
 <li><a class="active" href="xls.html"><span class="header-section-number">11</span> R Módulo 2 - Importando planilhas de dados</a></li>
-<li><a class="" href="univ2.html"><span class="header-section-number">12</span> R Módulo 3.2 - Testes estatísticos</a></li>
+<li><a class="" href="norm.html"><span class="header-section-number">12</span> R Módulo 3.1 - Estatísticas descritivas e normalidade</a></li>
+<li><a class="" href="testes.html"><span class="header-section-number">13</span> R Módulo 3.2 - Testes estatísticos</a></li>
 <li class="book-part">VI. INFORMAÇÕES GERAIS</li>
 <li><a class="" href="bibliografia-geral.html">Bibliografia Geral</a></li>
 </ul>
@@ -596,796 +597,191 @@ Figura 11.2: Associação entre a planilha de dados brutos do PPBio e o delineam
 <h2>Script limpo<a class="anchor" aria-label="anchor" href="#script-limpo-1"><i class="fas fa-link"></i></a>
 </h2>
 <p>Aqui apresento o scrip na íntegra sem os textos ou outros comentários. Você pode copiar e colar no R para executa-lo. Lembre de remover os <span style="color:green"><code>#</code></span> ou <span style="color:green"><code>##</code></span> caso necessite executar essas linhas.</p>
-<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="xls.html#cb94-1" tabindex="-1"></a><span class="co"># install.packages("readxl") #importa arquivos do excel</span></span>
-<span id="cb94-2"><a href="xls.html#cb94-2" tabindex="-1"></a><span class="co"># library(readxl)</span></span>
-<span id="cb94-3"><a href="xls.html#cb94-3" tabindex="-1"></a><span class="co"># getwd()</span></span>
-<span id="cb94-4"><a href="xls.html#cb94-4" tabindex="-1"></a><span class="co"># setwd("C:/Seu/Diretório/De/Trabalho")</span></span>
-<span id="cb94-5"><a href="xls.html#cb94-5" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
-<span id="cb94-6"><a href="xls.html#cb94-6" tabindex="-1"></a>ppbio06 <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"D:/Elvio/OneDrive/Disciplinas/_EcoNumerica/5.Matrizes/ppbio06c-peixes.xlsx"</span>,</span>
-<span id="cb94-7"><a href="xls.html#cb94-7" tabindex="-1"></a>                      <span class="at">sheet =</span> <span class="st">"Sheet1"</span>,</span>
-<span id="cb94-8"><a href="xls.html#cb94-8" tabindex="-1"></a>                      <span class="at">na =</span> <span class="st">"NA"</span>)</span>
-<span id="cb94-9"><a href="xls.html#cb94-9" tabindex="-1"></a><span class="fu">str</span>(ppbio06)</span>
-<span id="cb94-10"><a href="xls.html#cb94-10" tabindex="-1"></a><span class="fu">class</span>(ppbio06)</span>
-<span id="cb94-11"><a href="xls.html#cb94-11" tabindex="-1"></a>ppbio06 <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(ppbio06)</span>
-<span id="cb94-12"><a href="xls.html#cb94-12" tabindex="-1"></a><span class="fu">class</span>(ppbio06)</span>
-<span id="cb94-13"><a href="xls.html#cb94-13" tabindex="-1"></a><span class="fu">rownames</span>(ppbio06) <span class="ot">&lt;-</span> ppbio06[,<span class="dv">1</span>] <span class="co">#tem  que ser um df</span></span>
-<span id="cb94-14"><a href="xls.html#cb94-14" tabindex="-1"></a>ppbio06[,<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
-<span id="cb94-15"><a href="xls.html#cb94-15" tabindex="-1"></a><span class="co"># install.packages("openxlsx")</span></span>
-<span id="cb94-16"><a href="xls.html#cb94-16" tabindex="-1"></a><span class="fu">library</span>(openxlsx)</span>
-<span id="cb94-17"><a href="xls.html#cb94-17" tabindex="-1"></a>ppbio <span class="ot">&lt;-</span> <span class="fu">read.xlsx</span>(<span class="st">"D:/Elvio/OneDrive/Disciplinas/_EcoNumerica/5.Matrizes/ppbio06c-peixes.xlsx"</span>,</span>
-<span id="cb94-18"><a href="xls.html#cb94-18" tabindex="-1"></a>                   <span class="at">rowNames =</span> T,</span>
-<span id="cb94-19"><a href="xls.html#cb94-19" tabindex="-1"></a>                   <span class="at">colNames =</span> T,</span>
-<span id="cb94-20"><a href="xls.html#cb94-20" tabindex="-1"></a>                   <span class="at">sheet =</span> <span class="st">"Sheet1"</span>)</span>
-<span id="cb94-21"><a href="xls.html#cb94-21" tabindex="-1"></a><span class="fu">str</span>(ppbio)</span>
-<span id="cb94-22"><a href="xls.html#cb94-22" tabindex="-1"></a><span class="fu">class</span>(ppbio)</span>
-<span id="cb94-23"><a href="xls.html#cb94-23" tabindex="-1"></a>ppbio_ma <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(ppbio) <span class="co">#lê ppbio como uma matriz</span></span>
-<span id="cb94-24"><a href="xls.html#cb94-24" tabindex="-1"></a><span class="fu">str</span>(ppbio_ma)</span>
-<span id="cb94-25"><a href="xls.html#cb94-25" tabindex="-1"></a><span class="fu">class</span>(ppbio_ma)</span>
-<span id="cb94-26"><a href="xls.html#cb94-26" tabindex="-1"></a><span class="co">#ppbio</span></span>
-<span id="cb94-27"><a href="xls.html#cb94-27" tabindex="-1"></a><span class="co">#ppbio_ma</span></span>
-<span id="cb94-28"><a href="xls.html#cb94-28" tabindex="-1"></a><span class="co"># write.table(ppbio, "ppbiocsv.txt", append = F, quote = T, ";", row.names = T)</span></span>
-<span id="cb94-29"><a href="xls.html#cb94-29" tabindex="-1"></a><span class="co"># dir &lt;- getwd()</span></span>
-<span id="cb94-30"><a href="xls.html#cb94-30" tabindex="-1"></a><span class="co"># shell.exec(dir) #abre o diretorio de trabalho no Windows Explorer</span></span>
-<span id="cb94-31"><a href="xls.html#cb94-31" tabindex="-1"></a><span class="co"># ppbiocsv &lt;- read.csv("ppbiocsv.txt",</span></span>
-<span id="cb94-32"><a href="xls.html#cb94-32" tabindex="-1"></a><span class="co">#                      sep = ";", dec = ",", #definimos o dígito separador</span></span>
-<span id="cb94-33"><a href="xls.html#cb94-33" tabindex="-1"></a><span class="co">#                      header = T,</span></span>
-<span id="cb94-34"><a href="xls.html#cb94-34" tabindex="-1"></a><span class="co">#                      row.names = 1,</span></span>
-<span id="cb94-35"><a href="xls.html#cb94-35" tabindex="-1"></a><span class="co">#                      na.strings = NA)</span></span>
-<span id="cb94-36"><a href="xls.html#cb94-36" tabindex="-1"></a><span class="co"># str(ppbiocsv)</span></span>
-<span id="cb94-37"><a href="xls.html#cb94-37" tabindex="-1"></a><span class="co"># ppbiocsv</span></span>
-<span id="cb94-38"><a href="xls.html#cb94-38" tabindex="-1"></a><span class="co">#View(ppbio)</span></span>
-<span id="cb94-39"><a href="xls.html#cb94-39" tabindex="-1"></a><span class="fu">print</span>(ppbio06[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>])</span>
-<span id="cb94-40"><a href="xls.html#cb94-40" tabindex="-1"></a><span class="co">#ppbio</span></span>
-<span id="cb94-41"><a href="xls.html#cb94-41" tabindex="-1"></a><span class="fu">str</span>(ppbio06)</span>
-<span id="cb94-42"><a href="xls.html#cb94-42" tabindex="-1"></a><span class="co">#?str</span></span>
-<span id="cb94-43"><a href="xls.html#cb94-43" tabindex="-1"></a><span class="fu">mode</span>(ppbio06)</span>
-<span id="cb94-44"><a href="xls.html#cb94-44" tabindex="-1"></a><span class="co">#?mode</span></span>
-<span id="cb94-45"><a href="xls.html#cb94-45" tabindex="-1"></a><span class="fu">class</span>(ppbio06)</span>
-<span id="cb94-46"><a href="xls.html#cb94-46" tabindex="-1"></a><span class="co">#?class</span></span>
-<span id="cb94-47"><a href="xls.html#cb94-47" tabindex="-1"></a>ppbio06_ma <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(ppbio06) <span class="co">#lê ppbio como uma matriz</span></span>
-<span id="cb94-48"><a href="xls.html#cb94-48" tabindex="-1"></a><span class="fu">str</span>(ppbio06_ma)</span>
-<span id="cb94-49"><a href="xls.html#cb94-49" tabindex="-1"></a><span class="co">#?View</span></span>
-<span id="cb94-50"><a href="xls.html#cb94-50" tabindex="-1"></a><span class="co">#?view</span></span>
-<span id="cb94-51"><a href="xls.html#cb94-51" tabindex="-1"></a><span class="co">#?remove</span></span>
-<span id="cb94-52"><a href="xls.html#cb94-52" tabindex="-1"></a><span class="co"># getwd()</span></span>
-<span id="cb94-53"><a href="xls.html#cb94-53" tabindex="-1"></a><span class="co"># ppbio &lt;- read.xlsx(file.choose(),  #abre o windows explorer</span></span>
-<span id="cb94-54"><a href="xls.html#cb94-54" tabindex="-1"></a><span class="co">#                    rowNames = T, colNames = T,</span></span>
-<span id="cb94-55"><a href="xls.html#cb94-55" tabindex="-1"></a><span class="co">#                    sheet = "Sheet1")</span></span>
-<span id="cb94-56"><a href="xls.html#cb94-56" tabindex="-1"></a><span class="co"># #install.packages("readODS")</span></span>
-<span id="cb94-57"><a href="xls.html#cb94-57" tabindex="-1"></a><span class="fu">library</span>(readODS)</span>
-<span id="cb94-58"><a href="xls.html#cb94-58" tabindex="-1"></a>ppbio06.ods <span class="ot">&lt;-</span> <span class="fu">read_ods</span>(<span class="st">"D:/Elvio/OneDrive/Disciplinas/_EcoNumerica/5.Matrizes/ppbio06c-peixes.ods"</span>,</span>
-<span id="cb94-59"><a href="xls.html#cb94-59" tabindex="-1"></a>                   <span class="at">row_names =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb94-60"><a href="xls.html#cb94-60" tabindex="-1"></a>                   <span class="at">col_names =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb94-61"><a href="xls.html#cb94-61" tabindex="-1"></a>                   <span class="at">sheet =</span> <span class="st">"Sheet1"</span>,</span>
-<span id="cb94-62"><a href="xls.html#cb94-62" tabindex="-1"></a>                   <span class="at">as_tibble =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb94-63"><a href="xls.html#cb94-63" tabindex="-1"></a>                   <span class="at">na =</span> <span class="st">"n/a"</span>) <span class="co"># porque existem celulas vazias (n/a)</span></span>
-<span id="cb94-64"><a href="xls.html#cb94-64" tabindex="-1"></a>ppbio06.ods <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(ppbio06.ods)</span>
-<span id="cb94-65"><a href="xls.html#cb94-65" tabindex="-1"></a><span class="fu">str</span>(ppbio06.ods)</span>
-<span id="cb94-66"><a href="xls.html#cb94-66" tabindex="-1"></a><span class="fu">class</span>(ppbio06.ods)</span>
-<span id="cb94-67"><a href="xls.html#cb94-67" tabindex="-1"></a>ppbio06.ods_ma <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(ppbio06.ods) <span class="co">#lê como uma matriz</span></span>
-<span id="cb94-68"><a href="xls.html#cb94-68" tabindex="-1"></a><span class="fu">str</span>(ppbio06.ods_ma)</span>
-<span id="cb94-69"><a href="xls.html#cb94-69" tabindex="-1"></a><span class="fu">class</span>(ppbio06.ods_ma)</span>
-<span id="cb94-70"><a href="xls.html#cb94-70" tabindex="-1"></a><span class="co">#ppbio06.ods</span></span>
-<span id="cb94-71"><a href="xls.html#cb94-71" tabindex="-1"></a><span class="co">#ppbio06.ods_ma</span></span>
-<span id="cb94-72"><a href="xls.html#cb94-72" tabindex="-1"></a><span class="co">#Dados de mamíferos roedores</span></span>
-<span id="cb94-73"><a href="xls.html#cb94-73" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb94-74"><a href="xls.html#cb94-74" tabindex="-1"></a>  <span class="at">Rato =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>),</span>
-<span id="cb94-75"><a href="xls.html#cb94-75" tabindex="-1"></a>  <span class="at">Musaranho =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>),</span>
-<span id="cb94-76"><a href="xls.html#cb94-76" tabindex="-1"></a>  <span class="at">Rato =</span> <span class="fu">c</span>(<span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>), <span class="co">#nome duplicado</span></span>
-<span id="cb94-77"><a href="xls.html#cb94-77" tabindex="-1"></a>  <span class="at">Esquilo =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>),</span>
-<span id="cb94-78"><a href="xls.html#cb94-78" tabindex="-1"></a>  Ratão <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>),</span>
-<span id="cb94-79"><a href="xls.html#cb94-79" tabindex="-1"></a>  <span class="at">Castor =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>),</span>
-<span id="cb94-80"><a href="xls.html#cb94-80" tabindex="-1"></a>  Tâmia <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">11</span>, <span class="dv">12</span>, <span class="dv">13</span>),</span>
-<span id="cb94-81"><a href="xls.html#cb94-81" tabindex="-1"></a>  <span class="at">Marmota =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">0</span>),</span>
-<span id="cb94-82"><a href="xls.html#cb94-82" tabindex="-1"></a>  <span class="at">Castor =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>), <span class="co">#nome duplicado</span></span>
-<span id="cb94-83"><a href="xls.html#cb94-83" tabindex="-1"></a>  <span class="at">check.names =</span> <span class="cn">FALSE</span></span>
-<span id="cb94-84"><a href="xls.html#cb94-84" tabindex="-1"></a>)</span>
-<span id="cb94-85"><a href="xls.html#cb94-85" tabindex="-1"></a>df</span>
-<span id="cb94-86"><a href="xls.html#cb94-86" tabindex="-1"></a><span class="co">#Transpor os dados</span></span>
-<span id="cb94-87"><a href="xls.html#cb94-87" tabindex="-1"></a>df_t <span class="ot">&lt;-</span> <span class="fu">t</span>(df)</span>
-<span id="cb94-88"><a href="xls.html#cb94-88" tabindex="-1"></a>df_t</span>
-<span id="cb94-89"><a href="xls.html#cb94-89" tabindex="-1"></a><span class="co">#Somar grupos iguais</span></span>
-<span id="cb94-90"><a href="xls.html#cb94-90" tabindex="-1"></a>df_sum <span class="ot">&lt;-</span> <span class="fu">rowsum</span>(</span>
-<span id="cb94-91"><a href="xls.html#cb94-91" tabindex="-1"></a>  df_t,</span>
-<span id="cb94-92"><a href="xls.html#cb94-92" tabindex="-1"></a>  <span class="at">group =</span> <span class="fu">names</span>(df),</span>
-<span id="cb94-93"><a href="xls.html#cb94-93" tabindex="-1"></a>  <span class="at">reorder =</span> <span class="cn">FALSE</span></span>
-<span id="cb94-94"><a href="xls.html#cb94-94" tabindex="-1"></a>)</span>
-<span id="cb94-95"><a href="xls.html#cb94-95" tabindex="-1"></a>df_sum</span>
-<span id="cb94-96"><a href="xls.html#cb94-96" tabindex="-1"></a><span class="co">#Transpor o resultado de volta </span></span>
-<span id="cb94-97"><a href="xls.html#cb94-97" tabindex="-1"></a>resultado <span class="ot">&lt;-</span> <span class="fu">t</span>(df_sum)</span>
-<span id="cb94-98"><a href="xls.html#cb94-98" tabindex="-1"></a>resultado</span>
-<span id="cb94-99"><a href="xls.html#cb94-99" tabindex="-1"></a><span class="co">#Converte para dataframe</span></span>
-<span id="cb94-100"><a href="xls.html#cb94-100" tabindex="-1"></a>resultado <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(resultado)</span>
-<span id="cb94-101"><a href="xls.html#cb94-101" tabindex="-1"></a>resultado</span>
-<span id="cb94-102"><a href="xls.html#cb94-102" tabindex="-1"></a><span class="co"># Achando colunas com nomes duplicados</span></span>
-<span id="cb94-103"><a href="xls.html#cb94-103" tabindex="-1"></a>dup_cols <span class="ot">&lt;-</span> <span class="fu">names</span>(df)[<span class="fu">duplicated</span>(<span class="fu">names</span>(df))]</span>
-<span id="cb94-104"><a href="xls.html#cb94-104" tabindex="-1"></a><span class="co"># Somando colunas com o mesmo nome</span></span>
-<span id="cb94-105"><a href="xls.html#cb94-105" tabindex="-1"></a><span class="cf">for</span> (col_name <span class="cf">in</span> <span class="fu">unique</span>(dup_cols)) {</span>
-<span id="cb94-106"><a href="xls.html#cb94-106" tabindex="-1"></a>  <span class="co"># Obtem colunas com o mesmo nome</span></span>
-<span id="cb94-107"><a href="xls.html#cb94-107" tabindex="-1"></a>  col_indices <span class="ot">&lt;-</span> <span class="fu">which</span>(<span class="fu">names</span>(df) <span class="sc">==</span> col_name)</span>
-<span id="cb94-108"><a href="xls.html#cb94-108" tabindex="-1"></a>  <span class="co"># Soma colunas com o mesmo nome</span></span>
-<span id="cb94-109"><a href="xls.html#cb94-109" tabindex="-1"></a>  df[[col_name]] <span class="ot">&lt;-</span> <span class="fu">rowSums</span>(df[, col_indices, <span class="at">drop =</span> <span class="cn">FALSE</span>])</span>
-<span id="cb94-110"><a href="xls.html#cb94-110" tabindex="-1"></a>}</span>
-<span id="cb94-111"><a href="xls.html#cb94-111" tabindex="-1"></a><span class="co"># Remove as colunas duplicadas originais e mantem as novas colunas que são a soma ("except for the first occurrence")</span></span>
-<span id="cb94-112"><a href="xls.html#cb94-112" tabindex="-1"></a>df <span class="ot">&lt;-</span> df[, <span class="sc">!</span><span class="fu">duplicated</span>(<span class="fu">names</span>(df))]</span>
-<span id="cb94-113"><a href="xls.html#cb94-113" tabindex="-1"></a><span class="co"># Mostra a nova tabela com colunas repetidas somadas</span></span>
-<span id="cb94-114"><a href="xls.html#cb94-114" tabindex="-1"></a><span class="fu">print</span>(df)</span>
-<span id="cb94-115"><a href="xls.html#cb94-115" tabindex="-1"></a><span class="co"># rownames(ppbio); colnames(ppbio)</span></span>
-<span id="cb94-116"><a href="xls.html#cb94-116" tabindex="-1"></a><span class="co"># #Colunas</span></span>
-<span id="cb94-117"><a href="xls.html#cb94-117" tabindex="-1"></a><span class="co"># m_part &lt;- subset(ppbio, select = -c(`ap-davis`, `as-bimac`)) #escolhendo uma coluna pelo nome</span></span>
-<span id="cb94-118"><a href="xls.html#cb94-118" tabindex="-1"></a><span class="co"># m_part</span></span>
-<span id="cb94-119"><a href="xls.html#cb94-119" tabindex="-1"></a><span class="co"># #Linhas</span></span>
-<span id="cb94-120"><a href="xls.html#cb94-120" tabindex="-1"></a><span class="co"># del_rows &lt;- c("S-A-ZA1", "S-R-CC1")</span></span>
-<span id="cb94-121"><a href="xls.html#cb94-121" tabindex="-1"></a><span class="co"># del_rows</span></span>
-<span id="cb94-122"><a href="xls.html#cb94-122" tabindex="-1"></a><span class="co"># m_part &lt;- ppbio[!(row.names(ppbio) %in% c("S-A-ZA1", "S-R-CC1")),]</span></span>
-<span id="cb94-123"><a href="xls.html#cb94-123" tabindex="-1"></a><span class="co"># m_part</span></span>
-<span id="cb94-124"><a href="xls.html#cb94-124" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="at">text =</span> <span class="st">"</span></span>
-<span id="cb94-125"><a href="xls.html#cb94-125" tabindex="-1"></a><span class="st">Sp1 Sp2 Sp3 Sp4 Sp5 Sp6 Sp7 Sp8</span></span>
-<span id="cb94-126"><a href="xls.html#cb94-126" tabindex="-1"></a><span class="st">A1 0 0 0 0 0 0 6 1</span></span>
-<span id="cb94-127"><a href="xls.html#cb94-127" tabindex="-1"></a><span class="st">A2 0 0 0 2 0 0 10 2</span></span>
-<span id="cb94-128"><a href="xls.html#cb94-128" tabindex="-1"></a><span class="st">B1 93 2 0 177 0 260 2 5</span></span>
-<span id="cb94-129"><a href="xls.html#cb94-129" tabindex="-1"></a><span class="st">B2 0 4 0 8 0 0 83 7</span></span>
-<span id="cb94-130"><a href="xls.html#cb94-130" tabindex="-1"></a><span class="st">C1 0 0 0 0 1 0 0 1</span></span>
-<span id="cb94-131"><a href="xls.html#cb94-131" tabindex="-1"></a><span class="st">C2 0 0 1 0 0 1 0 1</span></span>
-<span id="cb94-132"><a href="xls.html#cb94-132" tabindex="-1"></a><span class="st">C3 0 2 0 2 0 0 0 1</span></span>
-<span id="cb94-133"><a href="xls.html#cb94-133" tabindex="-1"></a><span class="st">"</span>, <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">row.names =</span> <span class="dv">1</span>)</span>
-<span id="cb94-134"><a href="xls.html#cb94-134" tabindex="-1"></a>data</span>
-<span id="cb94-135"><a href="xls.html#cb94-135" tabindex="-1"></a><span class="co"># library("tidyverse")</span></span>
-<span id="cb94-136"><a href="xls.html#cb94-136" tabindex="-1"></a><span class="co"># #Inserindo coluna para agrupamentos</span></span>
-<span id="cb94-137"><a href="xls.html#cb94-137" tabindex="-1"></a><span class="co"># nrow(data); ncol(data) #no. de N colunas x M linhas</span></span>
-<span id="cb94-138"><a href="xls.html#cb94-138" tabindex="-1"></a><span class="co"># data_g &lt;- cbind(Grupos = rownames(data), data)</span></span>
-<span id="cb94-139"><a href="xls.html#cb94-139" tabindex="-1"></a><span class="co"># data_g</span></span>
-<span id="cb94-140"><a href="xls.html#cb94-140" tabindex="-1"></a><span class="co"># </span></span>
-<span id="cb94-141"><a href="xls.html#cb94-141" tabindex="-1"></a><span class="co"># grps &lt;- substr(data_g[, 1], 1,1)</span></span>
-<span id="cb94-142"><a href="xls.html#cb94-142" tabindex="-1"></a><span class="co"># grps</span></span>
-<span id="cb94-143"><a href="xls.html#cb94-143" tabindex="-1"></a><span class="co"># </span></span>
-<span id="cb94-144"><a href="xls.html#cb94-144" tabindex="-1"></a><span class="co"># data_g &lt;- mutate(data_g, Grupos = c(grps))</span></span>
-<span id="cb94-145"><a href="xls.html#cb94-145" tabindex="-1"></a><span class="co"># data_g</span></span>
-<span id="cb94-146"><a href="xls.html#cb94-146" tabindex="-1"></a><span class="co"># </span></span>
-<span id="cb94-147"><a href="xls.html#cb94-147" tabindex="-1"></a><span class="co"># #data_avg &lt;- aggregate(data_g[, 9:9], list(data_g$Grupos), mean)</span></span>
-<span id="cb94-148"><a href="xls.html#cb94-148" tabindex="-1"></a><span class="co"># #data_avg</span></span>
-<span id="cb94-149"><a href="xls.html#cb94-149" tabindex="-1"></a><span class="co"># </span></span>
-<span id="cb94-150"><a href="xls.html#cb94-150" tabindex="-1"></a><span class="co"># data_avg &lt;- summarise(</span></span>
-<span id="cb94-151"><a href="xls.html#cb94-151" tabindex="-1"></a><span class="co">#   group_by(data_g, Grupos),</span></span>
-<span id="cb94-152"><a href="xls.html#cb94-152" tabindex="-1"></a><span class="co">#   across(.cols = everything(), ~ mean(.x, na.rm = TRUE))</span></span>
-<span id="cb94-153"><a href="xls.html#cb94-153" tabindex="-1"></a><span class="co"># )</span></span>
-<span id="cb94-154"><a href="xls.html#cb94-154" tabindex="-1"></a><span class="co"># data_avg</span></span>
-<span id="cb94-155"><a href="xls.html#cb94-155" tabindex="-1"></a><span class="co"># </span></span>
-<span id="cb94-156"><a href="xls.html#cb94-156" tabindex="-1"></a><span class="co"># data_dp &lt;- summarise(</span></span>
-<span id="cb94-157"><a href="xls.html#cb94-157" tabindex="-1"></a><span class="co">#   group_by(data_g, Grupos),</span></span>
-<span id="cb94-158"><a href="xls.html#cb94-158" tabindex="-1"></a><span class="co">#   across(</span></span>
-<span id="cb94-159"><a href="xls.html#cb94-159" tabindex="-1"></a><span class="co">#     .cols = everything(),</span></span>
-<span id="cb94-160"><a href="xls.html#cb94-160" tabindex="-1"></a><span class="co">#     list(mean = mean, sd = sd)</span></span>
-<span id="cb94-161"><a href="xls.html#cb94-161" tabindex="-1"></a><span class="co">#   )</span></span>
-<span id="cb94-162"><a href="xls.html#cb94-162" tabindex="-1"></a><span class="co"># )</span></span>
-<span id="cb94-163"><a href="xls.html#cb94-163" tabindex="-1"></a><span class="co"># data_dp</span></span>
-<span id="cb94-164"><a href="xls.html#cb94-164" tabindex="-1"></a><span class="co"># </span></span>
-<span id="cb94-165"><a href="xls.html#cb94-165" tabindex="-1"></a><span class="co"># #Primeira coluna para nomes das linhas</span></span>
-<span id="cb94-166"><a href="xls.html#cb94-166" tabindex="-1"></a><span class="co"># data_dp &lt;- as.data.frame(data_dp)</span></span>
-<span id="cb94-167"><a href="xls.html#cb94-167" tabindex="-1"></a><span class="co"># data_dp</span></span>
-<span id="cb94-168"><a href="xls.html#cb94-168" tabindex="-1"></a><span class="co"># rownames(data_dp) &lt;- data_dp[,1]</span></span>
-<span id="cb94-169"><a href="xls.html#cb94-169" tabindex="-1"></a><span class="co"># data_dp[,1] &lt;- NULL</span></span>
-<span id="cb94-170"><a href="xls.html#cb94-170" tabindex="-1"></a><span class="co"># data_dp &lt;- round(data_dp, 1)</span></span>
-<span id="cb94-171"><a href="xls.html#cb94-171" tabindex="-1"></a><span class="co"># data_dp</span></span>
-<span id="cb94-172"><a href="xls.html#cb94-172" tabindex="-1"></a><span class="co"># #Salvando a matriz</span></span>
-<span id="cb94-173"><a href="xls.html#cb94-173" tabindex="-1"></a><span class="co"># write.table(data_dp,</span></span>
-<span id="cb94-174"><a href="xls.html#cb94-174" tabindex="-1"></a><span class="co">#             "data_dp.csv",</span></span>
-<span id="cb94-175"><a href="xls.html#cb94-175" tabindex="-1"></a><span class="co">#             append = F,</span></span>
-<span id="cb94-176"><a href="xls.html#cb94-176" tabindex="-1"></a><span class="co">#             quote = TRUE,</span></span>
-<span id="cb94-177"><a href="xls.html#cb94-177" tabindex="-1"></a><span class="co">#             sep = ";", dec = ",",</span></span>
-<span id="cb94-178"><a href="xls.html#cb94-178" tabindex="-1"></a><span class="co">#             row.names = T)</span></span>
-<span id="cb94-179"><a href="xls.html#cb94-179" tabindex="-1"></a><span class="co"># data_dp_csv &lt;- read.csv("data_dp.csv",</span></span>
-<span id="cb94-180"><a href="xls.html#cb94-180" tabindex="-1"></a><span class="co">#                     sep = ";", dec = ",",</span></span>
-<span id="cb94-181"><a href="xls.html#cb94-181" tabindex="-1"></a><span class="co">#                     header = T,</span></span>
-<span id="cb94-182"><a href="xls.html#cb94-182" tabindex="-1"></a><span class="co">#                     row.names = 1,</span></span>
-<span id="cb94-183"><a href="xls.html#cb94-183" tabindex="-1"></a><span class="co">#                     na.strings = NA)</span></span>
-<span id="cb94-184"><a href="xls.html#cb94-184" tabindex="-1"></a><span class="co"># data_dp_csv```</span></span>
-<span id="cb94-185"><a href="xls.html#cb94-185" tabindex="-1"></a></span>
-<span id="cb94-186"><a href="xls.html#cb94-186" tabindex="-1"></a><span class="do">## Referências {.unnumbered}</span></span>
-<span id="cb94-187"><a href="xls.html#cb94-187" tabindex="-1"></a></span>
-<span id="cb94-188"><a href="xls.html#cb94-188" tabindex="-1"></a><span class="sc">&lt;!--</span>chapter<span class="sc">:</span>end<span class="sc">:</span><span class="dv">4-02</span><span class="sc">-</span>rmd2_xls.Rmd<span class="sc">-</span><span class="ot">-&gt;</span></span>
-<span id="cb94-189"><a href="xls.html#cb94-189" tabindex="-1"></a></span>
-<span id="cb94-190"><a href="xls.html#cb94-190" tabindex="-1"></a><span class="sc">---</span></span>
-<span id="cb94-191"><a href="xls.html#cb94-191" tabindex="-1"></a>output<span class="sc">:</span> html_document</span>
-<span id="cb94-192"><a href="xls.html#cb94-192" tabindex="-1"></a>editor_options<span class="sc">:</span> </span>
-<span id="cb94-193"><a href="xls.html#cb94-193" tabindex="-1"></a>  chunk_output_type<span class="sc">:</span> console</span>
-<span id="cb94-194"><a href="xls.html#cb94-194" tabindex="-1"></a><span class="sc">---</span></span>
-<span id="cb94-195"><a href="xls.html#cb94-195" tabindex="-1"></a></span>
-<span id="cb94-196"><a href="xls.html#cb94-196" tabindex="-1"></a><span class="co"># R Módulo 3.1 - Estatísticas descritivas e normalidade {#univ}</span></span>
-<span id="cb94-197"><a href="xls.html#cb94-197" tabindex="-1"></a></span>
-<span id="cb94-198"><a href="xls.html#cb94-198" tabindex="-1"></a><span class="do">### RESUMO {.unnumbered}</span></span>
-<span id="cb94-199"><a href="xls.html#cb94-199" tabindex="-1"></a></span>
-<span id="cb94-200"><a href="xls.html#cb94-200" tabindex="-1"></a>A estatística descritiva tem um papel importante a desempenhar na ciência. Quando problemas específicos são tratados na ciência, os dados precisam ser coletados, analisados e apresentados de forma concisa para que outros possam se beneficiar do que foi encontrado.</span>
-<span id="cb94-201"><a href="xls.html#cb94-201" tabindex="-1"></a></span>
-<span id="cb94-202"><a href="xls.html#cb94-202" tabindex="-1"></a><span class="do">### Apresentação {.unnumbered}</span></span>
-<span id="cb94-203"><a href="xls.html#cb94-203" tabindex="-1"></a></span>
-<span id="cb94-204"><a href="xls.html#cb94-204" tabindex="-1"></a>A estatística descritiva tem um papel importante a desempenhar na ciência. Quando problemas específicos são tratados na ciência, os dados precisam ser coletados, analisados e apresentados de forma concisa para que outros possam se beneficiar do que foi encontrado. Geralmente não é possível apresentar um conjunto de dados completo em uma publicação ou em um seminário e, mesmo que fosse, é improvável isso permitisse uma boa comunicação dos resultados da pesquisa. Em vez disso, os dados são geralmente resumidos como tabelas de frequência, histogramas e estatísticas descritivas que os leitores ou ouvintes podem assimilar prontamente, mas que ainda transmitem os elementos essenciais do conjunto de dados original. O principal objetivo do cálculo das estatísticas descritivas é transmitir informações essenciais contidas em um conjunto de dados da forma mais concisa e clara possível.</span>
-<span id="cb94-205"><a href="xls.html#cb94-205" tabindex="-1"></a></span>
-<span id="cb94-206"><a href="xls.html#cb94-206" tabindex="-1"></a><span class="do">## Sobre os dados</span></span>
-<span id="cb94-207"><a href="xls.html#cb94-207" tabindex="-1"></a></span>
-<span id="cb94-208"><a href="xls.html#cb94-208" tabindex="-1"></a>Considere os dados sobre o comprimento dos brotos de <span class="sc">*</span>Banksia ericifolia<span class="sc">*</span> de charnecas[<span class="sc">^</span><span class="dv">4-03-1</span><span class="sc">-</span>rmd3_univ<span class="dv">-1</span>] na Baía de Jervis, Austrália [<span class="sc">@</span>bradstock1997] (Figura \<span class="sc">@</span><span class="fu">ref</span>(fig<span class="sc">:</span>rmd3banks)). Existem <span class="dv">500</span> medições, um conjunto de dados formidável. Por inspeção, o comprimento mínimo do broto é <span class="dv">10</span>,<span class="dv">0</span> e o máximo é <span class="dv">44</span>,<span class="dv">9</span> cm. Esses valores definem o intervalo da amostra. Agora precisamos subdividir o intervalo em intervalos ou classes, cada um com o mesmo tamanho. Geralmente, é aconselhável arredondar o valor mínimo para baixo e o valor máximo para valores apropriados ao decidir as classes de intervalos. Nesse caso, parece sensato dividir a faixa de <span class="dv">10</span> a <span class="dv">45</span> cm em sete intervalos a cada <span class="dv">5</span> cm de largura. Se contarmos o número de brotos que se encontram em cada um dos sete intervalos, temos a base para a tabulação da frequência. A coluna de frequência foi obtida contando o número de medições que existem dentro de cada classe. A coluna de frequência percentual foi obtida representando cada contagem como uma porcentagem da contagem total. A frequência cumulativa e as frequências percentuais cumulativas foram obtidas somando progressivamente as frequências correspondentes.</span>
-<span id="cb94-209"><a href="xls.html#cb94-209" tabindex="-1"></a></span>
-<span id="cb94-210"><a href="xls.html#cb94-210" tabindex="-1"></a>[<span class="sc">^</span><span class="dv">4-03-1</span><span class="sc">-</span>rmd3_univ<span class="dv">-1</span>]<span class="sc">:</span> Charneiras, ou charnecas, são tipos de paisagens ou ecossistemas encontrados principalmente em regiões temperadas, como na Europa e América do Norte, embora também possam ser encontrados em outros lugares do mundo. São caracterizados por uma combinação de vegetação herbácea (gramíneas e ervas) e arbustos resistentes, muitas vezes adaptados a condições de solo pobre e clima adverso. Eles desempenham um papel importante na conservação da biodiversidade e na ecologia das áreas onde são encontrados.</span></code></pre></div>
-<div class="figure">
-<span style="display:block;" id="fig:rmd3banks"></span>
-<img src="imagens/banksia.png" alt="Comprimentos (cm) de 500 brotos do arbusto *Banksia ericifolia* de charnecas na Baía de Jervis, Austrália." width="450px"><p class="caption">
-Figura 11.3: Comprimentos (cm) de 500 brotos do arbusto <em>Banksia ericifolia</em> de charnecas na Baía de Jervis, Austrália.
-</p>
-</div>
-</div>
-<div id="organização-básica-1" class="section level2" number="11.7">
-<h2>
-<span class="header-section-number">11.7</span> Organização básica<a class="anchor" aria-label="anchor" href="#organiza%C3%A7%C3%A3o-b%C3%A1sica-1"><i class="fas fa-link"></i></a>
-</h2>
-<div class="sourceCode" id="cb95"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/rm.html">rm</a></span><span class="op">(</span>list<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/ls.html">ls</a></span><span class="op">(</span>all<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="co">#limpa a memória</span></span></code></pre></div>
-<p>Instalando os pacotes necessários para esse módulo</p>
-<div class="sourceCode" id="cb96"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"openxlsx"</span><span class="op">)</span> <span class="co">#importa arquivos do excel</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"fdth"</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb97"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ycphs.github.io/openxlsx/index.html">openxlsx</a></span><span class="op">)</span></span></code></pre></div>
-<p>Os códigos acima, são usados para instalar e carregar os pacotes necessários para este módulo. Esses códigos são comandos para instalar pacotes no R. Um pacote é uma coleção de funções, dados e documentação que ampliam as capacidades do R (<a href="https://cran.r-project.org/">R CRAN</a> <span class="citation">(<a href="#ref-rdevelopmentcoreteam2017">R DEVELOPMENT CORE TEAM, 2017</a>)</span> e <a href="https://posit.co/download/rstudio-desktop/">RStudio</a> <span class="citation">(<a href="#ref-rstudioteam2022">R STUDIO TEAM, 2022</a>)</span>). No exemplo acima, o pacote <code>openxlsx</code> permite ler e escrever arquivos Excel no R. Para instalar um pacote no R, você precisa usar a função <code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code>.</p>
-<p>Depois de instalar um pacote, você precisa carregá-lo na sua sessão R com a função <code><a href="https://rdrr.io/r/base/library.html">library()</a></code>. Por exemplo, para carregar o pacote <code>openxlsx</code>, você precisa executar a função <code><a href="https://ycphs.github.io/openxlsx/index.html">library(openxlsx)</a></code>. Isso irá permitir que você use as funções do pacote na sua sessão R. Você precisa carregar um pacote toda vez que iniciar uma nova sessão R e quiser usar um pacote instalado.</p>
-<p>Agora vamos <strong>definir o diretório de trabalho</strong>. Esse código é usado para obter e definir o diretório de trabalho atual no R. O comando <code><a href="https://rdrr.io/r/base/getwd.html">getwd()</a></code> retorna o caminho do diretório onde o R está lendo e salvando arquivos. O comando <code><a href="https://rdrr.io/r/base/getwd.html">setwd()</a></code> muda esse diretório de trabalho para o caminho especificado entre aspas. No seu caso, você deve ajustar o caminho para o seu próprio diretório de trabalho. <strong>Lembre de usar a barra “/” entre os diretórios. E não a contra-barra “\”.</strong></p>
-<div class="sourceCode" id="cb98"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/getwd.html">getwd</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/getwd.html">setwd</a></span><span class="op">(</span><span class="st">"C:/Seu/Diretório/De/Trabalho"</span><span class="op">)</span></span></code></pre></div>
-</div>
-<div id="importando-a-planilha-1" class="section level2" number="11.8">
-<h2>
-<span class="header-section-number">11.8</span> Importando a planilha<a class="anchor" aria-label="anchor" href="#importando-a-planilha-1"><i class="fas fa-link"></i></a>
-</h2>
-<div class="infobox2 stopred">
-<div class="center">
-<p><span style="color:white"><strong>ATENÇÃO</strong></span></p>
-</div>
-<p>Os links para baixar as planilhas necessárias para repetir esse tutorial podem ser encontrados na seção <a href="bases.html#arqs">Arquivos disponíveis</a> do Capítulo <a href="bases.html#bases">Bases de dados</a>.</p>
-<div class="center">
-<p>Ou, baixe aqui o arquivo <a href="https://docs.google.com/spreadsheets/d/1iSJeR726dCc-ia3G5jzSBg__mSUsb-91/edit?usp=sharing&amp;ouid=101766125969589673518&amp;rtpof=true&amp;sd=true">brotos.xlsx</a></p>
-</div>
-</div>
-<p>Note que o símbolo <span style="color:green"><code>#</code></span> em programação R significa que o texto que vem depois dele é um comentário e não será executado pelo programa. Isso é útil para explicar o código ou deixar anotações. Ajuste a segunda linha do código abaixo para refletir <span style="color:blue">“C:/Seu/Diretório/De/Trabalho/Planilha.xlsx”</span>.</p>
-<div class="sourceCode" id="cb99"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ycphs.github.io/openxlsx/index.html">openxlsx</a></span><span class="op">)</span></span>
-<span><span class="va">brotos</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/openxlsx/man/read.xlsx.html">read.xlsx</a></span><span class="op">(</span><span class="st">"D:/Elvio/OneDrive/Disciplinas/_EcoNumerica/5.Matrizes/brotos.xlsx"</span>,</span>
-<span>                    rowNames <span class="op">=</span> <span class="cn">F</span>, colNames <span class="op">=</span> <span class="cn">F</span>,</span>
-<span>                    sheet <span class="op">=</span> <span class="st">"Planilha1"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">brotos</span>,<span class="fl">10</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">brotos</span><span class="op">[</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span>, <span class="fl">10</span><span class="op">)</span></span></code></pre></div>
-<pre><code>##      X1   X2   X3   X4   X5   X6   X7   X8   X9  X10
-## 1  28.4 29.1 25.7 26.2 25.8 30.2 26.2 35.8 33.4 29.0
-## 2  25.1 36.8 29.9 38.3 27.1 32.3 29.0 27.7 28.1 28.9
-## 3  29.9 36.3 26.0 21.2 19.8 36.7 21.1 34.6 29.6 32.6
-## 4  25.8 23.2 28.8 38.2 32.7 38.7 33.2 24.5 21.6 28.6
-## 5  35.0 25.1 24.7 29.5 24.9 29.2 19.5 20.1 30.3 38.9
-## 6  36.4 31.8 31.0 39.4 28.8 31.8 28.7 37.0 25.5 19.3
-## 7  29.1 21.1 30.4 31.2 38.0 39.0 19.3 27.6 19.1 32.5
-## 8  33.2 26.5 38.1 14.9 33.2 27.8 24.7 24.9 25.0 33.1
-## 9  26.9 22.5 25.5 33.0 19.4 26.8 24.6 37.5 19.8 43.7
-## 10 34.2 33.6 42.5 19.0 25.8 34.0 34.4 42.0 35.4 31.5
-##      X1   X2   X3   X4   X5
-## 1  28.4 29.1 25.7 26.2 25.8
-## 2  25.1 36.8 29.9 38.3 27.1
-## 3  29.9 36.3 26.0 21.2 19.8
-## 4  25.8 23.2 28.8 38.2 32.7
-## 5  35.0 25.1 24.7 29.5 24.9
-## 6  36.4 31.8 31.0 39.4 28.8
-## 7  29.1 21.1 30.4 31.2 38.0
-## 8  33.2 26.5 38.1 14.9 33.2
-## 9  26.9 22.5 25.5 33.0 19.4
-## 10 34.2 33.6 42.5 19.0 25.8</code></pre>
-<p>Exibindo os dados importados (esses comando são “case-sensitive” <code>ignore.case(object)</code>).</p>
-<div class="sourceCode" id="cb101"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co">#View(brotos)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">brotos</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span><span class="op">)</span></span>
-<span><span class="va">brotos</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">brotos</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/mode.html">mode</a></span><span class="op">(</span><span class="va">brotos</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">brotos</span><span class="op">)</span></span></code></pre></div>
-<p><code>Brotos.xlsx</code> está como um dataframe. Precisaremos converter para um vetor. Para isso, transformamos o dataframe em matriz numérica (<code><a href="https://rdrr.io/r/base/matrix.html">as.matrix()</a></code>), e na sequência usamos <code><a href="https://rdrr.io/r/base/vector.html">as.vector()</a></code> para achatar a matriz em uma única dimensão.</p>
-<div class="sourceCode" id="cb102"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">brotos_v</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/vector.html">as.vector</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">as.matrix</a></span><span class="op">(</span><span class="va">brotos</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="va">brotos_v</span></span></code></pre></div>
-<pre><code>##   [1] 28.4 25.1 29.9 25.8 35.0 36.4 29.1 33.2 26.9 34.2 32.0 31.7 23.6 31.1 29.1
-##  [16] 29.8 31.5 20.6 29.3 24.0 32.4 30.5 29.2 26.1 38.8 22.4 29.9 28.3 26.3 24.3
-##  [31] 16.8 27.8 21.9 26.2 29.9 29.3 31.6 23.2 32.1 20.3 27.8 22.9 32.5 24.5 36.5
-##  [46] 39.4 24.2 23.2 28.3 29.3 29.1 36.8 36.3 23.2 25.1 31.8 21.1 26.5 22.5 33.6
-##  [61] 38.4 22.4 16.2 31.7 15.8 27.1 27.4 27.2 24.7 30.5 36.4 30.1 30.2 29.7 21.9
-##  [76] 19.9 21.8 34.3 38.3 20.7 43.9 33.1 27.0 32.6 42.1 34.8 26.8 27.6 25.5 22.4
-##  [91] 36.5 41.5 31.4 22.8 33.5 33.3 21.2 24.5 40.2 31.9 25.7 29.9 26.0 28.8 24.7
-## [106] 31.0 30.4 38.1 25.5 42.5 29.1 21.7 27.3 31.6 22.1 36.9 37.2 25.0 37.0 31.6
-## [121] 24.1 21.3 20.8 32.0 25.6 34.8 33.1 34.0 24.8 22.5 27.9 34.9 26.5 22.3 36.6
-## [136] 34.8 37.3 34.3 34.7 37.7 23.7 30.4 18.8 29.9 28.6 21.9 25.8 29.9 30.9 43.0
-## [151] 26.2 38.3 21.2 38.2 29.5 39.4 31.2 14.9 33.0 19.0 29.4 20.1 33.3 41.7 23.2
-## [166] 32.7 30.6 26.1 36.9 28.7 33.1 27.1 30.3 22.2 29.7 33.4 30.4 29.0 23.5 39.5
-## [181] 44.4 20.5 29.2 31.7 25.5 22.6 23.2 26.7 43.7 29.4 28.6 36.1 19.1 34.5 24.9
-## [196] 29.6 29.8 26.0 22.0 31.9 25.8 27.1 19.8 32.7 24.9 28.8 38.0 33.2 19.4 25.8
-## [211] 29.3 21.6 21.6 25.9 25.4 24.8 32.2 34.5 34.8 20.8 26.3 19.0 27.8 29.2 29.9
-## [226] 28.0 30.8 30.9 29.3 32.0 29.7 25.4 24.9 37.1 34.2 33.6 20.5 28.1 31.6 36.0
-## [241] 23.8 32.7 24.2 33.4 24.3 27.0 24.7 40.5 34.1 33.9 30.2 32.3 36.7 38.7 29.2
-## [256] 31.8 39.0 27.8 26.8 34.0 26.8 23.5 30.2 32.3 28.4 18.0 34.8 44.9 29.8 14.6
-## [271] 35.7 25.4 32.9 21.5 32.5 29.1 33.9 24.4 37.8 27.6 23.0 10.0 18.4 35.6 22.4
-## [286] 23.0 17.6 24.7 37.9 39.2 16.2 30.1 29.3 22.8 25.7 30.2 30.6 30.0 26.2 20.0
-## [301] 26.2 29.0 21.1 33.2 19.5 28.7 19.3 24.7 24.6 34.4 32.4 33.2 22.5 35.7 20.2
-## [316] 40.2 28.2 40.5 22.8 23.4 26.4 36.5 28.2 31.4 30.4 27.2 27.1 29.0 29.9 36.3
-## [331] 26.8 28.2 24.1 19.5 40.5 33.8 25.0 34.2 27.4 26.2 38.0 39.9 19.7 30.8 19.2
-## [346] 17.1 38.1 30.3 19.6 39.6 35.8 27.7 34.6 24.5 20.1 37.0 27.6 24.9 37.5 42.0
-## [361] 25.2 33.0 33.0 31.6 25.5 28.0 31.3 32.1 32.3 26.3 34.7 22.6 20.6 43.1 29.2
-## [376] 18.8 27.6 25.4 28.6 22.0 43.4 31.0 28.3 26.9 21.2 21.9 41.9 15.7 17.0 25.7
-## [391] 22.1 22.3 36.7 22.1 34.5 15.8 33.3 33.9 33.6 34.3 33.4 28.1 29.6 21.6 30.3
-## [406] 25.5 19.1 25.0 19.8 35.4 28.5 29.6 38.3 26.0 26.9 26.8 34.3 40.4 34.8 31.9
-## [421] 27.5 25.5 33.6 35.9 40.9 36.2 37.2 30.5 27.4 28.4 29.4 10.6 29.0 24.8 32.3
-## [436] 31.6 21.8 27.2 19.4 28.2 44.0 26.8 24.1 38.1 40.6 22.8 26.8 34.9 26.3 28.8
-## [451] 29.0 28.9 32.6 28.6 38.9 19.3 32.5 33.1 43.7 31.5 29.8 36.9 29.5 26.6 32.7
-## [466] 41.9 32.0 35.7 29.6 32.5 39.6 30.0 22.2 14.9 14.1 27.8 30.9 31.1 29.9 19.1
-## [481] 26.7 28.4 29.1 19.2 31.5 16.5 34.4 37.5 24.6 22.1 20.2 31.4 33.9 33.5 25.8
-## [496] 16.5 16.5 18.8 25.1 34.2</code></pre>
-<p>E agora visualizando nossos dados.</p>
-<div class="sourceCode" id="cb104"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co">#View(brotos_v)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">brotos_v</span><span class="op">)</span></span>
-<span><span class="va">brotos_v</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">brotos_v</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/mode.html">mode</a></span><span class="op">(</span><span class="va">brotos_v</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">brotos_v</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/range.html">range</a></span><span class="op">(</span><span class="va">brotos_v</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">brotos_v</span><span class="op">)</span></span></code></pre></div>
-<p>Tendo em mãos o conjunto total de 500 comprimentos medidos de brotos de <em>Banksia</em>, agora <strong>vamos tirar uma subamostra aleatória de uma parte dos 500 valores</strong>. Essa subamostra é tirada usando o comando <code>size=</code> no código subsequente, que estabelece o tamanho da subamostra a ser tirada do total de dados. Por exemplo, para uma subamostra de 150 comprimentos, então <code>size = 150</code>. Nesse tutorial usaremos todos os 500 comprimentos.</p>
-<div class="sourceCode" id="cb105"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">666</span><span class="op">)</span></span>
-<span><span class="va">brotos_sub</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="va">brotos_v</span>, size <span class="op">=</span> <span class="fl">500</span>, replace <span class="op">=</span> <span class="cn">F</span><span class="op">)</span> <span class="co">#atualize o valor de 'size=' se necessário</span></span>
-<span><span class="va">brotos_sub</span></span></code></pre></div>
-<pre><code>##   [1] 22.4 34.8 33.3 34.5 20.8 28.3 30.4 17.0 25.2 37.7 29.4 29.3 27.9 25.7 23.6
-##  [16] 29.4 30.3 27.4 27.2 18.8 32.7 26.5 21.7 30.5 31.6 31.7 40.9 34.0 27.2 43.7
-##  [31] 30.1 34.3 34.8 19.4 20.1 26.7 18.4 29.9 20.7 34.9 29.1 38.3 29.0 24.7 23.4
-##  [46] 32.3 36.2 30.4 26.8 25.7 20.8 24.3 24.2 14.9 33.5 29.2 38.0 33.1 27.8 26.2
-##  [61] 28.7 33.2 44.9 25.8 34.2 36.6 40.4 37.9 29.7 35.7 34.1 26.8 30.5 14.9 28.4
-##  [76] 29.6 25.5 27.7 26.0 37.5 22.4 21.6 40.2 26.2 29.0 42.0 32.0 21.9 31.4 21.3
-##  [91] 29.1 44.4 25.8 24.1 37.5 27.0 32.6 27.8 28.9 32.9 19.8 24.5 20.1 34.4 24.5
-## [106] 21.9 29.5 34.2 24.8 33.9 22.1 33.1 25.1 22.8 31.8 22.1 24.8 25.5 23.0 43.1
-## [121] 37.0 38.8 25.8 27.2 40.5 36.3 28.6 30.4 24.5 29.1 33.3 23.7 33.6 26.9 22.8
-## [136] 14.6 25.5 31.5 19.8 32.4 16.5 20.2 21.1 21.6 28.1 22.9 32.5 20.5 39.4 29.3
-## [151] 31.0 41.7 15.7 31.0 25.8 31.9 27.0 33.2 19.0 19.7 32.2 31.8 19.6 27.8 31.1
-## [166] 35.9 38.3 22.2 28.4 16.2 31.9 41.5 27.6 42.5 24.9 22.4 16.5 26.2 36.3 36.5
-## [181] 19.4 38.7 32.0 25.4 32.1 30.4 24.6 24.6 29.3 31.4 35.7 33.4 22.6 32.3 24.1
-## [196] 22.6 23.2 36.4 19.2 23.2 19.1 34.8 28.5 29.9 24.9 29.9 32.7 31.6 26.3 43.9
-## [211] 35.4 20.0 28.6 31.6 33.0 31.9 20.2 24.9 29.7 19.5 29.3 31.7 39.0 35.0 36.5
-## [226] 23.0 23.2 22.4 39.9 29.9 22.8 24.0 36.8 24.8 34.3 31.5 38.1 30.2 26.3 36.9
-## [241] 21.1 23.2 26.3 31.2 26.0 29.4 33.2 21.9 10.6 15.8 31.6 20.3 21.2 29.3 25.0
-## [256] 36.4 38.3 22.3 33.8 28.0 30.8 22.5 36.7 24.2 29.2 40.5 33.1 20.6 14.1 32.4
-## [271] 38.0 29.1 21.2 30.3 39.2 43.0 37.2 32.5 32.5 38.9 24.3 37.0 25.4 30.3 37.1
-## [286] 43.7 23.8 27.6 34.8 25.4 17.1 31.6 28.8 19.2 27.4 29.7 18.8 34.8 39.4 22.3
-## [301] 26.6 28.7 25.5 23.5 20.6 30.2 34.5 40.5 19.1 24.1 36.5 16.8 21.6 24.9 36.9
-## [316] 22.1 29.9 33.4 26.9 29.2 26.2 25.0 40.2 24.7 24.4 29.1 25.0 22.0 34.7 28.2
-## [331] 29.9 30.5 26.2 27.4 22.0 28.2 29.1 43.4 39.6 27.6 24.7 28.8 29.8 31.3 22.5
-## [346] 30.0 34.3 25.5 26.7 31.5 38.4 26.8 33.6 29.5 21.5 35.8 29.0 38.2 33.2 29.8
-## [361] 32.3 19.3 26.1 16.2 27.5 30.2 28.8 34.3 28.3 22.5 24.7 32.7 34.7 16.5 42.1
-## [376] 26.8 29.0 26.0 33.0 19.1 35.7 36.7 34.4 39.5 37.3 29.9 28.0 41.9 23.2 23.5
-## [391] 21.9 28.2 26.9 27.3 29.9 21.2 38.1 30.8 28.6 38.1 15.8 27.1 25.1 28.4 33.9
-## [406] 26.3 33.4 37.2 10.0 34.5 27.1 32.5 29.0 28.4 36.9 36.0 34.6 29.3 27.1 28.6
-## [421] 28.1 30.1 28.3 19.0 26.1 34.8 27.6 19.9 27.8 34.9 41.9 29.9 25.6 26.8 21.8
-## [436] 27.1 25.1 33.3 29.6 33.6 30.9 18.8 33.9 22.1 32.0 44.0 29.8 17.6 18.0 40.6
-## [451] 32.7 26.8 29.2 30.0 34.2 25.4 25.7 31.6 26.4 29.2 39.6 27.8 33.6 32.0 30.9
-## [466] 24.7 26.5 25.9 25.8 35.6 31.7 29.8 32.3 29.6 33.5 30.2 21.8 30.9 37.8 19.3
-## [481] 36.1 33.9 28.2 31.4 20.5 25.5 33.0 22.8 34.0 32.6 30.6 29.6 22.2 26.8 30.6
-## [496] 19.5 31.1 34.2 33.1 32.1</code></pre>
-</div>
-<div id="averiguando-normalidade" class="section level2" number="11.9">
-<h2>
-<span class="header-section-number">11.9</span> Averiguando normalidade<a class="anchor" aria-label="anchor" href="#averiguando-normalidade"><i class="fas fa-link"></i></a>
-</h2>
-<p>O pressuposto de normalidade é um pré-requisito para muitas técnicas estatísticas inferenciais <span class="citation">(<a href="#ref-coakes2001">COAKES; STEED, 2001</a>)</span>. Há várias maneiras diferentes de explorar graficamente esse pressuposto:</p>
-<p>• Tabela de frequências</p>
-<p>• Gráfico <em>Stem-and-leaf</em></p>
-<p>• Assimetria e Curtose</p>
-<p>• Histograma</p>
-<p>• Boxplot</p>
-<p>• Gráfico de Probabilidade Normal (<em>Normal Probability Plot</em> ou <em>Normal Q-Q plot</em>)</p>
-<p>• Gráfico normal sem tendência.</p>
-<p>Além disso, há várias estatísticas disponíveis para testar a normalidade:</p>
-<p>• Kolmogorov-Smirnov, com nível de significância de Lilliefors</p>
-<p>• Estatística de Shapiro-Wilk</p>
-</div>
-<div id="tabela-de-frequências-e-gráfico-stem-and-leaf" class="section level2" number="11.10">
-<h2>
-<span class="header-section-number">11.10</span> Tabela de frequências e gráfico <em>stem-and-leaf</em><a class="anchor" aria-label="anchor" href="#tabela-de-frequ%C3%AAncias-e-gr%C3%A1fico-stem-and-leaf"><i class="fas fa-link"></i></a>
-</h2>
-<p>Mas o primeiro passo é construir uma tabela de frequências. Para fazermos uma tabela de frequência do comprimento dos brotos carregamos o pacote <code>fdth</code> e pedimos a função <code>range</code> que retorna o valor máximo e mínimo no vetor.</p>
-<div class="sourceCode" id="cb107"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/jcfaria/fdth">fdth</a></span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/range.html">range</a></span><span class="op">(</span><span class="va">brotos_sub</span><span class="op">)</span> <span class="co">#retorna o valor máximo e mínimo</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">brotos_sub</span><span class="op">)</span></span>
-<span><span class="co">#?range</span></span></code></pre></div>
-<pre><code>## [1] 10.0 44.9
-## [1] 500</code></pre>
-<p>Agora é necessário que você substitua os valores de range 10, 44.9 nos valores de início e fim da distribuição de frequência. Os comandos abaixo criam uma tabela de frequência chamada <code>tf</code> com valores máximos e mínimos definidos por <code>range(brotos_v)</code> em intervalor definidos por <code>h=5</code>, e o comando <code>print(tf)</code> exibe a tabela de frequência.</p>
-<div class="sourceCode" id="cb109"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">tf</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/fdth/man/fdt.html">fdt</a></span><span class="op">(</span><span class="va">brotos_sub</span>, start<span class="op">=</span><span class="fl">10</span>, end<span class="op">=</span><span class="fl">45</span>, h<span class="op">=</span><span class="fl">5</span><span class="op">)</span> <span class="co">#tabela de frequência</span></span>
-<span><span class="co">#?fdt #atente para o uso de k, por exemplo tf &lt;- fdt(brotos_sub, k=7)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">tf</span><span class="op">)</span></span></code></pre></div>
-<pre><code>##  Class limits   f   rf rf(%)  cf cf(%)
-##       [10,15)   6 0.01   1.2   6   1.2
-##       [15,20)  35 0.07   7.0  41   8.2
-##       [20,25)  93 0.19  18.6 134  26.8
-##       [25,30) 155 0.31  31.0 289  57.8
-##       [30,35) 130 0.26  26.0 419  83.8
-##       [35,40)  57 0.11  11.4 476  95.2
-##       [40,45)  24 0.05   4.8 500 100.0</code></pre>
-<p>Class limits = limites de classe, f = frequência de classe, rf = frequência relativa da classe, rf(%) = frequência relativa percentual da classe, cf = frequência cumulativa da classe, cf(%) = frequência cumulativa percentual da classe.</p>
-<p>Se contarmos o número de brotos que se encontram em cada um dos sete intervalos, temos a base para a tabulação da frequência. Essa tabulação é mostrada na tabela gerada pelos códigos acima. A coluna de frequência foi obtida contando o número de medições que existem dentro de cada classe. A coluna de frequência percentual foi obtida representando cada contagem como uma porcentagem da contagem total. A frequência cumulativa e as frequências percentuais cumulativas foram obtidas somando progressivamente as frequências correspondentes.</p>
-<div id="sobre-tabelas-de-frequência" class="section level3" number="11.10.1">
-<h3>
-<span class="header-section-number">11.10.1</span> Sobre tabelas de frequência<a class="anchor" aria-label="anchor" href="#sobre-tabelas-de-frequ%C3%AAncia"><i class="fas fa-link"></i></a>
-</h3>
-<p>O valor de <code>h</code> definido anteriormente foi arbitrário. Em boa estatística, precisamos ser mais critériosos. Para definirmos o valor de <code>h</code> (largura das classes) precisamos ter o valor de <code>k</code> (número de classes). Para isso dividimos a amplitude total dos dados pelo número de classes (<code>k</code>). A amplitude corresponde à diferença entre o maior e o menor valor do conjunto de dados. Essa relação é dada por:</p>
-<p><span class="math display">\[
-h = \frac{\max(x)-\min(x)}{k}
-\]</span></p>
-<p>onde, h = largura das classes; max(x) = maior valor observado; min(x) = menor valor observado; k = número de classes.</p>
-<p>Essa fórmula é amplamente utilizada na construção de distribuições de frequência e histogramas, pois permite definir intervalos de classe aproximadamente uniformes (ver <span class="citation">MOORE; MCCABE; BRUCE A. CRAIG (<a href="#ref-moore2017">2017</a>)</span>).</p>
-<p>Podemos ainda usar a <strong>Regra de Sturges</strong> para decidir em quantos intervalos (<code>k</code>) os dados devem ser divididos, através da fórmula:</p>
-<p><span class="math display">\[
-k = 1 + 3.3\log_{10}(n)
-\]</span> onde, k = número de classes e n = tamanho da amostra</p>
-<div class="sourceCode" id="cb111"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co">#Regra de Sturges</span></span>
-<span><span class="va">k</span> <span class="op">&lt;-</span> <span class="fl">1</span> <span class="op">+</span> <span class="fl">3.3</span><span class="op">*</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log10</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">brotos_sub</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="va">k</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">ceiling</a></span><span class="op">(</span><span class="va">k</span><span class="op">)</span> <span class="co">#ver as funções floor() e round()</span></span>
-<span><span class="va">h</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">brotos_sub</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">brotos_sub</span><span class="op">)</span><span class="op">)</span><span class="op">/</span><span class="va">k</span></span>
-<span><span class="va">h</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">floor</a></span><span class="op">(</span><span class="va">h</span><span class="op">)</span></span>
-<span><span class="va">tf</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/fdth/man/fdt.html">fdt</a></span><span class="op">(</span><span class="va">brotos_sub</span>, start<span class="op">=</span><span class="fl">10</span>, end<span class="op">=</span><span class="fl">45</span>, h<span class="op">=</span><span class="va">h</span><span class="op">)</span> <span class="co">#tabela de frequência</span></span>
-<span><span class="co">#?fdt #atente para o uso de k, por exemplo tf &lt;- fdt(brotos_sub, k=k)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">tf</span><span class="op">)</span></span></code></pre></div>
-<pre><code>##  Class limits  f   rf rf(%)  cf cf(%)
-##       [10,13)  2 0.00   0.4   2   0.4
-##       [13,16)  7 0.01   1.4   9   1.8
-##       [16,19) 14 0.03   2.8  23   4.6
-##       [19,22) 48 0.10   9.6  71  14.2
-##       [22,25) 63 0.13  12.6 134  26.8
-##       [25,28) 82 0.16  16.4 216  43.2
-##       [28,31) 98 0.20  19.6 314  62.8
-##       [31,34) 78 0.16  15.6 392  78.4
-##       [34,37) 52 0.10  10.4 444  88.8
-##       [37,40) 32 0.06   6.4 476  95.2
-##       [40,43) 15 0.03   3.0 491  98.2</code></pre>
-</div>
-<div id="sobre-o-gráfico-stem-and-leaf" class="section level3" number="11.10.2">
-<h3>
-<span class="header-section-number">11.10.2</span> Sobre o gráfico <em>stem-and-leaf</em><a class="anchor" aria-label="anchor" href="#sobre-o-gr%C3%A1fico-stem-and-leaf"><i class="fas fa-link"></i></a>
-</h3>
-<p>Podemos agora entender melhor o que é o gráfico Stem-and-leaf.</p>
-<div class="sourceCode" id="cb113"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/stem.html">stem</a></span><span class="op">(</span><span class="va">brotos_sub</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/sort.html">sort</a></span><span class="op">(</span><span class="va">brotos_sub</span><span class="op">)</span></span></code></pre></div>
-<pre><code>## 
-##   The decimal point is at the |
-## 
-##   10 | 06
-##   12 | 
-##   14 | 1699788
-##   16 | 225558016
-##   18 | 04888001112233445567889
-##   20 | 011223556678811222356667889999
-##   22 | 0011112233444455566888890022222455678
-##   24 | 01112233455566777778889999000111244445555556777888889
-##   26 | 0001122222333345567788888889990011112223444566667888889
-##   28 | 00112222333444456666778889000001111112222233333344455666677788889999
-##   30 | 001122223334444555668899900112344455566666677788999
-##   32 | 0000112333344555566777790001111222233344455666689999
-##   34 | 00122223333445556778888889904677789
-##   36 | 0123344555677899900122355789
-##   38 | 001112333478902445669
-##   40 | 224555695799
-##   42 | 015014779
-##   44 | 049
-## 
-##   [1] 10.0 10.6 14.1 14.6 14.9 14.9 15.7 15.8 15.8 16.2 16.2 16.5 16.5 16.5 16.8
-##  [16] 17.0 17.1 17.6 18.0 18.4 18.8 18.8 18.8 19.0 19.0 19.1 19.1 19.1 19.2 19.2
-##  [31] 19.3 19.3 19.4 19.4 19.5 19.5 19.6 19.7 19.8 19.8 19.9 20.0 20.1 20.1 20.2
-##  [46] 20.2 20.3 20.5 20.5 20.6 20.6 20.7 20.8 20.8 21.1 21.1 21.2 21.2 21.2 21.3
-##  [61] 21.5 21.6 21.6 21.6 21.7 21.8 21.8 21.9 21.9 21.9 21.9 22.0 22.0 22.1 22.1
-##  [76] 22.1 22.1 22.2 22.2 22.3 22.3 22.4 22.4 22.4 22.4 22.5 22.5 22.5 22.6 22.6
-##  [91] 22.8 22.8 22.8 22.8 22.9 23.0 23.0 23.2 23.2 23.2 23.2 23.2 23.4 23.5 23.5
-## [106] 23.6 23.7 23.8 24.0 24.1 24.1 24.1 24.2 24.2 24.3 24.3 24.4 24.5 24.5 24.5
-## [121] 24.6 24.6 24.7 24.7 24.7 24.7 24.7 24.8 24.8 24.8 24.9 24.9 24.9 24.9 25.0
-## [136] 25.0 25.0 25.1 25.1 25.1 25.2 25.4 25.4 25.4 25.4 25.5 25.5 25.5 25.5 25.5
-## [151] 25.5 25.6 25.7 25.7 25.7 25.8 25.8 25.8 25.8 25.8 25.9 26.0 26.0 26.0 26.1
-## [166] 26.1 26.2 26.2 26.2 26.2 26.2 26.3 26.3 26.3 26.3 26.4 26.5 26.5 26.6 26.7
-## [181] 26.7 26.8 26.8 26.8 26.8 26.8 26.8 26.8 26.9 26.9 26.9 27.0 27.0 27.1 27.1
-## [196] 27.1 27.1 27.2 27.2 27.2 27.3 27.4 27.4 27.4 27.5 27.6 27.6 27.6 27.6 27.7
-## [211] 27.8 27.8 27.8 27.8 27.8 27.9 28.0 28.0 28.1 28.1 28.2 28.2 28.2 28.2 28.3
-## [226] 28.3 28.3 28.4 28.4 28.4 28.4 28.5 28.6 28.6 28.6 28.6 28.7 28.7 28.8 28.8
-## [241] 28.8 28.9 29.0 29.0 29.0 29.0 29.0 29.1 29.1 29.1 29.1 29.1 29.1 29.2 29.2
-## [256] 29.2 29.2 29.2 29.3 29.3 29.3 29.3 29.3 29.3 29.4 29.4 29.4 29.5 29.5 29.6
-## [271] 29.6 29.6 29.6 29.7 29.7 29.7 29.8 29.8 29.8 29.8 29.9 29.9 29.9 29.9 29.9
-## [286] 29.9 29.9 29.9 29.9 30.0 30.0 30.1 30.1 30.2 30.2 30.2 30.2 30.3 30.3 30.3
-## [301] 30.4 30.4 30.4 30.4 30.5 30.5 30.5 30.6 30.6 30.8 30.8 30.9 30.9 30.9 31.0
-## [316] 31.0 31.1 31.1 31.2 31.3 31.4 31.4 31.4 31.5 31.5 31.5 31.6 31.6 31.6 31.6
-## [331] 31.6 31.6 31.7 31.7 31.7 31.8 31.8 31.9 31.9 31.9 32.0 32.0 32.0 32.0 32.1
-## [346] 32.1 32.2 32.3 32.3 32.3 32.3 32.4 32.4 32.5 32.5 32.5 32.5 32.6 32.6 32.7
-## [361] 32.7 32.7 32.7 32.9 33.0 33.0 33.0 33.1 33.1 33.1 33.1 33.2 33.2 33.2 33.2
-## [376] 33.3 33.3 33.3 33.4 33.4 33.4 33.5 33.5 33.6 33.6 33.6 33.6 33.8 33.9 33.9
-## [391] 33.9 33.9 34.0 34.0 34.1 34.2 34.2 34.2 34.2 34.3 34.3 34.3 34.3 34.4 34.4
-## [406] 34.5 34.5 34.5 34.6 34.7 34.7 34.8 34.8 34.8 34.8 34.8 34.8 34.9 34.9 35.0
-## [421] 35.4 35.6 35.7 35.7 35.7 35.8 35.9 36.0 36.1 36.2 36.3 36.3 36.4 36.4 36.5
-## [436] 36.5 36.5 36.6 36.7 36.7 36.8 36.9 36.9 36.9 37.0 37.0 37.1 37.2 37.2 37.3
-## [451] 37.5 37.5 37.7 37.8 37.9 38.0 38.0 38.1 38.1 38.1 38.2 38.3 38.3 38.3 38.4
-## [466] 38.7 38.8 38.9 39.0 39.2 39.4 39.4 39.5 39.6 39.6 39.9 40.2 40.2 40.4 40.5
-## [481] 40.5 40.5 40.6 40.9 41.5 41.7 41.9 41.9 42.0 42.1 42.5 43.0 43.1 43.4 43.7
-## [496] 43.7 43.9 44.0 44.4 44.9</code></pre>
-<p>Cada linha tem:</p>
-<p>ramo | folhas, ou seja,</p>
-<p>Ramo (stem) = parte inicial do número Folhas (leaf) = último dígito</p>
-<p>Por exemplo:</p>
-<p>28 | 00112222333444456666778889</p>
-<p>significa valores como:</p>
-<p>28.0 28.0 28.1 28.1 28.2 28.2 … 28.9</p>
-<p>Ou seja, cada dígito após | completa o número.</p>
-</div>
-</div>
-<div id="assimetria-e-curtose" class="section level2" number="11.11">
-<h2>
-<span class="header-section-number">11.11</span> Assimetria e curtose<a class="anchor" aria-label="anchor" href="#assimetria-e-curtose"><i class="fas fa-link"></i></a>
-</h2>
-<p>A assimetria mede a falta de simetria em uma distribuição de frequência. Uma distribuição é simétrica se as duas metades à esquerda e à direita da média são cópias espelhadas uma da outra. Se a distribuição não é simétrica, então é assimétrica. A assimetria pode ser positiva, negativa ou nula (simétrica). Uma assimetria positiva indica que a cauda da distribuição se estende mais para a direita em relação à média (média &gt; mediana &gt; moda), enquanto uma assimetria negativa indica que a cauda da distribuição se estende mais para a esquerda em relação à média (média &lt; mediana &lt; moda).</p>
-<p>A curtose descreve o pico ou a “pontiagudez” de uma distribuição. Uma distribuição com alta curtose tem uma alta concentração de valores ao redor da média e caudas mais pesadas (ou seja, valores extremos são mais prováveis). Uma distribuição com baixa curtose é mais achatada e dispersa, com caudas mais leves. A curtose pode ser positiva (distribuição leptocúrtica, com alta concentração em torno da média e caudas pesadas), negativa (distribuição platicúrtica, com dispersão alta e caudas mais leves) ou nula (mesocúrtica, similar à distribuição normal).</p>
-<p>Essas medidas são úteis para compreender as propriedades e características de diferentes conjuntos de dados e distribuições de frequência. Elas ajudam a compreender a forma e o comportamento dos dados em uma amostra ou população <span class="citation">(<a href="#ref-zar2010">ZAR, 2010</a>)</span>.</p>
-<div class="sourceCode" id="cb115"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://www.r-project.org">moments</a></span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/moments/man/skewness.html">skewness</a></span><span class="op">(</span><span class="va">brotos_sub</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/moments/man/kurtosis.html">kurtosis</a></span><span class="op">(</span><span class="va">brotos_sub</span><span class="op">)</span></span></code></pre></div>
-<pre><code>## [1] 0.02432439
-## [1] 2.748831</code></pre>
-</div>
-<div id="gráficos-de-histograma-e-boxplot" class="section level2" number="11.12">
-<h2>
-<span class="header-section-number">11.12</span> Gráficos de histograma e boxplot<a class="anchor" aria-label="anchor" href="#gr%C3%A1ficos-de-histograma-e-boxplot"><i class="fas fa-link"></i></a>
-</h2>
-<p>No código abaixo se define o layout dos gráficos para serem exibidos lado a lado, e na sequência criamos um gráfico de histograma com base na tabela de frequência <code>tf</code>. O comando <code><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot()</a></code> cria um gráfico de boxplot para os valores em <code>brotos_v</code>. O argumento “horizontal = TRUE” indica que o boxplot deve ser horizontal.</p>
-<div class="sourceCode" id="cb117"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">)</span><span class="op">)</span> <span class="co">#gráficos lado a lado</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">tf</span><span class="op">)</span> <span class="co">#distribuição de frequências</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot</a></span><span class="op">(</span><span class="va">brotos_sub</span>, horizontal <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>        xlab<span class="op">=</span><span class="st">"Class limits"</span><span class="op">)</span> <span class="co">#boxplot</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">1</span><span class="op">)</span><span class="op">)</span> <span class="co">#gráficos de volta ao normal</span></span></code></pre></div>
-<div class="inline-figure"><img src="fundamentos_de_ecologia_numerica_files/figure-html/unnamed-chunk-75-1.png" alt="" width="672"></div>
-<p>Se você recebeu a mensagem de erro <span style="color:red">“Error in plot.new() : figure margins too large”</span>, aumente o tamanho da janela do gráfico e execute as últimas três linhas de comando novamente.</p>
-<p>No boxplot, a linha localizada no interior da caixa representa a mediana, isto é, o valor central da distribuição dos dados. A base da caixa corresponde ao primeiro quartil (Q1), abaixo do qual se encontram 25% das observações, enquanto o topo da caixa corresponde ao terceiro quartil (Q3), abaixo do qual estão 75% dos dados. A própria caixa representa o intervalo interquartil (IQR = Q3 − Q1), contendo os 50% centrais da distribuição. Os bigodes (whiskers) indicam os valores mínimos e máximos que não são considerados outliers, enquanto os pontos isolados representam possíveis valores discrepantes ou outliers.</p>
-<div id="histograma-de-densidade" class="section level3" number="11.12.1">
-<h3>
-<span class="header-section-number">11.12.1</span> Histograma de densidade<a class="anchor" aria-label="anchor" href="#histograma-de-densidade"><i class="fas fa-link"></i></a>
-</h3>
-<p>Outra forma de ver a distribuição de frequência é através do histograma de densidade de probabilidade e curva normal teórica sobreposta.</p>
-<div class="sourceCode" id="cb118"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">brotos_sub</span>, probability <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="co">#adicionamos a função densidade</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/curve.html">curve</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">dnorm</a></span><span class="op">(</span><span class="va">x</span>, mean <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">brotos_sub</span><span class="op">)</span>, </span>
-<span>            sd <span class="op">=</span> <span class="fu">sd</span><span class="op">(</span><span class="va">brotos_sub</span><span class="op">)</span><span class="op">)</span>, <span class="co">#cria valores de x dentro do intervalo do gráfico</span></span>
-<span>      col <span class="op">=</span> <span class="st">"red"</span>,</span>
-<span>      add <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="co">#adiciona ao gráfico atual</span></span></code></pre></div>
-<div class="inline-figure"><img src="fundamentos_de_ecologia_numerica_files/figure-html/unnamed-chunk-76-1.png" alt="" width="672"></div>
-<p>Esse código adiciona uma <strong>curva da distribuição normal</strong> sobre um gráfico já existente, nesse caso o histograma. Ou seja, ele desenha a <strong>função densidade da distribuição normal</strong> usando a média e o desvio padrão dos seus dados. Normalmente essa curva é usada para verificar visualmente se os dados se aproximam de uma distribuição normal. Mas ela só pode ser sobreposta ao histograma de densidade, e não a de frequências, porque ambos passam a estar na mesma escala.</p>
-<p>Vejamos:</p>
-<p>Nem sempre o gráfico produzido com método acima, com a função <code><a href="https://rdrr.io/r/graphics/hist.html">hist()</a></code> e <code>probability = TRUE</code> fica igual ao método anterior usando simplesmente a função <code><a href="https://rdrr.io/r/graphics/plot.default.html">plot()</a></code> e a tabela de frequência criada por <code><a href="https://rdrr.io/pkg/fdth/man/fdt.html">fdt()</a></code>. Principalmente quando temos distribuições de frequências assimétricas.</p>
-<p>Isso ocorre porque o histograma produzido pela função <code><a href="https://rdrr.io/r/graphics/hist.html">hist()</a></code> e a tabela de frequência produzida pela função <code><a href="https://rdrr.io/pkg/fdth/man/fdt.html">fdt()</a></code>, embora conceitualmente consistentes, representam quantidades diferentes. A principal fonte da diferença está no argumento utilizado no histograma:</p>
-<pre><code>hist(var_sub, probability = TRUE)</code></pre>
-<p>Quando utilizamos <code>probability = TRUE</code> o eixo y do histograma deixa de representar frequências absolutas e passa a representar <code>densidade de probabilidade</code>. Por isso, o gráfico apresenta valores pequenos no eixo vertical (0.00-0.06) em vez das frequências maiores esperadas (mostradas por números inteiros).</p>
-<p>Isso acontece porque a tabela <code><a href="https://rdrr.io/pkg/fdth/man/fdt.html">fdt()</a></code> apresenta as frequências absolutas ou relativas (%), a partir de:</p>
-<pre><code>fdt(brotos_sub, start=10, end=45, h=5)</code></pre>
-<p>[15,20) -&gt; 35 observações, o que indica que existem 35 valores entre 15 e 20. Já a frequência relativa (rf) é 0.07, e significa que aproximadamente 7% dos dados estão nesse intervalo.</p>
-<p>O histograma com <code>probability = TRUE</code> é ajustado para que a área total das barras seja igual a 1 (<strong>área total = 1</strong>). Nesse caso, o gráfico representa uma <strong>densidade de probabilidade</strong>, e não frequências absolutas (ou relativas). Uma consequência importante, é que a altura das barras NÃO corresponde diretamente à frequência (nem a forma geral do histograma).</p>
-<p>No histograma de densidade temos:</p>
-<p><span class="math display">\[
-\text{Área} = \text{base} \times \text{altura}
-\]</span></p>
-<p>então,</p>
-<p><span class="math display">\[
-\text{altura} =
-\frac{\text{frequência relativa}}{\text{largura da classe}}
-\]</span></p>
-<p>Na tabela <code><a href="https://rdrr.io/pkg/fdth/man/fdt.html">fdt()</a></code> desse exmplo foi utilizado <code>h=5</code>, portanto cada classe possui amplitude igual a 5. Para a classe [15,20), a frequência relativa foi 0.07. Assim, a altura esperada da barra no histograma de densidade é aproximadamente:</p>
-<p><span class="math display">\[
-\frac{0.07}{5} = 0.014
-\]</span></p>
-<p>É importante lembrar que em histogramas de densidade, as alturas precisam ser ajustadas para garantir que a área total sob o histograma deve ser igual a 1.</p>
-<p>Podemos usar a função <code><a href="https://rdrr.io/r/graphics/hist.html">hist()</a></code> para criar um histograma manualmente mostrando as frequências absolutas. Se o objetivo for visualizar frequências absolutas diretamente, basta estabelecer o argumento <code>probability = FALSE</code>. Nesse caso, o eixo y representará contagens/frequências. Podemos ainda definir os intervalos das classes manualmente na função <code><a href="https://rdrr.io/r/graphics/hist.html">hist()</a></code></p>
-<div class="sourceCode" id="cb121"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span></span>
-<span>  <span class="va">brotos_sub</span>,</span>
-<span>  probability <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>  breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">45</span>, by <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span>
-<span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/curve.html">curve</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">dnorm</a></span><span class="op">(</span><span class="va">x</span>, mean <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">brotos_sub</span><span class="op">)</span>, </span>
-<span>            sd <span class="op">=</span> <span class="fu">sd</span><span class="op">(</span><span class="va">brotos_sub</span><span class="op">)</span><span class="op">)</span>, <span class="co">#cria valores de x dentro do intervalo do gráfico</span></span>
-<span>      col <span class="op">=</span> <span class="st">"red"</span>,</span>
-<span>      add <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="co">#adiciona ao gráfico atual</span></span></code></pre></div>
-<div class="inline-figure"><img src="fundamentos_de_ecologia_numerica_files/figure-html/unnamed-chunk-77-1.png" alt="" width="672"></div>
-<p>Por fim, deve-se ter em mente que nenhum desses métodos gera exatamente o mesmo histograma por que todos usam parâmetros levemente diferentes. O que é importante é a forma da distribuição de frequência e os demais critérios para determinação de normalidade.</p>
-</div>
-</div>
-<div id="gráfico-de-probabilidade-normal-normal-probability-plot-ou-normal-q-q-plot" class="section level2" number="11.13">
-<h2>
-<span class="header-section-number">11.13</span> Gráfico de probabilidade normal (<em>Normal probability plot</em> ou <em>Normal Q-Q plot</em>)<a class="anchor" aria-label="anchor" href="#gr%C3%A1fico-de-probabilidade-normal-normal-probability-plot-ou-normal-q-q-plot"><i class="fas fa-link"></i></a>
-</h2>
-<p>Em um gráfico Q-Q normal, pontos próximos da reta indicam que os dados seguem aproximadamente uma distribuição normal. Quando os pontos apresentam curvaturas acentuadas, isso sugere assimetria ou desvios importantes da normalidade. Já pontos muito afastados da reta podem indicar a presença de valores discrepantes (<em>outliers</em>).</p>
-<div class="sourceCode" id="cb122"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/qqnorm.html">qqnorm</a></span><span class="op">(</span><span class="va">brotos_sub</span>,</span>
-<span>       main <span class="op">=</span> <span class="st">"Normal Q-Q Plot dos Brotos"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/stats/qqnorm.html">qqline</a></span><span class="op">(</span><span class="va">brotos_sub</span>,</span>
-<span>       col <span class="op">=</span> <span class="st">"red"</span>,</span>
-<span>       lwd <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="fundamentos_de_ecologia_numerica_files/figure-html/unnamed-chunk-78-1.png" alt="" width="672"></div>
-<div id="algumas-informações-sobre-o-q-q-plot-e-porquê-ele-é-importante" class="section level3" number="11.13.1">
-<h3>
-<span class="header-section-number">11.13.1</span> Algumas informações sobre o Q-Q plot e porquê ele é importante<a class="anchor" aria-label="anchor" href="#algumas-informa%C3%A7%C3%B5es-sobre-o-q-q-plot-e-porqu%C3%AA-ele-%C3%A9-importante"><i class="fas fa-link"></i></a>
-</h3>
-<p>O nome Q-Q plot vem de <code>Quantile-Quantile Plot</code>. Ele compara os quantis dos nossos dados com os quantis de uma distribuição teórica normal. Os quantis são posições na distribuição dos dados, por exemplo, a mediana é o quantil 50%. Os quartis dividem os dados em 4 partes, e o percentil divide em 100 partes. <em>Quartis e percentis são tipos de quantis</em>.</p>
-<p>Atente que, os “quantis teóricos normais” não vêm dos seus dados. Eles vêm da distribuição normal ideal. O que vem dos seus dados são a quantidade de observações e a ordem dos valores (eixo y do Q-Q plot).</p>
-<p>Tendo em vista que O eixo X do Q-Q plot mostra os quantis teóricos da normal padrão,</p>
-<p><span class="math display">\[
-Z \sim N(0,1)
-\]</span>
-e nessa distribuição, a média é 0 e o desvio padrão é 1.</p>
-<p>Ou seja, no Q-Q Plot, o eixo X não mostra nossos dados diretamente (eles estão no eixo Y). No eixo X, valores geralmente vão de cerca de -3 até +3, do intervalo de distribuiões ±1σ representa ~68% dos valores, ±2 ~95% e 3σ ~99.7%. Então quase todos os valores ficam entre</p>
-<p><span class="math display">\[
--3 \leq Z \leq 3
-\]</span></p>
-<p>Dessa forma, cada ponto na distribuição representa o quantil teórico (eixo X) em relação ao valor observado nos nossos dados (eixo Y).</p>
-</div>
-</div>
-<div id="sumário-estatístico-geral" class="section level2" number="11.14">
-<h2>
-<span class="header-section-number">11.14</span> Sumário estatístico geral<a class="anchor" aria-label="anchor" href="#sum%C3%A1rio-estat%C3%ADstico-geral"><i class="fas fa-link"></i></a>
-</h2>
-<div class="sourceCode" id="cb123"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">brotos_sub</span><span class="op">)</span></span>
-<span><span class="co">#?summary</span></span>
-<span><span class="fu">sd</span><span class="op">(</span><span class="va">brotos_sub</span><span class="op">)</span> <span class="co">#desvio padrão</span></span>
-<span><span class="fu">var</span><span class="op">(</span><span class="va">brotos_sub</span><span class="op">)</span> <span class="co">#variância</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sort.html">sort</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">var_sub</span><span class="op">)</span>, decreasing <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span> <span class="co">#moda</span></span></code></pre></div>
-<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   10.00   24.70   29.10   28.97   33.23   44.90 
-## [1] 6.373581
-## [1] 40.62254
-## [1] "4.5"</code></pre>
-</div>
-<div id="estatística-de-shapiro-wilk" class="section level2" number="11.15">
-<h2>
-<span class="header-section-number">11.15</span> Estatística de Shapiro-Wilk<a class="anchor" aria-label="anchor" href="#estat%C3%ADstica-de-shapiro-wilk"><i class="fas fa-link"></i></a>
-</h2>
-<p>O Shapiro-Wilk é mais utilizado para amostras pequenas e médias. Testa as hipóteses:</p>
-<p>H<sub>0</sub>: os dados seguem distribuição normal<br>
-H<sub>1</sub>: os dados não seguem distribuição normal</p>
-<div class="sourceCode" id="cb125"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/shapiro.test.html">shapiro.test</a></span><span class="op">(</span><span class="va">brotos_sub</span><span class="op">)</span></span></code></pre></div>
-<pre><code>## 
-##  Shapiro-Wilk normality test
-## 
-## data:  brotos_sub
-## W = 0.99695, p-value = 0.4748</code></pre>
-<p>Para um <code>p ≥ 0.05</code> você não rejeita H<sub>0</sub> ao nível de 5%. Ou seja, os dados são compatíveis com uma distribuição normal.</p>
-<p>Em um texto científico: <code>O teste de Shapiro-Wilk não indicou desvio significativo da normalidade (W=0.99695, p=0.4748).</code></p>
-</div>
-<div id="estatística-de-kolmogorov-smirnov-com-nível-de-significância-de-lilliefors" class="section level2" number="11.16">
-<h2>
-<span class="header-section-number">11.16</span> Estatística de Kolmogorov-Smirnov, com nível de significância de Lilliefors<a class="anchor" aria-label="anchor" href="#estat%C3%ADstica-de-kolmogorov-smirnov-com-n%C3%ADvel-de-signific%C3%A2ncia-de-lilliefors"><i class="fas fa-link"></i></a>
-</h2>
-<div class="sourceCode" id="cb127"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/ks.test.html">ks.test</a></span><span class="op">(</span><span class="va">brotos_sub</span>,</span>
-<span>        <span class="st">"pnorm"</span>,</span>
-<span>        <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">brotos_sub</span><span class="op">)</span>,</span>
-<span>        <span class="fu">sd</span><span class="op">(</span><span class="va">brotos_sub</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<pre><code>## Warning in ks.test.default(brotos_sub, "pnorm", mean(brotos_sub),
-## sd(brotos_sub)): não devem existir empates no teste de Kolmogorov-Smirnov de
-## apenas uma amostra</code></pre>
-<pre><code>## 
-##  Asymptotic one-sample Kolmogorov-Smirnov test
-## 
-## data:  brotos_sub
-## D = 0.021571, p-value = 0.9741
-## alternative hypothesis: two-sided</code></pre>
-<p>O teste Kolmogorov-Smirnov clássico foi desenvolvido para distribuições contínuas sem empates. No código acima foi estimada média e desvio usando a própria amostra.</p>
-<p>Como o Kolmogorov-Smirnov clássico assume parâmetros conhecidos previamente, isso torna o teste “otimista”.</p>
-<p>O teste ideal nesse caso é o <code>Lilliefors</code></p>
-<div class="sourceCode" id="cb130"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co">#install.packages("nortest")</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">nortest</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/nortest/man/lillie.test.html">lillie.test</a></span><span class="op">(</span><span class="va">brotos_sub</span><span class="op">)</span></span></code></pre></div>
-<pre><code>## 
-##  Lilliefors (Kolmogorov-Smirnov) normality test
-## 
-## data:  brotos_sub
-## D = 0.021571, p-value = 0.8279</code></pre>
-</div>
-<div id="transformação-de-variáveis-e-outros-tipos-de-conjuntos-de-dados" class="section level2" number="11.17">
-<h2>
-<span class="header-section-number">11.17</span> Transformação de variáveis e outros tipos de conjuntos de dados<a class="anchor" aria-label="anchor" href="#transforma%C3%A7%C3%A3o-de-vari%C3%A1veis-e-outros-tipos-de-conjuntos-de-dados"><i class="fas fa-link"></i></a>
-</h2>
-<p>Todos os gráficos e estatísticas acima sugerem que os dados de <code>brotos</code> apresentam distribuição normal. Porem, na natureza, as variáveis raramente se conformam a uma distribuição normal clássica, e também raramente lidamos com uma unica variável.</p>
-<p>Com mais frequência, as distribuições são assimétricas e apresentam graus variados de <code>assimetria</code> e <code>curtose</code>. Quando a assimetria e a curtose são extremas, a transformação é uma opção. A decisão de transformar variáveis depende da gravidade do afastamento em relação à normalidade. Tendo decidido que a transformação é desejável, o pesquisador deve selecionar os métodos de transformação mais apropriados. As opções disponíveis podem ser encontradas em qualquer bom capítulo sobre triagem dos dados, mas alguns textos que abordam esse tema são <span class="citation">SOKAL; ROHLF (<a href="#ref-sokal1995">1995</a>)</span>, <span class="citation">SOKAL; ROHLF (<a href="#ref-sokal2009">2009</a>)</span> e <span class="citation">ZAR (<a href="#ref-zar2010">2010</a>)</span>.</p>
-<p>Além disso, em ecologia, comumente temos matrizes multivariadas de dados de espécies (matriz comunitária) ou de dados do ambiente (matriz ambiental). Veja mas matrizes dosponíveis seção <a href="bases.html#arqs">Arquivos disponíveis</a> do Capítulo sobre <a href="bases.html#bases">Bases de dados.</a></p>
-<p>Para ilustrar o processo de transformação e conjuntos de dados mais realistas, veja o capítulo a seguir.</p>
-</div>
-<div id="apêndices-5" class="section level2 unnumbered">
-<h2>Apêndices<a class="anchor" aria-label="anchor" href="#ap%C3%AAndices-5"><i class="fas fa-link"></i></a>
-</h2>
-</div>
-<div id="sites-consultados-4" class="section level2 unnumbered">
-<h2>Sites consultados<a class="anchor" aria-label="anchor" href="#sites-consultados-4"><i class="fas fa-link"></i></a>
-</h2>
-</div>
-<div id="script-limpo-2" class="section level2 unnumbered">
-<h2>Script limpo<a class="anchor" aria-label="anchor" href="#script-limpo-2"><i class="fas fa-link"></i></a>
-</h2>
-<p>Aqui apresento o scrip na íntegra sem os textos ou outros comentários. Você pode copiar e colar no R para executa-lo. Lembre de remover os <span style="color:green"><code>#</code></span> ou <span style="color:green"><code>##</code></span> caso necessite executar essas linhas.</p>
-<div class="sourceCode" id="cb132"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># rm(list=ls(all=TRUE)) #limpa a memória</span></span>
-<span><span class="co"># install.packages("openxlsx") #importa arquivos do excel</span></span>
-<span><span class="co"># install.packages("fdth")</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ycphs.github.io/openxlsx/index.html">openxlsx</a></span><span class="op">)</span></span>
+<div class="sourceCode" id="cb94"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># install.packages("readxl") #importa arquivos do excel</span></span>
+<span><span class="co"># library(readxl)</span></span>
 <span><span class="co"># getwd()</span></span>
 <span><span class="co"># setwd("C:/Seu/Diretório/De/Trabalho")</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://readxl.tidyverse.org">readxl</a></span><span class="op">)</span></span>
+<span><span class="va">ppbio06</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span><span class="st">"D:/Elvio/OneDrive/Disciplinas/_EcoNumerica/5.Matrizes/ppbio06c-peixes.xlsx"</span>,</span>
+<span>                      sheet <span class="op">=</span> <span class="st">"Sheet1"</span>,</span>
+<span>                      na <span class="op">=</span> <span class="st">"NA"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">ppbio06</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">ppbio06</span><span class="op">)</span></span>
+<span><span class="va">ppbio06</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="va">ppbio06</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">ppbio06</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="va">ppbio06</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">ppbio06</span><span class="op">[</span>,<span class="fl">1</span><span class="op">]</span> <span class="co">#tem  que ser um df</span></span>
+<span><span class="va">ppbio06</span><span class="op">[</span>,<span class="fl">1</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="cn">NULL</span></span>
+<span><span class="co"># install.packages("openxlsx")</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ycphs.github.io/openxlsx/index.html">openxlsx</a></span><span class="op">)</span></span>
-<span><span class="va">brotos</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/openxlsx/man/read.xlsx.html">read.xlsx</a></span><span class="op">(</span><span class="st">"D:/Elvio/OneDrive/Disciplinas/_EcoNumerica/5.Matrizes/brotos.xlsx"</span>,</span>
-<span>                    rowNames <span class="op">=</span> <span class="cn">F</span>, colNames <span class="op">=</span> <span class="cn">F</span>,</span>
-<span>                    sheet <span class="op">=</span> <span class="st">"Planilha1"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">brotos</span>,<span class="fl">10</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">brotos</span><span class="op">[</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span>, <span class="fl">10</span><span class="op">)</span></span>
-<span><span class="co"># #View(brotos)</span></span>
-<span><span class="co"># print(brotos[1:5,1:5])</span></span>
-<span><span class="co"># brotos</span></span>
-<span><span class="co"># str(brotos)</span></span>
-<span><span class="co"># mode(brotos)</span></span>
-<span><span class="co"># class(brotos)</span></span>
-<span><span class="va">brotos_v</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/vector.html">as.vector</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">as.matrix</a></span><span class="op">(</span><span class="va">brotos</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="va">brotos_v</span></span>
-<span><span class="co"># #View(brotos_v)</span></span>
-<span><span class="co"># print(brotos_v)</span></span>
-<span><span class="co"># brotos_v</span></span>
-<span><span class="co"># str(brotos_v)</span></span>
-<span><span class="co"># mode(brotos_v)</span></span>
-<span><span class="co"># class(brotos_v)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">666</span><span class="op">)</span></span>
-<span><span class="va">brotos_sub</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="va">brotos_v</span>, size <span class="op">=</span> <span class="fl">500</span>, replace <span class="op">=</span> <span class="cn">F</span><span class="op">)</span> <span class="co">#atualize o valor de 'size=' se necessário</span></span>
-<span><span class="va">brotos_sub</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/jcfaria/fdth">fdth</a></span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/range.html">range</a></span><span class="op">(</span><span class="va">brotos_sub</span><span class="op">)</span> <span class="co">#retorna o valor máximo e mínimo</span></span>
-<span><span class="co">#?range</span></span>
-<span><span class="va">tf</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/fdth/man/fdt.html">fdt</a></span><span class="op">(</span><span class="va">brotos_sub</span>, start<span class="op">=</span><span class="fl">10</span>, end<span class="op">=</span><span class="fl">45</span>, h<span class="op">=</span><span class="fl">5</span><span class="op">)</span> <span class="co">#tabela de frequência</span></span>
-<span><span class="co">#?fdt #atente para o uso de k, por exemplo tf &lt;- fdt(brotosv, k=5)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">tf</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/stem.html">stem</a></span><span class="op">(</span><span class="va">brotos_sub</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/sort.html">sort</a></span><span class="op">(</span><span class="va">brotos_sub</span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://www.r-project.org">moments</a></span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/moments/man/skewness.html">skewness</a></span><span class="op">(</span><span class="va">brotos_sub</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/moments/man/kurtosis.html">kurtosis</a></span><span class="op">(</span><span class="va">brotos_sub</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">)</span><span class="op">)</span> <span class="co">#gráficos lado a lado</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">tf</span><span class="op">)</span> <span class="co">#distribuição de frequências</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot</a></span><span class="op">(</span><span class="va">brotos_sub</span>, horizontal <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>        xlab<span class="op">=</span><span class="st">"Class limits"</span><span class="op">)</span> <span class="co">#boxplot</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">1</span><span class="op">)</span><span class="op">)</span> <span class="co">#gráficos de volta ao normal</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">brotos_sub</span>, probability <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="co">#adicionamos a função densidade</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/curve.html">curve</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">dnorm</a></span><span class="op">(</span><span class="va">x</span>, mean <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">brotos_sub</span><span class="op">)</span>, </span>
-<span>            sd <span class="op">=</span> <span class="fu">sd</span><span class="op">(</span><span class="va">brotos_sub</span><span class="op">)</span><span class="op">)</span>, <span class="co">#cria valores de x dentro do intervalo do gráfico</span></span>
-<span>      col <span class="op">=</span> <span class="st">"red"</span>,</span>
-<span>      add <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="co">#adiciona ao gráfico atual</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/stats/qqnorm.html">qqnorm</a></span><span class="op">(</span><span class="va">brotos_sub</span>,</span>
-<span>       main <span class="op">=</span> <span class="st">"Normal Q-Q Plot dos Brotos"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/stats/qqnorm.html">qqline</a></span><span class="op">(</span><span class="va">brotos_sub</span>,</span>
-<span>       col <span class="op">=</span> <span class="st">"red"</span>,</span>
-<span>       lwd <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">brotos_sub</span><span class="op">)</span></span>
-<span><span class="co">#?summary</span></span>
-<span><span class="fu">sd</span><span class="op">(</span><span class="va">brotos_sub</span><span class="op">)</span> <span class="co">#desvio padrão</span></span>
-<span><span class="fu">var</span><span class="op">(</span><span class="va">brotos_sub</span><span class="op">)</span> <span class="co">#variância</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/stats/shapiro.test.html">shapiro.test</a></span><span class="op">(</span><span class="va">brotos_sub</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/stats/ks.test.html">ks.test</a></span><span class="op">(</span><span class="va">brotos_sub</span>,</span>
-<span>        <span class="st">"pnorm"</span>,</span>
-<span>        <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">brotos_sub</span><span class="op">)</span>,</span>
-<span>        <span class="fu">sd</span><span class="op">(</span><span class="va">brotos_sub</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#install.packages("nortest")</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">nortest</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/nortest/man/lillie.test.html">lillie.test</a></span><span class="op">(</span><span class="va">brotos_sub</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">ppbio</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/openxlsx/man/read.xlsx.html">read.xlsx</a></span><span class="op">(</span><span class="st">"D:/Elvio/OneDrive/Disciplinas/_EcoNumerica/5.Matrizes/ppbio06c-peixes.xlsx"</span>,</span>
+<span>                   rowNames <span class="op">=</span> <span class="cn">T</span>,</span>
+<span>                   colNames <span class="op">=</span> <span class="cn">T</span>,</span>
+<span>                   sheet <span class="op">=</span> <span class="st">"Sheet1"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">ppbio</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">ppbio</span><span class="op">)</span></span>
+<span><span class="va">ppbio_ma</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">as.matrix</a></span><span class="op">(</span><span class="va">ppbio</span><span class="op">)</span> <span class="co">#lê ppbio como uma matriz</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">ppbio_ma</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">ppbio_ma</span><span class="op">)</span></span>
+<span><span class="co">#ppbio</span></span>
+<span><span class="co">#ppbio_ma</span></span>
+<span><span class="co"># write.table(ppbio, "ppbiocsv.txt", append = F, quote = T, ";", row.names = T)</span></span>
+<span><span class="co"># dir &lt;- getwd()</span></span>
+<span><span class="co"># shell.exec(dir) #abre o diretorio de trabalho no Windows Explorer</span></span>
+<span><span class="co"># ppbiocsv &lt;- read.csv("ppbiocsv.txt",</span></span>
+<span><span class="co">#                      sep = ";", dec = ",", #definimos o dígito separador</span></span>
+<span><span class="co">#                      header = T,</span></span>
+<span><span class="co">#                      row.names = 1,</span></span>
+<span><span class="co">#                      na.strings = NA)</span></span>
+<span><span class="co"># str(ppbiocsv)</span></span>
+<span><span class="co"># ppbiocsv</span></span>
+<span><span class="co">#View(ppbio)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">ppbio06</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">]</span><span class="op">)</span></span>
+<span><span class="co">#ppbio</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">ppbio06</span><span class="op">)</span></span>
+<span><span class="co">#?str</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/mode.html">mode</a></span><span class="op">(</span><span class="va">ppbio06</span><span class="op">)</span></span>
+<span><span class="co">#?mode</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">ppbio06</span><span class="op">)</span></span>
+<span><span class="co">#?class</span></span>
+<span><span class="va">ppbio06_ma</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">as.matrix</a></span><span class="op">(</span><span class="va">ppbio06</span><span class="op">)</span> <span class="co">#lê ppbio como uma matriz</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">ppbio06_ma</span><span class="op">)</span></span>
+<span><span class="co">#?View</span></span>
+<span><span class="co">#?view</span></span>
+<span><span class="co">#?remove</span></span>
+<span><span class="co"># getwd()</span></span>
+<span><span class="co"># ppbio &lt;- read.xlsx(file.choose(),  #abre o windows explorer</span></span>
+<span><span class="co">#                    rowNames = T, colNames = T,</span></span>
+<span><span class="co">#                    sheet = "Sheet1")</span></span>
+<span><span class="co"># #install.packages("readODS")</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://docs.ropensci.org/readODS/">readODS</a></span><span class="op">)</span></span>
+<span><span class="va">ppbio06.ods</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://docs.ropensci.org/readODS/reference/read_ods.html">read_ods</a></span><span class="op">(</span><span class="st">"D:/Elvio/OneDrive/Disciplinas/_EcoNumerica/5.Matrizes/ppbio06c-peixes.ods"</span>,</span>
+<span>                   row_names <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                   col_names <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                   sheet <span class="op">=</span> <span class="st">"Sheet1"</span>,</span>
+<span>                   as_tibble <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>                   na <span class="op">=</span> <span class="st">"n/a"</span><span class="op">)</span> <span class="co"># porque existem celulas vazias (n/a)</span></span>
+<span><span class="va">ppbio06.ods</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/na.fail.html">na.omit</a></span><span class="op">(</span><span class="va">ppbio06.ods</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">ppbio06.ods</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">ppbio06.ods</span><span class="op">)</span></span>
+<span><span class="va">ppbio06.ods_ma</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">as.matrix</a></span><span class="op">(</span><span class="va">ppbio06.ods</span><span class="op">)</span> <span class="co">#lê como uma matriz</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">ppbio06.ods_ma</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">ppbio06.ods_ma</span><span class="op">)</span></span>
+<span><span class="co">#ppbio06.ods</span></span>
+<span><span class="co">#ppbio06.ods_ma</span></span>
+<span><span class="co">#Dados de mamíferos roedores</span></span>
+<span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span></span>
+<span>  Rato <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span><span class="op">)</span>,</span>
+<span>  Musaranho <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">4</span>, <span class="fl">5</span>, <span class="fl">6</span><span class="op">)</span>,</span>
+<span>  Rato <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">7</span>, <span class="fl">8</span>, <span class="fl">9</span><span class="op">)</span>, <span class="co">#nome duplicado</span></span>
+<span>  Esquilo <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0</span>, <span class="fl">1</span><span class="op">)</span>,</span>
+<span>  Ratão <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">0</span><span class="op">)</span>,</span>
+<span>  Castor <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">0</span>, <span class="fl">0</span><span class="op">)</span>,</span>
+<span>  Tâmia <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">11</span>, <span class="fl">12</span>, <span class="fl">13</span><span class="op">)</span>,</span>
+<span>  Marmota <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">0</span><span class="op">)</span>,</span>
+<span>  Castor <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span>, <span class="co">#nome duplicado</span></span>
+<span>  check.names <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span><span class="op">)</span></span>
+<span><span class="va">df</span></span>
+<span><span class="co">#Transpor os dados</span></span>
+<span><span class="va">df_t</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/t.html">t</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span></span>
+<span><span class="va">df_t</span></span>
+<span><span class="co">#Somar grupos iguais</span></span>
+<span><span class="va">df_sum</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rowsum.html">rowsum</a></span><span class="op">(</span></span>
+<span>  <span class="va">df_t</span>,</span>
+<span>  group <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span>,</span>
+<span>  reorder <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span><span class="op">)</span></span>
+<span><span class="va">df_sum</span></span>
+<span><span class="co">#Transpor o resultado de volta </span></span>
+<span><span class="va">resultado</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/t.html">t</a></span><span class="op">(</span><span class="va">df_sum</span><span class="op">)</span></span>
+<span><span class="va">resultado</span></span>
+<span><span class="co">#Converte para dataframe</span></span>
+<span><span class="va">resultado</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="va">resultado</span><span class="op">)</span></span>
+<span><span class="va">resultado</span></span>
+<span><span class="co"># Achando colunas com nomes duplicados</span></span>
+<span><span class="va">dup_cols</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/duplicated.html">duplicated</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span><span class="op">)</span><span class="op">]</span></span>
+<span><span class="co"># Somando colunas com o mesmo nome</span></span>
+<span><span class="kw">for</span> <span class="op">(</span><span class="va">col_name</span> <span class="kw">in</span> <span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span><span class="op">(</span><span class="va">dup_cols</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="co"># Obtem colunas com o mesmo nome</span></span>
+<span>  <span class="va">col_indices</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/which.html">which</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span> <span class="op">==</span> <span class="va">col_name</span><span class="op">)</span></span>
+<span>  <span class="co"># Soma colunas com o mesmo nome</span></span>
+<span>  <span class="va">df</span><span class="op">[[</span><span class="va">col_name</span><span class="op">]</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colSums.html">rowSums</a></span><span class="op">(</span><span class="va">df</span><span class="op">[</span>, <span class="va">col_indices</span>, drop <span class="op">=</span> <span class="cn">FALSE</span><span class="op">]</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span><span class="co"># Remove as colunas duplicadas originais e mantem as novas colunas que são a soma ("except for the first occurrence")</span></span>
+<span><span class="va">df</span> <span class="op">&lt;-</span> <span class="va">df</span><span class="op">[</span>, <span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/duplicated.html">duplicated</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span><span class="op">)</span><span class="op">]</span></span>
+<span><span class="co"># Mostra a nova tabela com colunas repetidas somadas</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span></span>
+<span><span class="co"># rownames(ppbio); colnames(ppbio)</span></span>
+<span><span class="co"># #Colunas</span></span>
+<span><span class="co"># m_part &lt;- subset(ppbio, select = -c(`ap-davis`, `as-bimac`)) #escolhendo uma coluna pelo nome</span></span>
+<span><span class="co"># m_part</span></span>
+<span><span class="co"># #Linhas</span></span>
+<span><span class="co"># del_rows &lt;- c("S-A-ZA1", "S-R-CC1")</span></span>
+<span><span class="co"># del_rows</span></span>
+<span><span class="co"># m_part &lt;- ppbio[!(row.names(ppbio) %in% c("S-A-ZA1", "S-R-CC1")),]</span></span>
+<span><span class="co"># m_part</span></span>
+<span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.table</a></span><span class="op">(</span>text <span class="op">=</span> <span class="st">"</span></span>
+<span><span class="st">Sp1 Sp2 Sp3 Sp4 Sp5 Sp6 Sp7 Sp8</span></span>
+<span><span class="st">A1 0 0 0 0 0 0 6 1</span></span>
+<span><span class="st">A2 0 0 0 2 0 0 10 2</span></span>
+<span><span class="st">B1 93 2 0 177 0 260 2 5</span></span>
+<span><span class="st">B2 0 4 0 8 0 0 83 7</span></span>
+<span><span class="st">C1 0 0 0 0 1 0 0 1</span></span>
+<span><span class="st">C2 0 0 1 0 0 1 0 1</span></span>
+<span><span class="st">C3 0 2 0 2 0 0 0 1</span></span>
+<span><span class="st">"</span>, header <span class="op">=</span> <span class="cn">TRUE</span>, row.names <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
+<span><span class="va">data</span></span>
+<span><span class="co"># library("tidyverse")</span></span>
+<span><span class="co"># #Inserindo coluna para agrupamentos</span></span>
+<span><span class="co"># nrow(data); ncol(data) #no. de N colunas x M linhas</span></span>
+<span><span class="co"># data_g &lt;- cbind(Grupos = rownames(data), data)</span></span>
+<span><span class="co"># data_g</span></span>
+<span><span class="co"># </span></span>
+<span><span class="co"># grps &lt;- substr(data_g[, 1], 1,1)</span></span>
+<span><span class="co"># grps</span></span>
+<span><span class="co"># </span></span>
+<span><span class="co"># data_g &lt;- mutate(data_g, Grupos = c(grps))</span></span>
+<span><span class="co"># data_g</span></span>
+<span><span class="co"># </span></span>
+<span><span class="co"># #data_avg &lt;- aggregate(data_g[, 9:9], list(data_g$Grupos), mean)</span></span>
+<span><span class="co"># #data_avg</span></span>
+<span><span class="co"># </span></span>
+<span><span class="co"># data_avg &lt;- summarise(</span></span>
+<span><span class="co">#   group_by(data_g, Grupos),</span></span>
+<span><span class="co">#   across(.cols = everything(), ~ mean(.x, na.rm = TRUE))</span></span>
+<span><span class="co"># )</span></span>
+<span><span class="co"># data_avg</span></span>
+<span><span class="co"># </span></span>
+<span><span class="co"># data_dp &lt;- summarise(</span></span>
+<span><span class="co">#   group_by(data_g, Grupos),</span></span>
+<span><span class="co">#   across(</span></span>
+<span><span class="co">#     .cols = everything(),</span></span>
+<span><span class="co">#     list(mean = mean, sd = sd)</span></span>
+<span><span class="co">#   )</span></span>
+<span><span class="co"># )</span></span>
+<span><span class="co"># data_dp</span></span>
+<span><span class="co"># </span></span>
+<span><span class="co"># #Primeira coluna para nomes das linhas</span></span>
+<span><span class="co"># data_dp &lt;- as.data.frame(data_dp)</span></span>
+<span><span class="co"># data_dp</span></span>
+<span><span class="co"># rownames(data_dp) &lt;- data_dp[,1]</span></span>
+<span><span class="co"># data_dp[,1] &lt;- NULL</span></span>
+<span><span class="co"># data_dp &lt;- round(data_dp, 1)</span></span>
+<span><span class="co"># data_dp</span></span>
+<span><span class="co"># #Salvando a matriz</span></span>
+<span><span class="co"># write.table(data_dp,</span></span>
+<span><span class="co">#             "data_dp.csv",</span></span>
+<span><span class="co">#             append = F,</span></span>
+<span><span class="co">#             quote = TRUE,</span></span>
+<span><span class="co">#             sep = ";", dec = ",",</span></span>
+<span><span class="co">#             row.names = T)</span></span>
+<span><span class="co"># data_dp_csv &lt;- read.csv("data_dp.csv",</span></span>
+<span><span class="co">#                     sep = ";", dec = ",",</span></span>
+<span><span class="co">#                     header = T,</span></span>
+<span><span class="co">#                     row.names = 1,</span></span>
+<span><span class="co">#                     na.strings = NA)</span></span>
+<span><span class="co"># data_dp_csv</span></span></code></pre></div>
 </div>
 <div id="referências-7" class="section level2 unnumbered">
 <h2>Referências<a class="anchor" aria-label="anchor" href="#refer%C3%AAncias-7"><i class="fas fa-link"></i></a>
@@ -1395,31 +791,16 @@ H<sub>1</sub>: os dados não seguem distribuição normal</p>
 </div>
 <h3>Bibliografia Geral</h3>
 <div id="refs" class="references csl-bib-body" entry-spacing="1">
-<div id="ref-coakes2001" class="csl-entry">
-COAKES, S. J.; STEED, L. G. <strong>SPSS: Analysis Without Anguish: version 10.0 for Windows</strong>. Milton, Qld: John Wiley &amp; Sons Australia, Ltd, 2001.
-</div>
-<div id="ref-moore2017" class="csl-entry">
-MOORE, D. S.; MCCABE, G. P.; BRUCE A. CRAIG. <strong>Introduction to the Practice of Statistics</strong>. 9. ed. New York, NY: W.H. Freeman; Company, 2017.
-</div>
 <div id="ref-rdevelopmentcoreteam2017" class="csl-entry">
 R DEVELOPMENT CORE TEAM. <strong>R: A language and environment for statistical computing</strong>. Austria: R Foundation for Statistical Computing, 2017. Disponível em: &lt;<a href="https://www.r-project.org/">https://www.r-project.org/</a>&gt;
 </div>
 <div id="ref-rstudioteam2022" class="csl-entry">
 R STUDIO TEAM. <strong>RStudio: Integrated Development Environment for R</strong>. Boston, MA: RStudio, PBC, 2022. Type: Book. Disponível em: &lt;<a href="https://posit.co/products/open-source/rstudio/">https://posit.co/products/open-source/rstudio/</a>&gt;
 </div>
-<div id="ref-sokal1995" class="csl-entry">
-SOKAL, R. R.; ROHLF, F. J. <strong>Biometry: The Principles and Practice of Statistics in Biological Research</strong>. 3. ed. New York: W.H. Freeman; Company, 1995. Type: Book.
-</div>
-<div id="ref-sokal2009" class="csl-entry">
-SOKAL, R. R.; ROHLF, F. J. <strong>Introduction to Biostatistics</strong>. 2nd ed., Dover ed ed. Mineola, N.Y: Dover Publications, 2009.
-</div>
-<div id="ref-zar2010" class="csl-entry">
-ZAR, J. H. <strong>Biostatistical Analysis</strong>. 5. ed. Upper Saddle River, NJ: Prentice Hall, 2010.
-</div>
 </div>
   <div class="chapter-nav">
 <div class="prev"><a href="tiposR.html"><span class="header-section-number">10</span> R Módulo 1 - Sintaxe e Tipos de dados no R</a></div>
-<div class="next"><a href="univ2.html"><span class="header-section-number">12</span> R Módulo 3.2 - Testes estatísticos</a></div>
+<div class="next"><a href="norm.html"><span class="header-section-number">12</span> R Módulo 3.1 - Estatísticas descritivas e normalidade</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
@@ -1452,29 +833,6 @@ ZAR, J. H. <strong>Biostatistical Analysis</strong>. 5. ed. Upper Saddle River, 
 <a class="nav-link" href="#ap%C3%AAndices-4">Apêndices</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#sites-consultados-3">Sites consultados</a></li></ul>
 </li>
 <li><a class="nav-link" href="#script-limpo-1">Script limpo</a></li>
-<li><a class="nav-link" href="#organiza%C3%A7%C3%A3o-b%C3%A1sica-1"><span class="header-section-number">11.7</span> Organização básica</a></li>
-<li><a class="nav-link" href="#importando-a-planilha-1"><span class="header-section-number">11.8</span> Importando a planilha</a></li>
-<li><a class="nav-link" href="#averiguando-normalidade"><span class="header-section-number">11.9</span> Averiguando normalidade</a></li>
-<li>
-<a class="nav-link" href="#tabela-de-frequ%C3%AAncias-e-gr%C3%A1fico-stem-and-leaf"><span class="header-section-number">11.10</span> Tabela de frequências e gráfico stem-and-leaf</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#sobre-tabelas-de-frequ%C3%AAncia"><span class="header-section-number">11.10.1</span> Sobre tabelas de frequência</a></li>
-<li><a class="nav-link" href="#sobre-o-gr%C3%A1fico-stem-and-leaf"><span class="header-section-number">11.10.2</span> Sobre o gráfico stem-and-leaf</a></li>
-</ul>
-</li>
-<li><a class="nav-link" href="#assimetria-e-curtose"><span class="header-section-number">11.11</span> Assimetria e curtose</a></li>
-<li>
-<a class="nav-link" href="#gr%C3%A1ficos-de-histograma-e-boxplot"><span class="header-section-number">11.12</span> Gráficos de histograma e boxplot</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#histograma-de-densidade"><span class="header-section-number">11.12.1</span> Histograma de densidade</a></li></ul>
-</li>
-<li>
-<a class="nav-link" href="#gr%C3%A1fico-de-probabilidade-normal-normal-probability-plot-ou-normal-q-q-plot"><span class="header-section-number">11.13</span> Gráfico de probabilidade normal (Normal probability plot ou Normal Q-Q plot)</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#algumas-informa%C3%A7%C3%B5es-sobre-o-q-q-plot-e-porqu%C3%AA-ele-%C3%A9-importante"><span class="header-section-number">11.13.1</span> Algumas informações sobre o Q-Q plot e porquê ele é importante</a></li></ul>
-</li>
-<li><a class="nav-link" href="#sum%C3%A1rio-estat%C3%ADstico-geral"><span class="header-section-number">11.14</span> Sumário estatístico geral</a></li>
-<li><a class="nav-link" href="#estat%C3%ADstica-de-shapiro-wilk"><span class="header-section-number">11.15</span> Estatística de Shapiro-Wilk</a></li>
-<li><a class="nav-link" href="#estat%C3%ADstica-de-kolmogorov-smirnov-com-n%C3%ADvel-de-signific%C3%A2ncia-de-lilliefors"><span class="header-section-number">11.16</span> Estatística de Kolmogorov-Smirnov, com nível de significância de Lilliefors</a></li>
-<li><a class="nav-link" href="#transforma%C3%A7%C3%A3o-de-vari%C3%A1veis-e-outros-tipos-de-conjuntos-de-dados"><span class="header-section-number">11.17</span> Transformação de variáveis e outros tipos de conjuntos de dados</a></li>
-<li><a class="nav-link" href="#ap%C3%AAndices-5">Apêndices</a></li>
-<li><a class="nav-link" href="#sites-consultados-4">Sites consultados</a></li>
-<li><a class="nav-link" href="#script-limpo-2">Script limpo</a></li>
 <li><a class="nav-link" href="#refer%C3%AAncias-7">Referências</a></li>
 </ul>
 
@@ -1492,7 +850,7 @@ ZAR, J. H. <strong>Biostatistical Analysis</strong>. 5. ed. Upper Saddle River, 
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Fundamentos de Ecologia Numérica</strong>: Disciplina de Ecologia Numérica do Curso de Ciências Biológicas do Campus V da UEPB" was written by Prof. Elvio S. F. Medeiros, Laboratório de Ecologia, Universidade Estadual da Paraíba, Campus V, João Pessoa, PB. It was last built on Last updated: 20/05/2026 07:13:54.</p>
+    <p>"<strong>Fundamentos de Ecologia Numérica</strong>: Disciplina de Ecologia Numérica do Curso de Ciências Biológicas do Campus V da UEPB" was written by Prof. Elvio S. F. Medeiros, Laboratório de Ecologia, Universidade Estadual da Paraíba, Campus V, João Pessoa, PB. It was last built on Last updated: 20/05/2026 07:46:44.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

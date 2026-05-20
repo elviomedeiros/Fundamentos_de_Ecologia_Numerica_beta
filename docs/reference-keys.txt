@@ -133,6 +133,8 @@ manipulando-matrizes-de-dados
 colunas-com-o-mesmo-nome
 removendo-linhas-ou-colunas-por-nome
 criando-uma-matriz-de-médias
+norm
+sobre-os-dados
 organização-básica-1
 importando-a-planilha-1
 averiguando-normalidade
@@ -148,8 +150,8 @@ sumário-estatístico-geral
 estatística-de-shapiro-wilk
 estatística-de-kolmogorov-smirnov-com-nível-de-significância-de-lilliefors
 transformação-de-variáveis-e-outros-tipos-de-conjuntos-de-dados
-univ2
-sobre-os-dados
+testes
+sobre-os-dados-1
 organização-básica-2
 importando-a-planilha-2
 averiguando-normalidade-1
