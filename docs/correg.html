@@ -4,19 +4,19 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title> 4 Teoria 1 - Introdução à Análise Multivariada de Dados (AMD) | Fundamentos de Ecologia Numérica</title>
+<title> 14 R Módulo 3.2 - Correlação e Regressão | Fundamentos de Ecologia Numérica</title>
 <meta name="author" content="Prof. Elvio S. F. Medeiros">
 <meta name="author" content="Laboratório de Ecologia">
 <meta name="author" content="Universidade Estadual da Paraíba">
 <meta name="author" content="Campus V, João Pessoa, PB">
-<meta name="description" content="Introdução à Análise Multivariada de Dados (AMD)">
+<meta name="description" content="RESUMO A estatística descritiva tem um papel importante a desempenhar na ciência. Quando problemas específicos são tratados na ciência, os dados precisam ser coletados, analisados e apresentados...">
 <meta name="generator" content="bookdown 0.46 with bs4_book()">
-<meta property="og:title" content=" 4 Teoria 1 - Introdução à Análise Multivariada de Dados (AMD) | Fundamentos de Ecologia Numérica">
+<meta property="og:title" content=" 14 R Módulo 3.2 - Correlação e Regressão | Fundamentos de Ecologia Numérica">
 <meta property="og:type" content="book">
-<meta property="og:description" content="Introdução à Análise Multivariada de Dados (AMD)">
+<meta property="og:description" content="RESUMO A estatística descritiva tem um papel importante a desempenhar na ciência. Quando problemas específicos são tratados na ciência, os dados precisam ser coletados, analisados e apresentados...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content=" 4 Teoria 1 - Introdução à Análise Multivariada de Dados (AMD) | Fundamentos de Ecologia Numérica">
-<meta name="twitter:description" content="Introdução à Análise Multivariada de Dados (AMD)">
+<meta name="twitter:title" content=" 14 R Módulo 3.2 - Correlação e Regressão | Fundamentos de Ecologia Numérica">
+<meta name="twitter:description" content="RESUMO A estatística descritiva tem um papel importante a desempenhar na ciência. Quando problemas específicos são tratados na ciência, os dados precisam ser coletados, analisados e apresentados...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.10.0/transition.js"></script><script src="libs/bs3compat-0.10.0/tabs.js"></script><script src="libs/bs3compat-0.10.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -77,7 +77,7 @@
 <li><a class="" href="ferram.html"><span class="header-section-number">2</span> Ferramentas</a></li>
 <li><a class="" href="rrstu.html"><span class="header-section-number">3</span> Introdução ao R/RStudio</a></li>
 <li class="book-part">II. TEORIA</li>
-<li><a class="active" href="amd.html"><span class="header-section-number">4</span> Teoria 1 - Introdução à Análise Multivariada de Dados (AMD)</a></li>
+<li><a class="" href="amd.html"><span class="header-section-number">4</span> Teoria 1 - Introdução à Análise Multivariada de Dados (AMD)</a></li>
 <li><a class="" href="tiposE.html"><span class="header-section-number">5</span> Teoria 2 - Tipos de dados usados em AMD</a></li>
 <li><a class="" href="reltrnsT.html"><span class="header-section-number">6</span> Teoria 3 - Relativizações e transformações de dados</a></li>
 <li class="book-part">III. BASES DE DADOS</li>
@@ -89,7 +89,7 @@
 <li><a class="" href="xls.html"><span class="header-section-number">11</span> R Módulo 2 - Importando planilhas de dados</a></li>
 <li><a class="" href="norm.html"><span class="header-section-number">12</span> R Módulo 3.1 - Estatísticas descritivas e normalidade</a></li>
 <li><a class="" href="testes.html"><span class="header-section-number">13</span> R Módulo 3.2 - Testes estatísticos</a></li>
-<li><a class="" href="correg.html"><span class="header-section-number">14</span> R Módulo 3.2 - Correlação e Regressão</a></li>
+<li><a class="active" href="correg.html"><span class="header-section-number">14</span> R Módulo 3.2 - Correlação e Regressão</a></li>
 <li class="book-part">V. ANÁLISES MULTIVARIADAS</li>
 <li><a class="" href="estrcom.html"><span class="header-section-number">15</span> R Módulo 4.1 - Estrutura da comunidade</a></li>
 <li><a class="" href="partdiv.html"><span class="header-section-number">16</span> R Modulo 4.2 - Decomposição da diversidade</a></li>
@@ -102,24 +102,62 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="amd" class="section level1" number="4">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="correg" class="section level1" number="14">
 <h1>
-<span class="header-section-number"> 4</span> Teoria 1 - Introdução à Análise Multivariada de Dados (AMD)<a class="anchor" aria-label="anchor" href="#amd"><i class="fas fa-link"></i></a>
+<span class="header-section-number"> 14</span> R Módulo 3.2 - Correlação e Regressão<a class="anchor" aria-label="anchor" href="#correg"><i class="fas fa-link"></i></a>
 </h1>
-<div id="introdução-à-análise-multivariada-de-dados-amd" class="section level3 unnumbered">
-<h3>Introdução à Análise Multivariada de Dados (AMD)<a class="anchor" aria-label="anchor" href="#introdu%C3%A7%C3%A3o-%C3%A0-an%C3%A1lise-multivariada-de-dados-amd"><i class="fas fa-link"></i></a>
+<div id="resumo-8" class="section level3 unnumbered">
+<h3>RESUMO<a class="anchor" aria-label="anchor" href="#resumo-8"><i class="fas fa-link"></i></a>
 </h3>
+<p>A estatística descritiva tem um papel importante a desempenhar na ciência. Quando problemas específicos são tratados na ciência, os dados precisam ser coletados, analisados e apresentados de forma concisa para que outros possam se beneficiar do que foi encontrado.</p>
+</div>
+<div id="apresentação-8" class="section level3 unnumbered">
+<h3>Apresentação<a class="anchor" aria-label="anchor" href="#apresenta%C3%A7%C3%A3o-8"><i class="fas fa-link"></i></a>
+</h3>
+<p>A estatística descritiva tem um papel importante a desempenhar na ciência. Quando problemas específicos são tratados na ciência, os dados precisam ser coletados, analisados e apresentados de forma concisa para que outros possam se beneficiar do que foi encontrado. Geralmente não é possível apresentar um conjunto de dados completo em uma publicação ou em um seminário e, mesmo que fosse, é improvável isso permitisse uma boa comunicação dos resultados da pesquisa. Em vez disso, os dados são geralmente resumidos como tabelas de frequência, histogramas e estatísticas descritivas que os leitores ou ouvintes podem assimilar prontamente, mas que ainda transmitem os elementos essenciais do conjunto de dados original. O principal objetivo do cálculo das estatísticas descritivas é transmitir informações essenciais contidas em um conjunto de dados da forma mais concisa e clara possível.</p>
+</div>
+<div id="apêndices-7" class="section level2 unnumbered">
+<h2>Apêndices<a class="anchor" aria-label="anchor" href="#ap%C3%AAndices-7"><i class="fas fa-link"></i></a>
+</h2>
+</div>
+<div id="sites-para-consulta-1" class="section level2 unnumbered">
+<h2>Sites para consulta<a class="anchor" aria-label="anchor" href="#sites-para-consulta-1"><i class="fas fa-link"></i></a>
+</h2>
+<p><a href="https://stackoverflow.com/questions/31741742/how-to-identify-the-distribution-of-the-given-data-using-r" class="uri">https://stackoverflow.com/questions/31741742/how-to-identify-the-distribution-of-the-given-data-using-r</a>
+<a href="https://stats.stackexchange.com/questions/132652/how-to-determine-which-distribution-fits-my-data-best" class="uri">https://stats.stackexchange.com/questions/132652/how-to-determine-which-distribution-fits-my-data-best</a>
+<a href="https://www.r-bloggers.com/2015/11/correlation-and-linear-regression/">Correlação e regressão</a></p>
+</div>
+<div id="script-limpo-4" class="section level2 unnumbered">
+<h2>Script limpo<a class="anchor" aria-label="anchor" href="#script-limpo-4"><i class="fas fa-link"></i></a>
+</h2>
+<p>Aqui apresento o scrip na íntegra sem os textos ou outros comentários. Você pode copiar e colar no R para executa-lo. Lembre de remover os <span style="color:green"><code>#</code></span> ou <span style="color:green"><code>##</code></span> caso necessite executar essas linhas.</p>
+</div>
+<div id="referências-10" class="section level2 unnumbered">
+<h2>Referências<a class="anchor" aria-label="anchor" href="#refer%C3%AAncias-10"><i class="fas fa-link"></i></a>
+</h2>
 
 </div>
 </div>
+
+
+
   <div class="chapter-nav">
-<div class="prev"><a href="rrstu.html"><span class="header-section-number">3</span> Introdução ao R/RStudio</a></div>
-<div class="next"><a href="tiposE.html"><span class="header-section-number">5</span> Teoria 2 - Tipos de dados usados em AMD</a></div>
+<div class="prev"><a href="testes.html"><span class="header-section-number">13</span> R Módulo 3.2 - Testes estatísticos</a></div>
+<div class="next"><a href="estrcom.html"><span class="header-section-number">15</span> R Módulo 4.1 - Estrutura da comunidade</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
-      <ul class="nav navbar-nav"><li>
-<a class="nav-link" href="#amd"><span class="header-section-number">4</span> Teoria 1 - Introdução à Análise Multivariada de Dados (AMD)</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#introdu%C3%A7%C3%A3o-%C3%A0-an%C3%A1lise-multivariada-de-dados-amd">Introdução à Análise Multivariada de Dados (AMD)</a></li></ul>
-</li></ul>
+      <ul class="nav navbar-nav">
+<li>
+<a class="nav-link" href="#correg"><span class="header-section-number">14</span> R Módulo 3.2 - Correlação e Regressão</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#resumo-8">RESUMO</a></li>
+<li><a class="nav-link" href="#apresenta%C3%A7%C3%A3o-8">Apresentação</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#ap%C3%AAndices-7">Apêndices</a></li>
+<li><a class="nav-link" href="#sites-para-consulta-1">Sites para consulta</a></li>
+<li><a class="nav-link" href="#script-limpo-4">Script limpo</a></li>
+<li><a class="nav-link" href="#refer%C3%AAncias-10">Referências</a></li>
+</ul>
 
       <div class="book-extra">
         <ul class="list-unstyled">
