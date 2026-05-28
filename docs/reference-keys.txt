@@ -39,8 +39,8 @@ fig:rmd3banks
 fig:rmd4032testes
 fig:rmd4032tucu
 tab:241tam
-tab:unnamed-chunk-143
-tab:unnamed-chunk-145
+tab:unnamed-chunk-144
+tab:unnamed-chunk-146
 fig:241hill
 fig:241abun
 fig:241rare
