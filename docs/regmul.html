@@ -1,0 +1,1428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title> 15 R Módulo 4.2 - Regressão múltipla | Fundamentos de Ecologia Numérica</title>
+<meta name="author" content="Prof. Elvio S. F. Medeiros">
+<meta name="author" content="Laboratório de Ecologia">
+<meta name="author" content="Universidade Estadual da Paraíba">
+<meta name="author" content="Campus V, João Pessoa, PB">
+<meta name="description" content="RESUMO A estatística descritiva tem um papel importante a desempenhar na ciência. Quando problemas específicos são tratados na ciência, os dados precisam ser coletados, analisados e apresentados...">
+<meta name="generator" content="bookdown 0.46 with bs4_book()">
+<meta property="og:title" content=" 15 R Módulo 4.2 - Regressão múltipla | Fundamentos de Ecologia Numérica">
+<meta property="og:type" content="book">
+<meta property="og:description" content="RESUMO A estatística descritiva tem um papel importante a desempenhar na ciência. Quando problemas específicos são tratados na ciência, os dados precisam ser coletados, analisados e apresentados...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content=" 15 R Módulo 4.2 - Regressão múltipla | Fundamentos de Ecologia Numérica">
+<meta name="twitter:description" content="RESUMO A estatística descritiva tem um papel importante a desempenhar na ciência. Quando problemas específicos são tratados na ciência, os dados precisam ser coletados, analisados e apresentados...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.10.0/transition.js"></script><script src="libs/bs3compat-0.10.0/tabs.js"></script><script src="libs/bs3compat-0.10.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet">
+<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<style type="text/css">
+    /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+          margin-bottom: 1em;
+        }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
+  </style>
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="Disciplina de Ecologia Numérica do Curso de Ciências Biológicas do Campus V da UEPB">Fundamentos de Ecologia Numérica</a>:
+        <small class="text-muted">Disciplina de Ecologia Numérica do Curso de Ciências Biológicas do Campus V da UEPB</small>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html"><span class="header-section-number">1</span> Apresentação</a></li>
+<li class="book-part">I. INTRODUÇÃO</li>
+<li><a class="" href="ferram.html"><span class="header-section-number">2</span> Ferramentas</a></li>
+<li><a class="" href="rrstu.html"><span class="header-section-number">3</span> Introdução ao R/RStudio</a></li>
+<li class="book-part">II. TEORIA</li>
+<li><a class="" href="amd.html"><span class="header-section-number">4</span> Teoria 1 - Introdução à Análise Multivariada de Dados (AMD)</a></li>
+<li><a class="" href="tiposE.html"><span class="header-section-number">5</span> Teoria 2 - Tipos de dados usados em AMD</a></li>
+<li><a class="" href="reltrnsT.html"><span class="header-section-number">6</span> Teoria 3 - Relativizações e transformações de dados</a></li>
+<li class="book-part">III. BASES DE DADOS</li>
+<li><a class="" href="bases.html"><span class="header-section-number">7</span> Bases de dados. Dados do PPBio Semiárido</a></li>
+<li><a class="" href="basepeixes.html"><span class="header-section-number">8</span> Base de dados I - Peixes</a></li>
+<li><a class="" href="basehab.html"><span class="header-section-number">9</span> Base de dados II - Habitat</a></li>
+<li class="book-part">IV. ESTATÍSTICAS DESCRITIVAS</li>
+<li><a class="" href="tiposR.html"><span class="header-section-number">10</span> R Módulo 1 - Sintaxe e Tipos de dados no R</a></li>
+<li><a class="" href="xls.html"><span class="header-section-number">11</span> R Módulo 2 - Importando planilhas de dados</a></li>
+<li><a class="" href="norm.html"><span class="header-section-number">12</span> R Módulo 3.1 - Estatísticas descritivas e normalidade</a></li>
+<li><a class="" href="testes.html"><span class="header-section-number">13</span> R Módulo 3.2 - Testes estatísticos</a></li>
+<li><a class="" href="correg.html"><span class="header-section-number">14</span> R Módulo 3.2 - Correlação e Regressão</a></li>
+<li><a class="active" href="regmul.html"><span class="header-section-number">15</span> R Módulo 4.2 - Regressão múltipla</a></li>
+<li class="book-part">V. ANÁLISES MULTIVARIADAS</li>
+<li><a class="" href="estrcom.html"><span class="header-section-number">16</span> R Módulo 4.1 - Estrutura da comunidade</a></li>
+<li><a class="" href="partdiv.html"><span class="header-section-number">17</span> R Modulo 4.2 - Decomposição da diversidade</a></li>
+<li class="book-part">VI. INFORMAÇÕES GERAIS</li>
+<li><a class="" href="bibliografia-geral.html">Bibliografia Geral</a></li>
+</ul>
+
+        <div class="book-extra">
+          
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="regmul" class="section level1" number="15">
+<h1>
+<span class="header-section-number"> 15</span> R Módulo 4.2 - Regressão múltipla<a class="anchor" aria-label="anchor" href="#regmul"><i class="fas fa-link"></i></a>
+</h1>
+<div id="resumo-9" class="section level3 unnumbered">
+<h3>RESUMO<a class="anchor" aria-label="anchor" href="#resumo-9"><i class="fas fa-link"></i></a>
+</h3>
+<p>A estatística descritiva tem um papel importante a desempenhar na ciência. Quando problemas específicos são tratados na ciência, os dados precisam ser coletados, analisados e apresentados de forma concisa para que outros possam se beneficiar do que foi encontrado.</p>
+</div>
+<div id="apresentação-9" class="section level3 unnumbered">
+<h3>Apresentação<a class="anchor" aria-label="anchor" href="#apresenta%C3%A7%C3%A3o-9"><i class="fas fa-link"></i></a>
+</h3>
+<p>Existem diferentes abordagens para regressão múltipla, destacando-se a regressão simultânea (ou padrão), a regressão hierárquica e a regressão <em>stepwise</em> (“passo-a-passo”). Na regressão simultânea, todas as variáveis independentes entram no modelo ao mesmo tempo, permitindo avaliar a contribuição conjunta dos preditores sobre a variável resposta. Na regressão hierárquica, a ordem de entrada das variáveis é definida previamente com base em conhecimento teórico ou hipóteses biológicas. Já na regressão <code>stepwise</code>, a inclusão ou remoção das variáveis ocorre automaticamente a partir de critérios estatísticos, buscando selecionar os melhores preditores do modelo. A regressão <em>stepwise</em> pode ainda ser, <code>forward</code>, <code>backward</code> ou <code>mixed</code>, dependendo da ordem na qual as variáveis são incorporadas. Veremos mais sobre isso a serguir.</p>
+<p>A aplicação da regressão múltipla exige o atendimento de alguns pressupostos estatísticos. Entre os principais estão:</p>
+<ol style="list-style-type: decimal">
+<li>Número adequado de observações em relação ao número de preditores</li>
+<li>Ausência de outliers extremos</li>
+<li>Ausência de <strong>multicolinearidade</strong> entre as variáveis independentes</li>
+<li>Adequação dos resíduos do modelo quanto à normalidade, linearidade, homocedasticidade e independência.</li>
+</ol>
+<p>No contexto da biometria de <em>Cichla ocellaris</em>, a regressão múltipla pode ser utilizada para investigar quais variáveis morfométricas melhor predizem o peso corporal dos indivíduos. Nesse caso, o peso total (<code>PT_g</code>) pode ser utilizado como variável dependente, enquanto variáveis como comprimento total (<code>CT_cm</code>), comprimento padrão (<code>CP_cm</code>) e circunferência intestinal (<code>Cint_cm</code>) podem atuar como variáveis independentes. Assim, o modelo busca explicar a variação do peso corporal a partir de múltiplos atributos biométricos dos indivíduos analisados.</p>
+<p>A regressão múltipla é uma extensão da correlação bivariada e tem como objetivo <strong>predizer uma variável dependente a partir de duas ou mais variáveis independentes</strong>. Esse método é amplamente utilizado quando as variáveis preditoras apresentam associação entre si e também com a variável resposta. As variáveis independentes podem ser contínuas ou categóricas, embora variáveis categóricas devam ser previamente convertidas em variáveis <em>dummy</em> para serem incluídas no modelo. Em contraste, a variável dependente deve ser medida em uma escala contínua. Se a variável dependente não for contínua, então a análise discriminante é apropriada <span class="citation">(<a href="#ref-coakes2001">COAKES; STEED, 2001</a>)</span>.</p>
+<p>O resultado da regressão é uma equação que representa a melhor previsão de uma variável dependente a partir de várias variáveis independentes. Para isso, existem três principais modelos de regressão. Regressão padrão ou simultânea, regressão hierárquica e regressão <em>stepwise</em> (“passo-a-passo”). Esses modelos diferem em dois aspectos: primeiro, no tratamento da variabilidade sobreposta devido à correlação das variáveis independentes e, segundo, em termos da ordem de entrada das variáveis independentes na equação. No <strong>modelo padrão ou simultâneo</strong>, todas as variáveis independentes entram na equação de regressão ao mesmo tempo porque se deseja examinar a relação entre todo o conjunto de preditores e a variável dependente. Na <strong>regressão múltipla hierárquica</strong>, determina-se a ordem de entrada das variáveis independentes com base no conhecimento teórico. Na <strong>regressão <em>stepwise</em> </strong>, o número de variáveis independentes inseridas e a ordem de entrada são determinados por critérios estatísticos gerados pelo procedimento <em>stepwise</em>.</p>
+<p>O método de entrada na regressão <em>stpewise</em> pode ser <em>forward</em>, <em>backward</em> ou uma combinação de ambos (<em>mixed</em>). A seleção <em>forward</em> envolve a entrada dos preditores um de cada vez. A ordem de entrada e se o preditor será eventualmente aceito são decididas com base em se o teste <code>F</code> excede um determinado valor crítico e se um nível alfa crítico é atingido. A seleção <em>backward</em> começa com todas as variáveis na equação e gradualmente elimina-se os preditores de baixo desempenho com base em se o valor <code>F</code> parcial é menor que um valor crítico. O critério padrão também deve ser atendido. A seleção <em>mixed</em> (<em>stepwise</em>) é uma combinação dos procedimentos <em>forward</em> e <em>backward</em>. Ela permite a remoção posterior de variáveis que foram previamente inseridas. A escolha da técnica depende amplamente dos objetivos do pesquisador.</p>
+<div id="pressupostos-4" class="section level4" number="15.0.0.1">
+<h4>
+<span class="header-section-number">15.0.0.1</span> Pressupostos<a class="anchor" aria-label="anchor" href="#pressupostos-4"><i class="fas fa-link"></i></a>
+</h4>
+<p>Uma série de pressupostos sustenta o uso da regressão:</p>
+<ol style="list-style-type: decimal">
+<li><p>Razão entre casos e variáveis independentes: O número de casos necessários depende do tipo de modelo de regressão a ser utilizado. Para regressão padrão ou hierárquica, idealmente deve-se ter vinte vezes mais casos do que preditores, enquanto ainda mais casos são necessários para regressão <em>stepwise</em>. O requisito mínimo é ter pelo menos cinco vezes mais casos do que variáveis independentes <span class="citation">(<a href="#ref-coakes2001">COAKES; STEED, 2001</a>)</span>.</p></li>
+<li><p>Outliers: Casos extremos têm impacto considerável na solução de regressão e devem ser excluídos ou modificados para reduzir sua influência. Outliers univariados podem ser detectados durante a triagem de dados, conforme descrito na seção <a href="norm.html#iqr">Gráficos de histograma e boxplot</a>. Outliers multivariados podem ser detectados usando métodos estatísticos, como a distância de Mahalanobis, e métodos gráficos, como gráficos de dispersão dos resíduos (isso é abordado na <a href="#outcentr"><code>PARTE V</code></a> deste livro. A decisão de remover outliers do conjunto de dados deve ser tomada com cuidado, porque sua exclusão frequentemente resulta na geração de outros casos discrepantes.</p></li>
+<li><p>Multicolinearidade e singularidade: <em>Multicolinearidade</em> refere-se a altas correlações entre as variáveis independentes, enquanto <em>singularidade</em> ocorre quando existem correlações perfeitas entre variáveis independentes. Esses problemas afetam a forma como se interpretam quaisquer relações entre os preditores (VIs) e a variável dependente, e podem ser detectados examinando-se a matriz de correlação, as correlações múltiplas ao quadrado e as tolerâncias. A maioria dos programas computacionais possui valores padrão para multicolinearidade. É importante não admitir-mos variáveis que representem esse tipo de problema.</p></li>
+<li><p>Normalidade, linearidade, homocedasticidade e independência dos resíduos: Um exame dos gráficos de dispersão dos resíduos permite testar os pressupostos acima. Assume-se que as diferenças entre os escores observados e previstos da variável dependente sejam normalmente distribuídas. Além disso, assume-se que os resíduos tenham uma relação linear com os escores previstos da variável dependente e que a variância dos resíduos seja a mesma para todos os escores previstos. Desvios leves da linearidade não são graves. Desvios moderados a extremos podem levar a uma séria subestimação de uma relação.</p></li>
+</ol>
+<p>O pressuposto 1 relaciona-se ao delineamento da pesquisa. Os pressupostos 2, 3 e 4 são avaliados por meio da análise de regressão.</p>
+<p>Com esse tipo de análise, é possível responder questões como:</p>
+<ol style="list-style-type: decimal">
+<li><p>Qual a contribuição conjunta das variáveis biométricas para a predição do peso corporal?</p></li>
+<li><p>Qual variável apresenta maior poder preditivo?</p></li>
+<li><p>Se determinadas hipóteses biológicas previamente propostas são sustentadas pelos dados observados.</p></li>
+</ol>
+<p>Um gerente de marketing de uma grande rede de supermercados queria determinar o efeito do espaço de prateleira e do preço sobre as vendas de alimentos para animais de estimação. Uma amostra aleatória de quinze lojas de mesmo tamanho foi selecionada, e foram registrados as vendas, o espaço de prateleira em metros quadrados e o preço por quilograma. Para demonstrar a aplicação dos três modelos de regressão, você utilizará o mesmo conjunto de dados para responder a três perguntas:</p>
+<ol style="list-style-type: decimal">
+<li>Qual contribuição tanto o espaço de prateleira quanto o preço oferecem para a previsão das vendas de alimentos para animais de estimação?</li>
+<li>Qual é o melhor preditor das vendas de alimentos para animais de estimação?</li>
+<li>Pesquisas anteriores sugeriram que o espaço de prateleira é o principal preditor das vendas de alimentos para animais de estimação. Essa hipótese está correta?</li>
+</ol>
+</div>
+<div id="exemplo-2" class="section level4" number="15.0.0.2">
+<h4>
+<span class="header-section-number">15.0.0.2</span> Exemplo<a class="anchor" aria-label="anchor" href="#exemplo-2"><i class="fas fa-link"></i></a>
+</h4>
+</div>
+</div>
+<div id="organização-básica-4" class="section level2" number="15.1">
+<h2>
+<span class="header-section-number">15.1</span> Organização básica<a class="anchor" aria-label="anchor" href="#organiza%C3%A7%C3%A3o-b%C3%A1sica-4"><i class="fas fa-link"></i></a>
+</h2>
+<div class="sourceCode" id="cb229"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/grDevices/dev.html">dev.off</a></span><span class="op">(</span><span class="op">)</span> <span class="co">#apaga os graficos, se houver algum</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/rm.html">rm</a></span><span class="op">(</span>list<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/ls.html">ls</a></span><span class="op">(</span>all<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="co">#limpa a memória</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"\014"</span><span class="op">)</span> <span class="co">#limpa o console </span></span></code></pre></div>
+<div id="organizando-os-dados" class="section level3" number="15.1.1">
+<h3>
+<span class="header-section-number">15.1.1</span> Organizando os dados<a class="anchor" aria-label="anchor" href="#organizando-os-dados"><i class="fas fa-link"></i></a>
+</h3>
+<div class="sourceCode" id="cb230"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ycphs.github.io/openxlsx/index.html">openxlsx</a></span><span class="op">)</span></span>
+<span><span class="va">densidade</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/openxlsx/man/read.xlsx.html">read.xlsx</a></span><span class="op">(</span><span class="st">"D:/Elvio/OneDrive/MSS/_Bentos-2006/Bentos2006/zoobentos2006_com.xlsx"</span>,</span>
+<span>                   rowNames <span class="op">=</span> <span class="cn">T</span>,</span>
+<span>                   colNames <span class="op">=</span> <span class="cn">T</span>,</span>
+<span>                   sheet <span class="op">=</span> <span class="st">"densidade"</span><span class="op">)</span></span>
+<span><span class="va">habitat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/openxlsx/man/read.xlsx.html">read.xlsx</a></span><span class="op">(</span><span class="st">"D:/Elvio/OneDrive/MSS/_Bentos-2006/Bentos2006/zoobentos2006_hab.xlsx"</span>,</span>
+<span>                    rowNames <span class="op">=</span> <span class="cn">T</span>,</span>
+<span>                    colNames <span class="op">=</span> <span class="cn">T</span>,</span>
+<span>                    sheet <span class="op">=</span> <span class="st">"ambiente"</span><span class="op">)</span></span>
+<span><span class="va">grupos</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/openxlsx/man/read.xlsx.html">read.xlsx</a></span><span class="op">(</span><span class="st">"D:/Elvio/OneDrive/MSS/_Bentos-2006/Bentos2006/zoobentos2006_hab.xlsx"</span>,</span>
+<span>                   rowNames <span class="op">=</span> <span class="cn">T</span>,</span>
+<span>                   colNames <span class="op">=</span> <span class="cn">T</span>,</span>
+<span>                   sheet <span class="op">=</span> <span class="st">"grupos"</span><span class="op">)</span></span>
+<span><span class="va">densidade</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span> <span class="co">#[1:5,1:5] mostra apenas as linhas e colunas de 1 a 5.</span></span>
+<span></span>
+<span><span class="co"># Removendo linhas e colunas zeradas</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="va">densidade</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/colSums.html">rowSums</a></span><span class="op">(</span><span class="va">densidade</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/colSums.html">colSums</a></span><span class="op">(</span><span class="va">densidade</span><span class="op">)</span></span>
+<span><span class="va">matriz</span> <span class="op">&lt;-</span> <span class="va">densidade</span></span>
+<span></span>
+<span><span class="co"># Linhas zeradas</span></span>
+<span><span class="va">sum</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colSums.html">rowSums</a></span><span class="op">(</span><span class="va">matriz</span><span class="op">)</span></span>
+<span><span class="va">sum</span></span>
+<span><span class="va">zero_sum</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="va">matriz</span><span class="op">)</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/which.html">which</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/colSums.html">rowSums</a></span><span class="op">(</span><span class="va">matriz</span><span class="op">)</span> <span class="op">==</span> <span class="fl">0</span><span class="op">)</span><span class="op">]</span></span>
+<span><span class="va">zero_sum</span> <span class="co"># nomes das linhas zeradas</span></span>
+<span><span class="va">m_part_rows</span> <span class="op">&lt;-</span> <span class="va">matriz</span><span class="op">[</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/colSums.html">rowSums</a></span><span class="op">(</span><span class="va">matriz</span><span class="op">)</span> <span class="op">!=</span> <span class="fl">0</span><span class="op">)</span>, <span class="op">]</span> <span class="co">#em != a exclamação inverte o sentido</span></span>
+<span><span class="va">zero_sum2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="va">m_part_rows</span><span class="op">)</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/which.html">which</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/colSums.html">rowSums</a></span><span class="op">(</span><span class="va">m_part_rows</span><span class="op">)</span> <span class="op">==</span> <span class="fl">0</span><span class="op">)</span><span class="op">]</span></span>
+<span><span class="va">zero_sum2</span> <span class="co">#nomes das linhas zeradas</span></span>
+<span><span class="va">sum</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colSums.html">rowSums</a></span><span class="op">(</span><span class="va">m_part_rows</span><span class="op">)</span></span>
+<span><span class="va">sum</span></span>
+<span><span class="co"># Colunas zeradas</span></span>
+<span><span class="va">sum</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colSums.html">colSums</a></span><span class="op">(</span><span class="va">m_part_rows</span><span class="op">)</span></span>
+<span><span class="va">sum</span></span>
+<span><span class="va">zero_sum</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/which.html">which</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/colSums.html">colSums</a></span><span class="op">(</span><span class="va">m_part_rows</span><span class="op">)</span> <span class="op">==</span> <span class="fl">0</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">zero_sum</span> <span class="co">#nomes das espécies zeradas</span></span>
+<span><span class="va">m_part_cols</span> <span class="op">&lt;-</span> <span class="va">m_part_rows</span><span class="op">[</span>, <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/colSums.html">colSums</a></span><span class="op">(</span><span class="va">m_part_rows</span><span class="op">)</span> <span class="op">!=</span> <span class="fl">0</span><span class="op">)</span><span class="op">]</span> <span class="co">#remove colunas zeradas</span></span>
+<span><span class="va">zero_sum2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/which.html">which</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/colSums.html">colSums</a></span><span class="op">(</span><span class="va">m_part_cols</span><span class="op">)</span> <span class="op">==</span> <span class="fl">0</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">zero_sum2</span> <span class="co">#nomes das espécies zeradas</span></span>
+<span><span class="va">sum</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colSums.html">colSums</a></span><span class="op">(</span><span class="va">m_part_cols</span><span class="op">)</span></span>
+<span><span class="va">sum</span></span>
+<span></span>
+<span><span class="va">m_dens</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="va">m_part_cols</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Particionando a matriz ambiental</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="va">habitat</span><span class="op">)</span></span>
+<span><span class="va">del_rows</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"B-A-MU-1"</span>, <span class="st">"B-R-EP-1"</span><span class="op">)</span></span>
+<span><span class="va">del_rows</span></span>
+<span><span class="va">m_hab</span> <span class="op">&lt;-</span> <span class="va">habitat</span><span class="op">[</span><span class="op">!</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/row.names.html">row.names</a></span><span class="op">(</span><span class="va">habitat</span><span class="op">)</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">del_rows</span><span class="op">)</span><span class="op">)</span>,<span class="op">]</span></span>
+<span><span class="va">m_hab</span></span>
+<span></span>
+<span><span class="co"># Particionando tabela de grupos</span></span>
+<span><span class="va">t_grps</span> <span class="op">&lt;-</span> <span class="va">grupos</span><span class="op">[</span><span class="op">!</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/row.names.html">row.names</a></span><span class="op">(</span><span class="va">grupos</span><span class="op">)</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="va">del_rows</span><span class="op">)</span>,<span class="op">]</span></span>
+<span></span>
+<span><span class="co"># Salvando as matrizes finais particionadas</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/write.table.html">write.table</a></span><span class="op">(</span><span class="va">m_dens</span>, <span class="st">"m_dens.csv"</span>,</span>
+<span>            sep <span class="op">=</span> <span class="st">";"</span>, dec <span class="op">=</span> <span class="st">"."</span>, <span class="co">#"\t",</span></span>
+<span>            row.names <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>            quote <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>            append <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/write.table.html">write.table</a></span><span class="op">(</span><span class="va">t_grps</span>, <span class="st">"t_grps.csv"</span>,</span>
+<span>            sep <span class="op">=</span> <span class="st">";"</span>, dec <span class="op">=</span> <span class="st">"."</span>, <span class="co">#"\t",</span></span>
+<span>            row.names <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>            quote <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>            append <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/write.table.html">write.table</a></span><span class="op">(</span><span class="va">m_hab</span>, <span class="st">"m_hab.csv"</span>,</span>
+<span>            sep <span class="op">=</span> <span class="st">";"</span>, dec <span class="op">=</span> <span class="st">"."</span>, <span class="co">#"\t",</span></span>
+<span>            row.names <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>            quote <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>            append <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span><span class="va">t_grps</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">"t_grps.csv"</span>,</span>
+<span>                   sep <span class="op">=</span> <span class="st">";"</span>, dec <span class="op">=</span> <span class="st">"."</span>,</span>
+<span>                   row.names <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>                   header <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                   na.strings <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span></span>
+<span><span class="va">m_dens</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">"m_dens.csv"</span>,</span>
+<span>                   sep <span class="op">=</span> <span class="st">";"</span>, dec <span class="op">=</span> <span class="st">"."</span>,</span>
+<span>                   row.names <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>                   header <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                   na.strings <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span></span>
+<span><span class="va">m_hab</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">"m_hab.csv"</span>,</span>
+<span>                   sep <span class="op">=</span> <span class="st">";"</span>, dec <span class="op">=</span> <span class="st">"."</span>,</span>
+<span>                   row.names <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>                   header <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                   na.strings <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Particionando a matriz de contagem</span></span>
+<span><span class="va">contagem</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/openxlsx/man/read.xlsx.html">read.xlsx</a></span><span class="op">(</span><span class="st">"D:/Elvio/OneDrive/MSS/_Bentos-2006/Bentos2006/zoobentos2006_com.xlsx"</span>,</span>
+<span>                       rowNames <span class="op">=</span> <span class="cn">T</span>,</span>
+<span>                       colNames <span class="op">=</span> <span class="cn">T</span>,</span>
+<span>                       sheet <span class="op">=</span> <span class="st">"contagem"</span><span class="op">)</span></span>
+<span><span class="va">contagem</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span> <span class="co">#[1:5,1:5] mostra apenas as linhas e colunas de 1 a 5.</span></span>
+<span></span>
+<span><span class="va">matriz</span> <span class="op">&lt;-</span> <span class="va">contagem</span></span>
+<span></span>
+<span><span class="co"># Linhas zeradas</span></span>
+<span><span class="va">sum</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colSums.html">rowSums</a></span><span class="op">(</span><span class="va">matriz</span><span class="op">)</span></span>
+<span><span class="va">sum</span></span>
+<span><span class="va">zero_sum</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="va">matriz</span><span class="op">)</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/which.html">which</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/colSums.html">rowSums</a></span><span class="op">(</span><span class="va">matriz</span><span class="op">)</span> <span class="op">==</span> <span class="fl">0</span><span class="op">)</span><span class="op">]</span></span>
+<span><span class="va">zero_sum</span> <span class="co"># nomes das linhas zeradas</span></span>
+<span><span class="va">m_part_rows</span> <span class="op">&lt;-</span> <span class="va">matriz</span><span class="op">[</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/colSums.html">rowSums</a></span><span class="op">(</span><span class="va">matriz</span><span class="op">)</span> <span class="op">!=</span> <span class="fl">0</span><span class="op">)</span>, <span class="op">]</span> <span class="co">#em != a exclamação inverte o sentido</span></span>
+<span><span class="va">zero_sum2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="va">m_part_rows</span><span class="op">)</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/which.html">which</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/colSums.html">rowSums</a></span><span class="op">(</span><span class="va">m_part_rows</span><span class="op">)</span> <span class="op">==</span> <span class="fl">0</span><span class="op">)</span><span class="op">]</span></span>
+<span><span class="va">zero_sum2</span> <span class="co">#nomes das linhas zeradas</span></span>
+<span><span class="va">sum</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colSums.html">rowSums</a></span><span class="op">(</span><span class="va">m_part_rows</span><span class="op">)</span></span>
+<span><span class="va">sum</span></span>
+<span><span class="co"># Colunas zeradas</span></span>
+<span><span class="va">sum</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colSums.html">colSums</a></span><span class="op">(</span><span class="va">m_part_rows</span><span class="op">)</span></span>
+<span><span class="va">sum</span></span>
+<span><span class="va">zero_sum</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/which.html">which</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/colSums.html">colSums</a></span><span class="op">(</span><span class="va">m_part_rows</span><span class="op">)</span> <span class="op">==</span> <span class="fl">0</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">zero_sum</span> <span class="co">#nomes das espécies zeradas</span></span>
+<span><span class="va">m_part_cols</span> <span class="op">&lt;-</span> <span class="va">m_part_rows</span><span class="op">[</span>, <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/colSums.html">colSums</a></span><span class="op">(</span><span class="va">m_part_rows</span><span class="op">)</span> <span class="op">!=</span> <span class="fl">0</span><span class="op">)</span><span class="op">]</span> <span class="co">#remove colunas zeradas</span></span>
+<span><span class="va">zero_sum2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/which.html">which</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/colSums.html">colSums</a></span><span class="op">(</span><span class="va">m_part_cols</span><span class="op">)</span> <span class="op">==</span> <span class="fl">0</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">zero_sum2</span> <span class="co">#nomes das espécies zeradas</span></span>
+<span><span class="va">sum</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colSums.html">colSums</a></span><span class="op">(</span><span class="va">m_part_cols</span><span class="op">)</span></span>
+<span><span class="va">sum</span></span>
+<span></span>
+<span><span class="va">m_cont</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="va">m_part_cols</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Salvando a matriz final</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/write.table.html">write.table</a></span><span class="op">(</span><span class="va">m_cont</span>, <span class="st">"m_cont.csv"</span>,</span>
+<span>            sep <span class="op">=</span> <span class="st">";"</span>, dec <span class="op">=</span> <span class="st">"."</span>, <span class="co">#"\t",</span></span>
+<span>            row.names <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>            quote <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>            append <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span><span class="va">m_cont</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">"m_cont.csv"</span>,</span>
+<span>                   sep <span class="op">=</span> <span class="st">";"</span>, dec <span class="op">=</span> <span class="st">"."</span>,</span>
+<span>                   row.names <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>                   header <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                   na.strings <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span></span></code></pre></div>
+<pre><code>##          Hydrachnidia Ampularidae Atyidae   Baetidae Belastomatidae
+## S-R-CI-1         0.00    0.000000       0   0.000000              0
+## S-R-CI-2         0.00    0.000000       0   2.083333              0
+## S-R-CI-3        93.75    2.083333       0 177.083333              0
+## S-R-CI-4         0.00    4.166667       0   8.333333              0
+## B-A-SA-1         0.00    0.000000       0   0.000000              0
+##  [1] "S-R-CI-1" "S-R-CI-2" "S-R-CI-3" "S-R-CI-4" "B-A-SA-1" "B-A-SA-2"
+##  [7] "B-A-SA-3" "B-A-SA-4" "B-A-MU-1" "B-A-MU-2" "B-A-MU-3" "B-A-MU-4"
+## [13] "B-R-EP-1" "B-R-EP-2" "B-R-EP-3" "B-R-EP-4" "S-A-RE-1" "S-A-RE-2"
+## [19] "S-A-RE-3" "S-A-RE-4" "S-R-SE-1" "S-R-SE-2" "S-R-SE-3" "S-R-SE-4"
+##     S-R-CI-1     S-R-CI-2     S-R-CI-3     S-R-CI-4     B-A-SA-1     B-A-SA-2 
+##    62.500000  3022.916667  9010.416667  2029.166667    10.416667    29.166667 
+##     B-A-SA-3     B-A-SA-4     B-A-MU-1     B-A-MU-2     B-A-MU-3     B-A-MU-4 
+##    31.250000    83.333333     0.000000     6.250000     8.333333    25.000000 
+##     B-R-EP-1     B-R-EP-2     B-R-EP-3     B-R-EP-4     S-A-RE-1     S-A-RE-2 
+##     0.000000  2895.833333   927.083333  2791.666667  3345.833333  2252.083333 
+##     S-A-RE-3     S-A-RE-4     S-R-SE-1     S-R-SE-2     S-R-SE-3     S-R-SE-4 
+##  2829.166667  3629.166667    64.583333  2639.583333  8731.250000 14231.250000 
+##    Hydrachnidia     Ampularidae         Atyidae        Baetidae  Belastomatidae 
+##       93.750000        8.333333      122.916667      233.333333        4.166667 
+##        Caenidae Ceratopogonidae  Coenagrionidae    Conchostraca       Corixidae 
+##      318.750000      156.250000       37.500000      375.000000     1833.333333 
+##   Curculionidae     Chaoboridae  Chironomidae_L  Chironomidae_P    Dytiscidae_L 
+##       12.500000        4.166667    13839.583333      289.583333       12.500000 
+##    Dytiscidae_A        Gerridae       Gomphidae Glossosomatidae Hidrophilidae_L 
+##       70.833333        4.166667       83.333333       12.500000      485.416667 
+##  Hidrophilide_A       Hirudinea   Leptohyphidae    Leptoceridae    Libellulidae 
+##      204.166667       16.666667       72.916667        6.250000      497.916667 
+##      Lymnaeidae      Naucoridae    Notonectidae     Oligochaeta       Ostracoda 
+##        6.250000       27.083333      137.500000     8370.833333      270.833333 
+##     Planorbidae        Physidae      Sphaeridae       Thiaridae        Veliidae 
+##     1493.750000       62.500000        2.083333    29483.333333        6.250000 
+##     S-R-CI-1     S-R-CI-2     S-R-CI-3     S-R-CI-4     B-A-SA-1     B-A-SA-2 
+##    62.500000  3022.916667  9010.416667  2029.166667    10.416667    29.166667 
+##     B-A-SA-3     B-A-SA-4     B-A-MU-1     B-A-MU-2     B-A-MU-3     B-A-MU-4 
+##    31.250000    83.333333     0.000000     6.250000     8.333333    25.000000 
+##     B-R-EP-1     B-R-EP-2     B-R-EP-3     B-R-EP-4     S-A-RE-1     S-A-RE-2 
+##     0.000000  2895.833333   927.083333  2791.666667  3345.833333  2252.083333 
+##     S-A-RE-3     S-A-RE-4     S-R-SE-1     S-R-SE-2     S-R-SE-3     S-R-SE-4 
+##  2829.166667  3629.166667    64.583333  2639.583333  8731.250000 14231.250000 
+## [1] "B-A-MU-1" "B-R-EP-1"
+## character(0)
+##     S-R-CI-1     S-R-CI-2     S-R-CI-3     S-R-CI-4     B-A-SA-1     B-A-SA-2 
+##    62.500000  3022.916667  9010.416667  2029.166667    10.416667    29.166667 
+##     B-A-SA-3     B-A-SA-4     B-A-MU-2     B-A-MU-3     B-A-MU-4     B-R-EP-2 
+##    31.250000    83.333333     6.250000     8.333333    25.000000  2895.833333 
+##     B-R-EP-3     B-R-EP-4     S-A-RE-1     S-A-RE-2     S-A-RE-3     S-A-RE-4 
+##   927.083333  2791.666667  3345.833333  2252.083333  2829.166667  3629.166667 
+##     S-R-SE-1     S-R-SE-2     S-R-SE-3     S-R-SE-4 
+##    64.583333  2639.583333  8731.250000 14231.250000 
+##    Hydrachnidia     Ampularidae         Atyidae        Baetidae  Belastomatidae 
+##       93.750000        8.333333      122.916667      233.333333        4.166667 
+##        Caenidae Ceratopogonidae  Coenagrionidae    Conchostraca       Corixidae 
+##      318.750000      156.250000       37.500000      375.000000     1833.333333 
+##   Curculionidae     Chaoboridae  Chironomidae_L  Chironomidae_P    Dytiscidae_L 
+##       12.500000        4.166667    13839.583333      289.583333       12.500000 
+##    Dytiscidae_A        Gerridae       Gomphidae Glossosomatidae Hidrophilidae_L 
+##       70.833333        4.166667       83.333333       12.500000      485.416667 
+##  Hidrophilide_A       Hirudinea   Leptohyphidae    Leptoceridae    Libellulidae 
+##      204.166667       16.666667       72.916667        6.250000      497.916667 
+##      Lymnaeidae      Naucoridae    Notonectidae     Oligochaeta       Ostracoda 
+##        6.250000       27.083333      137.500000     8370.833333      270.833333 
+##     Planorbidae        Physidae      Sphaeridae       Thiaridae        Veliidae 
+##     1493.750000       62.500000        2.083333    29483.333333        6.250000 
+## character(0)
+## character(0)
+##    Hydrachnidia     Ampularidae         Atyidae        Baetidae  Belastomatidae 
+##       93.750000        8.333333      122.916667      233.333333        4.166667 
+##        Caenidae Ceratopogonidae  Coenagrionidae    Conchostraca       Corixidae 
+##      318.750000      156.250000       37.500000      375.000000     1833.333333 
+##   Curculionidae     Chaoboridae  Chironomidae_L  Chironomidae_P    Dytiscidae_L 
+##       12.500000        4.166667    13839.583333      289.583333       12.500000 
+##    Dytiscidae_A        Gerridae       Gomphidae Glossosomatidae Hidrophilidae_L 
+##       70.833333        4.166667       83.333333       12.500000      485.416667 
+##  Hidrophilide_A       Hirudinea   Leptohyphidae    Leptoceridae    Libellulidae 
+##      204.166667       16.666667       72.916667        6.250000      497.916667 
+##      Lymnaeidae      Naucoridae    Notonectidae     Oligochaeta       Ostracoda 
+##        6.250000       27.083333      137.500000     8370.833333      270.833333 
+##     Planorbidae        Physidae      Sphaeridae       Thiaridae        Veliidae 
+##     1493.750000       62.500000        2.083333    29483.333333        6.250000 
+##  [1] "S-R-CI-1" "S-R-CI-2" "S-R-CI-3" "S-R-CI-4" "B-A-SA-1" "B-A-SA-2"
+##  [7] "B-A-SA-3" "B-A-SA-4" "B-A-MU-1" "B-A-MU-2" "B-A-MU-3" "B-A-MU-4"
+## [13] "B-R-EP-1" "B-R-EP-2" "B-R-EP-3" "B-R-EP-4" "S-A-RE-1" "S-A-RE-2"
+## [19] "S-A-RE-3" "S-A-RE-4" "S-R-SE-1" "S-R-SE-2" "S-R-SE-3" "S-R-SE-4"
+## [1] "B-A-MU-1" "B-R-EP-1"
+##          g.river_length g.altitude m.depth_mar m.depth_max m.slope m.width
+## S-R-CI-1        83.0500        169   22.666667          60      60   17.24
+## S-R-CI-2        83.0500        169   32.666667          68      60   18.47
+## S-R-CI-3        83.0500        169   32.666667          79      60   15.10
+## S-R-CI-4        83.0500        169   45.333333          64      60   10.70
+## B-A-SA-1       212.6667        713    8.166667          60      30  330.00
+## B-A-SA-2       212.6667        713    7.000000          69      30  321.00
+## B-A-SA-3       212.6667        713    6.833333          68      30  314.20
+## B-A-SA-4       212.6667        713    4.666667          63      30  289.50
+## B-A-MU-2       214.0200        725   22.000000         115      30  247.63
+## B-A-MU-3       214.0200        725   25.666667         117      30  234.53
+## B-A-MU-4       214.0200        725   41.333333         112      30  239.00
+## B-R-EP-2       196.8333        402   49.333333         110      90   29.60
+## B-R-EP-3       196.8333        402   50.000000          80      90   27.30
+## B-R-EP-4       196.8333        402   52.833333          95      90   20.00
+## S-A-RE-1       110.2000        270   54.666667         154      60  102.00
+## S-A-RE-2       110.2000        270   37.666667         118      60  100.00
+## S-A-RE-3       110.2000        270   22.333333         109      60   88.00
+## S-A-RE-4       110.2000        270   30.333333          87      60   72.20
+## S-R-SE-1       163.2000        226   81.333333         106      30   19.64
+## S-R-SE-2       163.2000        226   67.000000         105      30   16.10
+## S-R-SE-3       163.2000        226   32.333333         110      30    6.20
+## S-R-SE-4       163.2000        226   32.333333          74      30    5.40
+##            q.w_vel   q.temp     q.do   q.turb      s.mud    s.sand s.smlgrav
+## S-R-CI-1 0.1591512 35.20000 6.863333 26.00000 16.6666667 70.000000  5.000000
+## S-R-CI-2 0.0000000 29.00000 3.015000 33.00000  0.6666667 87.666667  3.333333
+## S-R-CI-3 0.0000000 29.66667 5.000000 50.33333 48.7500000 22.500000 10.000000
+## S-R-CI-4 0.0000000 27.60000 4.900000 60.00000  5.0000000 60.000000  0.000000
+## B-A-SA-1 0.0000000 29.23333 5.136667 25.66667 96.6666667  3.333333  0.000000
+## B-A-SA-2 0.0000000 29.00000 1.850000 55.00000 98.0000000  2.000000  0.000000
+## B-A-SA-3 0.0000000 24.00000 8.800000 51.66667 87.7777778  6.666667  3.333333
+## B-A-SA-4 0.0000000 24.70000 8.750000 36.00000 95.1666667  3.416667  1.333333
+## B-A-MU-2 0.0000000 29.00000 1.815000 43.00000 20.6000000 77.000000  0.000000
+## B-A-MU-3 0.0000000 26.00000 5.700000 63.00000 65.0000000 35.000000  0.000000
+## B-A-MU-4 0.0000000 25.95000 7.300000 89.00000 91.7777778  3.222222  0.000000
+## B-R-EP-2 0.0000000 29.00000 5.635000 50.00000 39.0000000 56.000000  3.000000
+## B-R-EP-3 0.0000000 29.00000 5.000000 32.33333 33.6666667 63.000000  3.333333
+## B-R-EP-4 0.0000000 28.85000 5.100000 30.00000 48.8750000 47.875000  1.875000
+## S-A-RE-1 0.1000000 34.00000 4.820000 61.00000 81.6666667  8.333333  1.666667
+## S-A-RE-2 0.0000000 29.00000 5.000000 90.00000  5.0000000 95.000000  0.000000
+## S-A-RE-3 0.0000000 34.00000 9.000000 51.66667 46.6666667 40.000000  6.666667
+## S-A-RE-4 0.0000000 29.53333 9.433333 67.00000 59.1428571 38.714286  2.142857
+## S-R-SE-1 0.1666667 32.90000 6.510000 46.00000 65.0000000 30.000000  0.000000
+## S-R-SE-2 0.1250000 32.00000 5.375000 44.00000 40.0000000 40.000000  0.000000
+## S-R-SE-3 0.0000000 28.26667 6.000000 17.33333 65.5555556 23.111111  0.000000
+## S-R-SE-4 0.0000000 32.60000 6.000000 16.00000 95.0000000  1.833333  0.000000
+##            s.lrggrav  s.cobbles   s.rocks s.bedrock h.macroph    h.grass
+## S-R-CI-1  5.00000000  3.3333333  0.000000  0.000000  0.000000 23.3333333
+## S-R-CI-2  3.33333333  5.0000000  0.000000  0.000000  0.000000  0.0000000
+## S-R-CI-3 10.00000000  8.7500000  0.000000  0.000000  0.000000  0.0000000
+## S-R-CI-4  0.00000000 25.0000000 10.000000  0.000000  0.000000  0.0000000
+## B-A-SA-1  0.00000000  0.0000000  0.000000  0.000000 46.666667  0.0000000
+## B-A-SA-2  0.00000000  0.0000000  0.000000  0.000000  2.600000  7.5000000
+## B-A-SA-3  2.22222222  0.0000000  0.000000  0.000000  0.000000 13.3333333
+## B-A-SA-4  0.08333333  0.0000000  0.000000  0.000000  2.083333  0.0000000
+## B-A-MU-2  0.00000000  2.4000000  0.000000  0.000000  0.000000 54.0000000
+## B-A-MU-3  0.00000000  0.0000000  0.000000  0.000000  0.000000 28.3333333
+## B-A-MU-4  0.00000000  0.0000000  5.000000  0.000000  0.000000  5.5555556
+## B-R-EP-2  0.00000000  1.0000000  1.000000  0.000000  0.000000  2.0000000
+## B-R-EP-3  0.00000000  0.0000000  0.000000  0.000000  0.000000  0.0000000
+## B-R-EP-4  0.00000000  0.1250000  1.250000  0.000000  0.000000  0.0000000
+## S-A-RE-1  0.00000000  0.0000000  0.000000  8.333333  5.833333  0.0000000
+## S-A-RE-2  0.00000000  0.0000000  0.000000  0.000000 54.833333  0.3333333
+## S-A-RE-3  6.66666667  0.0000000  0.000000  0.000000 44.629630  8.1111111
+## S-A-RE-4  0.00000000  0.0000000  0.000000  0.000000 37.309524  0.0000000
+## S-R-SE-1  0.00000000  1.6666667  0.000000  3.333333  8.333333 20.0000000
+## S-R-SE-2  0.00000000 20.0000000  0.000000  0.000000  0.000000 20.0000000
+## S-R-SE-3  0.00000000  3.0000000  8.333333  0.000000  0.000000  0.1111111
+## S-R-SE-4  0.00000000  0.3333333  2.833333  0.000000  0.000000  4.1666667
+##           h.subveg h.overhveg  h.litter h.filalgae h.attalgae  h.roots
+## S-R-CI-1  3.000000  26.666667 2.3333333  3.3333333  0.6666667 3.333333
+## S-R-CI-2  0.000000  33.333333 1.0000000  0.0000000  0.0000000 5.000000
+## S-R-CI-3  0.000000   0.000000 1.5000000  6.2500000  0.5000000 1.000000
+## S-R-CI-4  0.000000   8.333333 1.0000000 25.0000000 50.0000000 0.000000
+## B-A-SA-1  3.333333   3.333333 0.0000000  0.0000000  0.0000000 0.000000
+## B-A-SA-2 26.000000   0.400000 0.0000000  0.0000000  1.0000000 0.000000
+## B-A-SA-3  0.000000   0.000000 0.0000000 25.0000000  0.0000000 0.000000
+## B-A-SA-4  0.000000   0.000000 0.0000000  0.8333333 42.5000000 0.000000
+## B-A-MU-2 36.600000   0.000000 5.0000000  0.0000000  0.0000000 0.000000
+## B-A-MU-3  8.333333   0.000000 1.0000000  0.0000000  0.3333333 0.000000
+## B-A-MU-4  0.000000   0.000000 0.4444444  0.0000000 30.0000000 0.000000
+## B-R-EP-2  0.000000   0.000000 0.4000000  0.0000000  0.4000000 0.000000
+## B-R-EP-3  0.000000   0.000000 0.3333333  0.0000000  0.0000000 0.000000
+## B-R-EP-4  0.000000   0.000000 0.5000000  0.0000000  0.0000000 0.000000
+## S-A-RE-1 16.666667  33.333333 3.6666667 25.0000000  3.3333333 0.000000
+## S-A-RE-2  0.000000   8.333333 1.0000000 33.3333330  0.0000000 0.000000
+## S-A-RE-3  0.000000   0.000000 0.6666667  9.0000000  0.0000000 0.000000
+## S-A-RE-4  0.000000   0.000000 0.5714286  0.0000000  0.0000000 0.000000
+## S-R-SE-1 10.000000   0.000000 0.6666667  0.0000000 12.0000000 0.000000
+## S-R-SE-2  0.000000   0.000000 0.0000000  0.0000000  1.0000000 0.000000
+## S-R-SE-3  0.000000   0.000000 0.0000000  0.0000000  0.0000000 0.000000
+## S-R-SE-4  0.000000   0.000000 0.8333333  0.0000000  7.5000000 0.000000
+##            h.smldeb  h.lrgdeb
+## S-R-CI-1  2.0000000 1.6666667
+## S-R-CI-2  7.0000000 3.3333333
+## S-R-CI-3  3.0000000 0.6666667
+## S-R-CI-4  1.0000000 0.0000000
+## B-A-SA-1  0.0000000 0.0000000
+## B-A-SA-2  0.0000000 0.0000000
+## B-A-SA-3  0.0000000 0.0000000
+## B-A-SA-4  3.7500000 0.0000000
+## B-A-MU-2 10.0000000 0.0000000
+## B-A-MU-3  5.0000000 6.6666667
+## B-A-MU-4  7.2222222 3.2222222
+## B-R-EP-2  0.4000000 0.0000000
+## B-R-EP-3  0.4444444 0.0000000
+## B-R-EP-4  2.5000000 0.0000000
+## S-A-RE-1 10.0000000 0.0000000
+## S-A-RE-2  5.3333333 8.3333333
+## S-A-RE-3  1.6666667 0.0000000
+## S-A-RE-4  3.2857143 0.0000000
+## S-R-SE-1  1.6666667 1.6666667
+## S-R-SE-2  0.0000000 0.0000000
+## S-R-SE-3  2.2222222 0.0000000
+## S-R-SE-4  5.0000000 0.0000000
+##          Hydrachnidia Ampularidae Atyidae Baetidae Belastomatidae
+## S-R-CI-1            0           0       0        0              0
+## S-R-CI-2            0           0       0        1              0
+## S-R-CI-3           45           1       0       85              0
+## S-R-CI-4            0           2       0        4              0
+## B-A-SA-1            0           0       0        0              0
+## S-R-CI-1 S-R-CI-2 S-R-CI-3 S-R-CI-4 B-A-SA-1 B-A-SA-2 B-A-SA-3 B-A-SA-4 
+##       30     1451     4325      974        5       14       15       40 
+## B-A-MU-1 B-A-MU-2 B-A-MU-3 B-A-MU-4 B-R-EP-1 B-R-EP-2 B-R-EP-3 B-R-EP-4 
+##        0        3        4       12        0     1390      445     1340 
+## S-A-RE-1 S-A-RE-2 S-A-RE-3 S-A-RE-4 S-R-SE-1 S-R-SE-2 S-R-SE-3 S-R-SE-4 
+##     1606     1081     1358     1742       31     1267     4191     6831 
+## [1] "B-A-MU-1" "B-R-EP-1"
+## character(0)
+## S-R-CI-1 S-R-CI-2 S-R-CI-3 S-R-CI-4 B-A-SA-1 B-A-SA-2 B-A-SA-3 B-A-SA-4 
+##       30     1451     4325      974        5       14       15       40 
+## B-A-MU-2 B-A-MU-3 B-A-MU-4 B-R-EP-2 B-R-EP-3 B-R-EP-4 S-A-RE-1 S-A-RE-2 
+##        3        4       12     1390      445     1340     1606     1081 
+## S-A-RE-3 S-A-RE-4 S-R-SE-1 S-R-SE-2 S-R-SE-3 S-R-SE-4 
+##     1358     1742       31     1267     4191     6831 
+##    Hydrachnidia     Ampularidae         Atyidae        Baetidae  Belastomatidae 
+##              45               4              59             112               2 
+##        Caenidae Ceratopogonidae  Coenagrionidae    Conchostraca       Corixidae 
+##             153              75              18             180             880 
+##   Curculionidae     Chaoboridae  Chironomidae_L  Chironomidae_P    Dytiscidae_L 
+##               6               2            6643             139               6 
+##    Dytiscidae_A        Gerridae       Gomphidae Glossosomatidae Hidrophilidae_L 
+##              34               2              40               6             233 
+##  Hidrophilide_A       Hirudinea   Leptohyphidae    Leptoceridae    Libellulidae 
+##              98               8              35               3             239 
+##      Lymnaeidae      Naucoridae    Notonectidae     Oligochaeta       Ostracoda 
+##               3              13              66            4018             130 
+##     Planorbidae        Physidae      Sphaeridae       Thiaridae        Veliidae 
+##             717              30               1           14152               3 
+## character(0)
+## character(0)
+##    Hydrachnidia     Ampularidae         Atyidae        Baetidae  Belastomatidae 
+##              45               4              59             112               2 
+##        Caenidae Ceratopogonidae  Coenagrionidae    Conchostraca       Corixidae 
+##             153              75              18             180             880 
+##   Curculionidae     Chaoboridae  Chironomidae_L  Chironomidae_P    Dytiscidae_L 
+##               6               2            6643             139               6 
+##    Dytiscidae_A        Gerridae       Gomphidae Glossosomatidae Hidrophilidae_L 
+##              34               2              40               6             233 
+##  Hidrophilide_A       Hirudinea   Leptohyphidae    Leptoceridae    Libellulidae 
+##              98               8              35               3             239 
+##      Lymnaeidae      Naucoridae    Notonectidae     Oligochaeta       Ostracoda 
+##               3              13              66            4018             130 
+##     Planorbidae        Physidae      Sphaeridae       Thiaridae        Veliidae 
+##             717              30               1           14152               3</code></pre>
+<div class="sourceCode" id="cb232"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/grDevices/dev.html">dev.off</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/rm.html">rm</a></span><span class="op">(</span>list<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/ls.html">ls</a></span><span class="op">(</span>all<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"\014"</span><span class="op">)</span></span>
+<span><span class="va">t_grps</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">"t_grps.csv"</span>,</span>
+<span>                   sep <span class="op">=</span> <span class="st">";"</span>, dec <span class="op">=</span> <span class="st">"."</span>,</span>
+<span>                   row.names <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>                   header <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                   na.strings <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span></span>
+<span><span class="va">m_hab</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">"m_hab.csv"</span>,</span>
+<span>                  sep <span class="op">=</span> <span class="st">";"</span>, dec <span class="op">=</span> <span class="st">"."</span>,</span>
+<span>                  row.names <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>                  header <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                  na.strings <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Correlograma e redução de variáveis desnecessárias</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://personality-project.org/r/psych/">psych</a></span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">m_hab</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">#png("fig-hab_pairs.png")</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/psych/man/pairs.panels.html">pairs.panels</a></span><span class="op">(</span><span class="va">m_hab</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">2</span><span class="op">]</span>, <span class="co">#colunas de interesse</span></span>
+<span>             method <span class="op">=</span> <span class="st">"pearson"</span>, <span class="co"># correlation method</span></span>
+<span>             scale <span class="op">=</span> <span class="cn">FALSE</span>, lm <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>             hist.col <span class="op">=</span> <span class="st">"#00AFBB"</span>, pch <span class="op">=</span> <span class="fl">19</span>,</span>
+<span>             density <span class="op">=</span> <span class="cn">TRUE</span>,  <span class="co"># show density plots</span></span>
+<span>             ellipses <span class="op">=</span> <span class="cn">TRUE</span>, <span class="co"># show correlation ellipses</span></span>
+<span>             alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
+<span><span class="co">#dev.off()</span></span>
+<span></span>
+<span><span class="va">cor</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/cor.html">cor</a></span><span class="op">(</span><span class="va">m_hab</span><span class="op">)</span></span>
+<span><span class="va">cor</span></span>
+<span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/taiyun/corrplot">corrplot</a></span><span class="op">)</span></span>
+<span><span class="co">#png("fig-hab_corrplot.png")</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/corrplot/man/corrplot.html">corrplot</a></span><span class="op">(</span><span class="va">cor</span>, method <span class="op">=</span> <span class="st">"circle"</span><span class="op">)</span></span>
+<span><span class="co">#dev.off()</span></span>
+<span></span>
+<span><span class="co">## Impressão em papel</span></span>
+<span><span class="co">#win.print()</span></span>
+<span><span class="co">#corrplot(cor, method = "circle")</span></span>
+<span><span class="co">#dev.off()</span></span>
+<span></span>
+<span><span class="co"># Deletando colineares</span></span>
+<span><span class="co">#sink(file = "colineares.txt", append = F, split = T)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">m_hab</span><span class="op">)</span></span>
+<span><span class="va">del_cols</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">)</span> <span class="co">#"g.river_length","g.altitude" #NÃO DELETEI VARIÁVEIS</span></span>
+<span><span class="va">m_hab_part</span> <span class="op">&lt;-</span> <span class="va">m_hab</span><span class="op">[</span>, <span class="op">!</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">m_hab</span><span class="op">)</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="va">del_cols</span><span class="op">)</span><span class="op">]</span></span>
+<span></span>
+<span><span class="co"># Somando redundantes</span></span>
+<span><span class="va">m_hab_part</span><span class="op">$</span><span class="va">s.gravel</span> <span class="op">&lt;-</span> <span class="va">m_hab_part</span><span class="op">$</span><span class="va">s.smlgrav</span> <span class="op">+</span> <span class="va">m_hab_part</span><span class="op">$</span><span class="va">s.lrggrav</span> <span class="op">+</span> <span class="va">m_hab_part</span><span class="op">$</span><span class="va">s.cobbles</span></span>
+<span><span class="va">m_hab_part</span> <span class="op">&lt;-</span> <span class="va">m_hab_part</span><span class="op">[</span>, <span class="op">!</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">m_hab_part</span><span class="op">)</span></span>
+<span>                             <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"s.smlgrav"</span>, <span class="st">"s.lrggrav"</span>, <span class="st">"s.cobbles"</span><span class="op">)</span><span class="op">)</span><span class="op">]</span></span>
+<span><span class="va">m_hab_part</span><span class="op">$</span><span class="va">s.rocks</span> <span class="op">&lt;-</span> <span class="va">m_hab_part</span><span class="op">$</span><span class="va">s.rocks</span> <span class="op">+</span> <span class="va">m_hab_part</span><span class="op">$</span><span class="va">s.bedrock</span></span>
+<span><span class="va">m_hab_part</span> <span class="op">&lt;-</span> <span class="va">m_hab_part</span><span class="op">[</span>, <span class="op">!</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">m_hab_part</span><span class="op">)</span></span>
+<span>                             <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"s.bedrock"</span><span class="op">)</span><span class="op">)</span><span class="op">]</span> <span class="co">#rocks novo substitui o antigo</span></span>
+<span><span class="va">m_hab_part</span><span class="op">$</span><span class="va">h.algae</span> <span class="op">&lt;-</span> <span class="va">m_hab_part</span><span class="op">$</span><span class="va">h.filalgae</span> <span class="op">+</span> <span class="va">m_hab_part</span><span class="op">$</span><span class="va">h.attalgae</span></span>
+<span><span class="va">m_hab_part</span> <span class="op">&lt;-</span> <span class="va">m_hab_part</span><span class="op">[</span>, <span class="op">!</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">m_hab_part</span><span class="op">)</span></span>
+<span>                             <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"h.filalgae"</span>, <span class="st">"h.attalgae"</span><span class="op">)</span><span class="op">)</span><span class="op">]</span></span>
+<span><span class="va">m_hab_part</span><span class="op">$</span><span class="va">h.debris</span> <span class="op">&lt;-</span> <span class="va">m_hab_part</span><span class="op">$</span><span class="va">h.smldeb</span> <span class="op">+</span> <span class="va">m_hab_part</span><span class="op">$</span><span class="va">h.lrgdeb</span></span>
+<span><span class="va">m_hab_part</span> <span class="op">&lt;-</span> <span class="va">m_hab_part</span><span class="op">[</span>, <span class="op">!</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">m_hab_part</span><span class="op">)</span></span>
+<span>                             <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"h.smldeb"</span>, <span class="st">"h.lrgdeb"</span><span class="op">)</span><span class="op">)</span><span class="op">]</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">m_hab_part</span><span class="op">)</span></span>
+<span><span class="va">m_hab_part</span></span>
+<span><span class="co">#sink()</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/write.table.html">write.table</a></span><span class="op">(</span><span class="va">m_hab_part</span>, <span class="st">"m_hab_part.csv"</span>,</span>
+<span>            sep <span class="op">=</span> <span class="st">";"</span>, dec <span class="op">=</span> <span class="st">"."</span>, <span class="co">#"\t",</span></span>
+<span>            row.names <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>            quote <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>            append <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span><span class="va">m_hab_part</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">"m_hab_part.csv"</span>,</span>
+<span>                  sep <span class="op">=</span> <span class="st">";"</span>, dec <span class="op">=</span> <span class="st">"."</span>,</span>
+<span>                  row.names <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>                  header <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                  na.strings <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span></span></code></pre></div>
+<pre><code>## null device 
+##           1 
+##  [1] "g.river_length" "g.altitude"     "m.depth_mar"    "m.depth_max"   
+##  [5] "m.slope"        "m.width"        "q.w_vel"        "q.temp"        
+##  [9] "q.do"           "q.turb"         "s.mud"          "s.sand"        
+## [13] "s.smlgrav"      "s.lrggrav"      "s.cobbles"      "s.rocks"       
+## [17] "s.bedrock"      "h.macroph"      "h.grass"        "h.subveg"      
+## [21] "h.overhveg"     "h.litter"       "h.filalgae"     "h.attalgae"    
+## [25] "h.roots"        "h.smldeb"       "h.lrgdeb"      
+##                g.river_length  g.altitude   m.depth_mar m.depth_max
+## g.river_length    1.000000000  0.84502567 -0.2107788227  0.03193375
+## g.altitude        0.845025674  1.00000000 -0.5456269822 -0.05715772
+## m.depth_mar      -0.210778823 -0.54562698  1.0000000000  0.48741161
+## m.depth_max       0.031933747 -0.05715772  0.4874116097  1.00000000
+## m.slope          -0.349208370 -0.42489758  0.3283867843  0.05612196
+## m.width           0.641988529  0.92424799 -0.6825592240 -0.12448305
+## q.w_vel          -0.262001078 -0.38295700  0.5171356166  0.17255835
+## q.temp           -0.525665151 -0.63928720  0.3911634740  0.21637312
+## q.do             -0.051659274 -0.04102810 -0.0991121996 -0.07100992
+## q.turb           -0.091714999  0.16898017  0.1101861220  0.43212925
+## s.mud             0.572275653  0.53376284 -0.3050313798 -0.02986246
+## s.sand           -0.419694387 -0.39540877  0.2504305845  0.07714330
+## s.smlgrav        -0.471237455 -0.33801390 -0.1291605642 -0.18707938
+## s.lrggrav        -0.544226442 -0.34645497 -0.2042006110 -0.21830987
+## s.cobbles        -0.403532433 -0.42286274  0.3291265735 -0.17913390
+## s.rocks          -0.117779725 -0.20066951  0.1319413256 -0.03858935
+## s.bedrock        -0.192613303 -0.18845652  0.4127970495  0.56482143
+## h.macroph        -0.215456970 -0.05481455 -0.1836470655  0.09117336
+## h.grass           0.265200241  0.30832251 -0.0409219509  0.20663711
+## h.subveg          0.279722831  0.39857061 -0.1392387004  0.27630152
+## h.overhveg       -0.590722577 -0.38967693  0.0687330694  0.04945054
+## h.litter         -0.242878589 -0.06083615  0.0507371439  0.39847691
+## h.filalgae       -0.392485116 -0.17902428  0.0005987805  0.18844607
+## h.attalgae       -0.001186444  0.10038855  0.0148526066 -0.23527738
+## h.roots          -0.516543690 -0.36183451 -0.0963721795 -0.35893734
+## h.smldeb         -0.124355809  0.06081352  0.0325551250  0.51395706
+## h.lrgdeb         -0.117830284  0.03802733  0.0419116237  0.26995051
+##                     m.slope       m.width     q.w_vel      q.temp          q.do
+## g.river_length -0.349208370  0.6419885285 -0.26200108 -0.52566515 -0.0516592738
+## g.altitude     -0.424897575  0.9242479855 -0.38295700 -0.63928720 -0.0410280998
+## m.depth_mar     0.328386784 -0.6825592240  0.51713562  0.39116347 -0.0991121996
+## m.depth_max     0.056121960 -0.1244830484  0.17255835  0.21637312 -0.0710099161
+## m.slope         1.000000000 -0.5498770747 -0.10766070  0.19871727 -0.0419308349
+## m.width        -0.549877075  1.0000000000 -0.31411254 -0.54204077  0.0008131425
+## q.w_vel        -0.107660702 -0.3141125390  1.00000000  0.64759095  0.0629064699
+## q.temp          0.198717266 -0.5420407696  0.64759095  1.00000000 -0.0722772054
+## q.do           -0.041930835  0.0008131425  0.06290647 -0.07227721  1.0000000000
+## q.turb          0.010259341  0.2383863495 -0.11099701 -0.24210974  0.1100032765
+## s.mud          -0.528125673  0.5605422773 -0.09358538 -0.20493421  0.3008137410
+## s.sand          0.526002627 -0.4515653205  0.04563133  0.16012915 -0.3159294821
+## s.smlgrav       0.465564864 -0.2836142916 -0.02643266  0.23060553  0.2292491864
+## s.lrggrav       0.185917468 -0.2204634853  0.03572644  0.27712369  0.1463795646
+## s.cobbles      -0.005901226 -0.3824094214  0.19824905  0.05603254 -0.1890471593
+## s.rocks        -0.082932175 -0.2519993118 -0.21518824 -0.22008642  0.0037875243
+## s.bedrock       0.031654006 -0.0873140063  0.49907808  0.41780461 -0.0673382190
+## h.macroph       0.050444099  0.1399878974 -0.14691717  0.18665422  0.2629680490
+## h.grass        -0.403122259  0.2434340256  0.30883851  0.09532319 -0.2353366428
+## h.subveg       -0.312667133  0.4184204319  0.10626426  0.11033997 -0.6046348220
+## h.overhveg      0.226153390 -0.2288480414  0.37153753  0.39196980 -0.2374637651
+## h.litter        0.046848349 -0.0329222552  0.22271660  0.34840703 -0.3956033776
+## h.filalgae      0.127026094  0.0195632889 -0.01352383 -0.04474398  0.0751694004
+## h.attalgae     -0.179393906  0.1059553668 -0.06926506 -0.35207241  0.2105548893
+## h.roots         0.176998187 -0.2800912329  0.20229610  0.21512444 -0.2009824555
+## h.smldeb       -0.116260323  0.0704089450 -0.05336000  0.04276197 -0.2490107269
+## h.lrgdeb       -0.064284838  0.0620580191 -0.03594483 -0.17183100 -0.0868542185
+##                     q.turb       s.mud       s.sand    s.smlgrav   s.lrggrav
+## g.river_length -0.09171500  0.57227565 -0.419694387 -0.471237455 -0.54422644
+## g.altitude      0.16898017  0.53376284 -0.395408774 -0.338013905 -0.34645497
+## m.depth_mar     0.11018612 -0.30503138  0.250430585 -0.129160564 -0.20420061
+## m.depth_max     0.43212925 -0.02986246  0.077143302 -0.187079380 -0.21830987
+## m.slope         0.01025934 -0.52812567  0.526002627  0.465564864  0.18591747
+## m.width         0.23838635  0.56054228 -0.451565321 -0.283614292 -0.22046349
+## q.w_vel        -0.11099701 -0.09358538  0.045631331 -0.026432657  0.03572644
+## q.temp         -0.24210974 -0.20493421  0.160129148  0.230605533  0.27712369
+## q.do            0.11000328  0.30081374 -0.315929482  0.229249186  0.14637956
+## q.turb          1.00000000 -0.07223620  0.083599381 -0.090296375 -0.07355212
+## s.mud          -0.07223620  1.00000000 -0.957783005 -0.222195445 -0.22432912
+## s.sand          0.08359938 -0.95778300  1.000000000  0.111089985  0.08256158
+## s.smlgrav      -0.09029638 -0.22219545  0.111089985  1.000000000  0.91807630
+## s.lrggrav      -0.07355212 -0.22432912  0.082561585  0.918076304  1.00000000
+## s.cobbles       0.01134598 -0.44887064  0.222657542 -0.026424565  0.08842146
+## s.rocks        -0.01558541 -0.06910979 -0.069654875 -0.309941518 -0.22077847
+## s.bedrock       0.14116818  0.20182097 -0.224546542 -0.078999373 -0.13636908
+## h.macroph       0.31158993 -0.04413777  0.126276177  0.006717696  0.04584885
+## h.grass        -0.01509716 -0.16537718  0.222442150 -0.177811657 -0.04127532
+## h.subveg        0.06506041  0.08033288 -0.004435688 -0.286378841 -0.20744404
+## h.overhveg     -0.03986454 -0.35117567  0.318668751  0.140256840  0.16791271
+## h.litter        0.06881438 -0.32562795  0.327771847  0.078055730  0.12016548
+## h.filalgae      0.49077319 -0.22342824  0.158521843  0.039501763  0.06036785
+## h.attalgae      0.20060451  0.08590942 -0.194244940 -0.263503810 -0.21204080
+## h.roots        -0.26305709 -0.47340712  0.446429062  0.369358654  0.44783328
+## h.smldeb        0.26451875 -0.08555157  0.144514486 -0.145032992 -0.07961314
+## h.lrgdeb        0.53297687 -0.29308976  0.392806733 -0.175030819 -0.04309051
+##                   s.cobbles      s.rocks   s.bedrock    h.macroph      h.grass
+## g.river_length -0.403532433 -0.117779725 -0.19261330 -0.215456970  0.265200241
+## g.altitude     -0.422862740 -0.200669512 -0.18845652 -0.054814547  0.308322511
+## m.depth_mar     0.329126574  0.131941326  0.41279705 -0.183647065 -0.040921951
+## m.depth_max    -0.179133903 -0.038589348  0.56482143  0.091173356  0.206637114
+## m.slope        -0.005901226 -0.082932175  0.03165401  0.050444099 -0.403122259
+## m.width        -0.382409421 -0.251999312 -0.08731401  0.139987897  0.243434026
+## q.w_vel         0.198249045 -0.215188244  0.49907808 -0.146917169  0.308838515
+## q.temp          0.056032544 -0.220086417  0.41780461  0.186654221  0.095323192
+## q.do           -0.189047159  0.003787524 -0.06733822  0.262968049 -0.235336643
+## q.turb          0.011345983 -0.015585412  0.14116818  0.311589934 -0.015097158
+## s.mud          -0.448870644 -0.069109791  0.20182097 -0.044137771 -0.165377185
+## s.sand          0.222657542 -0.069654875 -0.22454654  0.126276177  0.222442150
+## s.smlgrav      -0.026424565 -0.309941518 -0.07899937  0.006717696 -0.177811657
+## s.lrggrav       0.088421459 -0.220778474 -0.13636908  0.045848851 -0.041275322
+## s.cobbles       1.000000000  0.469913591 -0.12127157 -0.252264472  0.023835319
+## s.rocks         0.469913591  1.000000000 -0.13468574 -0.243815262 -0.247534694
+## s.bedrock      -0.121271567 -0.134685736  1.00000000 -0.043359102 -0.060677870
+## h.macroph      -0.252264472 -0.243815262 -0.04335910  1.000000000 -0.225166424
+## h.grass         0.023835319 -0.247534694 -0.06067787 -0.225166424  1.000000000
+## h.subveg       -0.160976449 -0.231842136  0.30426497 -0.149722575  0.649953984
+## h.overhveg      0.064906116 -0.098085706  0.50479206 -0.057627452 -0.109199604
+## h.litter       -0.013581580 -0.153337520  0.43853508 -0.125555623  0.566470585
+## h.filalgae      0.188914571  0.134383965  0.33443584  0.298616900 -0.195372923
+## h.attalgae      0.405309857  0.555931124 -0.01984227 -0.211808706 -0.188804421
+## h.roots         0.084905231 -0.161381949 -0.09968140 -0.180448561 -0.004101108
+## h.smldeb       -0.231674975 -0.054180714  0.41463548 -0.074651931  0.262978643
+## h.lrgdeb       -0.158839149 -0.123236069 -0.08773874  0.270168938  0.099117063
+##                    h.subveg  h.overhveg    h.litter    h.filalgae   h.attalgae
+## g.river_length  0.279722831 -0.59072258 -0.24287859 -0.3924851158 -0.001186444
+## g.altitude      0.398570607 -0.38967693 -0.06083615 -0.1790242790  0.100388552
+## m.depth_mar    -0.139238700  0.06873307  0.05073714  0.0005987805  0.014852607
+## m.depth_max     0.276301517  0.04945054  0.39847691  0.1884460741 -0.235277380
+## m.slope        -0.312667133  0.22615339  0.04684835  0.1270260944 -0.179393906
+## m.width         0.418420432 -0.22884804 -0.03292226  0.0195632889  0.105955367
+## q.w_vel         0.106264262  0.37153753  0.22271660 -0.0135238333 -0.069265056
+## q.temp          0.110339966  0.39196980  0.34840703 -0.0447439758 -0.352072407
+## q.do           -0.604634822 -0.23746377 -0.39560338  0.0751694004  0.210554889
+## q.turb          0.065060415 -0.03986454  0.06881438  0.4907731880  0.200604509
+## s.mud           0.080332879 -0.35117567 -0.32562795 -0.2234282427  0.085909418
+## s.sand         -0.004435688  0.31866875  0.32777185  0.1585218432 -0.194244940
+## s.smlgrav      -0.286378841  0.14025684  0.07805573  0.0395017635 -0.263503810
+## s.lrggrav      -0.207444039  0.16791271  0.12016548  0.0603678501 -0.212040802
+## s.cobbles      -0.160976449  0.06490612 -0.01358158  0.1889145712  0.405309857
+## s.rocks        -0.231842136 -0.09808571 -0.15333752  0.1343839650  0.555931124
+## s.bedrock       0.304264973  0.50479206  0.43853508  0.3344358402 -0.019842268
+## h.macroph      -0.149722575 -0.05762745 -0.12555562  0.2986168997 -0.211808706
+## h.grass         0.649953984 -0.10919960  0.56647059 -0.1953729233 -0.188804421
+## h.subveg        1.000000000  0.05371661  0.65370466 -0.0812920466 -0.168289149
+## h.overhveg      0.053716610  1.00000000  0.44095646  0.3071336586 -0.067998523
+## h.litter        0.653704655  0.44095646  1.00000000  0.1849508655 -0.129422759
+## h.filalgae     -0.081292047  0.30713366  0.18495087  1.0000000000  0.156814606
+## h.attalgae     -0.168289149 -0.06799852 -0.12942276  0.1568146063  1.000000000
+## h.roots        -0.132672304  0.72073747  0.16368669 -0.1312445975 -0.158491818
+## h.smldeb        0.407462990  0.42571768  0.72455356  0.1168191385  0.038651614
+## h.lrgdeb       -0.092240200  0.17593257  0.02424289  0.2700099670 -0.075556606
+##                     h.roots    h.smldeb    h.lrgdeb
+## g.river_length -0.516543690 -0.12435581 -0.11783028
+## g.altitude     -0.361834509  0.06081352  0.03802733
+## m.depth_mar    -0.096372180  0.03255513  0.04191162
+## m.depth_max    -0.358937337  0.51395706  0.26995051
+## m.slope         0.176998187 -0.11626032 -0.06428484
+## m.width        -0.280091233  0.07040894  0.06205802
+## q.w_vel         0.202296097 -0.05336000 -0.03594483
+## q.temp          0.215124441  0.04276197 -0.17183100
+## q.do           -0.200982456 -0.24901073 -0.08685422
+## q.turb         -0.263057089  0.26451875  0.53297687
+## s.mud          -0.473407121 -0.08555157 -0.29308976
+## s.sand          0.446429062  0.14451449  0.39280673
+## s.smlgrav       0.369358654 -0.14503299 -0.17503082
+## s.lrggrav       0.447833281 -0.07961314 -0.04309051
+## s.cobbles       0.084905231 -0.23167498 -0.15883915
+## s.rocks        -0.161381949 -0.05418071 -0.12323607
+## s.bedrock      -0.099681402  0.41463548 -0.08773874
+## h.macroph      -0.180448561 -0.07465193  0.27016894
+## h.grass        -0.004101108  0.26297864  0.09911706
+## h.subveg       -0.132672304  0.40746299 -0.09224020
+## h.overhveg      0.720737471  0.42571768  0.17593257
+## h.litter        0.163686687  0.72455356  0.02424289
+## h.filalgae     -0.131244597  0.11681914  0.27000997
+## h.attalgae     -0.158491818  0.03865161 -0.07555661
+## h.roots         1.000000000  0.17466111  0.19797552
+## h.smldeb        0.174661113  1.00000000  0.32818609
+## h.lrgdeb        0.197975524  0.32818609  1.00000000
+##  [1] "g.river_length" "g.altitude"     "m.depth_mar"    "m.depth_max"   
+##  [5] "m.slope"        "m.width"        "q.w_vel"        "q.temp"        
+##  [9] "q.do"           "q.turb"         "s.mud"          "s.sand"        
+## [13] "s.smlgrav"      "s.lrggrav"      "s.cobbles"      "s.rocks"       
+## [17] "s.bedrock"      "h.macroph"      "h.grass"        "h.subveg"      
+## [21] "h.overhveg"     "h.litter"       "h.filalgae"     "h.attalgae"    
+## [25] "h.roots"        "h.smldeb"       "h.lrgdeb"      
+##  [1] "g.river_length" "g.altitude"     "m.depth_mar"    "m.depth_max"   
+##  [5] "m.slope"        "m.width"        "q.w_vel"        "q.temp"        
+##  [9] "q.do"           "q.turb"         "s.mud"          "s.sand"        
+## [13] "s.rocks"        "h.macroph"      "h.grass"        "h.subveg"      
+## [17] "h.overhveg"     "h.litter"       "h.roots"        "s.gravel"      
+## [21] "h.algae"        "h.debris"      
+##          g.river_length g.altitude m.depth_mar m.depth_max m.slope m.width
+## S-R-CI-1        83.0500        169   22.666667          60      60   17.24
+## S-R-CI-2        83.0500        169   32.666667          68      60   18.47
+## S-R-CI-3        83.0500        169   32.666667          79      60   15.10
+## S-R-CI-4        83.0500        169   45.333333          64      60   10.70
+## B-A-SA-1       212.6667        713    8.166667          60      30  330.00
+## B-A-SA-2       212.6667        713    7.000000          69      30  321.00
+## B-A-SA-3       212.6667        713    6.833333          68      30  314.20
+## B-A-SA-4       212.6667        713    4.666667          63      30  289.50
+## B-A-MU-2       214.0200        725   22.000000         115      30  247.63
+## B-A-MU-3       214.0200        725   25.666667         117      30  234.53
+## B-A-MU-4       214.0200        725   41.333333         112      30  239.00
+## B-R-EP-2       196.8333        402   49.333333         110      90   29.60
+## B-R-EP-3       196.8333        402   50.000000          80      90   27.30
+## B-R-EP-4       196.8333        402   52.833333          95      90   20.00
+## S-A-RE-1       110.2000        270   54.666667         154      60  102.00
+## S-A-RE-2       110.2000        270   37.666667         118      60  100.00
+## S-A-RE-3       110.2000        270   22.333333         109      60   88.00
+## S-A-RE-4       110.2000        270   30.333333          87      60   72.20
+## S-R-SE-1       163.2000        226   81.333333         106      30   19.64
+## S-R-SE-2       163.2000        226   67.000000         105      30   16.10
+## S-R-SE-3       163.2000        226   32.333333         110      30    6.20
+## S-R-SE-4       163.2000        226   32.333333          74      30    5.40
+##            q.w_vel   q.temp     q.do   q.turb      s.mud    s.sand   s.rocks
+## S-R-CI-1 0.1591512 35.20000 6.863333 26.00000 16.6666667 70.000000  0.000000
+## S-R-CI-2 0.0000000 29.00000 3.015000 33.00000  0.6666667 87.666667  0.000000
+## S-R-CI-3 0.0000000 29.66667 5.000000 50.33333 48.7500000 22.500000  0.000000
+## S-R-CI-4 0.0000000 27.60000 4.900000 60.00000  5.0000000 60.000000 10.000000
+## B-A-SA-1 0.0000000 29.23333 5.136667 25.66667 96.6666667  3.333333  0.000000
+## B-A-SA-2 0.0000000 29.00000 1.850000 55.00000 98.0000000  2.000000  0.000000
+## B-A-SA-3 0.0000000 24.00000 8.800000 51.66667 87.7777778  6.666667  0.000000
+## B-A-SA-4 0.0000000 24.70000 8.750000 36.00000 95.1666667  3.416667  0.000000
+## B-A-MU-2 0.0000000 29.00000 1.815000 43.00000 20.6000000 77.000000  0.000000
+## B-A-MU-3 0.0000000 26.00000 5.700000 63.00000 65.0000000 35.000000  0.000000
+## B-A-MU-4 0.0000000 25.95000 7.300000 89.00000 91.7777778  3.222222  5.000000
+## B-R-EP-2 0.0000000 29.00000 5.635000 50.00000 39.0000000 56.000000  1.000000
+## B-R-EP-3 0.0000000 29.00000 5.000000 32.33333 33.6666667 63.000000  0.000000
+## B-R-EP-4 0.0000000 28.85000 5.100000 30.00000 48.8750000 47.875000  1.250000
+## S-A-RE-1 0.1000000 34.00000 4.820000 61.00000 81.6666667  8.333333  8.333333
+## S-A-RE-2 0.0000000 29.00000 5.000000 90.00000  5.0000000 95.000000  0.000000
+## S-A-RE-3 0.0000000 34.00000 9.000000 51.66667 46.6666667 40.000000  0.000000
+## S-A-RE-4 0.0000000 29.53333 9.433333 67.00000 59.1428571 38.714286  0.000000
+## S-R-SE-1 0.1666667 32.90000 6.510000 46.00000 65.0000000 30.000000  3.333333
+## S-R-SE-2 0.1250000 32.00000 5.375000 44.00000 40.0000000 40.000000  0.000000
+## S-R-SE-3 0.0000000 28.26667 6.000000 17.33333 65.5555556 23.111111  8.333333
+## S-R-SE-4 0.0000000 32.60000 6.000000 16.00000 95.0000000  1.833333  2.833333
+##          h.macroph    h.grass  h.subveg h.overhveg  h.litter  h.roots
+## S-R-CI-1  0.000000 23.3333333  3.000000  26.666667 2.3333333 3.333333
+## S-R-CI-2  0.000000  0.0000000  0.000000  33.333333 1.0000000 5.000000
+## S-R-CI-3  0.000000  0.0000000  0.000000   0.000000 1.5000000 1.000000
+## S-R-CI-4  0.000000  0.0000000  0.000000   8.333333 1.0000000 0.000000
+## B-A-SA-1 46.666667  0.0000000  3.333333   3.333333 0.0000000 0.000000
+## B-A-SA-2  2.600000  7.5000000 26.000000   0.400000 0.0000000 0.000000
+## B-A-SA-3  0.000000 13.3333333  0.000000   0.000000 0.0000000 0.000000
+## B-A-SA-4  2.083333  0.0000000  0.000000   0.000000 0.0000000 0.000000
+## B-A-MU-2  0.000000 54.0000000 36.600000   0.000000 5.0000000 0.000000
+## B-A-MU-3  0.000000 28.3333333  8.333333   0.000000 1.0000000 0.000000
+## B-A-MU-4  0.000000  5.5555556  0.000000   0.000000 0.4444444 0.000000
+## B-R-EP-2  0.000000  2.0000000  0.000000   0.000000 0.4000000 0.000000
+## B-R-EP-3  0.000000  0.0000000  0.000000   0.000000 0.3333333 0.000000
+## B-R-EP-4  0.000000  0.0000000  0.000000   0.000000 0.5000000 0.000000
+## S-A-RE-1  5.833333  0.0000000 16.666667  33.333333 3.6666667 0.000000
+## S-A-RE-2 54.833333  0.3333333  0.000000   8.333333 1.0000000 0.000000
+## S-A-RE-3 44.629630  8.1111111  0.000000   0.000000 0.6666667 0.000000
+## S-A-RE-4 37.309524  0.0000000  0.000000   0.000000 0.5714286 0.000000
+## S-R-SE-1  8.333333 20.0000000 10.000000   0.000000 0.6666667 0.000000
+## S-R-SE-2  0.000000 20.0000000  0.000000   0.000000 0.0000000 0.000000
+## S-R-SE-3  0.000000  0.1111111  0.000000   0.000000 0.0000000 0.000000
+## S-R-SE-4  0.000000  4.1666667  0.000000   0.000000 0.8333333 0.000000
+##            s.gravel    h.algae   h.debris
+## S-R-CI-1 13.3333333  4.0000000  3.6666667
+## S-R-CI-2 11.6666667  0.0000000 10.3333333
+## S-R-CI-3 28.7500000  6.7500000  3.6666667
+## S-R-CI-4 25.0000000 75.0000000  1.0000000
+## B-A-SA-1  0.0000000  0.0000000  0.0000000
+## B-A-SA-2  0.0000000  1.0000000  0.0000000
+## B-A-SA-3  5.5555556 25.0000000  0.0000000
+## B-A-SA-4  1.4166667 43.3333333  3.7500000
+## B-A-MU-2  2.4000000  0.0000000 10.0000000
+## B-A-MU-3  0.0000000  0.3333333 11.6666667
+## B-A-MU-4  0.0000000 30.0000000 10.4444444
+## B-R-EP-2  4.0000000  0.4000000  0.4000000
+## B-R-EP-3  3.3333333  0.0000000  0.4444444
+## B-R-EP-4  2.0000000  0.0000000  2.5000000
+## S-A-RE-1  1.6666667 28.3333333 10.0000000
+## S-A-RE-2  0.0000000 33.3333330 13.6666667
+## S-A-RE-3 13.3333333  9.0000000  1.6666667
+## S-A-RE-4  2.1428571  0.0000000  3.2857143
+## S-R-SE-1  1.6666667 12.0000000  3.3333333
+## S-R-SE-2 20.0000000  1.0000000  0.0000000
+## S-R-SE-3  3.0000000  0.0000000  2.2222222
+## S-R-SE-4  0.3333333  7.5000000  5.0000000</code></pre>
+</div>
+<div id="criando-tabelas-com-os-dados" class="section level3" number="15.1.2">
+<h3>
+<span class="header-section-number">15.1.2</span> Criando tabelas com os dados<a class="anchor" aria-label="anchor" href="#criando-tabelas-com-os-dados"><i class="fas fa-link"></i></a>
+</h3>
+<div class="sourceCode" id="cb234"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Tabela de habitat</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org">tidyr</a></span><span class="op">)</span></span>
+<span><span class="va">m_trab</span> <span class="op">&lt;-</span> <span class="va">m_hab_part</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html">rename_with</a></span><span class="op">(</span><span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/base/grep.html">gsub</a></span><span class="op">(</span><span class="st">"_"</span>, <span class="st">"."</span>, <span class="va">.</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">m</span> <span class="op">&lt;-</span> <span class="va">m_trab</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span>Area <span class="op">=</span> <span class="va">t_grps</span><span class="op">$</span><span class="va">area</span>,</span>
+<span>           Habitat <span class="op">=</span> <span class="va">t_grps</span><span class="op">$</span><span class="va">ambiente</span>,</span>
+<span>           Ponto <span class="op">=</span> <span class="va">t_grps</span><span class="op">$</span><span class="va">UA</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html">across</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/where.html">where</a></span><span class="op">(</span><span class="va">is.numeric</span><span class="op">)</span>,</span>
+<span>                   <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>mean <span class="op">=</span> <span class="va">mean</span>, min <span class="op">=</span> <span class="va">min</span>, max <span class="op">=</span> <span class="va">max</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>            .groups <span class="op">=</span> <span class="st">'drop'</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span></span>
+<span>    cols <span class="op">=</span> <span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">Area</span>, <span class="va">Habitat</span>, <span class="va">Ponto</span><span class="op">)</span>,</span>
+<span>    names_to <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Variable"</span>, <span class="st">".value"</span><span class="op">)</span>,</span>
+<span>    names_sep <span class="op">=</span> <span class="st">"_"</span></span>
+<span>  <span class="op">)</span></span>
+<span></span>
+<span><span class="va">m</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="va">m</span><span class="op">)</span></span>
+<span><span class="va">m_wide</span> <span class="op">&lt;-</span> <span class="va">m</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>stat_string <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">Variable</span> <span class="op">==</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"q.w.vel"</span><span class="op">)</span>,</span>
+<span>                              <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">mean</span>, <span class="fl">3</span><span class="op">)</span>, <span class="st">" ("</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">min</span>, <span class="fl">3</span><span class="op">)</span>, <span class="st">"-"</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">max</span>, <span class="fl">3</span><span class="op">)</span>, <span class="st">")"</span><span class="op">)</span>,</span>
+<span>                              <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">mean</span>, <span class="fl">1</span><span class="op">)</span>, <span class="st">" ("</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">min</span>, <span class="fl">1</span><span class="op">)</span>, <span class="st">"-"</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">max</span>, <span class="fl">1</span><span class="op">)</span>, <span class="st">")"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/unite.html">unite</a></span><span class="op">(</span><span class="st">"Location"</span>, <span class="va">Area</span>, <span class="va">Habitat</span>, <span class="va">Ponto</span>, sep <span class="op">=</span> <span class="st">"_"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">Variable</span>, <span class="va">Location</span>, <span class="va">stat_string</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider</a></span><span class="op">(</span>names_from <span class="op">=</span> <span class="va">Location</span>, values_from <span class="op">=</span> <span class="va">stat_string</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">m_wide</span></span>
+<span><span class="va">m_wide</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="va">m_wide</span><span class="op">)</span></span>
+<span><span class="va">m_wide</span></span>
+<span></span>
+<span><span class="co"># Definindo a ordem das linhas</span></span>
+<span><span class="va">ordem</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"g.river.length"</span>, <span class="st">"g.altitude"</span>,</span>
+<span>           <span class="st">"m.depth.mar"</span>, <span class="st">"m.depth.max"</span>, <span class="st">"m.slope"</span>, <span class="st">"m.width"</span>,</span>
+<span>           <span class="st">"q.w.vel"</span>, <span class="st">"q.temp"</span>, <span class="st">"q.do"</span>, <span class="st">"q.turb"</span>, <span class="st">"s.mud"</span>,</span>
+<span>           <span class="st">"s.sand"</span>, <span class="st">"s.gravel"</span>, <span class="st">"s.rocks"</span>,</span>
+<span>           <span class="st">"h.macroph"</span>, <span class="st">"h.grass"</span>, <span class="st">"h.subveg"</span>, <span class="st">"h.overhveg"</span>, <span class="st">"h.litter"</span>,</span>
+<span>           <span class="st">"h.algae"</span>, <span class="st">"h.roots"</span>, <span class="st">"h.debris"</span>    </span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Usando fatores (fica salvo no arquivo)</span></span>
+<span><span class="co">#m_wide$Variable &lt;- factor(m_wide$Variable, levels = ordem)</span></span>
+<span><span class="co">#m_wide &lt;- m_wide[order(m_wide$Variable), ]</span></span>
+<span></span>
+<span><span class="va">m_wide</span> <span class="op">&lt;-</span> <span class="va">m_wide</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/match.html">match</a></span><span class="op">(</span><span class="va">ordem</span>, <span class="va">m_wide</span><span class="op">$</span><span class="va">Variable</span><span class="op">)</span>, <span class="op">]</span></span>
+<span><span class="va">m_wide</span></span>
+<span></span>
+<span><span class="co"># Salvado m_wide</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/write.table.html">write.table</a></span><span class="op">(</span><span class="va">m_wide</span>, <span class="st">"m_wide_hab.txt"</span>,</span>
+<span>            sep <span class="op">=</span> <span class="st">";"</span>, dec <span class="op">=</span> <span class="st">"."</span>, <span class="co">#"\t",</span></span>
+<span>            row.names <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>            quote <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>            append <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span><span class="va">m_wide_hab</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.table</a></span><span class="op">(</span><span class="st">"m_wide_hab.txt"</span>,</span>
+<span>                  sep <span class="op">=</span> <span class="st">";"</span>, dec <span class="op">=</span> <span class="st">"."</span>,</span>
+<span>                  row.names <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>                  header <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                  na.strings <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Exportando dados para Excel</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ycphs.github.io/openxlsx/index.html">openxlsx</a></span><span class="op">)</span></span>
+<span><span class="co">#write.xlsx(m_wide, file = "tabela de habitat.xlsx", rowNames = FALSE) #só roda essa linhas a primeira vez</span></span>
+<span><span class="va">wb</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/openxlsx/man/loadWorkbook.html">loadWorkbook</a></span><span class="op">(</span><span class="st">"tabela de habitat.xlsx"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/openxlsx/man/writeData.html">writeData</a></span><span class="op">(</span><span class="va">wb</span>, sheet <span class="op">=</span> <span class="st">"Sheet 1"</span>, x <span class="op">=</span> <span class="va">m_wide</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/openxlsx/man/saveWorkbook.html">saveWorkbook</a></span><span class="op">(</span><span class="va">wb</span>, <span class="st">"tabela de habitat.xlsx"</span>, overwrite <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb235"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Escolher sumário de uma variavel</span></span>
+<span><span class="va">m</span></span>
+<span><span class="va">var</span> <span class="op">&lt;-</span> <span class="st">"h.roots"</span></span>
+<span><span class="va">m</span><span class="op">[</span><span class="va">m</span><span class="op">$</span><span class="va">Variable</span> <span class="op">==</span> <span class="va">var</span>, <span class="st">"mean"</span><span class="op">]</span> <span class="co">#cada valor de var</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">m</span><span class="op">[</span><span class="va">m</span><span class="op">$</span><span class="va">Variable</span> <span class="op">==</span> <span class="va">var</span>, <span class="st">"mean"</span><span class="op">]</span><span class="op">)</span> <span class="co">#sumário dos valores de var</span></span>
+<span></span>
+<span><span class="co"># Escolher sumário de um grupo de variáveis do df m</span></span>
+<span><span class="va">vars</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/grep.html">grep</a></span><span class="op">(</span><span class="st">"^h\\."</span>, <span class="va">m</span><span class="op">$</span><span class="va">Variable</span>, value <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">summaries</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="op">)</span> <span class="co">#criam uma lista vazia para guardar os sumários</span></span>
+<span><span class="co"># Loop para cada variável do grupo e guarda em summaries</span></span>
+<span><span class="kw">for</span> <span class="op">(</span><span class="va">var</span> <span class="kw">in</span> <span class="va">vars</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">summaries</span><span class="op">[[</span><span class="va">var</span><span class="op">]</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">m</span><span class="op">[</span><span class="va">m</span><span class="op">$</span><span class="va">Variable</span> <span class="op">==</span> <span class="va">var</span>, <span class="st">"mean"</span><span class="op">]</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span><span class="co">#var is a temporary variable used in the for loop to iterate through</span></span>
+<span><span class="co">#each variable name that starts with "h."</span></span>
+<span></span>
+<span><span class="va">summaries</span></span>
+<span><span class="va">summary_table</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/do.call.html">do.call</a></span><span class="op">(</span><span class="va">rbind</span>, <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="va">summaries</span>, <span class="va">as.data.frame.list</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">summary_table</span>, <span class="fl">2</span><span class="op">)</span></span>
+<span><span class="co">#sink(file = "summary_h.txt", split = TRUE)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">summary_table</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/order.html">order</a></span><span class="op">(</span><span class="va">summary_table</span><span class="op">$</span><span class="va">Mean</span>, decreasing <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>, <span class="op">]</span>, <span class="fl">2</span><span class="op">)</span></span>
+<span><span class="co">#sink()</span></span>
+<span></span>
+<span><span class="co"># Tabela limpa</span></span>
+<span><span class="va">summary_table</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span><span class="op">(</span>Variable <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="va">summary_table</span><span class="op">)</span>, <span class="va">summary_table</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="va">summary_table</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="cn">NULL</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">summary_table</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Variable"</span>, <span class="st">"Min"</span>, <span class="st">"Q1"</span>, <span class="st">"Median"</span>, <span class="st">"Mean"</span>, <span class="st">"Q3"</span>, <span class="st">"Max"</span><span class="op">)</span></span>
+<span><span class="va">summary_table</span></span></code></pre></div>
+<div class="sourceCode" id="cb236"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://readr.tidyverse.org">readr</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://gt.rstudio.com">gt</a></span><span class="op">)</span></span>
+<span><span class="va">m_wide_hab</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.table</a></span><span class="op">(</span><span class="st">"m_wide_hab.txt"</span>,</span>
+<span>                  sep <span class="op">=</span> <span class="st">";"</span>, dec <span class="op">=</span> <span class="st">"."</span>,</span>
+<span>                  row.names <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>                  header <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                  na.strings <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">#m_mapa &lt;- read_tsv("column_labels.txt", show_col_types = FALSE)</span></span>
+<span><span class="va">dados</span> <span class="op">&lt;-</span> <span class="va">m_wide_hab</span></span>
+<span><span class="va">dados</span></span>
+<span><span class="va">nomes</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">dados</span><span class="op">)</span><span class="op">[</span><span class="op">-</span><span class="fl">1</span><span class="op">]</span></span>
+<span><span class="va">nomes</span></span>
+<span></span>
+<span><span class="va">df_nomes</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span></span>
+<span>  original <span class="op">=</span> <span class="va">nomes</span>,</span>
+<span>  final    <span class="op">=</span> <span class="va">nomes</span>,</span>
+<span>  stringsAsFactors <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">df_nomes</span></span>
+<span><span class="va">df_nomes</span><span class="op">$</span><span class="va">final</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/grep.html">gsub</a></span><span class="op">(</span><span class="st">"_"</span>, <span class="st">"&lt;br&gt;"</span>, <span class="va">df_nomes</span><span class="op">$</span><span class="va">final</span><span class="op">)</span></span>
+<span><span class="va">dados</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span><span class="va">dados</span>,<span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html">across</a></span><span class="op">(</span><span class="op">-</span><span class="va">Variable</span>, <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/base/grep.html">gsub</a></span><span class="op">(</span><span class="st">" \\("</span>, <span class="st">"&lt;br&gt;("</span>, <span class="va">.</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#fix(df_nomes)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/write.table.html">write.table</a></span><span class="op">(</span><span class="va">df_nomes</span>, <span class="st">"df_nomes.txt"</span><span class="op">)</span></span>
+<span><span class="va">df_nomes</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.table</a></span><span class="op">(</span><span class="st">"df_nomes.txt"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">labels_finais</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/setNames.html">setNames</a></span><span class="op">(</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="va">df_nomes</span><span class="op">$</span><span class="va">final</span>, <span class="va">md</span><span class="op">)</span>,</span>
+<span>  <span class="va">nomes</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">tabela_gt</span> <span class="op">&lt;-</span> <span class="va">dados</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://gt.rstudio.com/reference/gt.html">gt</a></span><span class="op">(</span>rowname_col <span class="op">=</span> <span class="st">"Variable"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span><span class="co">#  tab_header(</span></span>
+<span><span class="co">#    title = "Características Ambientais",</span></span>
+<span><span class="co">#    subtitle = "Valores apresentados como média (mín–máx)"</span></span>
+<span><span class="co">#  ) %&gt;%</span></span>
+<span>  <span class="fu"><a href="https://gt.rstudio.com/reference/fmt_markdown.html">fmt_markdown</a></span><span class="op">(</span></span>
+<span>    columns <span class="op">=</span> <span class="op">-</span><span class="va">Variable</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://gt.rstudio.com/reference/cols_align.html">cols_align</a></span><span class="op">(</span></span>
+<span>    align <span class="op">=</span> <span class="st">"right"</span>,</span>
+<span>    columns <span class="op">=</span> <span class="op">-</span><span class="va">Variable</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://gt.rstudio.com/reference/cols_label.html">cols_label</a></span><span class="op">(</span>.list <span class="op">=</span> <span class="va">labels_finais</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">tabela_gt</span></span>
+<span><span class="fu"><a href="https://gt.rstudio.com/reference/gtsave.html">gtsave</a></span><span class="op">(</span><span class="va">tabela_gt</span>, <span class="st">"gt-hab_gttable.html"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://gt.rstudio.com/reference/gtsave.html">gtsave</a></span><span class="op">(</span><span class="va">tabela_gt</span>, <span class="st">"fig-hab_gttable.png"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/readRDS.html">saveRDS</a></span><span class="op">(</span><span class="va">tabela_gt</span>, <span class="st">"gt-hab_gttable.rds"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Importando tabela final ajustada no Excel</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://readxl.tidyverse.org">readxl</a></span><span class="op">)</span></span>
+<span><span class="va">hab_gttable</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span></span>
+<span>  path  <span class="op">=</span> <span class="st">"tabela de habitat.xlsx"</span>,</span>
+<span>  sheet <span class="op">=</span> <span class="st">"tabela_final"</span>,</span>
+<span>  range <span class="op">=</span> <span class="st">"C1:J27"</span><span class="op">)</span></span>
+<span><span class="va">hab_gttable</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://gt.rstudio.com">gt</a></span><span class="op">)</span></span>
+<span><span class="va">hab_gttable</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://gt.rstudio.com/reference/gt.html">gt</a></span><span class="op">(</span><span class="va">hab_gttable</span><span class="op">)</span></span>
+<span><span class="va">hab_gttable</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://gt.rstudio.com/reference/sub_missing.html">sub_missing</a></span><span class="op">(</span><span class="va">hab_gttable</span>,</span>
+<span>                      columns <span class="op">=</span> <span class="fu"><a href="https://tidyselect.r-lib.org/reference/everything.html">everything</a></span><span class="op">(</span><span class="op">)</span>, missing_text <span class="op">=</span> <span class="st">""</span><span class="op">)</span></span>
+<span><span class="co">#hab_gttable &lt;- fmt_number(hab_gttable, columns = "F.O.(%)", decimals = 1)</span></span>
+<span><span class="va">hab_gttable</span></span>
+<span><span class="fu"><a href="https://gt.rstudio.com/reference/gtsave.html">gtsave</a></span><span class="op">(</span><span class="va">hab_gttable</span>, <span class="st">"gt-hab_gttable_xlsx.html"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/readRDS.html">saveRDS</a></span><span class="op">(</span><span class="va">hab_gttable</span>, <span class="st">"gt-hab_gttable_xlsx.rds"</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb237"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">#BENTOS2006 - RAREFAÇÃO E ANOVAS----</span></span>
+<span><span class="co">#####....----</span></span>
+<span></span>
+<span><span class="co">#ORGANIZANADO DADOS----</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/grDevices/dev.html">dev.off</a></span><span class="op">(</span><span class="op">)</span> <span class="co">#apaga os graficos, se houver algum</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/rm.html">rm</a></span><span class="op">(</span>list<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/ls.html">ls</a></span><span class="op">(</span>all<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="co">#limpa a memória</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"\014"</span><span class="op">)</span> <span class="co">#limpa o console</span></span>
+<span></span>
+<span><span class="va">m_cont</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">"m_cont.csv"</span>,</span>
+<span>                   sep <span class="op">=</span> <span class="st">";"</span>, dec <span class="op">=</span> <span class="st">"."</span>,</span>
+<span>                   row.names <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>                   header <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                   na.strings <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span></span>
+<span><span class="va">m_cont</span></span>
+<span></span>
+<span><span class="co">##RAREFAÇÃO BASEADA EM CONTAGEM----</span></span>
+<span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://vegandevs.github.io/vegan/">vegan</a></span><span class="op">)</span></span>
+<span><span class="va">data</span> <span class="op">&lt;-</span> <span class="va">m_cont</span></span>
+<span><span class="va">S</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://vegandevs.github.io/vegan/reference/diversity.html">specnumber</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span> <span class="co">#observed number of species</span></span>
+<span><span class="va">S</span></span>
+<span><span class="co">#raremax &lt;- min(rowSums(data))</span></span>
+<span><span class="va">raremax</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/colSums.html">rowSums</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#raremax &lt;- 1000</span></span>
+<span><span class="va">raremax</span></span>
+<span><span class="va">Srare</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://vegandevs.github.io/vegan/reference/rarefy.html">rarefy</a></span><span class="op">(</span><span class="va">data</span>, <span class="va">raremax</span><span class="op">)</span></span>
+<span><span class="va">Srare</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">S</span>, <span class="va">Srare</span>, xlab <span class="op">=</span> <span class="st">"Observed No. of Species"</span>, ylab <span class="op">=</span> <span class="st">"Rarefied No. of Species"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html">abline</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/grDevices/png.html">png</a></span><span class="op">(</span><span class="st">"fig-rarecurve.png"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://vegandevs.github.io/vegan/reference/rarefy.html">rarecurve</a></span><span class="op">(</span><span class="va">data</span>, step <span class="op">=</span> <span class="fl">20</span>, sample <span class="op">=</span> <span class="va">raremax</span>, col <span class="op">=</span> <span class="st">"blue"</span>, cex <span class="op">=</span> <span class="fl">0.6</span>,</span>
+<span>          xlab <span class="op">=</span> <span class="st">"Sample size"</span>, ylab <span class="op">=</span> <span class="st">"Taxa"</span>, xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="co">#c(0,5000)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/grDevices/dev.html">dev.off</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">##ANOVAS----</span></span>
+<span></span>
+<span><span class="va">anovas</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span><span class="op">(</span>Srare <span class="op">=</span> <span class="va">Srare</span>, <span class="va">m_cont</span><span class="op">)</span></span>
+<span><span class="va">anovas</span> <span class="op">&lt;-</span> <span class="va">anovas</span><span class="op">[</span>,<span class="fl">1</span>, drop <span class="op">=</span> <span class="cn">FALSE</span><span class="op">]</span></span>
+<span><span class="va">anovas</span></span>
+<span><span class="va">m_dens</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">"m_dens.csv"</span>,</span>
+<span>                   sep <span class="op">=</span> <span class="st">";"</span>, dec <span class="op">=</span> <span class="st">"."</span>,</span>
+<span>                   row.names <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>                   header <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                   na.strings <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span></span>
+<span><span class="va">m_dens</span></span>
+<span><span class="va">anovas</span><span class="op">$</span><span class="va">dens</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colSums.html">rowMeans</a></span><span class="op">(</span><span class="va">m_dens</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="va">anovas</span></span>
+<span><span class="va">S</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://vegandevs.github.io/vegan/reference/diversity.html">specnumber</a></span><span class="op">(</span><span class="va">m_dens</span><span class="op">)</span></span>
+<span><span class="va">anovas</span><span class="op">$</span><span class="va">S</span> <span class="op">&lt;-</span> <span class="va">S</span></span>
+<span><span class="va">anovas</span></span>
+<span><span class="va">S</span></span>
+<span></span>
+<span><span class="co">###CRIANDO GRUPOS----</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
+<span><span class="va">anovas</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span><span class="op">(</span>Grupos <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="va">anovas</span><span class="op">)</span>, <span class="va">anovas</span><span class="op">)</span></span>
+<span><span class="va">anovas</span></span>
+<span><span class="va">grps</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/substr.html">substr</a></span><span class="op">(</span><span class="va">anovas</span><span class="op">[</span>, <span class="fl">1</span><span class="op">]</span>, <span class="fl">5</span>,<span class="fl">6</span><span class="op">)</span></span>
+<span><span class="va">grps</span></span>
+<span><span class="va">anovas</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span><span class="va">anovas</span>, Grupos <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">grps</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">anovas</span></span>
+<span></span>
+<span><span class="co">###SALVANDO MATRIZ FINAL ANOVAS----</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/write.table.html">write.table</a></span><span class="op">(</span><span class="va">anovas</span>, <span class="st">"t_anovas.csv"</span>,</span>
+<span>            sep <span class="op">=</span> <span class="st">";"</span>, dec <span class="op">=</span> <span class="st">"."</span>, <span class="co">#"\t",</span></span>
+<span>            row.names <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>            quote <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>            append <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span><span class="va">anovas</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">"t_anovas.csv"</span>,</span>
+<span>                   sep <span class="op">=</span> <span class="st">";"</span>, dec <span class="op">=</span> <span class="st">"."</span>,</span>
+<span>                   row.names <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>                   header <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                   na.strings <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span></span>
+<span><span class="va">anovas</span></span>
+<span></span>
+<span><span class="co">##ANOVA----</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/sink.html">sink</a></span><span class="op">(</span>file <span class="op">=</span> <span class="st">"anovas.txt"</span>, split <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></span>
+<span><span class="va">anova</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/aov.html">aov</a></span><span class="op">(</span><span class="va">Srare</span> <span class="op">~</span> <span class="va">Grupos</span>, data <span class="op">=</span> <span class="va">anovas</span><span class="op">)</span></span>
+<span><span class="va">anova</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">anova</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/TukeyHSD.html">TukeyHSD</a></span><span class="op">(</span><span class="va">anova</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">###RESUMO DO TUKEY----</span></span>
+<span><span class="va">tukey</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/TukeyHSD.html">TukeyHSD</a></span><span class="op">(</span><span class="va">anova</span><span class="op">)</span></span>
+<span><span class="va">tukey_df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="va">tukey</span><span class="op">$</span><span class="va">Grupos</span><span class="op">)</span></span>
+<span><span class="va">tukey_df</span><span class="op">$</span><span class="va">Comparison</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="va">tukey_df</span><span class="op">)</span></span>
+<span><span class="va">significant</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html">subset</a></span><span class="op">(</span><span class="va">tukey_df</span>, <span class="va">`p adj`</span> <span class="op">&lt;</span> <span class="fl">0.05</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">significant</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/sink.html">sink</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">##ANOVA PLOT----</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/levels.html">levels</a></span><span class="op">(</span><span class="va">anovas</span><span class="op">$</span><span class="va">Grupos</span><span class="op">)</span>  <span class="co">#to check existing levels</span></span>
+<span><span class="va">anovas</span><span class="op">$</span><span class="va">Grupos</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">anovas</span><span class="op">$</span><span class="va">Grupos</span>,</span>
+<span>                        levels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"MU"</span>, <span class="st">"SA"</span>, <span class="st">"EP"</span>, <span class="st">"RE"</span>, <span class="st">"CI"</span>, <span class="st">"SE"</span><span class="op">)</span><span class="op">)</span> <span class="co">#define a ordem</span></span>
+<span><span class="co">#anovas %&gt;%</span></span>
+<span><span class="co">#  group_by(Grupos) %&gt;%</span></span>
+<span><span class="co">#  summarise(</span></span>
+<span><span class="co">#    count = n(),</span></span>
+<span><span class="co">#    mean = mean(Srare, na.rm = TRUE),</span></span>
+<span><span class="co">#    sd = sd(Srare, na.rm = TRUE))</span></span>
+<span></span>
+<span><span class="va">rareplot</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">anovas</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Grupos</span>, y <span class="op">=</span> <span class="va">Srare</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_jitter.html">geom_jitter</a></span><span class="op">(</span>width <span class="op">=</span> <span class="fl">0.2</span>, alpha <span class="op">=</span> <span class="fl">0.6</span>, color <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span> <span class="op">+</span>  <span class="co"># jittered points (small)</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/stat_summary.html">stat_summary</a></span><span class="op">(</span>fun <span class="op">=</span> <span class="va">mean</span>, geom <span class="op">=</span> <span class="st">"point"</span>, size <span class="op">=</span> <span class="fl">4</span>, color <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span> <span class="op">+</span>  <span class="co"># large mean point</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/stat_summary.html">stat_summary</a></span><span class="op">(</span>fun.data <span class="op">=</span> <span class="va">mean_se</span>, geom <span class="op">=</span> <span class="st">"errorbar"</span>, width <span class="op">=</span> <span class="fl">0.1</span>, color <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span> <span class="op">+</span>  <span class="co"># SE bars</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">"Study sites"</span>, y <span class="op">=</span> <span class="st">"Rarefied richness"</span>, title <span class="op">=</span> <span class="st">""</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">rareplot</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsave.html">ggsave</a></span><span class="op">(</span><span class="va">rareplot</span>, dpi <span class="op">=</span> <span class="fl">300</span>, filename <span class="op">=</span> <span class="st">"fig-rarerich.png"</span>, bg <span class="op">=</span> <span class="st">"white"</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb238"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">#BENTOS2006 - REGRESSÕES----</span></span>
+<span><span class="co">#####....----</span></span>
+<span></span>
+<span><span class="co">#CORRELAÇÃO--------</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/grDevices/dev.html">dev.off</a></span><span class="op">(</span><span class="op">)</span> <span class="co">#apaga os graficos, se houver algum</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/rm.html">rm</a></span><span class="op">(</span>list<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/ls.html">ls</a></span><span class="op">(</span>all<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="co">#limpa a memória</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"\014"</span><span class="op">)</span> <span class="co">#limpa o console</span></span>
+<span></span>
+<span><span class="va">anovas</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">"t_anovas.csv"</span>,</span>
+<span>                   sep <span class="op">=</span> <span class="st">";"</span>, dec <span class="op">=</span> <span class="st">"."</span>,</span>
+<span>                   row.names <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>                   header <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                   na.strings <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">anovas</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">dens</span>, y <span class="op">=</span> <span class="va">Srare</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">3</span>, color <span class="op">=</span> <span class="st">"#00AFBB"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span>, color <span class="op">=</span> <span class="st">"#FC4E07"</span>, se <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span></span>
+<span>    x <span class="op">=</span> <span class="st">"dens"</span>,</span>
+<span>    y <span class="op">=</span> <span class="st">"Srare"</span>,</span>
+<span>    title <span class="op">=</span> <span class="st">"Correlação entre dens e Srare"</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/cor.test.html">cor.test</a></span><span class="op">(</span><span class="va">anovas</span><span class="op">$</span><span class="va">dens</span>, <span class="va">anovas</span><span class="op">$</span><span class="va">Srare</span>, method <span class="op">=</span> <span class="st">"pearson"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">#STEPWISE REGRESSION----</span></span>
+<span></span>
+<span><span class="co">#browseURL("https://www.r-bloggers.com/2023/12/a-complete-guide-to-stepwise-regression-in-r/")</span></span>
+<span><span class="co">#browseURL("https://www.sthda.com/english/articles/37-model-selection-essentials-in-r/154-stepwise-regression-essentials-in-r/")</span></span>
+<span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/topepo/caret/">caret</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">leaps</span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://www.stats.ox.ac.uk/pub/MASS4/">MASS</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">##ORGANIZANDO OS DADOS----</span></span>
+<span></span>
+<span><span class="va">m_hab_part</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">"m_hab_part.csv"</span>,</span>
+<span>                       sep <span class="op">=</span> <span class="st">";"</span>, dec <span class="op">=</span> <span class="st">"."</span>,</span>
+<span>                       row.names <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>                       header <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                       na.strings <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Select only columns starting with "m."</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">m_hab_part</span><span class="op">)</span></span>
+<span><span class="va">vars</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/grep.html">grep</a></span><span class="op">(</span><span class="st">"^(m)\\."</span>, <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">m_hab_part</span><span class="op">)</span>, value <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="co">#^(g|m) mais de uma inicial</span></span>
+<span><span class="va">vars</span></span>
+<span><span class="va">m_vars</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="op">(</span><span class="va">m_hab_part</span><span class="op">[</span>, <span class="va">vars</span><span class="op">]</span><span class="op">)</span><span class="op">)</span> <span class="co">#TRANSFORMAÇÃO</span></span>
+<span><span class="va">m_vars</span></span>
+<span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span><span class="op">(</span>Srare <span class="op">=</span> <span class="va">anovas</span><span class="op">$</span><span class="va">Srare</span>, <span class="va">m_vars</span><span class="op">)</span></span>
+<span><span class="va">data</span></span>
+<span></span>
+<span><span class="co"># Fit the full model</span></span>
+<span><span class="va">full.model</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">Srare</span> <span class="op">~</span><span class="va">.</span>, data <span class="op">=</span> <span class="va">data</span><span class="op">)</span></span>
+<span><span class="co"># Stepwise regression model</span></span>
+<span><span class="va">step.model</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/MASS/man/stepAIC.html">stepAIC</a></span><span class="op">(</span><span class="va">full.model</span>, direction <span class="op">=</span> <span class="st">"both"</span>, <span class="co">#both, backward, forward</span></span>
+<span>                      trace <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">step.model</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">models</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/leaps/man/regsubsets.html">regsubsets</a></span><span class="op">(</span><span class="va">Srare</span> <span class="op">~</span><span class="va">.</span>, data <span class="op">=</span> <span class="va">data</span>, nvmax <span class="op">=</span> <span class="fl">5</span>, <span class="co">#maximal number of predictors to incorporate in the model</span></span>
+<span>                     method <span class="op">=</span> <span class="st">"seqrep"</span><span class="op">)</span> <span class="co">#sequential replacement, combination of forward and backward selections</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">models</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Train model</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
+<span><span class="co"># set up repeated k-fold (number=10) cross-validation ("cv")</span></span>
+<span><span class="va">train.control</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/caret/man/trainControl.html">trainControl</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"cv"</span>, number <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span>
+<span><span class="co"># Train the model</span></span>
+<span><span class="va">step.model</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/caret/man/train.html">train</a></span><span class="op">(</span><span class="va">Srare</span> <span class="op">~</span><span class="va">.</span>, data <span class="op">=</span> <span class="va">data</span>,</span>
+<span>                    method <span class="op">=</span> <span class="st">"leapBackward"</span>,</span>
+<span>                    tuneGrid <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>nvmax <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">)</span>,</span>
+<span>                    trControl <span class="op">=</span> <span class="va">train.control</span><span class="op">)</span></span>
+<span><span class="co">#**You can't directly use two different data frames in train(), because train()</span></span>
+<span><span class="co">#(from caret package) expects all predictor (X) and response (Y) variables</span></span>
+<span><span class="co">#to be in the same data frame.</span></span>
+<span><span class="va">step.model</span><span class="op">$</span><span class="va">results</span></span>
+<span><span class="va">step.model</span><span class="op">$</span><span class="va">bestTune</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">step.model</span><span class="op">$</span><span class="va">finalModel</span><span class="op">)</span></span>
+<span><span class="va">nvmax</span> <span class="op">&lt;-</span> <span class="va">step.model</span><span class="op">$</span><span class="va">bestTune</span><span class="op">$</span><span class="va">nvmax</span></span>
+<span><span class="va">nvmax</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span><span class="op">(</span><span class="va">step.model</span><span class="op">$</span><span class="va">finalModel</span>, <span class="va">nvmax</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">lm_model</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">Srare</span> <span class="op">~</span>  <span class="va">m.slope</span> <span class="op">+</span> <span class="va">m.width</span>,</span>
+<span>   data <span class="op">=</span> <span class="va">data</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">lm_model</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">m_vars</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">###ALGUNS GRÁFICOS----</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">step.model</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/caret/man/varImp.html">varImp</a></span><span class="op">(</span><span class="va">step.model</span><span class="op">)</span></span>
+<span><span class="co">#library(car)</span></span>
+<span><span class="co">#crPlots(step.model)</span></span>
+<span><span class="co">#par(mfrow = c(1,1))</span></span></code></pre></div>
+<div class="sourceCode" id="cb239"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">#REMOVENDO ESPÉCIES RARAS----</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/browseURL.html">browseURL</a></span><span class="op">(</span><span class="st">"https://uw.pressbooks.pub/appliedmultivariatestatistics/chapter/data-adjustments/"</span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st">"labdsv"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">m_part</span><span class="op">)</span></span>
+<span><span class="va">m_dom</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/labdsv/man/dropspc.html">dropspc</a></span><span class="op">(</span><span class="va">m_part</span>, minabu<span class="op">=</span><span class="fl">5</span><span class="op">)</span></span>
+<span><span class="va">m_dom</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">m_dom</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">m_5</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/labdsv/man/vegtab.html">vegtab</a></span><span class="op">(</span>comm <span class="op">=</span> <span class="va">m_part</span>, minval <span class="op">=</span> <span class="op">(</span><span class="fl">0.50</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">m_part</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="co">#minval=5% of the number of samples</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/t.html">t</a></span><span class="op">(</span><span class="va">m_5</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">m_5</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">m_pa</span> <span class="op">&lt;-</span> <span class="va">m_part</span>; <span class="va">m_pa</span><span class="op">[</span><span class="va">m_pa</span> <span class="op">!=</span> <span class="fl">0</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fl">1</span></span>
+<span><span class="co">#SEPARANDO B e S</span></span>
+<span><span class="va">pat</span> <span class="op">&lt;-</span> <span class="st">"^B"</span></span>
+<span><span class="va">m_trab</span> <span class="op">&lt;-</span> <span class="va">m_trab</span><span class="op">[</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/grep.html">grepl</a></span><span class="op">(</span><span class="va">pat</span>, <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="va">m_trab</span><span class="op">)</span><span class="op">)</span>, <span class="op">]</span> <span class="co">#exclui quem começa com pat</span></span>
+<span></span>
+<span><span class="co">#REMOVENDO ESPÉCIES RARAS</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/browseURL.html">browseURL</a></span><span class="op">(</span><span class="st">"https://uw.pressbooks.pub/appliedmultivariatestatistics/chapter/data-adjustments/"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"labdsv"</span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st">"labdsv"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">m_part</span><span class="op">)</span></span>
+<span><span class="va">m_dom</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/labdsv/man/dropspc.html">dropspc</a></span><span class="op">(</span><span class="va">m_part</span>, minabu<span class="op">=</span><span class="fl">5</span><span class="op">)</span></span>
+<span><span class="va">m_dom</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">m_dom</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">m_5</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/labdsv/man/vegtab.html">vegtab</a></span><span class="op">(</span>comm <span class="op">=</span> <span class="va">m_part</span>, minval <span class="op">=</span> <span class="op">(</span><span class="fl">0.50</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">m_part</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="co">#minval=5% of the number of samples</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/t.html">t</a></span><span class="op">(</span><span class="va">m_5</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">m_5</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">m_pa</span> <span class="op">&lt;-</span> <span class="va">m_part</span>; <span class="va">m_pa</span><span class="op">[</span><span class="va">m_pa</span> <span class="op">!=</span> <span class="fl">0</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fl">1</span></span></code></pre></div>
+</div>
+</div>
+<div id="apêndices-8" class="section level2 unnumbered">
+<h2>Apêndices<a class="anchor" aria-label="anchor" href="#ap%C3%AAndices-8"><i class="fas fa-link"></i></a>
+</h2>
+</div>
+<div id="sites-para-consulta-2" class="section level2 unnumbered">
+<h2>Sites para consulta<a class="anchor" aria-label="anchor" href="#sites-para-consulta-2"><i class="fas fa-link"></i></a>
+</h2>
+<p><a href="https://stackoverflow.com/questions/31741742/how-to-identify-the-distribution-of-the-given-data-using-r" class="uri">https://stackoverflow.com/questions/31741742/how-to-identify-the-distribution-of-the-given-data-using-r</a> <a href="https://stats.stackexchange.com/questions/132652/how-to-determine-which-distribution-fits-my-data-best" class="uri">https://stats.stackexchange.com/questions/132652/how-to-determine-which-distribution-fits-my-data-best</a> <a href="https://www.r-bloggers.com/2015/11/correlation-and-linear-regression/">Correlação e regressão</a></p>
+</div>
+<div id="script-limpo-5" class="section level2 unnumbered">
+<h2>Script limpo<a class="anchor" aria-label="anchor" href="#script-limpo-5"><i class="fas fa-link"></i></a>
+</h2>
+<p>Aqui apresento o scrip na íntegra sem os textos ou outros comentários. Você pode copiar e colar no R para executa-lo. Lembre de remover os <span style="color:green"><code>#</code></span> ou <span style="color:green"><code>##</code></span> caso necessite executar essas linhas.</p>
+</div>
+<div id="referências-11" class="section level2 unnumbered">
+<h2>Referências<a class="anchor" aria-label="anchor" href="#refer%C3%AAncias-11"><i class="fas fa-link"></i></a>
+</h2>
+
+</div>
+</div>
+
+
+
+<h3>Bibliografia Geral</h3>
+<div id="refs" class="references csl-bib-body" entry-spacing="1">
+<div id="ref-coakes2001" class="csl-entry">
+COAKES, S. J.; STEED, L. G. <strong>SPSS: Analysis Without Anguish: version 10.0 for Windows</strong>. Milton, Qld: John Wiley &amp; Sons Australia, Ltd, 2001.
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="correg.html"><span class="header-section-number">14</span> R Módulo 3.2 - Correlação e Regressão</a></div>
+<div class="next"><a href="estrcom.html"><span class="header-section-number">16</span> R Módulo 4.1 - Estrutura da comunidade</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li>
+<a class="nav-link" href="#regmul"><span class="header-section-number">15</span> R Módulo 4.2 - Regressão múltipla</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#resumo-9">RESUMO</a></li>
+<li><a class="nav-link" href="#apresenta%C3%A7%C3%A3o-9">Apresentação</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#organiza%C3%A7%C3%A3o-b%C3%A1sica-4"><span class="header-section-number">15.1</span> Organização básica</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#organizando-os-dados"><span class="header-section-number">15.1.1</span> Organizando os dados</a></li>
+<li><a class="nav-link" href="#criando-tabelas-com-os-dados"><span class="header-section-number">15.1.2</span> Criando tabelas com os dados</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#ap%C3%AAndices-8">Apêndices</a></li>
+<li><a class="nav-link" href="#sites-para-consulta-2">Sites para consulta</a></li>
+<li><a class="nav-link" href="#script-limpo-5">Script limpo</a></li>
+<li><a class="nav-link" href="#refer%C3%AAncias-11">Referências</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Fundamentos de Ecologia Numérica</strong>: Disciplina de Ecologia Numérica do Curso de Ciências Biológicas do Campus V da UEPB" was written by Prof. Elvio S. F. Medeiros, Laboratório de Ecologia, Universidade Estadual da Paraíba, Campus V, João Pessoa, PB. It was last built on Last updated: 31/05/2026 19:41:31.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>
