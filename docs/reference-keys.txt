@@ -40,8 +40,8 @@ fig:rmd4032testes
 fig:rmd4032tucu
 fig:rmd1ppbio
 tab:241tam
-tab:unnamed-chunk-160
 tab:unnamed-chunk-162
+tab:unnamed-chunk-164
 fig:241hill
 fig:241abun
 fig:241rare
@@ -191,7 +191,7 @@ pressupostos
 exemplos
 teste-t-para-uma-amostra-one-sample-t-test
 teste-t-para-grupos-independentes-independent-groups-t-test
-teste-t-para-medidas-repetidas-repeated-measures-t-test
+teste-t-pareado-ou-para-medidas-repetidas-repeated-measures-t-test
 anova
 anova-one-way-teste-entre-grupos-com-comparações-pos-hoc
 pressupostos-1
@@ -251,7 +251,7 @@ interpretando-a-curva-de-rarefação
 curva-de-acumulação-de-espécies
 plot-locais
 plot-indivíduos
-riqueza-rarefacionda
+riqueza-rarefacionada
 partdiv
 sobre-os-dados-3
 organização-básica-6
