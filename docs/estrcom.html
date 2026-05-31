@@ -4,18 +4,18 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title> 15 R Módulo 4.1 - Estrutura da comunidade | Fundamentos de Ecologia Numérica</title>
+<title> 16 R Módulo 4.1 - Estrutura da comunidade | Fundamentos de Ecologia Numérica</title>
 <meta name="author" content="Prof. Elvio S. F. Medeiros">
 <meta name="author" content="Laboratório de Ecologia">
 <meta name="author" content="Universidade Estadual da Paraíba">
 <meta name="author" content="Campus V, João Pessoa, PB">
 <meta name="description" content="RESUMO Na ecologia de comunidades, a diversidade de espécies é uma medida importante para entender a complexidade e a estrutura de uma comunidade de organismos. Vamos explorar algumas das métricas...">
 <meta name="generator" content="bookdown 0.46 with bs4_book()">
-<meta property="og:title" content=" 15 R Módulo 4.1 - Estrutura da comunidade | Fundamentos de Ecologia Numérica">
+<meta property="og:title" content=" 16 R Módulo 4.1 - Estrutura da comunidade | Fundamentos de Ecologia Numérica">
 <meta property="og:type" content="book">
 <meta property="og:description" content="RESUMO Na ecologia de comunidades, a diversidade de espécies é uma medida importante para entender a complexidade e a estrutura de uma comunidade de organismos. Vamos explorar algumas das métricas...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content=" 15 R Módulo 4.1 - Estrutura da comunidade | Fundamentos de Ecologia Numérica">
+<meta name="twitter:title" content=" 16 R Módulo 4.1 - Estrutura da comunidade | Fundamentos de Ecologia Numérica">
 <meta name="twitter:description" content="RESUMO Na ecologia de comunidades, a diversidade de espécies é uma medida importante para entender a complexidade e a estrutura de uma comunidade de organismos. Vamos explorar algumas das métricas...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
@@ -90,9 +90,10 @@
 <li><a class="" href="norm.html"><span class="header-section-number">12</span> R Módulo 3.1 - Estatísticas descritivas e normalidade</a></li>
 <li><a class="" href="testes.html"><span class="header-section-number">13</span> R Módulo 3.2 - Testes estatísticos</a></li>
 <li><a class="" href="correg.html"><span class="header-section-number">14</span> R Módulo 3.2 - Correlação e Regressão</a></li>
+<li><a class="" href="regmul.html"><span class="header-section-number">15</span> R Módulo 4.2 - Regressão múltipla</a></li>
 <li class="book-part">V. ANÁLISES MULTIVARIADAS</li>
-<li><a class="active" href="estrcom.html"><span class="header-section-number">15</span> R Módulo 4.1 - Estrutura da comunidade</a></li>
-<li><a class="" href="partdiv.html"><span class="header-section-number">16</span> R Modulo 4.2 - Decomposição da diversidade</a></li>
+<li><a class="active" href="estrcom.html"><span class="header-section-number">16</span> R Módulo 4.1 - Estrutura da comunidade</a></li>
+<li><a class="" href="partdiv.html"><span class="header-section-number">17</span> R Modulo 4.2 - Decomposição da diversidade</a></li>
 <li class="book-part">VI. INFORMAÇÕES GERAIS</li>
 <li><a class="" href="bibliografia-geral.html">Bibliografia Geral</a></li>
 </ul>
@@ -102,38 +103,38 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="estrcom" class="section level1" number="15">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="estrcom" class="section level1" number="16">
 <h1>
-<span class="header-section-number"> 15</span> R Módulo 4.1 - Estrutura da comunidade<a class="anchor" aria-label="anchor" href="#estrcom"><i class="fas fa-link"></i></a>
+<span class="header-section-number"> 16</span> R Módulo 4.1 - Estrutura da comunidade<a class="anchor" aria-label="anchor" href="#estrcom"><i class="fas fa-link"></i></a>
 </h1>
-<div id="resumo-9" class="section level3 unnumbered">
-<h3>RESUMO<a class="anchor" aria-label="anchor" href="#resumo-9"><i class="fas fa-link"></i></a>
+<div id="resumo-10" class="section level3 unnumbered">
+<h3>RESUMO<a class="anchor" aria-label="anchor" href="#resumo-10"><i class="fas fa-link"></i></a>
 </h3>
 <p>Na ecologia de comunidades, a diversidade de espécies é uma medida importante para entender a complexidade e a estrutura de uma comunidade de organismos. Vamos explorar algumas das métricas comuns usadas para avaliar a diversidade de espécies.</p>
 </div>
-<div id="apresentação-9" class="section level3 unnumbered">
-<h3>Apresentação<a class="anchor" aria-label="anchor" href="#apresenta%C3%A7%C3%A3o-9"><i class="fas fa-link"></i></a>
+<div id="apresentação-10" class="section level3 unnumbered">
+<h3>Apresentação<a class="anchor" aria-label="anchor" href="#apresenta%C3%A7%C3%A3o-10"><i class="fas fa-link"></i></a>
 </h3>
 <p>Na ecologia de comunidades, a diversidade de espécies é uma medida importante para entender a complexidade e a estrutura de uma comunidade de organismos. Vamos explorar algumas das métricas comuns usadas para avaliar a diversidade de espécies. Essas métricas são usadas para avaliar a diversidade e a estrutura de comunidades ecológicas. Elas podem fornecer informações importantes sobre como as diferentes espécies interagem em um ecossistema e como a diversidade de espécies pode ser afetada por mudanças ambientais ou distúrbios <span class="citation">(<a href="#ref-magurran1988">MAGURRAN, 1988</a>)</span>.</p>
 </div>
-<div id="sobre-os-dados-2" class="section level2" number="15.1">
+<div id="sobre-os-dados-2" class="section level2" number="16.1">
 <h2>
-<span class="header-section-number">15.1</span> Sobre os dados<a class="anchor" aria-label="anchor" href="#sobre-os-dados-2"><i class="fas fa-link"></i></a>
+<span class="header-section-number">16.1</span> Sobre os dados<a class="anchor" aria-label="anchor" href="#sobre-os-dados-2"><i class="fas fa-link"></i></a>
 </h2>
 <p>Usaremos para esse tutorial dois conjuntos de dados. A <strong>Matriz comunitária</strong> (<a href="https://docs.google.com/spreadsheets/d/1Olyew6L3SCFeSXWJC54Ak3MKmgHD3sTK/edit?usp=drive_link&amp;ouid=101766125969589673518&amp;rtpof=true&amp;sd=true">ppbio06c-peixes.xlsx</a>) de dados coletados no Programa de Pesquisa em Biodiversidade - PPBio (Veja <a href="https://ppbio.inpa.gov.br/Sobre">Programa de Pesquisa em Biodiversidade – PPBio</a>). Esses são dados de espécies de peixes distribuidas em diversas unidades amostrais (UA’s ou sítios). Essa é a <strong>matriz bruta de dados</strong>, porque os valores ainda não foram ajustados para os valores de Captura Por Unidade de Esforço (CPUE), nem foram relativizados ou transformados.</p>
 <p>Além disso usaremos a <strong>tabela de agrupamentos</strong> (<a href="https://docs.google.com/spreadsheets/d/1H52eBBxZ1k-6Xgrse87etq6mq3mMUTZi/edit?usp=drive_link&amp;ouid=101766125969589673518&amp;rtpof=true&amp;sd=true">ppbio06-grupos</a>)</p>
 <p><strong>Revise as informações sobre as bases de dados no Capítulo</strong> <a href="bases.html#bases">7</a><strong>. A matriz de dados para esse Módulo pode ser baixada na Seção</strong> <a href="bases.html#arqs">7.2</a><strong>.</strong></p>
 </div>
-<div id="organização-básica-3" class="section level2" number="15.2">
+<div id="organização-básica-5" class="section level2" number="16.2">
 <h2>
-<span class="header-section-number">15.2</span> Organização básica<a class="anchor" aria-label="anchor" href="#organiza%C3%A7%C3%A3o-b%C3%A1sica-3"><i class="fas fa-link"></i></a>
+<span class="header-section-number">16.2</span> Organização básica<a class="anchor" aria-label="anchor" href="#organiza%C3%A7%C3%A3o-b%C3%A1sica-5"><i class="fas fa-link"></i></a>
 </h2>
-<div class="sourceCode" id="cb229"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb254"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/grDevices/dev.html">dev.off</a></span><span class="op">(</span><span class="op">)</span> <span class="co">#apaga os graficos, se houver algum</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/rm.html">rm</a></span><span class="op">(</span>list<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/ls.html">ls</a></span><span class="op">(</span>all<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="co">#limpa a memória</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"\014"</span><span class="op">)</span> <span class="co">#limpa o console </span></span></code></pre></div>
 <p>Instalando os pacotes necessários para esse módulo.</p>
-<div class="sourceCode" id="cb230"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb255"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"vegan"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"moments"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"ggplot2"</span><span class="op">)</span></span>
@@ -146,25 +147,24 @@
 <span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"openxlsx"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"gt"</span><span class="op">)</span></span></code></pre></div>
 <p>Depois de instalados, carregue os pacotes a seguir no seu computador.</p>
-<div class="sourceCode" id="cb231"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tibble.tidyverse.org/">tibble</a></span><span class="op">)</span>; <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>; <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://forcats.tidyverse.org/">forcats</a></span><span class="op">)</span>; <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ycphs.github.io/openxlsx/index.html">openxlsx</a></span><span class="op">)</span>; <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://www.rcpp.org">Rcpp</a></span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb256"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tibble.tidyverse.org/">tibble</a></span><span class="op">)</span>; <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>; <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://forcats.tidyverse.org/">forcats</a></span><span class="op">)</span>; <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://www.rcpp.org">Rcpp</a></span><span class="op">)</span></span></code></pre></div>
 <p>Os códigos acima, são usados para instalar e carregar os pacotes necessários para este módulo. Esses códigos são comandos para instalar pacotes no R. Um pacote é uma coleção de funções, dados e documentação que ampliam as capacidades do R (<a href="https://cran.r-project.org/">R CRAN</a>, <span class="citation">(<a href="#ref-rdevelopmentcoreteam2017">R DEVELOPMENT CORE TEAM, 2017</a>)</span>) e <a href="https://posit.co/download/rstudio-desktop/">RStudio</a> <span class="citation">(<a href="#ref-rstudioteam2022">R STUDIO TEAM, 2022</a>)</span>). No exemplo acima, o pacote <code>openxlsx</code> permite ler e escrever arquivos Excel no R. Para instalar um pacote no R, você precisa usar a função <code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code>.</p>
 <p>Depois de instalar um pacote, você precisa carregá-lo na sua sessão R com a função <code><a href="https://rdrr.io/r/base/library.html">library()</a></code>. Por exemplo, para carregar o pacote <code>openxlsx</code>, você precisa executar a função <code><a href="https://ycphs.github.io/openxlsx/index.html">library(openxlsx)</a></code>. Isso irá permitir que você use as funções do pacote na sua sessão R. Você precisa carregar um pacote toda vez que iniciar uma nova sessão R e quiser usar um pacote instalado.</p>
 <p>Agora vamos <strong>definir o diretório de trabalho</strong>. Esse código é usado para obter e definir o diretório de trabalho atual no R. O comando <code><a href="https://rdrr.io/r/base/getwd.html">getwd()</a></code> retorna o caminho do diretório onde o R está lendo e salvando arquivos. O comando <code><a href="https://rdrr.io/r/base/getwd.html">setwd()</a></code> muda esse diretório de trabalho para o caminho especificado entre aspas. No seu caso, você deve ajustar o caminho para o seu próprio diretório de trabalho. <strong>Lembre de usar a barra “/” entre os diretórios. E não a contra-barra “\”.</strong></p>
-<div class="sourceCode" id="cb232"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb257"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/getwd.html">getwd</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/getwd.html">setwd</a></span><span class="op">(</span><span class="st">"C:/Seu/Diretório/De/Trabalho"</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="importando-a-planilha-3" class="section level2" number="15.3">
+<div id="importando-a-planilha-4" class="section level2" number="16.3">
 <h2>
-<span class="header-section-number">15.3</span> Importando a planilha<a class="anchor" aria-label="anchor" href="#importando-a-planilha-3"><i class="fas fa-link"></i></a>
+<span class="header-section-number">16.3</span> Importando a planilha<a class="anchor" aria-label="anchor" href="#importando-a-planilha-4"><i class="fas fa-link"></i></a>
 </h2>
 <p>Note que o símbolo <span style="color:green"><code>#</code></span> em programação R significa que o texto que vem depois dele é um comentário e não será executado pelo programa. Isso é útil para explicar o código ou deixar anotações.<br>
 - Ajuste a primeira linha do código abaixo para refletir <span style="color:blue">“C:/Seu/Diretório/De/Trabalho/Planilha.xlsx”</span>.<br>
 - Ajuste o parâmetro <code>sheet = "Sheet1"</code> para refletir a aba correta do arquivo .xlsx a ser importado.</p>
-<div class="sourceCode" id="cb233"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co">#dir &lt;- getwd() #criamos um vetor com o diretório  de trbalho </span></span>
-<span><span class="co">#shell.exec(dir) #abre o diretorio de trabalho no Windows Explorer</span></span>
+<div class="sourceCode" id="cb258"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ycphs.github.io/openxlsx/index.html">openxlsx</a></span><span class="op">)</span></span>
 <span><span class="va">ppbio</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/openxlsx/man/read.xlsx.html">read.xlsx</a></span><span class="op">(</span><span class="st">"D:/Elvio/OneDrive/Disciplinas/_EcoNumerica/5.Matrizes/ppbio06c-peixes.xlsx"</span>,</span>
 <span>                   rowNames <span class="op">=</span> <span class="cn">T</span>, colNames <span class="op">=</span> <span class="cn">T</span>,</span>
 <span>                   sheet <span class="op">=</span> <span class="st">"Sheet1"</span><span class="op">)</span></span>
@@ -214,7 +214,7 @@
 ## S-R-CP1        0       19        0        0        0
 ## S-A-TA1        0       23        1       13        0</code></pre>
 <p>Exibindo os dados importados (esses comando são “case-sensitive” <code>ignore.case(object)</code>).</p>
-<div class="sourceCode" id="cb235"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb260"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#View(ppbio)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">ppbio</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">8</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">8</span><span class="op">]</span><span class="op">)</span></span>
 <span><span class="va">ppbio</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">]</span></span>
@@ -222,23 +222,23 @@
 <span><span class="fu"><a href="https://rdrr.io/r/base/mode.html">mode</a></span><span class="op">(</span><span class="va">ppbio</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">ppbio</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="id_401reinicio" class="section level2" number="15.4">
+<div id="id_401reinicio" class="section level2" number="16.4">
 <h2>
-<span class="header-section-number">15.4</span> REINÍCIO<a class="anchor" aria-label="anchor" href="#id_401reinicio"><i class="fas fa-link"></i></a>
+<span class="header-section-number">16.4</span> REINÍCIO<a class="anchor" aria-label="anchor" href="#id_401reinicio"><i class="fas fa-link"></i></a>
 </h2>
-<div class="sourceCode" id="cb236"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb261"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">m_trab</span> <span class="op">&lt;-</span> <span class="va">ppbio</span></span>
 <span><span class="co">#pat &lt;- "^S"</span></span>
 <span><span class="co">#m_trab &lt;- m_trab[!grepl(pat, rownames(m_trab)), ] #exclui quem começa com pat</span></span></code></pre></div>
 <p>Aqui cria-se um novo objeto do R (<code>m_trab</code>, ou a matriz de trabalho, para esse momento) que substitui a matriz de dados original, por uma nova matriz que pode ser a matriz relativizada, transformada, transposta, etc. Dessa forma, mantemos a matriz de dados original caso precisemos dela novamente (Veja a Tabela <a href="bases.html#tab:300arqs">7.1</a>).</p>
 <p><strong>Revise Seção</strong> <a href="bases.html#abrev">7.2.2</a> <strong>e a Tabela de Abreviações (@ref(tab:200m_2)) na mesma Seção que resumem os tipos de matrizes e suas abreviações, para os nossos códigos.</strong></p>
 </div>
-<div id="transpor-a-matriz-para-trabalhar-com-as-espécies" class="section level2" number="15.5">
+<div id="transpor-a-matriz-para-trabalhar-com-as-espécies" class="section level2" number="16.5">
 <h2>
-<span class="header-section-number">15.5</span> Transpor a matriz para trabalhar com as espécies<a class="anchor" aria-label="anchor" href="#transpor-a-matriz-para-trabalhar-com-as-esp%C3%A9cies"><i class="fas fa-link"></i></a>
+<span class="header-section-number">16.5</span> Transpor a matriz para trabalhar com as espécies<a class="anchor" aria-label="anchor" href="#transpor-a-matriz-para-trabalhar-com-as-esp%C3%A9cies"><i class="fas fa-link"></i></a>
 </h2>
 <p>Vamos transpor a matriz para trabalharmos com as espécies. A função <code>t</code> transpõe a matriz. Só deve ser usada uma vez, pois se repetida com <code>Ctrl+Enter</code> continua “girando” a matriz. As espécies como colunas representam uma matriz comunitária e as espécies como linhas representam uma matriz (comunitária) transposta.</p>
-<div class="sourceCode" id="cb237"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb262"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">m_trab</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/t.html">t</a></span><span class="op">(</span><span class="va">ppbio</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">m_trab</span><span class="op">)</span></span>
 <span><span class="co">#View(m_trab)</span></span>
@@ -414,12 +414,12 @@
 ##   ..$ : chr [1:26] "S-A-ZA1" "S-R-CC1" "S-R-CT1" "S-R-CP1" ...
 ## [1] "numeric"
 ## [1] "matrix" "array"</code></pre>
-<div id="informações-básicas-da-matriz" class="section level3" number="15.5.1">
+<div id="informações-básicas-da-matriz" class="section level3" number="16.5.1">
 <h3>
-<span class="header-section-number">15.5.1</span> Informações básicas da matriz<a class="anchor" aria-label="anchor" href="#informa%C3%A7%C3%B5es-b%C3%A1sicas-da-matriz"><i class="fas fa-link"></i></a>
+<span class="header-section-number">16.5.1</span> Informações básicas da matriz<a class="anchor" aria-label="anchor" href="#informa%C3%A7%C3%B5es-b%C3%A1sicas-da-matriz"><i class="fas fa-link"></i></a>
 </h3>
 <p>Agora podemos pedir ao R as informações básicas da matriz de trabalho (<code>m_trab</code>), como o número de observações ou tamanho do vetor (depende do tipo da matriz), número de observações igual a zero, número de observaçõoes maiores que zero e proporção de zeros na matriz.</p>
-<div class="sourceCode" id="cb239"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb264"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/range.html">range</a></span><span class="op">(</span><span class="va">m_trab</span><span class="op">)</span> <span class="co">#menor e maior valores</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">m_trab</span><span class="op">)</span> <span class="co">#no. de colunas</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">ncol</a></span><span class="op">(</span><span class="va">m_trab</span><span class="op">)</span> <span class="co">#no. de N colunas</span></span>
@@ -440,7 +440,7 @@
 ## [1] 716
 ## [1] 194
 ## [1] 78.68132</code></pre>
-<p>Tabela que resume as informações geradas (Tabela <a href="estrcom.html#tab:241tam">15.1</a>).</p>
+<p>Tabela que resume as informações geradas (Tabela <a href="estrcom.html#tab:241tam">16.1</a>).</p>
 <pre><code>##     Comando Resultado
 ## 1     range   0 - 511
 ## 2    lenght       910
@@ -453,7 +453,7 @@
 ## 9   % Zeros      78.7</code></pre>
 <div class="inline-table"><table class="table table-sm">
 <caption>
-<span id="tab:241tam">Tabela 15.1: </span>Resumo das informações sobre o tamanho da base de dados.</caption>
+<span id="tab:241tam">Tabela 16.1: </span>Resumo das informações sobre o tamanho da base de dados.</caption>
 <thead><tr class="header">
 <th align="left">Comando</th>
 <th align="left">Resultado</th>
@@ -501,9 +501,9 @@
 <p>Agora de conhecimento dessas informações básicas podemos calcular os primeiros descritores da estrutura da comunidade a ser estudada.</p>
 </div>
 </div>
-<div id="calculando-os-descritores-da-comunidade" class="section level2" number="15.6">
+<div id="calculando-os-descritores-da-comunidade" class="section level2" number="16.6">
 <h2>
-<span class="header-section-number">15.6</span> Calculando os descritores da comunidade<a class="anchor" aria-label="anchor" href="#calculando-os-descritores-da-comunidade"><i class="fas fa-link"></i></a>
+<span class="header-section-number">16.6</span> Calculando os descritores da comunidade<a class="anchor" aria-label="anchor" href="#calculando-os-descritores-da-comunidade"><i class="fas fa-link"></i></a>
 </h2>
 <p>Entre outras métricas, calcularemos os seguntes índices:</p>
 <ol style="list-style-type: decimal">
@@ -558,12 +558,12 @@
 <ul>
 <li>A dominância de espécies se refere à presença de uma ou algumas espécies que têm uma abundância significativamente maior do que as outras na comunidade. Comunidades com alta dominância são frequentemente menos diversas, pois algumas espécies dominantes podem suprimir o crescimento de outras.</li>
 </ul>
-<div id="variabilidade" class="section level3" number="15.6.1">
+<div id="variabilidade" class="section level3" number="16.6.1">
 <h3>
-<span class="header-section-number">15.6.1</span> Variabilidade<a class="anchor" aria-label="anchor" href="#variabilidade"><i class="fas fa-link"></i></a>
+<span class="header-section-number">16.6.1</span> Variabilidade<a class="anchor" aria-label="anchor" href="#variabilidade"><i class="fas fa-link"></i></a>
 </h3>
 <p>Primeiro a variabilidade estatística</p>
-<div class="sourceCode" id="cb242"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb267"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#?apply</span></span>
 <span><span class="va">Sum</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colSums.html">rowSums</a></span><span class="op">(</span><span class="va">m_trab</span><span class="op">)</span></span>
 <span><span class="co">#ou</span></span>
@@ -673,12 +673,12 @@
 ##  sy-marmo  te-chalc  tr-signa 
 ##         1        58         4</code></pre>
 </div>
-<div id="riqueza" class="section level3" number="15.6.2">
+<div id="riqueza" class="section level3" number="16.6.2">
 <h3>
-<span class="header-section-number">15.6.2</span> Riqueza<a class="anchor" aria-label="anchor" href="#riqueza"><i class="fas fa-link"></i></a>
+<span class="header-section-number">16.6.2</span> Riqueza<a class="anchor" aria-label="anchor" href="#riqueza"><i class="fas fa-link"></i></a>
 </h3>
 <p>Atente para o fato de que a riqueza será a frequêcia de ocorrência na matrix transposta. Converte-se primeiro para matriz binária.</p>
-<div class="sourceCode" id="cb244"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb269"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">m_pa</span> <span class="op">&lt;-</span> <span class="va">m_trab</span></span>
 <span><span class="va">m_pa</span><span class="op">[</span><span class="va">m_pa</span> <span class="op">!=</span> <span class="fl">0</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fl">1</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/colSums.html">rowSums</a></span><span class="op">(</span><span class="va">m_pa</span><span class="op">)</span></span>
@@ -760,13 +760,13 @@
 ##  3.846154  7.692308 23.076923</code></pre>
 </div>
 </div>
-<div id="índices-de-diversidade" class="section level2" number="15.7">
+<div id="índices-de-diversidade" class="section level2" number="16.7">
 <h2>
-<span class="header-section-number">15.7</span> Índices de Diversidade<a class="anchor" aria-label="anchor" href="#%C3%ADndices-de-diversidade"><i class="fas fa-link"></i></a>
+<span class="header-section-number">16.7</span> Índices de Diversidade<a class="anchor" aria-label="anchor" href="#%C3%ADndices-de-diversidade"><i class="fas fa-link"></i></a>
 </h2>
-<div id="shannon" class="section level3" number="15.7.1">
+<div id="shannon" class="section level3" number="16.7.1">
 <h3>
-<span class="header-section-number">15.7.1</span> Shannon<a class="anchor" aria-label="anchor" href="#shannon"><i class="fas fa-link"></i></a>
+<span class="header-section-number">16.7.1</span> Shannon<a class="anchor" aria-label="anchor" href="#shannon"><i class="fas fa-link"></i></a>
 </h3>
 <p>O índice de diversidade de Shannon ou Shannon–Weaver (or Shannon–Wiener) é uma medida de diversidade que leva em consideração tanto a riqueza de espécies quanto a uniformidade na distribuição dessas espécies <span class="citation">(<a href="#ref-dixon2003">DIXON, 2003</a>; <a href="#ref-oksanen2020">OKSANEN et al., 2020</a>)</span>. Este índice é definido por:</p>
 <p><span class="math display">\[
@@ -797,7 +797,7 @@ H' = -\sum_{i=1}^{S} \left( \frac{n_i}{N} \times \ln\frac{n_i}{N} \right)
 <span class="math inline">\(S\)</span> é o número total de espécies na comunidade.</li>
 </ul>
 <p>Esta fórmula mede a incerteza (ou entropia) na identificação de uma espécie selecionada aleatoriamente da comunidade. Quanto maior o valor de <span class="math inline">\(H'\)</span>, maior a diversidade da comunidade.</p>
-<div class="sourceCode" id="cb246"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb271"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">H</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://vegandevs.github.io/vegan/reference/diversity.html">diversity</a></span><span class="op">(</span><span class="va">m_trab</span>, index <span class="op">=</span> <span class="st">"shannon"</span><span class="op">)</span></span>
 <span><span class="va">H</span></span></code></pre></div>
 <pre><code>##  ap-davis  as-bimac  as-fasci  ch-bimac  ci-ocela  ci-orien  co-macro  co-heter 
@@ -811,9 +811,9 @@ H' = -\sum_{i=1}^{S} \left( \frac{n_i}{N} \times \ln\frac{n_i}{N} \right)
 ##  sy-marmo  te-chalc  tr-signa 
 ## 0.0000000 0.6840978 1.0985693</code></pre>
 </div>
-<div id="simpson" class="section level3" number="15.7.2">
+<div id="simpson" class="section level3" number="16.7.2">
 <h3>
-<span class="header-section-number">15.7.2</span> Simpson<a class="anchor" aria-label="anchor" href="#simpson"><i class="fas fa-link"></i></a>
+<span class="header-section-number">16.7.2</span> Simpson<a class="anchor" aria-label="anchor" href="#simpson"><i class="fas fa-link"></i></a>
 </h3>
 <p>O índice de diversidade de Simpson é uma medida de diversidade que leva em consideração a riqueza de espécies e a abundância relativa de cada espécie em uma comunidade. A fórmula para calcular o índice de diversidade de Simpson é:</p>
 <p><span class="math display">\[
@@ -836,7 +836,7 @@ D = 1 - \sum_{i=1}^{S} \left( \frac{n_i (n_i - 1)}{N (N - 1)} \right)
 <li>Ao escolhermos <code>simpson</code> o R retorna <span class="math inline">\(1 - D\)</span>, e</li>
 <li>ao escolhermos <code>invsimpson</code> o R retorna <span class="math inline">\(1/D\)</span> .</li>
 </ul>
-<div class="sourceCode" id="cb248"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb273"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">D</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://vegandevs.github.io/vegan/reference/diversity.html">diversity</a></span><span class="op">(</span><span class="va">m_trab</span>, <span class="st">"simpson"</span><span class="op">)</span></span>
 <span><span class="va">D</span></span>
 <span><span class="va">D</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">D</span><span class="op">)</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fl">0</span> <span class="co">#substitui NA ou NaN por 0</span></span>
@@ -862,9 +862,9 @@ D = 1 - \sum_{i=1}^{S} \left( \frac{n_i (n_i - 1)}{N (N - 1)} \right)
 ##   se-heter   se-piaba   se-spilo   st-noton   sy-marmo   te-chalc   tr-signa 
 ## 0.81071950 0.00000000 0.00000000 0.57294468 0.00000000 0.49097795 0.51405325</code></pre>
 </div>
-<div id="equitabilidade-de-pielou" class="section level3" number="15.7.3">
+<div id="equitabilidade-de-pielou" class="section level3" number="16.7.3">
 <h3>
-<span class="header-section-number">15.7.3</span> Equitabilidade de Pielou<a class="anchor" aria-label="anchor" href="#equitabilidade-de-pielou"><i class="fas fa-link"></i></a>
+<span class="header-section-number">16.7.3</span> Equitabilidade de Pielou<a class="anchor" aria-label="anchor" href="#equitabilidade-de-pielou"><i class="fas fa-link"></i></a>
 </h3>
 <p>O índice de equitabilidade de Pielou é uma medida de uniformidade em uma distribuição de espécies <span class="citation">(<a href="#ref-pielou1975">PIELOU, 1975</a>)</span>. Sua fórmula é dada por:</p>
 <p><span class="math display">\[
@@ -880,7 +880,7 @@ J' = \frac{H'}{\ln(S)}
 <span class="math inline">\(\ln(S)\)</span> é o logarítmo natural do número total de espécies na comunidade.</li>
 </ul>
 <p>Esta fórmula fornece um valor entre 0 e 1, onde 0 indica uma distribuição completamente desigual onde uma comunidade apresenta uma única espécie dominante e 1 indica uma distribuição completamente equitativa onde todas as espécies têm a mesma abundância.</p>
-<div class="sourceCode" id="cb250"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb275"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">E</span> <span class="op">&lt;-</span> <span class="va">H</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="fu"><a href="https://vegandevs.github.io/vegan/reference/diversity.html">specnumber</a></span><span class="op">(</span><span class="va">m_trab</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">E</span></span>
 <span><span class="va">E</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">E</span><span class="op">)</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fl">0</span> <span class="co">#substitui NA ou NaN por 0</span></span>
@@ -905,14 +905,14 @@ J' = \frac{H'}{\ln(S)}
 ## 0.7770962 0.5516566 0.0000000 0.0000000 0.8110852 0.0000000 0.0000000 0.6999162 
 ##  sy-marmo  te-chalc  tr-signa 
 ## 0.0000000 0.9869445 0.6131232</code></pre>
-<div id="assimetria-e-curtose-2" class="section level4" number="15.7.3.1">
+<div id="assimetria-e-curtose-2" class="section level4" number="16.7.3.1">
 <h4>
-<span class="header-section-number">15.7.3.1</span> Assimetria e curtose<a class="anchor" aria-label="anchor" href="#assimetria-e-curtose-2"><i class="fas fa-link"></i></a>
+<span class="header-section-number">16.7.3.1</span> Assimetria e curtose<a class="anchor" aria-label="anchor" href="#assimetria-e-curtose-2"><i class="fas fa-link"></i></a>
 </h4>
 <p>A assimetria mede a falta de simetria em uma distribuição de frequência. Uma distribuição é simétrica se as duas metades à esquerda e à direita da média são cópias espelhadas uma da outra. Se a distribuição não é simétrica, então é assimétrica. A assimetria pode ser positiva, negativa ou nula (simétrica). Uma assimetria positiva indica que a cauda da distribuição se estende mais para a direita em relação à média, enquanto uma assimetria negativa indica que a cauda da distribuição se estende mais para a esquerda em relação à média.</p>
 <p>A curtose descreve o pico ou a “pontiagudez” de uma distribuição. Uma distribuição com alta curtose tem uma alta concentração de valores ao redor da média e caudas mais pesadas (ou seja, valores extremos são mais prováveis). Uma distribuição com baixa curtose é mais achatada e dispersa, com caudas mais leves. A curtose pode ser positiva (distribuição leptocúrtica, com alta concentração em torno da média e caudas pesadas), negativa (distribuição platicúrtica, com dispersão alta e caudas mais leves) ou nula (mesocúrtica, similar à distribuição normal).</p>
 <p>Essas medidas são úteis para compreender as propriedades e características de diferentes conjuntos de dados e distribuições de frequência. Elas ajudam a compreender a forma e o comportamento dos dados em uma amostra ou população <span class="citation">(<a href="#ref-zar2010">ZAR, 2010</a>)</span>.</p>
-<div class="sourceCode" id="cb252"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb277"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://www.r-project.org">moments</a></span><span class="op">)</span></span>
 <span><span class="va">Assimetria</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/apply.html">apply</a></span><span class="op">(</span><span class="va">m_trab</span>,<span class="fl">1</span>,<span class="va">skewness</span><span class="op">)</span></span>
 <span><span class="va">Assimetria</span></span>
@@ -939,18 +939,19 @@ J' = \frac{H'}{\ln(S)}
 ##  sy-marmo  te-chalc  tr-signa 
 ## 24.040000 12.021173 21.715543</code></pre>
 </div>
-<div id="tabela-de-descritores" class="section level4" number="15.7.3.2">
+<div id="tabela-de-descritores" class="section level4" number="16.7.3.2">
 <h4>
-<span class="header-section-number">15.7.3.2</span> Tabela de descritores<a class="anchor" aria-label="anchor" href="#tabela-de-descritores"><i class="fas fa-link"></i></a>
+<span class="header-section-number">16.7.3.2</span> Tabela de descritores<a class="anchor" aria-label="anchor" href="#tabela-de-descritores"><i class="fas fa-link"></i></a>
 </h4>
 <p>Muito confuso? Criamos na sequência uma tabela final com todos os descritores da comunidade e da normalidade.</p>
-<div id="descritores-da-estrutura-da-comunidade-espécies" class="section level5" number="15.7.3.2.1">
+<div id="descritores-da-estrutura-da-comunidade-espécies" class="section level5" number="16.7.3.2.1">
 <h5>
-<span class="header-section-number">15.7.3.2.1</span> Descritores da estrutura da comunidade: Espécies<a class="anchor" aria-label="anchor" href="#descritores-da-estrutura-da-comunidade-esp%C3%A9cies"><i class="fas fa-link"></i></a>
+<span class="header-section-number">16.7.3.2.1</span> Descritores da estrutura da comunidade: Espécies<a class="anchor" aria-label="anchor" href="#descritores-da-estrutura-da-comunidade-esp%C3%A9cies"><i class="fas fa-link"></i></a>
 </h5>
-<p>Sum, soma; RA, abundância relativa (%), mean, média; DP, desvio padrão da média; Max, maior valor; Min, menor valor; S, riqueza (ou frequência de ocorrência na matriz transposta); E, índice de equitabilidade de Pielou <span class="citation">(<a href="#ref-pielou1975">PIELOU, 1975</a>)</span>; H, índice de diversidade de Shannon <span class="citation">(<a href="#ref-ludwig1988">LUDWIG; REYNOLDS, 1988</a>)</span>; D, índice de diversidade de Simpson <span class="citation">(<a href="#ref-hurlbert1971">HURLBERT, 1971</a>)</span>.</p>
-<div class="sourceCode" id="cb254"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">Descritores1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span><span class="op">(</span><span class="va">Sum</span>, <span class="va">RA</span>, <span class="va">Mean</span>, <span class="va">DP</span>, <span class="va">Max</span>, <span class="va">Min</span>, <span class="va">MinZ</span>, <span class="va">FO</span>, <span class="va">S</span>, <span class="va">E</span>, <span class="va">H</span>, <span class="va">D</span><span class="op">)</span></span>
+<p>Sum, soma; RA, abundância relativa (%), mean, média; DP, desvio padrão da média; Max, maior valor; Min, menor valor; S, riqueza (ou frequência de ocorrência na matriz transposta); RR, riqueza rarefacionada; E, índice de equitabilidade de Pielou <span class="citation">(<a href="#ref-pielou1975">PIELOU, 1975</a>)</span>; H, índice de diversidade de Shannon <span class="citation">(<a href="#ref-ludwig1988">LUDWIG; REYNOLDS, 1988</a>)</span>; D, índice de diversidade de Simpson <span class="citation">(<a href="#ref-hurlbert1971">HURLBERT, 1971</a>)</span>.</p>
+<div class="sourceCode" id="cb279"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">RR</span> <span class="op">&lt;-</span> <span class="va">S</span></span>
+<span><span class="va">Descritores1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span><span class="op">(</span><span class="va">Sum</span>, <span class="va">RA</span>, <span class="va">Mean</span>, <span class="va">DP</span>, <span class="va">Max</span>, <span class="va">Min</span>, <span class="va">MinZ</span>, <span class="va">FO</span>, <span class="va">S</span>, <span class="va">RR</span>, <span class="va">E</span>, <span class="va">H</span>, <span class="va">D</span><span class="op">)</span></span>
 <span><span class="va">Descritores1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="va">Descritores1</span><span class="op">)</span></span>
 <span><span class="va">Descritores1</span></span>
 <span><span class="co">#Descritores1 &lt;- Descritores1 %&gt;% rownames_to_column(var="Espécies") #da nome a primeira coluna</span></span>
@@ -968,42 +969,42 @@ J' = \frac{H'}{\ln(S)}
 <span><span class="va">DescritoresFinal</span></span>
 <span><span class="va">DescritoresFinal</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span> <span class="op">(</span><span class="va">DescritoresFinal</span>, <span class="fl">2</span><span class="op">)</span></span>
 <span><span class="va">DescritoresFinal</span></span></code></pre></div>
-<pre><code>##            Sum          RA        Mean          DP Max Min MinZ        FO  S
-## ap-davis    27  0.30354132  1.03846154   4.3861671  22   0    5  7.692308  2
-## as-bimac  2386 26.82405846 91.76923077 132.4348316 511   0    1 88.461538 23
-## as-fasci   158  1.77627881  6.07692308  16.2035134  64   0    1 38.461538 10
-## ch-bimac   705  7.92580101 27.11538462  75.8732242 273   0    3 19.230769  5
-## ci-ocela    70  0.78695897  2.69230769   8.2982853  40   0    2 19.230769  5
-## ci-orien   143  1.60764474  5.50000000  14.6184815  69   0    5 26.923077  7
-## co-macro     2  0.02248454  0.07692308   0.3922323   2   0    2  3.846154  1
-## co-heter     1  0.01124227  0.03846154   0.1961161   1   0    1  3.846154  1
-## cr-menez    28  0.31478359  1.07692308   3.1486261  14   0    1 19.230769  5
-## cu-lepid    21  0.23608769  0.80769231   4.1184388  21   0   21  3.846154  1
-## cy-gilbe   131  1.47273749  5.03846154  18.3313519  81   0   50  7.692308  2
-## ge-brasi  1020 11.46711636 39.23076923 106.3478473 509   0    1 57.692308 15
-## he-margi     2  0.02248454  0.07692308   0.2717465   1   0    1  7.692308  2
-## ho-malab   109  1.22540753  4.19230769   7.6053625  31   0    1 53.846154 14
-## hy-pusar    71  0.79820124  2.73076923   8.6605205  43   0    1 26.923077  7
-## le-melan     2  0.02248454  0.07692308   0.3922323   2   0    2  3.846154  1
-## le-piau     15  0.16863406  0.57692308   0.9868364   3   0    1 30.769231  8
-## le-taeni     1  0.01124227  0.03846154   0.1961161   1   0    1  3.846154  1
-## mo-costa     1  0.01124227  0.03846154   0.1961161   1   0    1  3.846154  1
-## mo-lepid    41  0.46093311  1.57692308   7.6376597  39   0    1 11.538462  3
-## or-nilot   848  9.53344576 32.61538462  59.1452970 247   0    1 69.230769 18
-## pa-manag   554  6.22821810 21.30769231  62.3928004 250   0    1 19.230769  5
-## pimel-sp     6  0.06745363  0.23076923   1.1766968   6   0    6  3.846154  1
-## po-retic   381  4.28330523 14.65384615  52.5242362 266   0    5 23.076923  6
-## po-vivip   978 10.99494098 37.61538462  79.5004790 326   0    8 42.307692 11
-## pr-brevi   279  3.13659359 10.73076923  33.3892889 164   0    1 46.153846 12
-## ps-rhomb     1  0.01124227  0.03846154   0.1961161   1   0    1  3.846154  1
-## ps-genise    1  0.01124227  0.03846154   0.1961161   1   0    1  3.846154  1
-## se-heter   296  3.32771220 11.38461538  22.9905666  93   0    3 38.461538 10
-## se-piaba    68  0.76447442  2.61538462  13.3358972  68   0   68  3.846154  1
-## se-spilo     1  0.01124227  0.03846154   0.1961161   1   0    1  3.846154  1
-## st-noton   205  2.30466554  7.88461538  25.5582893 115   0    1 15.384615  4
-## sy-marmo     1  0.01124227  0.03846154   0.1961161   1   0    1  3.846154  1
-## te-chalc   134  1.50646431  5.15384615  18.3841068  76   0   58  7.692308  2
-## tr-signa   208  2.33839236  8.00000000  27.8280434 141   0    4 23.076923  6
+<pre><code>##            Sum          RA        Mean          DP Max Min MinZ        FO  S RR
+## ap-davis    27  0.30354132  1.03846154   4.3861671  22   0    5  7.692308  2  2
+## as-bimac  2386 26.82405846 91.76923077 132.4348316 511   0    1 88.461538 23 23
+## as-fasci   158  1.77627881  6.07692308  16.2035134  64   0    1 38.461538 10 10
+## ch-bimac   705  7.92580101 27.11538462  75.8732242 273   0    3 19.230769  5  5
+## ci-ocela    70  0.78695897  2.69230769   8.2982853  40   0    2 19.230769  5  5
+## ci-orien   143  1.60764474  5.50000000  14.6184815  69   0    5 26.923077  7  7
+## co-macro     2  0.02248454  0.07692308   0.3922323   2   0    2  3.846154  1  1
+## co-heter     1  0.01124227  0.03846154   0.1961161   1   0    1  3.846154  1  1
+## cr-menez    28  0.31478359  1.07692308   3.1486261  14   0    1 19.230769  5  5
+## cu-lepid    21  0.23608769  0.80769231   4.1184388  21   0   21  3.846154  1  1
+## cy-gilbe   131  1.47273749  5.03846154  18.3313519  81   0   50  7.692308  2  2
+## ge-brasi  1020 11.46711636 39.23076923 106.3478473 509   0    1 57.692308 15 15
+## he-margi     2  0.02248454  0.07692308   0.2717465   1   0    1  7.692308  2  2
+## ho-malab   109  1.22540753  4.19230769   7.6053625  31   0    1 53.846154 14 14
+## hy-pusar    71  0.79820124  2.73076923   8.6605205  43   0    1 26.923077  7  7
+## le-melan     2  0.02248454  0.07692308   0.3922323   2   0    2  3.846154  1  1
+## le-piau     15  0.16863406  0.57692308   0.9868364   3   0    1 30.769231  8  8
+## le-taeni     1  0.01124227  0.03846154   0.1961161   1   0    1  3.846154  1  1
+## mo-costa     1  0.01124227  0.03846154   0.1961161   1   0    1  3.846154  1  1
+## mo-lepid    41  0.46093311  1.57692308   7.6376597  39   0    1 11.538462  3  3
+## or-nilot   848  9.53344576 32.61538462  59.1452970 247   0    1 69.230769 18 18
+## pa-manag   554  6.22821810 21.30769231  62.3928004 250   0    1 19.230769  5  5
+## pimel-sp     6  0.06745363  0.23076923   1.1766968   6   0    6  3.846154  1  1
+## po-retic   381  4.28330523 14.65384615  52.5242362 266   0    5 23.076923  6  6
+## po-vivip   978 10.99494098 37.61538462  79.5004790 326   0    8 42.307692 11 11
+## pr-brevi   279  3.13659359 10.73076923  33.3892889 164   0    1 46.153846 12 12
+## ps-rhomb     1  0.01124227  0.03846154   0.1961161   1   0    1  3.846154  1  1
+## ps-genise    1  0.01124227  0.03846154   0.1961161   1   0    1  3.846154  1  1
+## se-heter   296  3.32771220 11.38461538  22.9905666  93   0    3 38.461538 10 10
+## se-piaba    68  0.76447442  2.61538462  13.3358972  68   0   68  3.846154  1  1
+## se-spilo     1  0.01124227  0.03846154   0.1961161   1   0    1  3.846154  1  1
+## st-noton   205  2.30466554  7.88461538  25.5582893 115   0    1 15.384615  4  4
+## sy-marmo     1  0.01124227  0.03846154   0.1961161   1   0    1  3.846154  1  1
+## te-chalc   134  1.50646431  5.15384615  18.3841068  76   0   58  7.692308  2  2
+## tr-signa   208  2.33839236  8.00000000  27.8280434 141   0    4 23.076923  6  6
 ##                   E         H          D
 ## ap-davis  0.6912899 0.4791656 0.30178326
 ## as-bimac  0.7730767 2.4239775 0.88451845
@@ -1042,24 +1043,28 @@ J' = \frac{H'}{\ln(S)}
 ## tr-signa  0.6131232 1.0985693 0.51405325
 ##        Sum         RA       Mean         DP        Max        Min       MinZ 
 ## 8895.00000  100.00000  342.11538  807.30587 3484.00000    0.00000  262.00000 
-##         FO          S          E          H          D 
-##  746.15385  194.00000   16.69499   30.09298   14.31057 
+##         FO          S         RR          E          H          D 
+##  746.15385  194.00000  194.00000   16.69499   30.09298   14.31057 
 ##         Sum          RA        Mean          DP         Max         Min 
 ## 254.1428571   2.8571429   9.7747253  23.0658821  99.5428571   0.0000000 
-##        MinZ          FO           S           E           H           D 
-##   7.4857143  21.3186813   5.5428571   0.4769997   0.8597994   0.4088734 
+##        MinZ          FO           S          RR           E           H 
+##   7.4857143  21.3186813   5.5428571   5.5428571   0.4769997   0.8597994 
+##           D 
+##   0.4088734 
 ##         Sum          RA        Mean          DP         Max         Min 
 ## 468.3865386   5.2657284  18.0148669  33.0609233 138.2715450   0.0000000 
-##        MinZ          FO           S           E           H           D 
-##  16.4573807  21.3807831   5.5590036   0.3757324   0.7784814   0.3354621 
+##        MinZ          FO           S          RR           E           H 
+##  16.4573807  21.3807831   5.5590036   5.5590036   0.3757324   0.7784814 
+##           D 
+##   0.3354621 
 ##                   Sum         RA       Mean        DP        Max Min       MinZ
 ## SomaTotalD  8895.0000 100.000000 342.115385 807.30587 3484.00000   0 262.000000
 ## MediaTotalD  254.1429   2.857143   9.774725  23.06588   99.54286   0   7.485714
 ## DPTotalD     468.3865   5.265728  18.014867  33.06092  138.27155   0  16.457381
-##                    FO          S          E          H          D
-## SomaTotalD  746.15385 194.000000 16.6949878 30.0929803 14.3105692
-## MediaTotalD  21.31868   5.542857  0.4769997  0.8597994  0.4088734
-## DPTotalD     21.38078   5.559004  0.3757324  0.7784814  0.3354621
+##                    FO          S         RR          E          H          D
+## SomaTotalD  746.15385 194.000000 194.000000 16.6949878 30.0929803 14.3105692
+## MediaTotalD  21.31868   5.542857   5.542857  0.4769997  0.8597994  0.4088734
+## DPTotalD     21.38078   5.559004   5.559004  0.3757324  0.7784814  0.3354621
 ##                   Sum           RA         Mean          DP        Max Min
 ## ap-davis      27.0000   0.30354132   1.03846154   4.3861671   22.00000   0
 ## as-bimac    2386.0000  26.82405846  91.76923077 132.4348316  511.00000   0
@@ -1099,149 +1104,188 @@ J' = \frac{H'}{\ln(S)}
 ## SomaTotalD  8895.0000 100.00000000 342.11538462 807.3058718 3484.00000   0
 ## MediaTotalD  254.1429   2.85714286   9.77472527  23.0658821   99.54286   0
 ## DPTotalD     468.3865   5.26572837  18.01486687  33.0609233  138.27155   0
-##                   MinZ         FO          S          E          H           D
-## ap-davis      5.000000   7.692308   2.000000  0.6912899  0.4791656  0.30178326
-## as-bimac      1.000000  88.461538  23.000000  0.7730767  2.4239775  0.88451845
-## as-fasci      1.000000  38.461538  10.000000  0.6410755  1.4761308  0.69860599
-## ch-bimac      3.000000  19.230769   5.000000  0.7321578  1.1783625  0.67197827
-## ci-ocela      2.000000  19.230769   5.000000  0.7383840  1.1883832  0.61020408
-## ci-orien      5.000000  26.923077   7.000000  0.7696554  1.4976803  0.70027874
-## co-macro      2.000000   3.846154   1.000000  0.0000000  0.0000000  0.00000000
-## co-heter      1.000000   3.846154   1.000000  0.0000000  0.0000000  0.00000000
-## cr-menez      1.000000  19.230769   5.000000  0.7583440  1.2205076  0.64540816
-## cu-lepid     21.000000   3.846154   1.000000  0.0000000  0.0000000  0.00000000
-## cy-gilbe     50.000000   7.692308   2.000000  0.9592195  0.6648803  0.47200047
-## ge-brasi      1.000000  57.692308  15.000000  0.5785997  1.5668772  0.68977124
-## he-margi      1.000000   7.692308   2.000000  1.0000000  0.6931472  0.50000000
-## ho-malab      1.000000  53.846154  14.000000  0.8020891  2.1167591  0.83982830
-## hy-pusar      1.000000  26.923077   7.000000  0.6419992  1.2492728  0.58956556
-## le-melan      2.000000   3.846154   1.000000  0.0000000  0.0000000  0.00000000
-## le-piau       1.000000  30.769231   8.000000  0.9576352  1.9913464  0.85333333
-## le-taeni      1.000000   3.846154   1.000000  0.0000000  0.0000000  0.00000000
-## mo-costa      1.000000   3.846154   1.000000  0.0000000  0.0000000  0.00000000
-## mo-lepid      1.000000  11.538462   3.000000  0.2081906  0.2287207  0.09399167
-## or-nilot      1.000000  69.230769  18.000000  0.7290694  2.1072815  0.83992302
-## pa-manag      1.000000  19.230769   5.000000  0.7001630  1.1268689  0.64444343
-## pimel-sp      6.000000   3.846154   1.000000  0.0000000  0.0000000  0.00000000
-## po-retic      5.000000  23.076923   6.000000  0.5742169  1.0288585  0.48641164
-## po-vivip      8.000000  42.307692  11.000000  0.7770962  1.8633952  0.79634160
-## pr-brevi      1.000000  46.153846  12.000000  0.5516566  1.3708151  0.60348659
-## ps-rhomb      1.000000   3.846154   1.000000  0.0000000  0.0000000  0.00000000
-## ps-genise     1.000000   3.846154   1.000000  0.0000000  0.0000000  0.00000000
-## se-heter      3.000000  38.461538  10.000000  0.8110852  1.8675926  0.81071950
-## se-piaba     68.000000   3.846154   1.000000  0.0000000  0.0000000  0.00000000
-## se-spilo      1.000000   3.846154   1.000000  0.0000000  0.0000000  0.00000000
-## st-noton      1.000000  15.384615   4.000000  0.6999162  0.9702899  0.57294468
-## sy-marmo      1.000000   3.846154   1.000000  0.0000000  0.0000000  0.00000000
-## te-chalc     58.000000   7.692308   2.000000  0.9869445  0.6840978  0.49097795
-## tr-signa      4.000000  23.076923   6.000000  0.6131232  1.0985693  0.51405325
-## SomaTotalD  262.000000 746.153846 194.000000 16.6949878 30.0929803 14.31056920
-## MediaTotalD   7.485714  21.318681   5.542857  0.4769997  0.8597994  0.40887341
-## DPTotalD     16.457381  21.380783   5.559004  0.3757324  0.7784814  0.33546207
-##                 Sum     RA   Mean     DP     Max Min   MinZ     FO      S     E
-## ap-davis      27.00   0.30   1.04   4.39   22.00   0   5.00   7.69   2.00  0.69
-## as-bimac    2386.00  26.82  91.77 132.43  511.00   0   1.00  88.46  23.00  0.77
-## as-fasci     158.00   1.78   6.08  16.20   64.00   0   1.00  38.46  10.00  0.64
-## ch-bimac     705.00   7.93  27.12  75.87  273.00   0   3.00  19.23   5.00  0.73
-## ci-ocela      70.00   0.79   2.69   8.30   40.00   0   2.00  19.23   5.00  0.74
-## ci-orien     143.00   1.61   5.50  14.62   69.00   0   5.00  26.92   7.00  0.77
-## co-macro       2.00   0.02   0.08   0.39    2.00   0   2.00   3.85   1.00  0.00
-## co-heter       1.00   0.01   0.04   0.20    1.00   0   1.00   3.85   1.00  0.00
-## cr-menez      28.00   0.31   1.08   3.15   14.00   0   1.00  19.23   5.00  0.76
-## cu-lepid      21.00   0.24   0.81   4.12   21.00   0  21.00   3.85   1.00  0.00
-## cy-gilbe     131.00   1.47   5.04  18.33   81.00   0  50.00   7.69   2.00  0.96
-## ge-brasi    1020.00  11.47  39.23 106.35  509.00   0   1.00  57.69  15.00  0.58
-## he-margi       2.00   0.02   0.08   0.27    1.00   0   1.00   7.69   2.00  1.00
-## ho-malab     109.00   1.23   4.19   7.61   31.00   0   1.00  53.85  14.00  0.80
-## hy-pusar      71.00   0.80   2.73   8.66   43.00   0   1.00  26.92   7.00  0.64
-## le-melan       2.00   0.02   0.08   0.39    2.00   0   2.00   3.85   1.00  0.00
-## le-piau       15.00   0.17   0.58   0.99    3.00   0   1.00  30.77   8.00  0.96
-## le-taeni       1.00   0.01   0.04   0.20    1.00   0   1.00   3.85   1.00  0.00
-## mo-costa       1.00   0.01   0.04   0.20    1.00   0   1.00   3.85   1.00  0.00
-## mo-lepid      41.00   0.46   1.58   7.64   39.00   0   1.00  11.54   3.00  0.21
-## or-nilot     848.00   9.53  32.62  59.15  247.00   0   1.00  69.23  18.00  0.73
-## pa-manag     554.00   6.23  21.31  62.39  250.00   0   1.00  19.23   5.00  0.70
-## pimel-sp       6.00   0.07   0.23   1.18    6.00   0   6.00   3.85   1.00  0.00
-## po-retic     381.00   4.28  14.65  52.52  266.00   0   5.00  23.08   6.00  0.57
-## po-vivip     978.00  10.99  37.62  79.50  326.00   0   8.00  42.31  11.00  0.78
-## pr-brevi     279.00   3.14  10.73  33.39  164.00   0   1.00  46.15  12.00  0.55
-## ps-rhomb       1.00   0.01   0.04   0.20    1.00   0   1.00   3.85   1.00  0.00
-## ps-genise      1.00   0.01   0.04   0.20    1.00   0   1.00   3.85   1.00  0.00
-## se-heter     296.00   3.33  11.38  22.99   93.00   0   3.00  38.46  10.00  0.81
-## se-piaba      68.00   0.76   2.62  13.34   68.00   0  68.00   3.85   1.00  0.00
-## se-spilo       1.00   0.01   0.04   0.20    1.00   0   1.00   3.85   1.00  0.00
-## st-noton     205.00   2.30   7.88  25.56  115.00   0   1.00  15.38   4.00  0.70
-## sy-marmo       1.00   0.01   0.04   0.20    1.00   0   1.00   3.85   1.00  0.00
-## te-chalc     134.00   1.51   5.15  18.38   76.00   0  58.00   7.69   2.00  0.99
-## tr-signa     208.00   2.34   8.00  27.83  141.00   0   4.00  23.08   6.00  0.61
-## SomaTotalD  8895.00 100.00 342.12 807.31 3484.00   0 262.00 746.15 194.00 16.69
-## MediaTotalD  254.14   2.86   9.77  23.07   99.54   0   7.49  21.32   5.54  0.48
-## DPTotalD     468.39   5.27  18.01  33.06  138.27   0  16.46  21.38   5.56  0.38
-##                 H     D
-## ap-davis     0.48  0.30
-## as-bimac     2.42  0.88
-## as-fasci     1.48  0.70
-## ch-bimac     1.18  0.67
-## ci-ocela     1.19  0.61
-## ci-orien     1.50  0.70
-## co-macro     0.00  0.00
-## co-heter     0.00  0.00
-## cr-menez     1.22  0.65
-## cu-lepid     0.00  0.00
-## cy-gilbe     0.66  0.47
-## ge-brasi     1.57  0.69
-## he-margi     0.69  0.50
-## ho-malab     2.12  0.84
-## hy-pusar     1.25  0.59
-## le-melan     0.00  0.00
-## le-piau      1.99  0.85
-## le-taeni     0.00  0.00
-## mo-costa     0.00  0.00
-## mo-lepid     0.23  0.09
-## or-nilot     2.11  0.84
-## pa-manag     1.13  0.64
-## pimel-sp     0.00  0.00
-## po-retic     1.03  0.49
-## po-vivip     1.86  0.80
-## pr-brevi     1.37  0.60
-## ps-rhomb     0.00  0.00
-## ps-genise    0.00  0.00
-## se-heter     1.87  0.81
-## se-piaba     0.00  0.00
-## se-spilo     0.00  0.00
-## st-noton     0.97  0.57
-## sy-marmo     0.00  0.00
-## te-chalc     0.68  0.49
-## tr-signa     1.10  0.51
-## SomaTotalD  30.09 14.31
-## MediaTotalD  0.86  0.41
-## DPTotalD     0.78  0.34</code></pre>
-<div class="sourceCode" id="cb256"><pre class="downlit sourceCode r">
+##                   MinZ         FO          S         RR          E          H
+## ap-davis      5.000000   7.692308   2.000000   2.000000  0.6912899  0.4791656
+## as-bimac      1.000000  88.461538  23.000000  23.000000  0.7730767  2.4239775
+## as-fasci      1.000000  38.461538  10.000000  10.000000  0.6410755  1.4761308
+## ch-bimac      3.000000  19.230769   5.000000   5.000000  0.7321578  1.1783625
+## ci-ocela      2.000000  19.230769   5.000000   5.000000  0.7383840  1.1883832
+## ci-orien      5.000000  26.923077   7.000000   7.000000  0.7696554  1.4976803
+## co-macro      2.000000   3.846154   1.000000   1.000000  0.0000000  0.0000000
+## co-heter      1.000000   3.846154   1.000000   1.000000  0.0000000  0.0000000
+## cr-menez      1.000000  19.230769   5.000000   5.000000  0.7583440  1.2205076
+## cu-lepid     21.000000   3.846154   1.000000   1.000000  0.0000000  0.0000000
+## cy-gilbe     50.000000   7.692308   2.000000   2.000000  0.9592195  0.6648803
+## ge-brasi      1.000000  57.692308  15.000000  15.000000  0.5785997  1.5668772
+## he-margi      1.000000   7.692308   2.000000   2.000000  1.0000000  0.6931472
+## ho-malab      1.000000  53.846154  14.000000  14.000000  0.8020891  2.1167591
+## hy-pusar      1.000000  26.923077   7.000000   7.000000  0.6419992  1.2492728
+## le-melan      2.000000   3.846154   1.000000   1.000000  0.0000000  0.0000000
+## le-piau       1.000000  30.769231   8.000000   8.000000  0.9576352  1.9913464
+## le-taeni      1.000000   3.846154   1.000000   1.000000  0.0000000  0.0000000
+## mo-costa      1.000000   3.846154   1.000000   1.000000  0.0000000  0.0000000
+## mo-lepid      1.000000  11.538462   3.000000   3.000000  0.2081906  0.2287207
+## or-nilot      1.000000  69.230769  18.000000  18.000000  0.7290694  2.1072815
+## pa-manag      1.000000  19.230769   5.000000   5.000000  0.7001630  1.1268689
+## pimel-sp      6.000000   3.846154   1.000000   1.000000  0.0000000  0.0000000
+## po-retic      5.000000  23.076923   6.000000   6.000000  0.5742169  1.0288585
+## po-vivip      8.000000  42.307692  11.000000  11.000000  0.7770962  1.8633952
+## pr-brevi      1.000000  46.153846  12.000000  12.000000  0.5516566  1.3708151
+## ps-rhomb      1.000000   3.846154   1.000000   1.000000  0.0000000  0.0000000
+## ps-genise     1.000000   3.846154   1.000000   1.000000  0.0000000  0.0000000
+## se-heter      3.000000  38.461538  10.000000  10.000000  0.8110852  1.8675926
+## se-piaba     68.000000   3.846154   1.000000   1.000000  0.0000000  0.0000000
+## se-spilo      1.000000   3.846154   1.000000   1.000000  0.0000000  0.0000000
+## st-noton      1.000000  15.384615   4.000000   4.000000  0.6999162  0.9702899
+## sy-marmo      1.000000   3.846154   1.000000   1.000000  0.0000000  0.0000000
+## te-chalc     58.000000   7.692308   2.000000   2.000000  0.9869445  0.6840978
+## tr-signa      4.000000  23.076923   6.000000   6.000000  0.6131232  1.0985693
+## SomaTotalD  262.000000 746.153846 194.000000 194.000000 16.6949878 30.0929803
+## MediaTotalD   7.485714  21.318681   5.542857   5.542857  0.4769997  0.8597994
+## DPTotalD     16.457381  21.380783   5.559004   5.559004  0.3757324  0.7784814
+##                       D
+## ap-davis     0.30178326
+## as-bimac     0.88451845
+## as-fasci     0.69860599
+## ch-bimac     0.67197827
+## ci-ocela     0.61020408
+## ci-orien     0.70027874
+## co-macro     0.00000000
+## co-heter     0.00000000
+## cr-menez     0.64540816
+## cu-lepid     0.00000000
+## cy-gilbe     0.47200047
+## ge-brasi     0.68977124
+## he-margi     0.50000000
+## ho-malab     0.83982830
+## hy-pusar     0.58956556
+## le-melan     0.00000000
+## le-piau      0.85333333
+## le-taeni     0.00000000
+## mo-costa     0.00000000
+## mo-lepid     0.09399167
+## or-nilot     0.83992302
+## pa-manag     0.64444343
+## pimel-sp     0.00000000
+## po-retic     0.48641164
+## po-vivip     0.79634160
+## pr-brevi     0.60348659
+## ps-rhomb     0.00000000
+## ps-genise    0.00000000
+## se-heter     0.81071950
+## se-piaba     0.00000000
+## se-spilo     0.00000000
+## st-noton     0.57294468
+## sy-marmo     0.00000000
+## te-chalc     0.49097795
+## tr-signa     0.51405325
+## SomaTotalD  14.31056920
+## MediaTotalD  0.40887341
+## DPTotalD     0.33546207
+##                 Sum     RA   Mean     DP     Max Min   MinZ     FO      S
+## ap-davis      27.00   0.30   1.04   4.39   22.00   0   5.00   7.69   2.00
+## as-bimac    2386.00  26.82  91.77 132.43  511.00   0   1.00  88.46  23.00
+## as-fasci     158.00   1.78   6.08  16.20   64.00   0   1.00  38.46  10.00
+## ch-bimac     705.00   7.93  27.12  75.87  273.00   0   3.00  19.23   5.00
+## ci-ocela      70.00   0.79   2.69   8.30   40.00   0   2.00  19.23   5.00
+## ci-orien     143.00   1.61   5.50  14.62   69.00   0   5.00  26.92   7.00
+## co-macro       2.00   0.02   0.08   0.39    2.00   0   2.00   3.85   1.00
+## co-heter       1.00   0.01   0.04   0.20    1.00   0   1.00   3.85   1.00
+## cr-menez      28.00   0.31   1.08   3.15   14.00   0   1.00  19.23   5.00
+## cu-lepid      21.00   0.24   0.81   4.12   21.00   0  21.00   3.85   1.00
+## cy-gilbe     131.00   1.47   5.04  18.33   81.00   0  50.00   7.69   2.00
+## ge-brasi    1020.00  11.47  39.23 106.35  509.00   0   1.00  57.69  15.00
+## he-margi       2.00   0.02   0.08   0.27    1.00   0   1.00   7.69   2.00
+## ho-malab     109.00   1.23   4.19   7.61   31.00   0   1.00  53.85  14.00
+## hy-pusar      71.00   0.80   2.73   8.66   43.00   0   1.00  26.92   7.00
+## le-melan       2.00   0.02   0.08   0.39    2.00   0   2.00   3.85   1.00
+## le-piau       15.00   0.17   0.58   0.99    3.00   0   1.00  30.77   8.00
+## le-taeni       1.00   0.01   0.04   0.20    1.00   0   1.00   3.85   1.00
+## mo-costa       1.00   0.01   0.04   0.20    1.00   0   1.00   3.85   1.00
+## mo-lepid      41.00   0.46   1.58   7.64   39.00   0   1.00  11.54   3.00
+## or-nilot     848.00   9.53  32.62  59.15  247.00   0   1.00  69.23  18.00
+## pa-manag     554.00   6.23  21.31  62.39  250.00   0   1.00  19.23   5.00
+## pimel-sp       6.00   0.07   0.23   1.18    6.00   0   6.00   3.85   1.00
+## po-retic     381.00   4.28  14.65  52.52  266.00   0   5.00  23.08   6.00
+## po-vivip     978.00  10.99  37.62  79.50  326.00   0   8.00  42.31  11.00
+## pr-brevi     279.00   3.14  10.73  33.39  164.00   0   1.00  46.15  12.00
+## ps-rhomb       1.00   0.01   0.04   0.20    1.00   0   1.00   3.85   1.00
+## ps-genise      1.00   0.01   0.04   0.20    1.00   0   1.00   3.85   1.00
+## se-heter     296.00   3.33  11.38  22.99   93.00   0   3.00  38.46  10.00
+## se-piaba      68.00   0.76   2.62  13.34   68.00   0  68.00   3.85   1.00
+## se-spilo       1.00   0.01   0.04   0.20    1.00   0   1.00   3.85   1.00
+## st-noton     205.00   2.30   7.88  25.56  115.00   0   1.00  15.38   4.00
+## sy-marmo       1.00   0.01   0.04   0.20    1.00   0   1.00   3.85   1.00
+## te-chalc     134.00   1.51   5.15  18.38   76.00   0  58.00   7.69   2.00
+## tr-signa     208.00   2.34   8.00  27.83  141.00   0   4.00  23.08   6.00
+## SomaTotalD  8895.00 100.00 342.12 807.31 3484.00   0 262.00 746.15 194.00
+## MediaTotalD  254.14   2.86   9.77  23.07   99.54   0   7.49  21.32   5.54
+## DPTotalD     468.39   5.27  18.01  33.06  138.27   0  16.46  21.38   5.56
+##                 RR     E     H     D
+## ap-davis      2.00  0.69  0.48  0.30
+## as-bimac     23.00  0.77  2.42  0.88
+## as-fasci     10.00  0.64  1.48  0.70
+## ch-bimac      5.00  0.73  1.18  0.67
+## ci-ocela      5.00  0.74  1.19  0.61
+## ci-orien      7.00  0.77  1.50  0.70
+## co-macro      1.00  0.00  0.00  0.00
+## co-heter      1.00  0.00  0.00  0.00
+## cr-menez      5.00  0.76  1.22  0.65
+## cu-lepid      1.00  0.00  0.00  0.00
+## cy-gilbe      2.00  0.96  0.66  0.47
+## ge-brasi     15.00  0.58  1.57  0.69
+## he-margi      2.00  1.00  0.69  0.50
+## ho-malab     14.00  0.80  2.12  0.84
+## hy-pusar      7.00  0.64  1.25  0.59
+## le-melan      1.00  0.00  0.00  0.00
+## le-piau       8.00  0.96  1.99  0.85
+## le-taeni      1.00  0.00  0.00  0.00
+## mo-costa      1.00  0.00  0.00  0.00
+## mo-lepid      3.00  0.21  0.23  0.09
+## or-nilot     18.00  0.73  2.11  0.84
+## pa-manag      5.00  0.70  1.13  0.64
+## pimel-sp      1.00  0.00  0.00  0.00
+## po-retic      6.00  0.57  1.03  0.49
+## po-vivip     11.00  0.78  1.86  0.80
+## pr-brevi     12.00  0.55  1.37  0.60
+## ps-rhomb      1.00  0.00  0.00  0.00
+## ps-genise     1.00  0.00  0.00  0.00
+## se-heter     10.00  0.81  1.87  0.81
+## se-piaba      1.00  0.00  0.00  0.00
+## se-spilo      1.00  0.00  0.00  0.00
+## st-noton      4.00  0.70  0.97  0.57
+## sy-marmo      1.00  0.00  0.00  0.00
+## te-chalc      2.00  0.99  0.68  0.49
+## tr-signa      6.00  0.61  1.10  0.51
+## SomaTotalD  194.00 16.69 30.09 14.31
+## MediaTotalD   5.54  0.48  0.86  0.41
+## DPTotalD      5.56  0.38  0.78  0.34</code></pre>
+<div class="sourceCode" id="cb281"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#Fazendo uma tabela</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://gt.rstudio.com">gt</a></span><span class="op">)</span></span>
 <span><span class="va">df</span> <span class="op">&lt;-</span> <span class="va">DescritoresFinal</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">ncol</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span>; <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span> <span class="co">#no. de N colunas x M linhas</span></span>
 <span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span><span class="op">(</span>Spp <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span>, <span class="va">df</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://gt.rstudio.com/reference/gt.html">gt</a></span><span class="op">(</span><span class="va">df</span>, rowname_col <span class="op">=</span> <span class="st">"Spp"</span>, caption <span class="op">=</span> <span class="st">"Descritores da diversidade por espécie (colunas). Sum, soma; RA, abundância relativa (%); mean, média; DP, desvio padrão da média; Max, maior valor; Min, menor valor; MinZ, menor valor não zero; FO, frequência de ocorrência (%); S, riqueza (ou no. de ocorrências, da matriz transposta); E, índice de equitabilidade de Pielou; H, índice de diversidade de Shannon; D, índice de diversidade de Simpson."</span><span class="op">)</span></span></code></pre></div>
-<pre><code>## [1] 12
+<pre><code>## [1] 13
 ## [1] 38</code></pre>
-<div id="lzsmyzmuas" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#lzsmyzmuas table {
+<div id="rhztilfedc" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#rhztilfedc table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#lzsmyzmuas thead, #lzsmyzmuas tbody, #lzsmyzmuas tfoot, #lzsmyzmuas tr, #lzsmyzmuas td, #lzsmyzmuas th {
+#rhztilfedc thead, #rhztilfedc tbody, #rhztilfedc tfoot, #rhztilfedc tr, #rhztilfedc td, #rhztilfedc th {
   border-style: none;
 }
 
-#lzsmyzmuas p {
+#rhztilfedc p {
   margin: 0;
   padding: 0;
 }
 
-#lzsmyzmuas .gt_table {
+#rhztilfedc .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1267,12 +1311,12 @@ J' = \frac{H'}{\ln(S)}
   border-left-color: #D3D3D3;
 }
 
-#lzsmyzmuas .gt_caption {
+#rhztilfedc .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#lzsmyzmuas .gt_title {
+#rhztilfedc .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1284,7 +1328,7 @@ J' = \frac{H'}{\ln(S)}
   border-bottom-width: 0;
 }
 
-#lzsmyzmuas .gt_subtitle {
+#rhztilfedc .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1296,7 +1340,7 @@ J' = \frac{H'}{\ln(S)}
   border-top-width: 0;
 }
 
-#lzsmyzmuas .gt_heading {
+#rhztilfedc .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1308,13 +1352,13 @@ J' = \frac{H'}{\ln(S)}
   border-right-color: #D3D3D3;
 }
 
-#lzsmyzmuas .gt_bottom_border {
+#rhztilfedc .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#lzsmyzmuas .gt_col_headings {
+#rhztilfedc .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1329,7 +1373,7 @@ J' = \frac{H'}{\ln(S)}
   border-right-color: #D3D3D3;
 }
 
-#lzsmyzmuas .gt_col_heading {
+#rhztilfedc .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1349,7 +1393,7 @@ J' = \frac{H'}{\ln(S)}
   overflow-x: hidden;
 }
 
-#lzsmyzmuas .gt_column_spanner_outer {
+#rhztilfedc .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1361,15 +1405,15 @@ J' = \frac{H'}{\ln(S)}
   padding-right: 4px;
 }
 
-#lzsmyzmuas .gt_column_spanner_outer:first-child {
+#rhztilfedc .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#lzsmyzmuas .gt_column_spanner_outer:last-child {
+#rhztilfedc .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#lzsmyzmuas .gt_column_spanner {
+#rhztilfedc .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1381,11 +1425,11 @@ J' = \frac{H'}{\ln(S)}
   width: 100%;
 }
 
-#lzsmyzmuas .gt_spanner_row {
+#rhztilfedc .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#lzsmyzmuas .gt_group_heading {
+#rhztilfedc .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1411,7 +1455,7 @@ J' = \frac{H'}{\ln(S)}
   text-align: left;
 }
 
-#lzsmyzmuas .gt_empty_group_heading {
+#rhztilfedc .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1426,15 +1470,15 @@ J' = \frac{H'}{\ln(S)}
   vertical-align: middle;
 }
 
-#lzsmyzmuas .gt_from_md > :first-child {
+#rhztilfedc .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#lzsmyzmuas .gt_from_md > :last-child {
+#rhztilfedc .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#lzsmyzmuas .gt_row {
+#rhztilfedc .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1453,7 +1497,7 @@ J' = \frac{H'}{\ln(S)}
   overflow-x: hidden;
 }
 
-#lzsmyzmuas .gt_stub {
+#rhztilfedc .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1466,7 +1510,7 @@ J' = \frac{H'}{\ln(S)}
   padding-right: 5px;
 }
 
-#lzsmyzmuas .gt_stub_row_group {
+#rhztilfedc .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1480,15 +1524,15 @@ J' = \frac{H'}{\ln(S)}
   vertical-align: top;
 }
 
-#lzsmyzmuas .gt_row_group_first td {
+#rhztilfedc .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#lzsmyzmuas .gt_row_group_first th {
+#rhztilfedc .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#lzsmyzmuas .gt_summary_row {
+#rhztilfedc .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1498,16 +1542,16 @@ J' = \frac{H'}{\ln(S)}
   padding-right: 5px;
 }
 
-#lzsmyzmuas .gt_first_summary_row {
+#rhztilfedc .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#lzsmyzmuas .gt_first_summary_row.thick {
+#rhztilfedc .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#lzsmyzmuas .gt_last_summary_row {
+#rhztilfedc .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1517,7 +1561,7 @@ J' = \frac{H'}{\ln(S)}
   border-bottom-color: #D3D3D3;
 }
 
-#lzsmyzmuas .gt_grand_summary_row {
+#rhztilfedc .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1527,7 +1571,7 @@ J' = \frac{H'}{\ln(S)}
   padding-right: 5px;
 }
 
-#lzsmyzmuas .gt_first_grand_summary_row {
+#rhztilfedc .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1537,7 +1581,7 @@ J' = \frac{H'}{\ln(S)}
   border-top-color: #D3D3D3;
 }
 
-#lzsmyzmuas .gt_last_grand_summary_row_top {
+#rhztilfedc .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1547,11 +1591,11 @@ J' = \frac{H'}{\ln(S)}
   border-bottom-color: #D3D3D3;
 }
 
-#lzsmyzmuas .gt_striped {
+#rhztilfedc .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#lzsmyzmuas .gt_table_body {
+#rhztilfedc .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1560,7 +1604,7 @@ J' = \frac{H'}{\ln(S)}
   border-bottom-color: #D3D3D3;
 }
 
-#lzsmyzmuas .gt_footnotes {
+#rhztilfedc .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1574,7 +1618,7 @@ J' = \frac{H'}{\ln(S)}
   border-right-color: #D3D3D3;
 }
 
-#lzsmyzmuas .gt_footnote {
+#rhztilfedc .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1583,7 +1627,7 @@ J' = \frac{H'}{\ln(S)}
   padding-right: 5px;
 }
 
-#lzsmyzmuas .gt_sourcenotes {
+#rhztilfedc .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1597,7 +1641,7 @@ J' = \frac{H'}{\ln(S)}
   border-right-color: #D3D3D3;
 }
 
-#lzsmyzmuas .gt_sourcenote {
+#rhztilfedc .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1605,78 +1649,78 @@ J' = \frac{H'}{\ln(S)}
   padding-right: 5px;
 }
 
-#lzsmyzmuas .gt_left {
+#rhztilfedc .gt_left {
   text-align: left;
 }
 
-#lzsmyzmuas .gt_center {
+#rhztilfedc .gt_center {
   text-align: center;
 }
 
-#lzsmyzmuas .gt_right {
+#rhztilfedc .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#lzsmyzmuas .gt_font_normal {
+#rhztilfedc .gt_font_normal {
   font-weight: normal;
 }
 
-#lzsmyzmuas .gt_font_bold {
+#rhztilfedc .gt_font_bold {
   font-weight: bold;
 }
 
-#lzsmyzmuas .gt_font_italic {
+#rhztilfedc .gt_font_italic {
   font-style: italic;
 }
 
-#lzsmyzmuas .gt_super {
+#rhztilfedc .gt_super {
   font-size: 65%;
 }
 
-#lzsmyzmuas .gt_footnote_marks {
+#rhztilfedc .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#lzsmyzmuas .gt_asterisk {
+#rhztilfedc .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#lzsmyzmuas .gt_indent_1 {
+#rhztilfedc .gt_indent_1 {
   text-indent: 5px;
 }
 
-#lzsmyzmuas .gt_indent_2 {
+#rhztilfedc .gt_indent_2 {
   text-indent: 10px;
 }
 
-#lzsmyzmuas .gt_indent_3 {
+#rhztilfedc .gt_indent_3 {
   text-indent: 15px;
 }
 
-#lzsmyzmuas .gt_indent_4 {
+#rhztilfedc .gt_indent_4 {
   text-indent: 20px;
 }
 
-#lzsmyzmuas .gt_indent_5 {
+#rhztilfedc .gt_indent_5 {
   text-indent: 25px;
 }
 
-#lzsmyzmuas .katex-display {
+#rhztilfedc .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#lzsmyzmuas div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#rhztilfedc div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
 <div class="inline-table"><table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
 <caption>
-<span id="tab:unnamed-chunk-144">Tabela 15.2: </span>Descritores da diversidade por espécie (colunas). Sum, soma; RA, abundância relativa (%); mean, média; DP, desvio padrão da média; Max, maior valor; Min, menor valor; MinZ, menor valor não zero; FO, frequência de ocorrência (%); S, riqueza (ou no. de ocorrências, da matriz transposta); E, índice de equitabilidade de Pielou; H, índice de diversidade de Shannon; D, índice de diversidade de Simpson.</caption>
+<span id="tab:unnamed-chunk-160">Tabela 16.2: </span>Descritores da diversidade por espécie (colunas). Sum, soma; RA, abundância relativa (%); mean, média; DP, desvio padrão da média; Max, maior valor; Min, menor valor; MinZ, menor valor não zero; FO, frequência de ocorrência (%); S, riqueza (ou no. de ocorrências, da matriz transposta); E, índice de equitabilidade de Pielou; H, índice de diversidade de Shannon; D, índice de diversidade de Simpson.</caption>
   <thead><tr class="gt_col_headings">
 <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="a::stub"></th>
       <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Sum">Sum</th>
@@ -1688,6 +1732,7 @@ J' = \frac{H'}{\ln(S)}
       <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="MinZ">MinZ</th>
       <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="FO">FO</th>
       <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="S">S</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="RR">RR</th>
       <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="E">E</th>
       <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="H">H</th>
       <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="D">D</th>
@@ -1704,6 +1749,7 @@ J' = \frac{H'}{\ln(S)}
 <td headers="stub_1_1 MinZ" class="gt_row gt_right">5.00</td>
 <td headers="stub_1_1 FO" class="gt_row gt_right">7.69</td>
 <td headers="stub_1_1 S" class="gt_row gt_right">2.00</td>
+<td headers="stub_1_1 RR" class="gt_row gt_right">2.00</td>
 <td headers="stub_1_1 E" class="gt_row gt_right">0.69</td>
 <td headers="stub_1_1 H" class="gt_row gt_right">0.48</td>
 <td headers="stub_1_1 D" class="gt_row gt_right">0.30</td>
@@ -1719,6 +1765,7 @@ J' = \frac{H'}{\ln(S)}
 <td headers="stub_1_2 MinZ" class="gt_row gt_right">1.00</td>
 <td headers="stub_1_2 FO" class="gt_row gt_right">88.46</td>
 <td headers="stub_1_2 S" class="gt_row gt_right">23.00</td>
+<td headers="stub_1_2 RR" class="gt_row gt_right">23.00</td>
 <td headers="stub_1_2 E" class="gt_row gt_right">0.77</td>
 <td headers="stub_1_2 H" class="gt_row gt_right">2.42</td>
 <td headers="stub_1_2 D" class="gt_row gt_right">0.88</td>
@@ -1734,6 +1781,7 @@ J' = \frac{H'}{\ln(S)}
 <td headers="stub_1_3 MinZ" class="gt_row gt_right">1.00</td>
 <td headers="stub_1_3 FO" class="gt_row gt_right">38.46</td>
 <td headers="stub_1_3 S" class="gt_row gt_right">10.00</td>
+<td headers="stub_1_3 RR" class="gt_row gt_right">10.00</td>
 <td headers="stub_1_3 E" class="gt_row gt_right">0.64</td>
 <td headers="stub_1_3 H" class="gt_row gt_right">1.48</td>
 <td headers="stub_1_3 D" class="gt_row gt_right">0.70</td>
@@ -1749,6 +1797,7 @@ J' = \frac{H'}{\ln(S)}
 <td headers="stub_1_4 MinZ" class="gt_row gt_right">3.00</td>
 <td headers="stub_1_4 FO" class="gt_row gt_right">19.23</td>
 <td headers="stub_1_4 S" class="gt_row gt_right">5.00</td>
+<td headers="stub_1_4 RR" class="gt_row gt_right">5.00</td>
 <td headers="stub_1_4 E" class="gt_row gt_right">0.73</td>
 <td headers="stub_1_4 H" class="gt_row gt_right">1.18</td>
 <td headers="stub_1_4 D" class="gt_row gt_right">0.67</td>
@@ -1764,6 +1813,7 @@ J' = \frac{H'}{\ln(S)}
 <td headers="stub_1_5 MinZ" class="gt_row gt_right">2.00</td>
 <td headers="stub_1_5 FO" class="gt_row gt_right">19.23</td>
 <td headers="stub_1_5 S" class="gt_row gt_right">5.00</td>
+<td headers="stub_1_5 RR" class="gt_row gt_right">5.00</td>
 <td headers="stub_1_5 E" class="gt_row gt_right">0.74</td>
 <td headers="stub_1_5 H" class="gt_row gt_right">1.19</td>
 <td headers="stub_1_5 D" class="gt_row gt_right">0.61</td>
@@ -1779,6 +1829,7 @@ J' = \frac{H'}{\ln(S)}
 <td headers="stub_1_6 MinZ" class="gt_row gt_right">5.00</td>
 <td headers="stub_1_6 FO" class="gt_row gt_right">26.92</td>
 <td headers="stub_1_6 S" class="gt_row gt_right">7.00</td>
+<td headers="stub_1_6 RR" class="gt_row gt_right">7.00</td>
 <td headers="stub_1_6 E" class="gt_row gt_right">0.77</td>
 <td headers="stub_1_6 H" class="gt_row gt_right">1.50</td>
 <td headers="stub_1_6 D" class="gt_row gt_right">0.70</td>
@@ -1794,6 +1845,7 @@ J' = \frac{H'}{\ln(S)}
 <td headers="stub_1_7 MinZ" class="gt_row gt_right">2.00</td>
 <td headers="stub_1_7 FO" class="gt_row gt_right">3.85</td>
 <td headers="stub_1_7 S" class="gt_row gt_right">1.00</td>
+<td headers="stub_1_7 RR" class="gt_row gt_right">1.00</td>
 <td headers="stub_1_7 E" class="gt_row gt_right">0.00</td>
 <td headers="stub_1_7 H" class="gt_row gt_right">0.00</td>
 <td headers="stub_1_7 D" class="gt_row gt_right">0.00</td>
@@ -1809,6 +1861,7 @@ J' = \frac{H'}{\ln(S)}
 <td headers="stub_1_8 MinZ" class="gt_row gt_right">1.00</td>
 <td headers="stub_1_8 FO" class="gt_row gt_right">3.85</td>
 <td headers="stub_1_8 S" class="gt_row gt_right">1.00</td>
+<td headers="stub_1_8 RR" class="gt_row gt_right">1.00</td>
 <td headers="stub_1_8 E" class="gt_row gt_right">0.00</td>
 <td headers="stub_1_8 H" class="gt_row gt_right">0.00</td>
 <td headers="stub_1_8 D" class="gt_row gt_right">0.00</td>
@@ -1824,6 +1877,7 @@ J' = \frac{H'}{\ln(S)}
 <td headers="stub_1_9 MinZ" class="gt_row gt_right">1.00</td>
 <td headers="stub_1_9 FO" class="gt_row gt_right">19.23</td>
 <td headers="stub_1_9 S" class="gt_row gt_right">5.00</td>
+<td headers="stub_1_9 RR" class="gt_row gt_right">5.00</td>
 <td headers="stub_1_9 E" class="gt_row gt_right">0.76</td>
 <td headers="stub_1_9 H" class="gt_row gt_right">1.22</td>
 <td headers="stub_1_9 D" class="gt_row gt_right">0.65</td>
@@ -1839,6 +1893,7 @@ J' = \frac{H'}{\ln(S)}
 <td headers="stub_1_10 MinZ" class="gt_row gt_right">21.00</td>
 <td headers="stub_1_10 FO" class="gt_row gt_right">3.85</td>
 <td headers="stub_1_10 S" class="gt_row gt_right">1.00</td>
+<td headers="stub_1_10 RR" class="gt_row gt_right">1.00</td>
 <td headers="stub_1_10 E" class="gt_row gt_right">0.00</td>
 <td headers="stub_1_10 H" class="gt_row gt_right">0.00</td>
 <td headers="stub_1_10 D" class="gt_row gt_right">0.00</td>
@@ -1854,6 +1909,7 @@ J' = \frac{H'}{\ln(S)}
 <td headers="stub_1_11 MinZ" class="gt_row gt_right">50.00</td>
 <td headers="stub_1_11 FO" class="gt_row gt_right">7.69</td>
 <td headers="stub_1_11 S" class="gt_row gt_right">2.00</td>
+<td headers="stub_1_11 RR" class="gt_row gt_right">2.00</td>
 <td headers="stub_1_11 E" class="gt_row gt_right">0.96</td>
 <td headers="stub_1_11 H" class="gt_row gt_right">0.66</td>
 <td headers="stub_1_11 D" class="gt_row gt_right">0.47</td>
@@ -1869,6 +1925,7 @@ J' = \frac{H'}{\ln(S)}
 <td headers="stub_1_12 MinZ" class="gt_row gt_right">1.00</td>
 <td headers="stub_1_12 FO" class="gt_row gt_right">57.69</td>
 <td headers="stub_1_12 S" class="gt_row gt_right">15.00</td>
+<td headers="stub_1_12 RR" class="gt_row gt_right">15.00</td>
 <td headers="stub_1_12 E" class="gt_row gt_right">0.58</td>
 <td headers="stub_1_12 H" class="gt_row gt_right">1.57</td>
 <td headers="stub_1_12 D" class="gt_row gt_right">0.69</td>
@@ -1884,6 +1941,7 @@ J' = \frac{H'}{\ln(S)}
 <td headers="stub_1_13 MinZ" class="gt_row gt_right">1.00</td>
 <td headers="stub_1_13 FO" class="gt_row gt_right">7.69</td>
 <td headers="stub_1_13 S" class="gt_row gt_right">2.00</td>
+<td headers="stub_1_13 RR" class="gt_row gt_right">2.00</td>
 <td headers="stub_1_13 E" class="gt_row gt_right">1.00</td>
 <td headers="stub_1_13 H" class="gt_row gt_right">0.69</td>
 <td headers="stub_1_13 D" class="gt_row gt_right">0.50</td>
@@ -1899,6 +1957,7 @@ J' = \frac{H'}{\ln(S)}
 <td headers="stub_1_14 MinZ" class="gt_row gt_right">1.00</td>
 <td headers="stub_1_14 FO" class="gt_row gt_right">53.85</td>
 <td headers="stub_1_14 S" class="gt_row gt_right">14.00</td>
+<td headers="stub_1_14 RR" class="gt_row gt_right">14.00</td>
 <td headers="stub_1_14 E" class="gt_row gt_right">0.80</td>
 <td headers="stub_1_14 H" class="gt_row gt_right">2.12</td>
 <td headers="stub_1_14 D" class="gt_row gt_right">0.84</td>
@@ -1914,6 +1973,7 @@ J' = \frac{H'}{\ln(S)}
 <td headers="stub_1_15 MinZ" class="gt_row gt_right">1.00</td>
 <td headers="stub_1_15 FO" class="gt_row gt_right">26.92</td>
 <td headers="stub_1_15 S" class="gt_row gt_right">7.00</td>
+<td headers="stub_1_15 RR" class="gt_row gt_right">7.00</td>
 <td headers="stub_1_15 E" class="gt_row gt_right">0.64</td>
 <td headers="stub_1_15 H" class="gt_row gt_right">1.25</td>
 <td headers="stub_1_15 D" class="gt_row gt_right">0.59</td>
@@ -1929,6 +1989,7 @@ J' = \frac{H'}{\ln(S)}
 <td headers="stub_1_16 MinZ" class="gt_row gt_right">2.00</td>
 <td headers="stub_1_16 FO" class="gt_row gt_right">3.85</td>
 <td headers="stub_1_16 S" class="gt_row gt_right">1.00</td>
+<td headers="stub_1_16 RR" class="gt_row gt_right">1.00</td>
 <td headers="stub_1_16 E" class="gt_row gt_right">0.00</td>
 <td headers="stub_1_16 H" class="gt_row gt_right">0.00</td>
 <td headers="stub_1_16 D" class="gt_row gt_right">0.00</td>
@@ -1944,6 +2005,7 @@ J' = \frac{H'}{\ln(S)}
 <td headers="stub_1_17 MinZ" class="gt_row gt_right">1.00</td>
 <td headers="stub_1_17 FO" class="gt_row gt_right">30.77</td>
 <td headers="stub_1_17 S" class="gt_row gt_right">8.00</td>
+<td headers="stub_1_17 RR" class="gt_row gt_right">8.00</td>
 <td headers="stub_1_17 E" class="gt_row gt_right">0.96</td>
 <td headers="stub_1_17 H" class="gt_row gt_right">1.99</td>
 <td headers="stub_1_17 D" class="gt_row gt_right">0.85</td>
@@ -1959,6 +2021,7 @@ J' = \frac{H'}{\ln(S)}
 <td headers="stub_1_18 MinZ" class="gt_row gt_right">1.00</td>
 <td headers="stub_1_18 FO" class="gt_row gt_right">3.85</td>
 <td headers="stub_1_18 S" class="gt_row gt_right">1.00</td>
+<td headers="stub_1_18 RR" class="gt_row gt_right">1.00</td>
 <td headers="stub_1_18 E" class="gt_row gt_right">0.00</td>
 <td headers="stub_1_18 H" class="gt_row gt_right">0.00</td>
 <td headers="stub_1_18 D" class="gt_row gt_right">0.00</td>
@@ -1974,6 +2037,7 @@ J' = \frac{H'}{\ln(S)}
 <td headers="stub_1_19 MinZ" class="gt_row gt_right">1.00</td>
 <td headers="stub_1_19 FO" class="gt_row gt_right">3.85</td>
 <td headers="stub_1_19 S" class="gt_row gt_right">1.00</td>
+<td headers="stub_1_19 RR" class="gt_row gt_right">1.00</td>
 <td headers="stub_1_19 E" class="gt_row gt_right">0.00</td>
 <td headers="stub_1_19 H" class="gt_row gt_right">0.00</td>
 <td headers="stub_1_19 D" class="gt_row gt_right">0.00</td>
@@ -1989,6 +2053,7 @@ J' = \frac{H'}{\ln(S)}
 <td headers="stub_1_20 MinZ" class="gt_row gt_right">1.00</td>
 <td headers="stub_1_20 FO" class="gt_row gt_right">11.54</td>
 <td headers="stub_1_20 S" class="gt_row gt_right">3.00</td>
+<td headers="stub_1_20 RR" class="gt_row gt_right">3.00</td>
 <td headers="stub_1_20 E" class="gt_row gt_right">0.21</td>
 <td headers="stub_1_20 H" class="gt_row gt_right">0.23</td>
 <td headers="stub_1_20 D" class="gt_row gt_right">0.09</td>
@@ -2004,6 +2069,7 @@ J' = \frac{H'}{\ln(S)}
 <td headers="stub_1_21 MinZ" class="gt_row gt_right">1.00</td>
 <td headers="stub_1_21 FO" class="gt_row gt_right">69.23</td>
 <td headers="stub_1_21 S" class="gt_row gt_right">18.00</td>
+<td headers="stub_1_21 RR" class="gt_row gt_right">18.00</td>
 <td headers="stub_1_21 E" class="gt_row gt_right">0.73</td>
 <td headers="stub_1_21 H" class="gt_row gt_right">2.11</td>
 <td headers="stub_1_21 D" class="gt_row gt_right">0.84</td>
@@ -2019,6 +2085,7 @@ J' = \frac{H'}{\ln(S)}
 <td headers="stub_1_22 MinZ" class="gt_row gt_right">1.00</td>
 <td headers="stub_1_22 FO" class="gt_row gt_right">19.23</td>
 <td headers="stub_1_22 S" class="gt_row gt_right">5.00</td>
+<td headers="stub_1_22 RR" class="gt_row gt_right">5.00</td>
 <td headers="stub_1_22 E" class="gt_row gt_right">0.70</td>
 <td headers="stub_1_22 H" class="gt_row gt_right">1.13</td>
 <td headers="stub_1_22 D" class="gt_row gt_right">0.64</td>
@@ -2034,6 +2101,7 @@ J' = \frac{H'}{\ln(S)}
 <td headers="stub_1_23 MinZ" class="gt_row gt_right">6.00</td>
 <td headers="stub_1_23 FO" class="gt_row gt_right">3.85</td>
 <td headers="stub_1_23 S" class="gt_row gt_right">1.00</td>
+<td headers="stub_1_23 RR" class="gt_row gt_right">1.00</td>
 <td headers="stub_1_23 E" class="gt_row gt_right">0.00</td>
 <td headers="stub_1_23 H" class="gt_row gt_right">0.00</td>
 <td headers="stub_1_23 D" class="gt_row gt_right">0.00</td>
@@ -2049,6 +2117,7 @@ J' = \frac{H'}{\ln(S)}
 <td headers="stub_1_24 MinZ" class="gt_row gt_right">5.00</td>
 <td headers="stub_1_24 FO" class="gt_row gt_right">23.08</td>
 <td headers="stub_1_24 S" class="gt_row gt_right">6.00</td>
+<td headers="stub_1_24 RR" class="gt_row gt_right">6.00</td>
 <td headers="stub_1_24 E" class="gt_row gt_right">0.57</td>
 <td headers="stub_1_24 H" class="gt_row gt_right">1.03</td>
 <td headers="stub_1_24 D" class="gt_row gt_right">0.49</td>
@@ -2064,6 +2133,7 @@ J' = \frac{H'}{\ln(S)}
 <td headers="stub_1_25 MinZ" class="gt_row gt_right">8.00</td>
 <td headers="stub_1_25 FO" class="gt_row gt_right">42.31</td>
 <td headers="stub_1_25 S" class="gt_row gt_right">11.00</td>
+<td headers="stub_1_25 RR" class="gt_row gt_right">11.00</td>
 <td headers="stub_1_25 E" class="gt_row gt_right">0.78</td>
 <td headers="stub_1_25 H" class="gt_row gt_right">1.86</td>
 <td headers="stub_1_25 D" class="gt_row gt_right">0.80</td>
@@ -2079,6 +2149,7 @@ J' = \frac{H'}{\ln(S)}
 <td headers="stub_1_26 MinZ" class="gt_row gt_right">1.00</td>
 <td headers="stub_1_26 FO" class="gt_row gt_right">46.15</td>
 <td headers="stub_1_26 S" class="gt_row gt_right">12.00</td>
+<td headers="stub_1_26 RR" class="gt_row gt_right">12.00</td>
 <td headers="stub_1_26 E" class="gt_row gt_right">0.55</td>
 <td headers="stub_1_26 H" class="gt_row gt_right">1.37</td>
 <td headers="stub_1_26 D" class="gt_row gt_right">0.60</td>
@@ -2094,6 +2165,7 @@ J' = \frac{H'}{\ln(S)}
 <td headers="stub_1_27 MinZ" class="gt_row gt_right">1.00</td>
 <td headers="stub_1_27 FO" class="gt_row gt_right">3.85</td>
 <td headers="stub_1_27 S" class="gt_row gt_right">1.00</td>
+<td headers="stub_1_27 RR" class="gt_row gt_right">1.00</td>
 <td headers="stub_1_27 E" class="gt_row gt_right">0.00</td>
 <td headers="stub_1_27 H" class="gt_row gt_right">0.00</td>
 <td headers="stub_1_27 D" class="gt_row gt_right">0.00</td>
@@ -2109,6 +2181,7 @@ J' = \frac{H'}{\ln(S)}
 <td headers="stub_1_28 MinZ" class="gt_row gt_right">1.00</td>
 <td headers="stub_1_28 FO" class="gt_row gt_right">3.85</td>
 <td headers="stub_1_28 S" class="gt_row gt_right">1.00</td>
+<td headers="stub_1_28 RR" class="gt_row gt_right">1.00</td>
 <td headers="stub_1_28 E" class="gt_row gt_right">0.00</td>
 <td headers="stub_1_28 H" class="gt_row gt_right">0.00</td>
 <td headers="stub_1_28 D" class="gt_row gt_right">0.00</td>
@@ -2124,6 +2197,7 @@ J' = \frac{H'}{\ln(S)}
 <td headers="stub_1_29 MinZ" class="gt_row gt_right">3.00</td>
 <td headers="stub_1_29 FO" class="gt_row gt_right">38.46</td>
 <td headers="stub_1_29 S" class="gt_row gt_right">10.00</td>
+<td headers="stub_1_29 RR" class="gt_row gt_right">10.00</td>
 <td headers="stub_1_29 E" class="gt_row gt_right">0.81</td>
 <td headers="stub_1_29 H" class="gt_row gt_right">1.87</td>
 <td headers="stub_1_29 D" class="gt_row gt_right">0.81</td>
@@ -2139,6 +2213,7 @@ J' = \frac{H'}{\ln(S)}
 <td headers="stub_1_30 MinZ" class="gt_row gt_right">68.00</td>
 <td headers="stub_1_30 FO" class="gt_row gt_right">3.85</td>
 <td headers="stub_1_30 S" class="gt_row gt_right">1.00</td>
+<td headers="stub_1_30 RR" class="gt_row gt_right">1.00</td>
 <td headers="stub_1_30 E" class="gt_row gt_right">0.00</td>
 <td headers="stub_1_30 H" class="gt_row gt_right">0.00</td>
 <td headers="stub_1_30 D" class="gt_row gt_right">0.00</td>
@@ -2154,6 +2229,7 @@ J' = \frac{H'}{\ln(S)}
 <td headers="stub_1_31 MinZ" class="gt_row gt_right">1.00</td>
 <td headers="stub_1_31 FO" class="gt_row gt_right">3.85</td>
 <td headers="stub_1_31 S" class="gt_row gt_right">1.00</td>
+<td headers="stub_1_31 RR" class="gt_row gt_right">1.00</td>
 <td headers="stub_1_31 E" class="gt_row gt_right">0.00</td>
 <td headers="stub_1_31 H" class="gt_row gt_right">0.00</td>
 <td headers="stub_1_31 D" class="gt_row gt_right">0.00</td>
@@ -2169,6 +2245,7 @@ J' = \frac{H'}{\ln(S)}
 <td headers="stub_1_32 MinZ" class="gt_row gt_right">1.00</td>
 <td headers="stub_1_32 FO" class="gt_row gt_right">15.38</td>
 <td headers="stub_1_32 S" class="gt_row gt_right">4.00</td>
+<td headers="stub_1_32 RR" class="gt_row gt_right">4.00</td>
 <td headers="stub_1_32 E" class="gt_row gt_right">0.70</td>
 <td headers="stub_1_32 H" class="gt_row gt_right">0.97</td>
 <td headers="stub_1_32 D" class="gt_row gt_right">0.57</td>
@@ -2184,6 +2261,7 @@ J' = \frac{H'}{\ln(S)}
 <td headers="stub_1_33 MinZ" class="gt_row gt_right">1.00</td>
 <td headers="stub_1_33 FO" class="gt_row gt_right">3.85</td>
 <td headers="stub_1_33 S" class="gt_row gt_right">1.00</td>
+<td headers="stub_1_33 RR" class="gt_row gt_right">1.00</td>
 <td headers="stub_1_33 E" class="gt_row gt_right">0.00</td>
 <td headers="stub_1_33 H" class="gt_row gt_right">0.00</td>
 <td headers="stub_1_33 D" class="gt_row gt_right">0.00</td>
@@ -2199,6 +2277,7 @@ J' = \frac{H'}{\ln(S)}
 <td headers="stub_1_34 MinZ" class="gt_row gt_right">58.00</td>
 <td headers="stub_1_34 FO" class="gt_row gt_right">7.69</td>
 <td headers="stub_1_34 S" class="gt_row gt_right">2.00</td>
+<td headers="stub_1_34 RR" class="gt_row gt_right">2.00</td>
 <td headers="stub_1_34 E" class="gt_row gt_right">0.99</td>
 <td headers="stub_1_34 H" class="gt_row gt_right">0.68</td>
 <td headers="stub_1_34 D" class="gt_row gt_right">0.49</td>
@@ -2214,6 +2293,7 @@ J' = \frac{H'}{\ln(S)}
 <td headers="stub_1_35 MinZ" class="gt_row gt_right">4.00</td>
 <td headers="stub_1_35 FO" class="gt_row gt_right">23.08</td>
 <td headers="stub_1_35 S" class="gt_row gt_right">6.00</td>
+<td headers="stub_1_35 RR" class="gt_row gt_right">6.00</td>
 <td headers="stub_1_35 E" class="gt_row gt_right">0.61</td>
 <td headers="stub_1_35 H" class="gt_row gt_right">1.10</td>
 <td headers="stub_1_35 D" class="gt_row gt_right">0.51</td>
@@ -2229,6 +2309,7 @@ J' = \frac{H'}{\ln(S)}
 <td headers="stub_1_36 MinZ" class="gt_row gt_right">262.00</td>
 <td headers="stub_1_36 FO" class="gt_row gt_right">746.15</td>
 <td headers="stub_1_36 S" class="gt_row gt_right">194.00</td>
+<td headers="stub_1_36 RR" class="gt_row gt_right">194.00</td>
 <td headers="stub_1_36 E" class="gt_row gt_right">16.69</td>
 <td headers="stub_1_36 H" class="gt_row gt_right">30.09</td>
 <td headers="stub_1_36 D" class="gt_row gt_right">14.31</td>
@@ -2244,6 +2325,7 @@ J' = \frac{H'}{\ln(S)}
 <td headers="stub_1_37 MinZ" class="gt_row gt_right">7.49</td>
 <td headers="stub_1_37 FO" class="gt_row gt_right">21.32</td>
 <td headers="stub_1_37 S" class="gt_row gt_right">5.54</td>
+<td headers="stub_1_37 RR" class="gt_row gt_right">5.54</td>
 <td headers="stub_1_37 E" class="gt_row gt_right">0.48</td>
 <td headers="stub_1_37 H" class="gt_row gt_right">0.86</td>
 <td headers="stub_1_37 D" class="gt_row gt_right">0.41</td>
@@ -2259,6 +2341,7 @@ J' = \frac{H'}{\ln(S)}
 <td headers="stub_1_38 MinZ" class="gt_row gt_right">16.46</td>
 <td headers="stub_1_38 FO" class="gt_row gt_right">21.38</td>
 <td headers="stub_1_38 S" class="gt_row gt_right">5.56</td>
+<td headers="stub_1_38 RR" class="gt_row gt_right">5.56</td>
 <td headers="stub_1_38 E" class="gt_row gt_right">0.38</td>
 <td headers="stub_1_38 H" class="gt_row gt_right">0.78</td>
 <td headers="stub_1_38 D" class="gt_row gt_right">0.34</td>
@@ -2267,12 +2350,12 @@ J' = \frac{H'}{\ln(S)}
 </table></div>
 </div>
 </div>
-<div id="descritores-da-normalidade" class="section level5" number="15.7.3.2.2">
+<div id="descritores-da-normalidade" class="section level5" number="16.7.3.2.2">
 <h5>
-<span class="header-section-number">15.7.3.2.2</span> Descritores da normalidade<a class="anchor" aria-label="anchor" href="#descritores-da-normalidade"><i class="fas fa-link"></i></a>
+<span class="header-section-number">16.7.3.2.2</span> Descritores da normalidade<a class="anchor" aria-label="anchor" href="#descritores-da-normalidade"><i class="fas fa-link"></i></a>
 </h5>
 <p>Agora tabelamos os descritores de normalidade</p>
-<div class="sourceCode" id="cb258"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb283"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">Normalidade1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span><span class="op">(</span><span class="va">Assimetria</span>, <span class="va">Curtose</span><span class="op">)</span></span>
 <span><span class="va">Normalidade1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="va">Normalidade1</span><span class="op">)</span></span>
 <span><span class="va">Normalidade1</span></span>
@@ -2415,7 +2498,7 @@ J' = \frac{H'}{\ln(S)}
 ## MediaTotalN       3.78   17.05
 ## DPTotalN          1.04    6.94</code></pre>
 <p>A função <code>fix(nome da matriz)</code> dá acesso ao grid da matriz criada para manipulação dos dados numéricos.</p>
-<div class="sourceCode" id="cb260"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb285"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#Fazendo uma tabela</span></span>
 <span><span class="va">nf</span> <span class="op">&lt;-</span> <span class="va">NormalidadeFinal</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">ncol</a></span><span class="op">(</span><span class="va">nf</span><span class="op">)</span>; <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">nf</span><span class="op">)</span> <span class="co">#no. de N colunas x M linhas</span></span>
@@ -2423,23 +2506,23 @@ J' = \frac{H'}{\ln(S)}
 <span><span class="fu"><a href="https://gt.rstudio.com/reference/gt.html">gt</a></span><span class="op">(</span><span class="va">nf</span>, rowname_col <span class="op">=</span> <span class="st">"Spp"</span>, caption <span class="op">=</span> <span class="st">"Descritores da normalidade por espécie (coluna)"</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] 2
 ## [1] 38</code></pre>
-<div id="dxpfdungmj" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#dxpfdungmj table {
+<div id="qvhywzdode" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#qvhywzdode table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#dxpfdungmj thead, #dxpfdungmj tbody, #dxpfdungmj tfoot, #dxpfdungmj tr, #dxpfdungmj td, #dxpfdungmj th {
+#qvhywzdode thead, #qvhywzdode tbody, #qvhywzdode tfoot, #qvhywzdode tr, #qvhywzdode td, #qvhywzdode th {
   border-style: none;
 }
 
-#dxpfdungmj p {
+#qvhywzdode p {
   margin: 0;
   padding: 0;
 }
 
-#dxpfdungmj .gt_table {
+#qvhywzdode .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -2465,12 +2548,12 @@ J' = \frac{H'}{\ln(S)}
   border-left-color: #D3D3D3;
 }
 
-#dxpfdungmj .gt_caption {
+#qvhywzdode .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#dxpfdungmj .gt_title {
+#qvhywzdode .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2482,7 +2565,7 @@ J' = \frac{H'}{\ln(S)}
   border-bottom-width: 0;
 }
 
-#dxpfdungmj .gt_subtitle {
+#qvhywzdode .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2494,7 +2577,7 @@ J' = \frac{H'}{\ln(S)}
   border-top-width: 0;
 }
 
-#dxpfdungmj .gt_heading {
+#qvhywzdode .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2506,13 +2589,13 @@ J' = \frac{H'}{\ln(S)}
   border-right-color: #D3D3D3;
 }
 
-#dxpfdungmj .gt_bottom_border {
+#qvhywzdode .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#dxpfdungmj .gt_col_headings {
+#qvhywzdode .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2527,7 +2610,7 @@ J' = \frac{H'}{\ln(S)}
   border-right-color: #D3D3D3;
 }
 
-#dxpfdungmj .gt_col_heading {
+#qvhywzdode .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2547,7 +2630,7 @@ J' = \frac{H'}{\ln(S)}
   overflow-x: hidden;
 }
 
-#dxpfdungmj .gt_column_spanner_outer {
+#qvhywzdode .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2559,15 +2642,15 @@ J' = \frac{H'}{\ln(S)}
   padding-right: 4px;
 }
 
-#dxpfdungmj .gt_column_spanner_outer:first-child {
+#qvhywzdode .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#dxpfdungmj .gt_column_spanner_outer:last-child {
+#qvhywzdode .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#dxpfdungmj .gt_column_spanner {
+#qvhywzdode .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2579,11 +2662,11 @@ J' = \frac{H'}{\ln(S)}
   width: 100%;
 }
 
-#dxpfdungmj .gt_spanner_row {
+#qvhywzdode .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#dxpfdungmj .gt_group_heading {
+#qvhywzdode .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2609,7 +2692,7 @@ J' = \frac{H'}{\ln(S)}
   text-align: left;
 }
 
-#dxpfdungmj .gt_empty_group_heading {
+#qvhywzdode .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2624,15 +2707,15 @@ J' = \frac{H'}{\ln(S)}
   vertical-align: middle;
 }
 
-#dxpfdungmj .gt_from_md > :first-child {
+#qvhywzdode .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#dxpfdungmj .gt_from_md > :last-child {
+#qvhywzdode .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#dxpfdungmj .gt_row {
+#qvhywzdode .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2651,7 +2734,7 @@ J' = \frac{H'}{\ln(S)}
   overflow-x: hidden;
 }
 
-#dxpfdungmj .gt_stub {
+#qvhywzdode .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2664,7 +2747,7 @@ J' = \frac{H'}{\ln(S)}
   padding-right: 5px;
 }
 
-#dxpfdungmj .gt_stub_row_group {
+#qvhywzdode .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2678,15 +2761,15 @@ J' = \frac{H'}{\ln(S)}
   vertical-align: top;
 }
 
-#dxpfdungmj .gt_row_group_first td {
+#qvhywzdode .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#dxpfdungmj .gt_row_group_first th {
+#qvhywzdode .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#dxpfdungmj .gt_summary_row {
+#qvhywzdode .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2696,16 +2779,16 @@ J' = \frac{H'}{\ln(S)}
   padding-right: 5px;
 }
 
-#dxpfdungmj .gt_first_summary_row {
+#qvhywzdode .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#dxpfdungmj .gt_first_summary_row.thick {
+#qvhywzdode .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#dxpfdungmj .gt_last_summary_row {
+#qvhywzdode .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2715,7 +2798,7 @@ J' = \frac{H'}{\ln(S)}
   border-bottom-color: #D3D3D3;
 }
 
-#dxpfdungmj .gt_grand_summary_row {
+#qvhywzdode .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2725,7 +2808,7 @@ J' = \frac{H'}{\ln(S)}
   padding-right: 5px;
 }
 
-#dxpfdungmj .gt_first_grand_summary_row {
+#qvhywzdode .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2735,7 +2818,7 @@ J' = \frac{H'}{\ln(S)}
   border-top-color: #D3D3D3;
 }
 
-#dxpfdungmj .gt_last_grand_summary_row_top {
+#qvhywzdode .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2745,11 +2828,11 @@ J' = \frac{H'}{\ln(S)}
   border-bottom-color: #D3D3D3;
 }
 
-#dxpfdungmj .gt_striped {
+#qvhywzdode .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#dxpfdungmj .gt_table_body {
+#qvhywzdode .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2758,7 +2841,7 @@ J' = \frac{H'}{\ln(S)}
   border-bottom-color: #D3D3D3;
 }
 
-#dxpfdungmj .gt_footnotes {
+#qvhywzdode .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2772,7 +2855,7 @@ J' = \frac{H'}{\ln(S)}
   border-right-color: #D3D3D3;
 }
 
-#dxpfdungmj .gt_footnote {
+#qvhywzdode .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2781,7 +2864,7 @@ J' = \frac{H'}{\ln(S)}
   padding-right: 5px;
 }
 
-#dxpfdungmj .gt_sourcenotes {
+#qvhywzdode .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2795,7 +2878,7 @@ J' = \frac{H'}{\ln(S)}
   border-right-color: #D3D3D3;
 }
 
-#dxpfdungmj .gt_sourcenote {
+#qvhywzdode .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2803,78 +2886,78 @@ J' = \frac{H'}{\ln(S)}
   padding-right: 5px;
 }
 
-#dxpfdungmj .gt_left {
+#qvhywzdode .gt_left {
   text-align: left;
 }
 
-#dxpfdungmj .gt_center {
+#qvhywzdode .gt_center {
   text-align: center;
 }
 
-#dxpfdungmj .gt_right {
+#qvhywzdode .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#dxpfdungmj .gt_font_normal {
+#qvhywzdode .gt_font_normal {
   font-weight: normal;
 }
 
-#dxpfdungmj .gt_font_bold {
+#qvhywzdode .gt_font_bold {
   font-weight: bold;
 }
 
-#dxpfdungmj .gt_font_italic {
+#qvhywzdode .gt_font_italic {
   font-style: italic;
 }
 
-#dxpfdungmj .gt_super {
+#qvhywzdode .gt_super {
   font-size: 65%;
 }
 
-#dxpfdungmj .gt_footnote_marks {
+#qvhywzdode .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#dxpfdungmj .gt_asterisk {
+#qvhywzdode .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#dxpfdungmj .gt_indent_1 {
+#qvhywzdode .gt_indent_1 {
   text-indent: 5px;
 }
 
-#dxpfdungmj .gt_indent_2 {
+#qvhywzdode .gt_indent_2 {
   text-indent: 10px;
 }
 
-#dxpfdungmj .gt_indent_3 {
+#qvhywzdode .gt_indent_3 {
   text-indent: 15px;
 }
 
-#dxpfdungmj .gt_indent_4 {
+#qvhywzdode .gt_indent_4 {
   text-indent: 20px;
 }
 
-#dxpfdungmj .gt_indent_5 {
+#qvhywzdode .gt_indent_5 {
   text-indent: 25px;
 }
 
-#dxpfdungmj .katex-display {
+#qvhywzdode .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#dxpfdungmj div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#qvhywzdode div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
 <div class="inline-table"><table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
 <caption>
-<span id="tab:unnamed-chunk-146">Tabela 15.3: </span>Descritores da normalidade por espécie (coluna)</caption>
+<span id="tab:unnamed-chunk-162">Tabela 16.3: </span>Descritores da normalidade por espécie (coluna)</caption>
   <thead><tr class="gt_col_headings">
 <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="a::stub"></th>
       <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Assimetria">Assimetria</th>
@@ -3077,9 +3160,9 @@ J' = \frac{H'}{\ln(S)}
 <p>Nos <a href="estrcom.html#descruas">Apêndices</a> você pode ver o script para os mesmos descritores para as Unidades Amostrais (UA´s)</p>
 </div>
 </div>
-<div id="lidando-com-células-vazias" class="section level4" number="15.7.3.3">
+<div id="lidando-com-células-vazias" class="section level4" number="16.7.3.3">
 <h4>
-<span class="header-section-number">15.7.3.3</span> Lidando com células vazias<a class="anchor" aria-label="anchor" href="#lidando-com-c%C3%A9lulas-vazias"><i class="fas fa-link"></i></a>
+<span class="header-section-number">16.7.3.3</span> Lidando com células vazias<a class="anchor" aria-label="anchor" href="#lidando-com-c%C3%A9lulas-vazias"><i class="fas fa-link"></i></a>
 </h4>
 <p>Em R, <code>NaN</code> (Not a Number) e <code>NA</code> (Not Available) são valores especiais que representam dados ausentes ou valores inválidos em um vetor, matriz, data frame ou outra estrutura de dados.</p>
 <ul>
@@ -3088,23 +3171,23 @@ J' = \frac{H'}{\ln(S)}
 </ul>
 <p>Em muitas operações, o <code>NA</code> é tratado como um valor especial que propagará em outras operações. Isso significa que se uma operação é realizada com um ou mais valores <code>NA</code>, o resultado geralmente será <code>NA</code>. Por outro lado, <code>NaN</code> é um valor específico que indica um resultado matematicamente indefinido ou inválido.</p>
 <p>Por exemplo, ao realizar operações em um vetor que contém <code>NA</code>, o resultado será <code>NA</code> para qualquer operação que envolva um valor <code>NA</code>:</p>
-<div class="sourceCode" id="cb262"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb287"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="cn">NA</span>, <span class="fl">4</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="co"># Resultado será NA porque há um valor NA no vetor</span></span></code></pre></div>
 <pre><code>## [1] NA</code></pre>
 <p>Por outro lado, <code>NaN</code> resulta de operações matemáticas inválidas:</p>
-<div class="sourceCode" id="cb264"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb289"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fl">0</span><span class="op">/</span><span class="fl">0</span> <span class="co"># Resultado será NaN, pois a divisão por zero é indefinida</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1</span><span class="op">)</span> <span class="co"># Resultado será NaN, pois não há raiz quadrada real de um número negativo</span></span></code></pre></div>
 <pre><code>## Warning in sqrt(-1): NaNs produzidos</code></pre>
 <pre><code>## [1] NaN
 ## [1] NaN</code></pre>
 <p>Em resumo, enquanto <code>NA</code> indica dados ausentes ou não disponíveis, <code>NaN</code> indica resultados de operações matematicamente inválidos.</p>
-<div id="salvando-as-tabelas-criadas-em-.txt-direto-no-diretório-de-trabalho" class="section level5" number="15.7.3.3.1">
+<div id="salvando-as-tabelas-criadas-em-.txt-direto-no-diretório-de-trabalho" class="section level5" number="16.7.3.3.1">
 <h5>
-<span class="header-section-number">15.7.3.3.1</span> Salvando as tabelas criadas em .txt direto no diretório de trabalho<a class="anchor" aria-label="anchor" href="#salvando-as-tabelas-criadas-em-.txt-direto-no-diret%C3%B3rio-de-trabalho"><i class="fas fa-link"></i></a>
+<span class="header-section-number">16.7.3.3.1</span> Salvando as tabelas criadas em .txt direto no diretório de trabalho<a class="anchor" aria-label="anchor" href="#salvando-as-tabelas-criadas-em-.txt-direto-no-diret%C3%B3rio-de-trabalho"><i class="fas fa-link"></i></a>
 </h5>
-<div class="sourceCode" id="cb267"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb292"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/write.table.html">write.table</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="st">"Spp"</span><span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="va">DescritoresFinal</span><span class="op">)</span>,</span>
 <span>                       <span class="va">DescritoresFinal</span><span class="op">)</span>,</span>
 <span>            <span class="st">"DescritoresSPP.txt"</span>,</span>
@@ -3117,7 +3200,7 @@ J' = \frac{H'}{\ln(S)}
 <span>            sep<span class="op">=</span><span class="st">"\t"</span><span class="op">)</span></span></code></pre></div>
 <p>Agora é necessário voltar à matriz comunitária (<strong>antes de ter sido transposta</strong>), antes de continuarmos a análise, porque as análises anteriores também precisam ser refeitas com a matriz não transposta. A seguir confere-se se está sendo usada a matriz comunitária com as espécies nas colunas.</p>
 <p>Para ver o código dos descritores da estrutura da comunidade para as Unidades Amostrais (UA’s), matriz não transposta, veja <a href="estrcom.html#descruas">Descritores da estrutura da comunidade: UA’s</a> nos apêndices.</p>
-<div class="sourceCode" id="cb268"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb293"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">m_trab</span></span></code></pre></div>
 <pre><code>##           S-A-ZA1 S-R-CC1 S-R-CT1 S-R-CP1 S-A-TA1 S-R-CT2 S-R-CP2 S-A-TA2
 ## ap-davis        0       0       0       0       0       0       0       0
@@ -3263,7 +3346,7 @@ J' = \frac{H'}{\ln(S)}
 ## sy-marmo        0       0
 ## te-chalc        0       0
 ## tr-signa        0       0</code></pre>
-<div class="sourceCode" id="cb270"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb295"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">m_trab</span> <span class="op">&lt;-</span> <span class="va">ppbio</span></span></code></pre></div>
 <div id="hello" class="greeting message" style="color: green;">
 <p>Note que em uma matriz comunitária (onde os atributos são as espécies), a matriz transposta vai conter as unidades amostrais como colunas e espécies como linhas. Não tendo a mesma interpretação de matriz transposta em matemática.</p>
@@ -3273,16 +3356,16 @@ J' = \frac{H'}{\ln(S)}
 </div>
 </div>
 </div>
-<div id="gráficos-descritivos" class="section level2" number="15.8">
+<div id="gráficos-descritivos" class="section level2" number="16.8">
 <h2>
-<span class="header-section-number">15.8</span> Gráficos descritivos<a class="anchor" aria-label="anchor" href="#gr%C3%A1ficos-descritivos"><i class="fas fa-link"></i></a>
+<span class="header-section-number">16.8</span> Gráficos descritivos<a class="anchor" aria-label="anchor" href="#gr%C3%A1ficos-descritivos"><i class="fas fa-link"></i></a>
 </h2>
-<div id="série-de-hill-e-pefil-da-diversidade" class="section level3" number="15.8.1">
+<div id="série-de-hill-e-pefil-da-diversidade" class="section level3" number="16.8.1">
 <h3>
-<span class="header-section-number">15.8.1</span> Série de Hill e pefil da diversidade<a class="anchor" aria-label="anchor" href="#s%C3%A9rie-de-hill-e-pefil-da-diversidade"><i class="fas fa-link"></i></a>
+<span class="header-section-number">16.8.1</span> Série de Hill e pefil da diversidade<a class="anchor" aria-label="anchor" href="#s%C3%A9rie-de-hill-e-pefil-da-diversidade"><i class="fas fa-link"></i></a>
 </h3>
 <p>Pode-se utilizar uma série de Hill ao invés dos índices específicos de diversidade. Assim, quanto maior o valor de <code>q</code> (definido em <code>scales</code>), maior será o peso para a equabilidade. Quanto mais próximo de zero, maior o peso para riqueza. Quando <code>q = 0</code>, o valor de Hill é igual a riqueza de espécies.</p>
-<div class="sourceCode" id="cb271"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb296"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">Hill</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://vegandevs.github.io/vegan/reference/renyi.html">renyi</a></span><span class="op">(</span><span class="va">m_trab</span>,</span>
 <span>              scales <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">5</span><span class="op">)</span>,</span>
 <span>              hill <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
@@ -3315,7 +3398,7 @@ J' = \frac{H'}{\ln(S)}
 ## B-A-MU4  5 3.672499 3.348321 3.103452 2.925311 2.799120
 ## B-A-GU4  4 2.514025 2.206452 2.107190 2.053368 2.015850</code></pre>
 <p>Podemos mapear isso em um gráfico de perfil de diversidade</p>
-<div class="sourceCode" id="cb273"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb298"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org">tidyr</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
@@ -3336,28 +3419,28 @@ J' = \frac{H'}{\ln(S)}
 ## ℹ Please use `linewidth` instead.
 ## This warning is displayed once per session.
 ## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.</code></pre>
-<div class="sourceCode" id="cb275"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb300"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">grafico1</span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsave.html">ggsave</a></span><span class="op">(</span><span class="va">grafico1</span>, dpi <span class="op">=</span> <span class="fl">300</span>, filename <span class="op">=</span> <span class="st">"fig-hill.png"</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## Saving 7 x 5 in image</code></pre>
 <div class="figure">
 <span style="display:block;" id="fig:241hill"></span>
 <img src="fundamentos_de_ecologia_numerica_files/figure-html/241hill-1.png" alt="Mapeamento dos pontos de coleta em um gráfico de perfil de diversidade." width="672"><p class="caption">
-Figura 15.1: Mapeamento dos pontos de coleta em um gráfico de perfil de diversidade.
+Figura 16.1: Mapeamento dos pontos de coleta em um gráfico de perfil de diversidade.
 </p>
 </div>
 </div>
 </div>
-<div id="distribuição-de-abundância" class="section level2" number="15.9">
+<div id="distribuição-de-abundância" class="section level2" number="16.9">
 <h2>
-<span class="header-section-number">15.9</span> Distribuição de abundância<a class="anchor" aria-label="anchor" href="#distribui%C3%A7%C3%A3o-de-abund%C3%A2ncia"><i class="fas fa-link"></i></a>
+<span class="header-section-number">16.9</span> Distribuição de abundância<a class="anchor" aria-label="anchor" href="#distribui%C3%A7%C3%A3o-de-abund%C3%A2ncia"><i class="fas fa-link"></i></a>
 </h2>
-<p>Uma maneira de observar a diversidade de espécies é usando um gráfico de distribuição de abundâncias de uma comunidade, como mostrado a seguir. Note que aqui utiliza-se as abundâncias totais das espécies (Figura <a href="estrcom.html#fig:241abun">15.2</a>), mas é possível fazer por linha, basta substituir o objeto <code>abund</code> pela abundância de uma linha. Como na linha marcada com o <code>#</code>.</p>
-<div class="sourceCode" id="cb277"><pre class="downlit sourceCode r">
+<p>Uma maneira de observar a diversidade de espécies é usando um gráfico de distribuição de abundâncias de uma comunidade, como mostrado a seguir. Note que aqui utiliza-se as abundâncias totais das espécies (Figura <a href="estrcom.html#fig:241abun">16.2</a>), mas é possível fazer por linha, basta substituir o objeto <code>abund</code> pela abundância de uma linha. Como na linha marcada com o <code>#</code>.</p>
+<div class="sourceCode" id="cb302"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">abund</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colSums.html">colSums</a></span><span class="op">(</span><span class="va">m_trab</span><span class="op">)</span></span></code></pre></div>
 <p>Na primeira linha do código abaixo, retira-se o <code>#</code> do início da linha para rodar a distribuição de abundância apenas para o local (linha) 1 <code>comunidade[1,]</code>. Pode-se mudar o número para o local de interesse.</p>
 <p>O código a seguir produzirá o gráfico para o local escolhido.</p>
-<div class="sourceCode" id="cb278"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb303"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#abund &lt;- m_trab[1, ] #escolhe a primeira linha para a distribuição de abundância</span></span>
 <span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>sp <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">m_trab</span><span class="op">)</span>, </span>
 <span>                 abun <span class="op">=</span> <span class="va">abund</span><span class="op">)</span> </span>
@@ -3379,17 +3462,17 @@ Figura 15.1: Mapeamento dos pontos de coleta em um gráfico de perfil de diversi
 <div class="figure">
 <span style="display:block;" id="fig:241abun"></span>
 <img src="fundamentos_de_ecologia_numerica_files/figure-html/241abun-1.png" alt="Distribuição da densidade de indivíduos." width="672"><p class="caption">
-Figura 15.2: Distribuição da densidade de indivíduos.
+Figura 16.2: Distribuição da densidade de indivíduos.
 </p>
 </div>
 </div>
-<div id="curva-de-rarefação" class="section level2" number="15.10">
+<div id="curva-de-rarefação" class="section level2" number="16.10">
 <h2>
-<span class="header-section-number">15.10</span> Curva de rarefação<a class="anchor" aria-label="anchor" href="#curva-de-rarefa%C3%A7%C3%A3o"><i class="fas fa-link"></i></a>
+<span class="header-section-number">16.10</span> Curva de rarefação<a class="anchor" aria-label="anchor" href="#curva-de-rarefa%C3%A7%C3%A3o"><i class="fas fa-link"></i></a>
 </h2>
 <p>O código abaixo indica como usar o pacote <a href="https://youtu.be/4yUXG28QPLM">iNEXT</a> <span class="citation">(<a href="#ref-chao2014">CHAO et al., 2014</a>; <a href="#ref-hsieh2025">HSIEH; MA; CHAO, 2025</a>)</span>para extrapolar e interpolar curvas de rarefação visando comparar a riqueza de diferentes locais (linhas, por isso se trabalha com a matriz transposta). A curva de raferação vai ser construida para as UA’s demarcadas em <code>rarefa &lt;- t(m_trab[c("S-R-CT2","S-R-CP2","S-A-TA2","B-A-MU2"),])</code></p>
 <p>Pode-se, alternativamente, construrir a curva de raferação para as 8 linhas (UA’s) com maior somatório dos valores das espécies (linhas marcadas com o símbolo <span style="color:green"><code>#</code></span>).</p>
-<div class="sourceCode" id="cb280"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb305"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">m_trab_r</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span><span class="va">m_trab</span>, <span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html">across</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/everything.html">everything</a></span><span class="op">(</span><span class="op">)</span>, <span class="va">ceiling</span><span class="op">)</span><span class="op">)</span> <span class="co">#arredonda a matriz original para números inteiros</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/colSums.html">colSums</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/t.html">t</a></span><span class="op">(</span><span class="va">m_trab_r</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/t.html">t</a></span><span class="op">(</span><span class="va">m_trab_r</span><span class="op">)</span><span class="op">)</span></span>
@@ -3416,8 +3499,8 @@ Figura 15.2: Distribuição da densidade de indivíduos.
 <div class="greeting message" style="color: green;">
 <p>A curva de rarefação vai ser construida para os sítios: “S-R-CT2”,“S-R-CP2”,“S-A-TA2”,“B-A-MU2”</p>
 </div>
-<p>No código abaixo o valor de <code>q</code> pode ser mudado para <code>q=1</code> para comparar a diversidade de Shannon e para <code>q=2</code> para Simpson (Figura (<a href="estrcom.html#fig:241rare">15.3</a>). A função <code>endpoint=</code> define o tamanho da amostra para o qual se deseja extrapolar a curva de rarefação. Se <code>endpoint=NULL</code>, a extrapolação será feita para o dobro do valor amostrado.</p>
-<div class="sourceCode" id="cb282"><pre class="downlit sourceCode r">
+<p>No código abaixo o valor de <code>q</code> pode ser mudado para <code>q=1</code> para comparar a diversidade de Shannon e para <code>q=2</code> para Simpson (Figura (<a href="estrcom.html#fig:241rare">16.3</a>). A função <code>endpoint=</code> define o tamanho da amostra para o qual se deseja extrapolar a curva de rarefação. Se <code>endpoint=NULL</code>, a extrapolação será feita para o dobro do valor amostrado.</p>
+<div class="sourceCode" id="cb307"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://sites.google.com/view/chao-lab-website/software/inext">iNEXT</a></span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">iNEXT</span>, bibtex<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## function (x, q = 0, datatype = "abundance", size = NULL, endpoint = NULL, 
@@ -3576,9 +3659,9 @@ Figura 15.2: Distribuição da densidade de indivíduos.
 ##     class(z) &lt;- c("iNEXT")
 ##     return(z)
 ## }
-## &lt;bytecode: 0x0000027986a110a8&gt;
+## &lt;bytecode: 0x000001e2293a1bd0&gt;
 ## &lt;environment: namespace:iNEXT&gt;</code></pre>
-<div class="sourceCode" id="cb284"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb309"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">out</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/iNEXT/man/iNEXT.html">iNEXT</a></span><span class="op">(</span><span class="va">rarefa</span>, q <span class="op">=</span> <span class="fl">0</span>,</span>
 <span>             datatype <span class="op">=</span> <span class="st">"abundance"</span>,</span>
 <span>             size <span class="op">=</span> <span class="cn">NULL</span>,</span>
@@ -3599,13 +3682,13 @@ Figura 15.2: Distribuição da densidade de indivíduos.
 <div class="figure">
 <span style="display:block;" id="fig:241rare"></span>
 <img src="fundamentos_de_ecologia_numerica_files/figure-html/241rare-1.png" alt="Curva de rafefação para sítios específicos. `q=0`, riqueza; `q=1`, diversidade de Shannon; `q=2`, diversidade de Simpson; `q=5`, equitabilidade." width="672"><p class="caption">
-Figura 15.3: Curva de rafefação para sítios específicos. <code>q=0</code>, riqueza; <code>q=1</code>, diversidade de Shannon; <code>q=2</code>, diversidade de Simpson; <code>q=5</code>, equitabilidade.
+Figura 16.3: Curva de rafefação para sítios específicos. <code>q=0</code>, riqueza; <code>q=1</code>, diversidade de Shannon; <code>q=2</code>, diversidade de Simpson; <code>q=5</code>, equitabilidade.
 </p>
 </div>
 <p>A linha sólida representa a interpolação do número de espécies observadas, e a linha tracejada mostra uma extrapolação do que seria esperado dado um aumento no número de indivíduos coletados. A área mais clara representa o intervalo de confiança de 95%.</p>
-<div id="interpretando-a-curva-de-rarefação" class="section level3" number="15.10.1">
+<div id="interpretando-a-curva-de-rarefação" class="section level3" number="16.10.1">
 <h3>
-<span class="header-section-number">15.10.1</span> Interpretando a curva de rarefação<a class="anchor" aria-label="anchor" href="#interpretando-a-curva-de-rarefa%C3%A7%C3%A3o"><i class="fas fa-link"></i></a>
+<span class="header-section-number">16.10.1</span> Interpretando a curva de rarefação<a class="anchor" aria-label="anchor" href="#interpretando-a-curva-de-rarefa%C3%A7%C3%A3o"><i class="fas fa-link"></i></a>
 </h3>
 <p>A curva de rarefação é uma ferramenta gráfica comumente usada em ecologia para estimar e visualizar a riqueza de espécies em uma comunidade, especialmente quando se têm dados de amostragem incompletos. Ela ajuda a responder à pergunta: “Quantas espécies diferentes podemos esperar encontrar em uma comunidade com base nas amostras que coletamos até agora?”</p>
 <p>Aqui está uma explicação passo a passo sobre como interpretar uma curva de rarefação:</p>
@@ -3659,11 +3742,11 @@ Figura 15.3: Curva de rafefação para sítios específicos. <code>q=0</code>, r
 <p>Em resumo, a curva de rarefação é uma ferramenta valiosa para estimar a riqueza de espécies em uma comunidade com base em amostras coletadas. A interpretação depende da inclinação da curva, da presença de uma assíntota e do contexto do estudo. É importante lembrar que a amostragem mais completa geralmente resulta em estimativas mais confiáveis da riqueza de espécies.</p>
 </div>
 </div>
-<div id="curva-de-acumulação-de-espécies" class="section level2" number="15.11">
+<div id="curva-de-acumulação-de-espécies" class="section level2" number="16.11">
 <h2>
-<span class="header-section-number">15.11</span> Curva de acumulação de espécies<a class="anchor" aria-label="anchor" href="#curva-de-acumula%C3%A7%C3%A3o-de-esp%C3%A9cies"><i class="fas fa-link"></i></a>
+<span class="header-section-number">16.11</span> Curva de acumulação de espécies<a class="anchor" aria-label="anchor" href="#curva-de-acumula%C3%A7%C3%A3o-de-esp%C3%A9cies"><i class="fas fa-link"></i></a>
 </h2>
-<div class="sourceCode" id="cb286"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb311"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">acumula</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://vegandevs.github.io/vegan/reference/specaccum.html">specaccum</a></span><span class="op">(</span><span class="va">m_trab</span>,</span>
 <span>                     method <span class="op">=</span> <span class="st">"random"</span><span class="op">)</span></span>
 <span><span class="va">acumula</span></span></code></pre></div>
@@ -3671,30 +3754,30 @@ Figura 15.3: Curva de rafefação para sítios específicos. <code>q=0</code>, r
 ## Accumulation method: random, with 100 permutations
 ## Call: specaccum(comm = m_trab, method = "random") 
 ## 
-##                                                                              
-## Sites    1.0000  2.00000  3.00000  4.0000  5.00000  6.00000  7.00000  8.00000
-## Richness 7.3100 12.39000 15.23000 17.7100 19.25000 20.86000 21.95000 23.18000
-## sd       4.6006  5.16573  4.88009  4.8248  4.50224  4.24269  3.97816  3.88049
+##                                                                                
+## Sites    1.00000  2.00000  3.00000  4.00000  5.00000  6.00000  7.00000  8.00000
+## Richness 7.23000 12.01000 14.52000 16.56000 18.71000 20.39000 21.67000 22.81000
+## sd       4.57453  5.11779  5.25987  4.85823  4.43424  4.18244  4.00519  3.90207
 ##                                                                        
 ## Sites     9.00000 10.00000 11.00000 12.00000 13.00000 14.00000 15.00000
-## Richness 24.34000 25.35000 26.12000 26.83000 27.74000 28.46000 29.15000
-## sd        3.53402  3.67733  3.59371  3.44965  3.13862  3.00646  2.84756
-##                                                                                
-## Sites    16.00000 17.00000 18.0000 19.00000 20.00000 21.00000 22.00000 23.00000
-## Richness 29.87000 30.50000 31.0700 31.59000 32.23000 32.67000 33.08000 33.60000
-## sd        2.61176  2.46388  2.3366  2.16069  1.98405  1.87517  1.70371  1.42134
+## Richness 23.84000 24.96000 25.80000 26.76000 27.59000 28.17000 28.98000
+## sd        3.68376  3.66231  3.58166  3.43811  3.15298  3.07501  3.11393
+##                                                                               
+## Sites    16.00000 17.00000 18.00000 19.00000 20.0000 21.00000 22.00000 23.0000
+## Richness 29.53000 30.24000 30.94000 31.46000 32.0600 32.64000 33.01000 33.3900
+## sd        3.00993  2.81812  2.56164  2.47174  2.0735  1.93072  1.73202  1.5035
 ##                              
 ## Sites    24.00000 25.00000 26
-## Richness 34.09000 34.51000 35
-## sd        1.20684  0.96917  0</code></pre>
-<div id="plot-locais" class="section level3" number="15.11.1">
+## Richness 34.05000 34.57000 35
+## sd        1.27426  0.86754  0</code></pre>
+<div id="plot-locais" class="section level3" number="16.11.1">
 <h3>
-<span class="header-section-number">15.11.1</span> Plot locais<a class="anchor" aria-label="anchor" href="#plot-locais"><i class="fas fa-link"></i></a>
+<span class="header-section-number">16.11.1</span> Plot locais<a class="anchor" aria-label="anchor" href="#plot-locais"><i class="fas fa-link"></i></a>
 </h3>
 <p>Plotamos uma curva de acumulação de espécies simples.</p>
-<div class="sourceCode" id="cb288"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb313"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">acumula</span><span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="fundamentos_de_ecologia_numerica_files/figure-html/unnamed-chunk-155-1.png" alt="" width="672"></div>
+<div class="inline-figure"><img src="fundamentos_de_ecologia_numerica_files/figure-html/unnamed-chunk-171-1.png" alt="" width="672"></div>
 <p>Uma curva de acumulação de espécies é uma ferramenta gráfica usada para entender como a riqueza de espécies em uma comunidade aumenta à medida que mais amostras são coletadas ou observações são feitas. Ela é especialmente útil em estudos de biodiversidade e ecologia. Aqui está uma explicação sobre como interpretar uma curva de acumulação de espécies:</p>
 <ol style="list-style-type: decimal">
 <li>
@@ -3745,7 +3828,7 @@ Figura 15.3: Curva de rafefação para sítios específicos. <code>q=0</code>, r
 </ol>
 <p>Em resumo, a curva de acumulação de espécies é uma ferramenta valiosa para entender como a riqueza de espécies aumenta com o esforço amostral em uma comunidade. A interpretação depende da inclinação da curva, da presença de uma assíntota e do contexto do estudo. Ela ajuda a responder à pergunta: “Quantas espécies diferentes podemos esperar encontrar em uma comunidade com base nas amostras que coletamos até agora?”</p>
 <p>Agora podemos plotar uma curva de acumulação de espécies melhorada.</p>
-<div class="sourceCode" id="cb289"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb314"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">plot_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="st">"UAs"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="va">acumula</span><span class="op">$</span><span class="va">sites</span><span class="op">)</span>,</span>
 <span>                        <span class="st">"Riqueza"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="va">acumula</span><span class="op">$</span><span class="va">richness</span><span class="op">)</span>,</span>
 <span>                        <span class="st">"lower"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="va">acumula</span><span class="op">$</span><span class="va">richness</span> <span class="op">-</span> <span class="va">acumula</span><span class="op">$</span><span class="va">sd</span><span class="op">)</span>,</span>
@@ -3761,14 +3844,14 @@ Figura 15.3: Curva de rafefação para sítios específicos. <code>q=0</code>, r
 <span><span class="va">gLocais</span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsave.html">ggsave</a></span><span class="op">(</span><span class="va">gLocais</span>, dpi <span class="op">=</span> <span class="fl">300</span>, filename <span class="op">=</span> <span class="st">"fig-acum.png"</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## Saving 7 x 5 in image</code></pre>
-<div class="inline-figure"><img src="fundamentos_de_ecologia_numerica_files/figure-html/unnamed-chunk-156-1.png" alt="" width="672"></div>
+<div class="inline-figure"><img src="fundamentos_de_ecologia_numerica_files/figure-html/unnamed-chunk-172-1.png" alt="" width="672"></div>
 </div>
 </div>
-<div id="plot-indivíduos" class="section level2" number="15.12">
+<div id="plot-indivíduos" class="section level2" number="16.12">
 <h2>
-<span class="header-section-number">15.12</span> Plot indivíduos<a class="anchor" aria-label="anchor" href="#plot-indiv%C3%ADduos"><i class="fas fa-link"></i></a>
+<span class="header-section-number">16.12</span> Plot indivíduos<a class="anchor" aria-label="anchor" href="#plot-indiv%C3%ADduos"><i class="fas fa-link"></i></a>
 </h2>
-<div class="sourceCode" id="cb291"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb316"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">plot_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="st">"Individuos"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="va">acumula</span><span class="op">$</span><span class="va">individuals</span><span class="op">)</span>,</span>
 <span>                        <span class="st">"Riqueza"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="va">acumula</span><span class="op">$</span><span class="va">richness</span><span class="op">)</span>,</span>
 <span>                        <span class="st">"lower"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="va">acumula</span><span class="op">$</span><span class="va">richness</span> <span class="op">-</span> <span class="va">acumula</span><span class="op">$</span><span class="va">sd</span><span class="op">)</span>,</span>
@@ -3782,16 +3865,62 @@ Figura 15.3: Curva de rafefação para sítios específicos. <code>q=0</code>, r
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_classic</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>text <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">16</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">gInd</span></span></code></pre></div>
-<div class="inline-figure"><img src="fundamentos_de_ecologia_numerica_files/figure-html/unnamed-chunk-157-1.png" alt="" width="672"></div>
+<div class="inline-figure"><img src="fundamentos_de_ecologia_numerica_files/figure-html/unnamed-chunk-173-1.png" alt="" width="672"></div>
 </div>
-<div id="apêndices-8" class="section level2 unnumbered">
-<h2>Apêndices<a class="anchor" aria-label="anchor" href="#ap%C3%AAndices-8"><i class="fas fa-link"></i></a>
+<div id="riqueza-rarefacionda" class="section level2" number="16.13">
+<h2>
+<span class="header-section-number">16.13</span> Riqueza rarefacionda<a class="anchor" aria-label="anchor" href="#riqueza-rarefacionda"><i class="fas fa-link"></i></a>
+</h2>
+<div class="sourceCode" id="cb317"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Rarefação baseada na matriz de contagem</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://vegandevs.github.io/vegan/">vegan</a></span><span class="op">)</span></span>
+<span><span class="va">data</span> <span class="op">&lt;-</span> <span class="va">m_trab</span></span>
+<span><span class="va">S</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://vegandevs.github.io/vegan/reference/diversity.html">specnumber</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span> <span class="co">#observed number of species</span></span>
+<span><span class="va">S</span></span>
+<span><span class="co">#raremax &lt;- min(rowSums(data))</span></span>
+<span><span class="va">raremax</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/colSums.html">rowSums</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#raremax &lt;- 1000</span></span>
+<span><span class="va">raremax</span></span>
+<span><span class="va">Srare</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://vegandevs.github.io/vegan/reference/rarefy.html">rarefy</a></span><span class="op">(</span><span class="va">data</span>, <span class="va">raremax</span><span class="op">)</span></span>
+<span><span class="va">Srare</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">S</span>, <span class="va">Srare</span>, xlab <span class="op">=</span> <span class="st">"Observed No. of Species"</span>, ylab <span class="op">=</span> <span class="st">"Rarefied No. of Species"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html">abline</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="fundamentos_de_ecologia_numerica_files/figure-html/unnamed-chunk-174-1.png" alt="" width="672"></div>
+<div class="sourceCode" id="cb318"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">#png("fig-rarecurve.png")</span></span>
+<span><span class="fu"><a href="https://vegandevs.github.io/vegan/reference/rarefy.html">rarecurve</a></span><span class="op">(</span><span class="va">data</span>, step <span class="op">=</span> <span class="fl">20</span>,</span>
+<span>          sample <span class="op">=</span> <span class="va">raremax</span>, <span class="co">#linhas de rarefação</span></span>
+<span>          col <span class="op">=</span> <span class="st">"blue"</span>, cex <span class="op">=</span> <span class="fl">0.6</span>,</span>
+<span>          xlab <span class="op">=</span> <span class="st">"Sample size"</span>, ylab <span class="op">=</span> <span class="st">"Taxa"</span>, xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="co">#c(0,5000)</span></span></code></pre></div>
+<div class="inline-figure"><img src="fundamentos_de_ecologia_numerica_files/figure-html/unnamed-chunk-174-2.png" alt="" width="672"></div>
+<div class="sourceCode" id="cb319"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">#dev.off()</span></span></code></pre></div>
+<pre><code>## S-A-ZA1 S-R-CC1 S-R-CT1 S-R-CP1 S-A-TA1 S-R-CT2 S-R-CP2 S-A-TA2 S-R-CT3 S-R-CP3 
+##       2       3      18       5       5      17      10       4      18       6 
+## S-A-TA3 S-R-CT4 S-R-CP4 S-A-TA4 B-A-MU1 B-R-ET1 B-A-GU1 B-R-PC2 B-A-MU2 B-A-GU2 
+##       5      14       6       8       3       4       5      11       6       3 
+## B-R-PC3 B-A-MU3 B-A-GU3 B-R-PC4 B-A-MU4 B-A-GU4 
+##      13       6       4       9       5       4 
+## [1] 342
+##   S-A-ZA1   S-R-CC1   S-R-CT1   S-R-CP1   S-A-TA1   S-R-CT2   S-R-CP2   S-A-TA2 
+##  2.000000  3.000000 16.763604  5.000000  5.000000 15.071550 10.000000  4.000000 
+##   S-R-CT3   S-R-CP3   S-A-TA3   S-R-CT4   S-R-CP4   S-A-TA4   B-A-MU1   B-R-ET1 
+## 14.375683  6.000000  4.899417 13.321417  6.000000  6.124063  3.000000  4.000000 
+##   B-A-GU1   B-R-PC2   B-A-MU2   B-A-GU2   B-R-PC3   B-A-MU3   B-A-GU3   B-R-PC4 
+##  5.000000 11.000000  6.000000  3.000000 12.837720  5.447475  3.997904  9.000000 
+##   B-A-MU4   B-A-GU4 
+##  4.291312  4.000000 
+## attr(,"Subsample")
+## [1] 342</code></pre>
+</div>
+<div id="apêndices-9" class="section level2 unnumbered">
+<h2>Apêndices<a class="anchor" aria-label="anchor" href="#ap%C3%AAndices-9"><i class="fas fa-link"></i></a>
 </h2>
 <div id="criando-uma-tabela-de-espécies" class="section level3 unnumbered">
 <h3>Criando uma tabela de espécies<a class="anchor" aria-label="anchor" href="#criando-uma-tabela-de-esp%C3%A9cies"><i class="fas fa-link"></i></a>
 </h3>
 <p>Nessa etapa precisaremos da tabela de grupos. Selecionamos a aba <code>peixes</code>, porque nela constam os agrupamentos <em>a-priori</em> para os dados de peixes.</p>
-<div class="sourceCode" id="cb292"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb321"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ycphs.github.io/openxlsx/index.html">openxlsx</a></span><span class="op">)</span></span>
 <span><span class="va">t_grps</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/openxlsx/man/read.xlsx.html">read.xlsx</a></span><span class="op">(</span><span class="st">"D:/Elvio/OneDrive/Disciplinas/_EcoNumerica/5.Matrizes/ppbio06-grupos.xlsx"</span>,</span>
 <span>                   rowNames <span class="op">=</span> <span class="cn">T</span>, colNames <span class="op">=</span> <span class="cn">T</span>,</span>
@@ -3809,7 +3938,7 @@ Figura 15.3: Curva de rafefação para sítios específicos. <code>q=0</code>, r
 ## S-R-CC1 Serido      rio CC      1
 ## S-R-CT1 Serido      rio CT      1
 ## S-R-CP1 Serido      rio CP      1</code></pre>
-<div class="sourceCode" id="cb294"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb323"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org">tidyr</a></span><span class="op">)</span></span>
 <span><span class="va">m_trab</span> <span class="op">&lt;-</span> <span class="va">m_trab</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
@@ -4280,7 +4409,7 @@ Figura 15.3: Curva de rafefação para sítios específicos. <code>q=0</code>, r
 <h3>Descritores da estrutura da comunidade: UA’s<a class="anchor" aria-label="anchor" href="#descruas"><i class="fas fa-link"></i></a>
 </h3>
 <p>Sum, soma; mean, média; DP, desvio padrão da média; Max, maior valor; Min, menor valor; S, riqueza (ou frequência de ocorrência na matriz transposta); E, índice de equitabilidade de Pielou <span class="citation">(<a href="#ref-pielou1975">PIELOU, 1975</a>)</span>; H, índice de diversidade de Shannon <span class="citation">(<a href="#ref-ludwig1988">LUDWIG; REYNOLDS, 1988</a>)</span>; D, índice de diversidade de Simpson <span class="citation">(<a href="#ref-hurlbert1971">HURLBERT, 1971</a>)</span>.</p>
-<div class="sourceCode" id="cb296"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb325"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#Matriz transposta</span></span>
 <span><span class="va">m_trab</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/t.html">t</a></span><span class="op">(</span><span class="va">m_trab</span><span class="op">)</span> <span class="co">#transpõe a matriz de volta para comunitaria</span></span>
 <span><span class="va">Sum</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colSums.html">rowSums</a></span><span class="op">(</span><span class="va">m_trab</span><span class="op">)</span></span>
@@ -4331,7 +4460,7 @@ Figura 15.3: Curva de rafefação para sítios específicos. <code>q=0</code>, r
 <div id="descritores-da-normalidade-1" class="section level3 unnumbered">
 <h3>Descritores da normalidade<a class="anchor" aria-label="anchor" href="#descritores-da-normalidade-1"><i class="fas fa-link"></i></a>
 </h3>
-<div class="sourceCode" id="cb297"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb326"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">Normalidade1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span><span class="op">(</span><span class="va">Assimetria</span>, <span class="va">Curtose</span><span class="op">)</span></span>
 <span><span class="va">Normalidade1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="va">Normalidade1</span><span class="op">)</span></span>
 <span><span class="va">Normalidade1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/na.fail.html">na.omit</a></span><span class="op">(</span><span class="va">Normalidade1</span><span class="op">)</span> <span class="co">#remove NA e NaN</span></span>
@@ -4359,7 +4488,7 @@ Figura 15.3: Curva de rafefação para sítios específicos. <code>q=0</code>, r
 <div id="salvando-as-tabelas-criadas-em-txt-direto-no-diretório-de-trabalho" class="section level3 unnumbered">
 <h3>Salvando as tabelas criadas em txt direto no diretório de trabalho<a class="anchor" aria-label="anchor" href="#salvando-as-tabelas-criadas-em-txt-direto-no-diret%C3%B3rio-de-trabalho"><i class="fas fa-link"></i></a>
 </h3>
-<div class="sourceCode" id="cb298"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb327"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/write.table.html">write.table</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="st">"Spp"</span><span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="va">DescritoresFinal</span><span class="op">)</span>,</span>
 <span>                       <span class="va">DescritoresFinal</span><span class="op">)</span>,</span>
 <span>            <span class="st">"DescritoresUA.csv"</span>,</span>
@@ -4376,11 +4505,11 @@ Figura 15.3: Curva de rafefação para sítios específicos. <code>q=0</code>, r
 <h2>Sites consultados<a class="anchor" aria-label="anchor" href="#sites-consultados-5"><i class="fas fa-link"></i></a>
 </h2>
 </div>
-<div id="script-limpo-5" class="section level2 unnumbered">
-<h2>Script limpo<a class="anchor" aria-label="anchor" href="#script-limpo-5"><i class="fas fa-link"></i></a>
+<div id="script-limpo-6" class="section level2 unnumbered">
+<h2>Script limpo<a class="anchor" aria-label="anchor" href="#script-limpo-6"><i class="fas fa-link"></i></a>
 </h2>
 <p>Aqui apresento o scrip na íntegra sem os textos ou outros comentários. Você pode copiar e colar no R para executa-lo. Lembre de remover os <span style="color:green"><code>#</code></span> ou <span style="color:green"><code>##</code></span> caso necessite executar essas linhas.</p>
-<div class="sourceCode" id="cb299"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb328"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## dev.off() #apaga os graficos, se houver algum</span></span>
 <span><span class="co">## rm(list=ls(all=TRUE)) #limpa a memória</span></span>
 <span><span class="co">## cat("\014") #limpa o console</span></span>
@@ -4723,8 +4852,8 @@ Figura 15.3: Curva de rafefação para sítios específicos. <code>q=0</code>, r
 <span>            row.names<span class="op">=</span><span class="cn">FALSE</span>,</span>
 <span>            sep<span class="op">=</span><span class="st">"\t"</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="referências-11" class="section level2 unnumbered">
-<h2>Referências<a class="anchor" aria-label="anchor" href="#refer%C3%AAncias-11"><i class="fas fa-link"></i></a>
+<div id="referências-12" class="section level2 unnumbered">
+<h2>Referências<a class="anchor" aria-label="anchor" href="#refer%C3%AAncias-12"><i class="fas fa-link"></i></a>
 </h2>
 
 </div>
@@ -4769,50 +4898,51 @@ ZAR, J. H. <strong>Biostatistical Analysis</strong>. 5. ed. Upper Saddle River, 
 </div>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="correg.html"><span class="header-section-number">14</span> R Módulo 3.2 - Correlação e Regressão</a></div>
-<div class="next"><a href="partdiv.html"><span class="header-section-number">16</span> R Modulo 4.2 - Decomposição da diversidade</a></div>
+<div class="prev"><a href="regmul.html"><span class="header-section-number">15</span> R Módulo 4.2 - Regressão múltipla</a></div>
+<div class="next"><a href="partdiv.html"><span class="header-section-number">17</span> R Modulo 4.2 - Decomposição da diversidade</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
 <li>
-<a class="nav-link" href="#estrcom"><span class="header-section-number">15</span> R Módulo 4.1 - Estrutura da comunidade</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#resumo-9">RESUMO</a></li>
-<li><a class="nav-link" href="#apresenta%C3%A7%C3%A3o-9">Apresentação</a></li>
+<a class="nav-link" href="#estrcom"><span class="header-section-number">16</span> R Módulo 4.1 - Estrutura da comunidade</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#resumo-10">RESUMO</a></li>
+<li><a class="nav-link" href="#apresenta%C3%A7%C3%A3o-10">Apresentação</a></li>
 </ul>
 </li>
-<li><a class="nav-link" href="#sobre-os-dados-2"><span class="header-section-number">15.1</span> Sobre os dados</a></li>
-<li><a class="nav-link" href="#organiza%C3%A7%C3%A3o-b%C3%A1sica-3"><span class="header-section-number">15.2</span> Organização básica</a></li>
-<li><a class="nav-link" href="#importando-a-planilha-3"><span class="header-section-number">15.3</span> Importando a planilha</a></li>
-<li><a class="nav-link" href="#id_401reinicio"><span class="header-section-number">15.4</span> REINÍCIO</a></li>
+<li><a class="nav-link" href="#sobre-os-dados-2"><span class="header-section-number">16.1</span> Sobre os dados</a></li>
+<li><a class="nav-link" href="#organiza%C3%A7%C3%A3o-b%C3%A1sica-5"><span class="header-section-number">16.2</span> Organização básica</a></li>
+<li><a class="nav-link" href="#importando-a-planilha-4"><span class="header-section-number">16.3</span> Importando a planilha</a></li>
+<li><a class="nav-link" href="#id_401reinicio"><span class="header-section-number">16.4</span> REINÍCIO</a></li>
 <li>
-<a class="nav-link" href="#transpor-a-matriz-para-trabalhar-com-as-esp%C3%A9cies"><span class="header-section-number">15.5</span> Transpor a matriz para trabalhar com as espécies</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#informa%C3%A7%C3%B5es-b%C3%A1sicas-da-matriz"><span class="header-section-number">15.5.1</span> Informações básicas da matriz</a></li></ul>
+<a class="nav-link" href="#transpor-a-matriz-para-trabalhar-com-as-esp%C3%A9cies"><span class="header-section-number">16.5</span> Transpor a matriz para trabalhar com as espécies</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#informa%C3%A7%C3%B5es-b%C3%A1sicas-da-matriz"><span class="header-section-number">16.5.1</span> Informações básicas da matriz</a></li></ul>
 </li>
 <li>
-<a class="nav-link" href="#calculando-os-descritores-da-comunidade"><span class="header-section-number">15.6</span> Calculando os descritores da comunidade</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#variabilidade"><span class="header-section-number">15.6.1</span> Variabilidade</a></li>
-<li><a class="nav-link" href="#riqueza"><span class="header-section-number">15.6.2</span> Riqueza</a></li>
-</ul>
-</li>
-<li>
-<a class="nav-link" href="#%C3%ADndices-de-diversidade"><span class="header-section-number">15.7</span> Índices de Diversidade</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#shannon"><span class="header-section-number">15.7.1</span> Shannon</a></li>
-<li><a class="nav-link" href="#simpson"><span class="header-section-number">15.7.2</span> Simpson</a></li>
-<li><a class="nav-link" href="#equitabilidade-de-pielou"><span class="header-section-number">15.7.3</span> Equitabilidade de Pielou</a></li>
+<a class="nav-link" href="#calculando-os-descritores-da-comunidade"><span class="header-section-number">16.6</span> Calculando os descritores da comunidade</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#variabilidade"><span class="header-section-number">16.6.1</span> Variabilidade</a></li>
+<li><a class="nav-link" href="#riqueza"><span class="header-section-number">16.6.2</span> Riqueza</a></li>
 </ul>
 </li>
 <li>
-<a class="nav-link" href="#gr%C3%A1ficos-descritivos"><span class="header-section-number">15.8</span> Gráficos descritivos</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#s%C3%A9rie-de-hill-e-pefil-da-diversidade"><span class="header-section-number">15.8.1</span> Série de Hill e pefil da diversidade</a></li></ul>
+<a class="nav-link" href="#%C3%ADndices-de-diversidade"><span class="header-section-number">16.7</span> Índices de Diversidade</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#shannon"><span class="header-section-number">16.7.1</span> Shannon</a></li>
+<li><a class="nav-link" href="#simpson"><span class="header-section-number">16.7.2</span> Simpson</a></li>
+<li><a class="nav-link" href="#equitabilidade-de-pielou"><span class="header-section-number">16.7.3</span> Equitabilidade de Pielou</a></li>
+</ul>
 </li>
-<li><a class="nav-link" href="#distribui%C3%A7%C3%A3o-de-abund%C3%A2ncia"><span class="header-section-number">15.9</span> Distribuição de abundância</a></li>
 <li>
-<a class="nav-link" href="#curva-de-rarefa%C3%A7%C3%A3o"><span class="header-section-number">15.10</span> Curva de rarefação</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#interpretando-a-curva-de-rarefa%C3%A7%C3%A3o"><span class="header-section-number">15.10.1</span> Interpretando a curva de rarefação</a></li></ul>
+<a class="nav-link" href="#gr%C3%A1ficos-descritivos"><span class="header-section-number">16.8</span> Gráficos descritivos</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#s%C3%A9rie-de-hill-e-pefil-da-diversidade"><span class="header-section-number">16.8.1</span> Série de Hill e pefil da diversidade</a></li></ul>
+</li>
+<li><a class="nav-link" href="#distribui%C3%A7%C3%A3o-de-abund%C3%A2ncia"><span class="header-section-number">16.9</span> Distribuição de abundância</a></li>
+<li>
+<a class="nav-link" href="#curva-de-rarefa%C3%A7%C3%A3o"><span class="header-section-number">16.10</span> Curva de rarefação</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#interpretando-a-curva-de-rarefa%C3%A7%C3%A3o"><span class="header-section-number">16.10.1</span> Interpretando a curva de rarefação</a></li></ul>
 </li>
 <li>
-<a class="nav-link" href="#curva-de-acumula%C3%A7%C3%A3o-de-esp%C3%A9cies"><span class="header-section-number">15.11</span> Curva de acumulação de espécies</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#plot-locais"><span class="header-section-number">15.11.1</span> Plot locais</a></li></ul>
+<a class="nav-link" href="#curva-de-acumula%C3%A7%C3%A3o-de-esp%C3%A9cies"><span class="header-section-number">16.11</span> Curva de acumulação de espécies</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#plot-locais"><span class="header-section-number">16.11.1</span> Plot locais</a></li></ul>
 </li>
-<li><a class="nav-link" href="#plot-indiv%C3%ADduos"><span class="header-section-number">15.12</span> Plot indivíduos</a></li>
+<li><a class="nav-link" href="#plot-indiv%C3%ADduos"><span class="header-section-number">16.12</span> Plot indivíduos</a></li>
+<li><a class="nav-link" href="#riqueza-rarefacionda"><span class="header-section-number">16.13</span> Riqueza rarefacionda</a></li>
 <li>
-<a class="nav-link" href="#ap%C3%AAndices-8">Apêndices</a><ul class="nav navbar-nav">
+<a class="nav-link" href="#ap%C3%AAndices-9">Apêndices</a><ul class="nav navbar-nav">
 <li><a class="nav-link" href="#criando-uma-tabela-de-esp%C3%A9cies">Criando uma tabela de espécies</a></li>
 <li><a class="nav-link" href="#descruas">Descritores da estrutura da comunidade: UA’s</a></li>
 <li><a class="nav-link" href="#descritores-da-normalidade-1">Descritores da normalidade</a></li>
@@ -4820,8 +4950,8 @@ ZAR, J. H. <strong>Biostatistical Analysis</strong>. 5. ed. Upper Saddle River, 
 </ul>
 </li>
 <li><a class="nav-link" href="#sites-consultados-5">Sites consultados</a></li>
-<li><a class="nav-link" href="#script-limpo-5">Script limpo</a></li>
-<li><a class="nav-link" href="#refer%C3%AAncias-11">Referências</a></li>
+<li><a class="nav-link" href="#script-limpo-6">Script limpo</a></li>
+<li><a class="nav-link" href="#refer%C3%AAncias-12">Referências</a></li>
 </ul>
 
       <div class="book-extra">
@@ -4838,7 +4968,7 @@ ZAR, J. H. <strong>Biostatistical Analysis</strong>. 5. ed. Upper Saddle River, 
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Fundamentos de Ecologia Numérica</strong>: Disciplina de Ecologia Numérica do Curso de Ciências Biológicas do Campus V da UEPB" was written by Prof. Elvio S. F. Medeiros, Laboratório de Ecologia, Universidade Estadual da Paraíba, Campus V, João Pessoa, PB. It was last built on Last updated: 28/05/2026 12:06:14.</p>
+    <p>"<strong>Fundamentos de Ecologia Numérica</strong>: Disciplina de Ecologia Numérica do Curso de Ciências Biológicas do Campus V da UEPB" was written by Prof. Elvio S. F. Medeiros, Laboratório de Ecologia, Universidade Estadual da Paraíba, Campus V, João Pessoa, PB. It was last built on Last updated: 31/05/2026 15:16:57.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
