@@ -38,6 +38,7 @@ fig:402rm1
 fig:rmd3banks
 fig:rmd4032testes
 fig:4032tucu
+fig:4032tucu2
 tab:241tam
 tab:unnamed-chunk-163
 tab:unnamed-chunk-165
