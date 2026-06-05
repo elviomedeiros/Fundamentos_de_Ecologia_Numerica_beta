@@ -217,6 +217,7 @@ anova-não-paramétrica
 material-de-apoio-2
 teste-seus-conhecimentos-1
 correg
+sobre-os-dados-2
 organização-básica-3
 importando-a-planilha-3
 correlação
@@ -236,7 +237,7 @@ organização-básica-4
 organizando-os-dados
 criando-tabelas-com-os-dados
 estrcom
-sobre-os-dados-2
+sobre-os-dados-3
 organização-básica-5
 importando-a-planilha-4
 id_401reinicio
@@ -265,7 +266,7 @@ plot-locais
 plot-indivíduos
 riqueza-rarefacionada
 partdiv
-sobre-os-dados-3
+sobre-os-dados-4
 organização-básica-6
 importando-a-planilha-5
 reinício-1
