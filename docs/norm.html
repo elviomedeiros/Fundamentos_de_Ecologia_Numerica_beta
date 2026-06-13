@@ -128,6 +128,15 @@
 Figura 12.1: Comprimentos (cm) de 500 brotos do arbusto <em>Banksia ericifolia</em> de charnecas na Baía de Jervis, Austrália.
 </p>
 </div>
+<div class="infobox2 stopred">
+<div class="center">
+<p><span style="color:white"><strong>ATENÇÃO</strong></span></p>
+</div>
+<p>Os links para baixar as planilhas necessárias para repetir esse tutorial podem ser encontrados na seção <a href="bases.html#arqs">Arquivos disponíveis</a> do Capítulo <a href="bases.html#bases">Bases de dados</a>.</p>
+<div class="center">
+<p>Ou, baixe aqui o arquivo <a href="https://docs.google.com/spreadsheets/d/1iSJeR726dCc-ia3G5jzSBg__mSUsb-91/edit?usp=sharing&amp;ouid=101766125969589673518&amp;rtpof=true&amp;sd=true">brotos.xlsx</a></p>
+</div>
+</div>
 </div>
 <div id="organização-básica-1" class="section level2" number="12.2">
 <h2>
@@ -135,7 +144,7 @@ Figura 12.1: Comprimentos (cm) de 500 brotos do arbusto <em>Banksia ericifolia</
 </h2>
 <div class="sourceCode" id="cb105"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/rm.html">rm</a></span><span class="op">(</span>list<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/ls.html">ls</a></span><span class="op">(</span>all<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="co">#limpa a memória</span></span></code></pre></div>
-<p>Instalando os pacotes necessários para esse módulo</p>
+<p>Instalando os pacotes necessários para esse módulo.</p>
 <div class="sourceCode" id="cb106"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"openxlsx"</span><span class="op">)</span> <span class="co">#importa arquivos do excel</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"fdth"</span><span class="op">)</span></span></code></pre></div>
@@ -152,15 +161,6 @@ Figura 12.1: Comprimentos (cm) de 500 brotos do arbusto <em>Banksia ericifolia</
 <h2>
 <span class="header-section-number">12.3</span> Importando a planilha<a class="anchor" aria-label="anchor" href="#importando-a-planilha-1"><i class="fas fa-link"></i></a>
 </h2>
-<div class="infobox2 stopred">
-<div class="center">
-<p><span style="color:white"><strong>ATENÇÃO</strong></span></p>
-</div>
-<p>Os links para baixar as planilhas necessárias para repetir esse tutorial podem ser encontrados na seção <a href="bases.html#arqs">Arquivos disponíveis</a> do Capítulo <a href="bases.html#bases">Bases de dados</a>.</p>
-<div class="center">
-<p>Ou, baixe aqui o arquivo <a href="https://docs.google.com/spreadsheets/d/1iSJeR726dCc-ia3G5jzSBg__mSUsb-91/edit?usp=sharing&amp;ouid=101766125969589673518&amp;rtpof=true&amp;sd=true">brotos.xlsx</a></p>
-</div>
-</div>
 <p>Note que o símbolo <span style="color:green"><code>#</code></span> em programação R significa que o texto que vem depois dele é um comentário e não será executado pelo programa. Isso é útil para explicar o código ou deixar anotações. Ajuste a segunda linha do código abaixo para refletir <span style="color:blue">“C:/Seu/Diretório/De/Trabalho/Planilha.xlsx”</span>.</p>
 <div class="sourceCode" id="cb109"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ycphs.github.io/openxlsx/index.html">openxlsx</a></span><span class="op">)</span></span>
@@ -292,17 +292,22 @@ Figura 12.1: Comprimentos (cm) de 500 brotos do arbusto <em>Banksia ericifolia</
 <h2>
 <span class="header-section-number">12.4</span> Averiguando normalidade<a class="anchor" aria-label="anchor" href="#averiguando-normalidade"><i class="fas fa-link"></i></a>
 </h2>
-<p>O pressuposto de normalidade é um pré-requisito para muitas técnicas estatísticas inferenciais <span class="citation">(<a href="#ref-coakes2001">COAKES; STEED, 2001</a>)</span>. Há várias maneiras diferentes de explorar graficamente esse pressuposto:</p>
-<p>• Tabela de frequências</p>
-<p>• Gráfico <em>Stem-and-leaf</em></p>
-<p>• Assimetria e Curtose</p>
-<p>• Histograma</p>
-<p>• Boxplot</p>
-<p>• Gráfico de Probabilidade Normal (<em>Normal Probability Plot</em> ou <em>Normal Q-Q plot</em>)</p>
-<p>• Gráfico normal sem tendência.</p>
+<p>O pressuposto de normalidade é um pré-requisito para muitas técnicas estatísticas inferenciais <span class="citation">(<a href="#ref-coakes2001">COAKES; STEED, 2001</a>)</span>. Há várias maneiras diferentes de explorar graficamente esse pressuposto <span class="citation">(<a href="#ref-levin1977">LEVIN, 1977</a>)</span>:</p>
+<ul>
+<li>Tabela de frequências</li>
+<li>Gráfico <em>Stem-and-leaf</em>
+</li>
+<li>Assimetria e Curtose</li>
+<li>Histograma</li>
+<li>Boxplot</li>
+<li>Gráfico de Probabilidade Normal (<em>Normal Probability Plot</em> ou <em>Normal Q-Q plot</em>)</li>
+<li>Gráfico normal sem tendência.</li>
+</ul>
 <p>Além disso, há várias estatísticas disponíveis para testar a normalidade:</p>
-<p>• Estatística de Shapiro-Wilk</p>
-<p>• Kolmogorov-Smirnov, com nível de significância de Lilliefors</p>
+<ul>
+<li>Estatística de Shapiro-Wilk</li>
+<li>Kolmogorov-Smirnov, com nível de significância de Lilliefors</li>
+</ul>
 </div>
 <div id="tabela-de-frequências-e-gráfico-stem-and-leaf" class="section level2" number="12.5">
 <h2>
@@ -445,8 +450,8 @@ k = 1 + 3.3\log_{10}(n)
 <h2>
 <span class="header-section-number">12.6</span> Assimetria e curtose<a class="anchor" aria-label="anchor" href="#assimetria-e-curtose"><i class="fas fa-link"></i></a>
 </h2>
-<p>A assimetria mede a falta de simetria em uma distribuição de frequência. Uma distribuição é simétrica se as duas metades à esquerda e à direita da média são cópias espelhadas uma da outra. Se a distribuição não é simétrica, então é assimétrica. A assimetria pode ser positiva, negativa ou nula (simétrica). Uma assimetria positiva indica que a cauda da distribuição se estende mais para a direita em relação à média (média &gt; mediana &gt; moda), enquanto uma assimetria negativa indica que a cauda da distribuição se estende mais para a esquerda em relação à média (média &lt; mediana &lt; moda).</p>
-<p>A curtose descreve o pico ou a “pontiagudez” de uma distribuição. Uma distribuição com alta curtose tem uma alta concentração de valores ao redor da média e caudas mais pesadas (ou seja, valores extremos são mais prováveis). Uma distribuição com baixa curtose é mais achatada e dispersa, com caudas mais leves. A curtose pode ser positiva (distribuição leptocúrtica, com alta concentração em torno da média e caudas pesadas), negativa (distribuição platicúrtica, com dispersão alta e caudas mais leves) ou nula (mesocúrtica, similar à distribuição normal).</p>
+<p>A assimetria mede a falta de simetria em uma distribuição de frequência. Uma distribuição é simétrica se as duas metades à esquerda e à direita da média são cópias espelhadas uma da outra. Se a distribuição não é simétrica, então é assimétrica. A assimetria pode ser positiva, negativa ou nula (simétrica). Uma assimetria positiva indica que a cauda da distribuição se estende mais para a direita em relação à média (média &gt; mediana &gt; moda), enquanto uma assimetria negativa indica que a cauda da distribuição se estende mais para a esquerda em relação à média (média &lt; mediana &lt; moda) <span class="citation">(<a href="#ref-levin1977">LEVIN, 1977</a>)</span>.</p>
+<p>A curtose descreve o pico ou a “pontiagudez” de uma distribuição. Uma distribuição com alta curtose tem uma alta concentração de valores ao redor da média e caudas mais pesadas (ou seja, valores extremos são mais prováveis). Uma distribuição com baixa curtose é mais achatada e dispersa, com caudas mais leves. A curtose pode ser positiva (distribuição leptocúrtica, com alta concentração em torno da média e caudas pesadas), negativa (distribuição platicúrtica, com dispersão alta e caudas mais leves) ou nula (mesocúrtica, similar à distribuição normal) <span class="citation">(<a href="#ref-levin1977">LEVIN, 1977</a>)</span>.</p>
 <p>Essas medidas são úteis para compreender as propriedades e características de diferentes conjuntos de dados e distribuições de frequência. Elas ajudam a compreender a forma e o comportamento dos dados em uma amostra ou população <span class="citation">(<a href="#ref-zar2010">ZAR, 2010</a>)</span>.</p>
 <div class="sourceCode" id="cb125"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://www.r-project.org">moments</a></span><span class="op">)</span></span>
@@ -468,9 +473,17 @@ k = 1 + 3.3\log_{10}(n)
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">1</span><span class="op">)</span><span class="op">)</span> <span class="co">#gráficos de volta ao normal</span></span></code></pre></div>
 <div class="inline-figure"><img src="fundamentos_de_ecologia_numerica_files/figure-html/unnamed-chunk-76-1.png" alt="" width="672"></div>
 <p>Se você recebeu a mensagem de erro <span style="color:red">“Error in plot.new() : figure margins too large”</span>, aumente o tamanho da janela do gráfico e execute as últimas três linhas de comando novamente.</p>
-<p>No boxplot, a linha localizada no interior da caixa representa a mediana, isto é, o valor central da distribuição dos dados. A base da caixa corresponde ao primeiro quartil (Q1), abaixo do qual se encontram 25% das observações, enquanto o topo da caixa corresponde ao terceiro quartil (Q3), abaixo do qual estão 75% dos dados. A própria caixa representa o intervalo interquartil (IQR = Q3 − Q1), contendo os 50% centrais da distribuição. Os bigodes (whiskers) indicam os valores mínimos e máximos que não são considerados outliers, enquanto os pontos isolados representam possíveis valores discrepantes ou <code>outliers</code>.</p>
-<p>Uma nota sobre <code>outliers</code> em um boxplot. Seu cálculo varia dentre os textos e tipos de estatísticas sendo calculadas. Para outliers em um boxplot, <span class="citation">MOORE; MCCABE; CRAIG (<a href="#ref-moore2017">2017</a>)</span> propõe a <strong>“regra de 1,5 × IQR para outliers”</strong>, onde IQR significa (<em>Interquartile Range</em> ou amplitude interquartil). Ou seja, considere uma observação como um possível outlier se ela estiver mais de 1,5 × IQR acima do terceiro quartil ou abaixo do primeiro quartil.</p>
-<p>O IQR (Interquartile Range ou amplitude interquartil) é definido como:</p>
+<p>No boxplot observanos,</p>
+<ol style="list-style-type: decimal">
+<li>A linha localizada no interior da caixa, que representa a <strong>mediana</strong>, isto é, o valor central da distribuição dos dados,</li>
+<li>A base da caixa, que corresponde ao <strong>primeiro quartil (Q1)</strong>, abaixo do qual se encontram <strong>25% das observações</strong>,</li>
+<li>O topo da caixa, que corresponde ao <strong>terceiro quartil (Q3)</strong>, acima do qual estão <strong>75% dos dados</strong>,</li>
+<li>A própria caixa representa o <strong>intervalo interquartil (IQR = Q3 − Q1)</strong>, contendo os 50% centrais da distribuição,</li>
+<li>Os bigodes (<em>whiskers</em>), que indicam <strong>os valores mínimos e máximos</strong> que não são considerados outliers,</li>
+<li>Os pontos isolados, que representam possíveis valores discrepantes ou <strong>outliers</strong>.</li>
+</ol>
+<p>Uma nota sobre <code>outliers</code> em um boxplot. Seu cálculo varia dentre os textos e tipos de estatísticas sendo calculadas. Para outliers em um boxplot, <span class="citation">MOORE; MCCABE; CRAIG (<a href="#ref-moore2017">2017</a>)</span> propõem a <strong>“regra de 1,5 × IQR para outliers”</strong>, onde IQR significa (<em>Interquartile Range</em> ou amplitude interquartil). Ou seja, considere uma observação como um possível <em>outlier</em> se ela estiver mais de 1,5 × IQR acima do terceiro quartil ou abaixo do primeiro quartil<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;&lt;strong&gt;Quantil&lt;/strong&gt; é o termo geral para pontos que dividem uma distribuição em proporções definidas; &lt;strong&gt;quartis&lt;/strong&gt; dividem os dados em 4 partes iguais (25%, 50%, 75%) e **percentis* dividem os dados em 100 partes iguais (1%, 2%, …, 99%).&lt;/p&gt;"><sup>12</sup></a>.</p>
+<p>O IQR (<em>Interquartile Range</em> ou amplitude interquartil) é definido como:</p>
 <p><span class="math display">\[
 IQR = Q_3 - Q_1
 \]</span></p>
@@ -488,20 +501,15 @@ IQR = Q_3 - Q_1
 <code class="sourceCode R"><span><span class="co"># Quartis</span></span>
 <span><span class="va">Q1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/quantile.html">quantile</a></span><span class="op">(</span><span class="va">brotos_sub</span>, <span class="fl">0.25</span><span class="op">)</span></span>
 <span><span class="va">Q3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/quantile.html">quantile</a></span><span class="op">(</span><span class="va">brotos_sub</span>, <span class="fl">0.75</span><span class="op">)</span></span>
-<span></span>
 <span><span class="co"># Intervalo interquartil</span></span>
 <span><span class="va">IQR</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/IQR.html">IQR</a></span><span class="op">(</span><span class="va">brotos_sub</span><span class="op">)</span></span>
-<span></span>
 <span><span class="co"># Limites para outliers</span></span>
 <span><span class="va">lim_inf</span> <span class="op">&lt;-</span> <span class="va">Q1</span> <span class="op">-</span> <span class="fl">1.5</span> <span class="op">*</span> <span class="va">IQR</span></span>
 <span><span class="va">lim_sup</span> <span class="op">&lt;-</span> <span class="va">Q3</span> <span class="op">+</span> <span class="fl">1.5</span> <span class="op">*</span> <span class="va">IQR</span></span>
-<span></span>
 <span><span class="co"># Valores considerados outliers</span></span>
 <span><span class="va">outliers</span> <span class="op">&lt;-</span> <span class="va">brotos_sub</span><span class="op">[</span></span>
 <span>  <span class="va">brotos_sub</span> <span class="op">&lt;</span> <span class="va">lim_inf</span> <span class="op">|</span></span>
-<span>  <span class="va">brotos_sub</span> <span class="op">&gt;</span> <span class="va">lim_sup</span></span>
-<span><span class="op">]</span></span>
-<span></span>
+<span>  <span class="va">brotos_sub</span> <span class="op">&gt;</span> <span class="va">lim_sup</span><span class="op">]</span></span>
 <span><span class="co"># Resultados</span></span>
 <span><span class="va">Q1</span></span>
 <span><span class="va">Q3</span></span>
@@ -590,15 +598,15 @@ IQR = Q_3 - Q_1
 </h3>
 <p>O nome Q-Q plot vem de <code>Quantile-Quantile Plot</code>. Ele compara os quantis dos nossos dados com os quantis de uma distribuição teórica normal. Os quantis são posições na distribuição dos dados, por exemplo, a mediana é o quantil 50%. Os quartis dividem os dados em 4 partes, e o percentil divide em 100 partes. <em>Quartis e percentis são tipos de quantis</em>.</p>
 <p>Atente que, os “quantis teóricos normais” não vêm dos seus dados. Eles vêm da distribuição normal ideal. O que vem dos seus dados são a quantidade de observações e a ordem dos valores (eixo y do Q-Q plot).</p>
-<p>Tendo em vista que O eixo X do Q-Q plot mostra os quantis teóricos da normal padrão,</p>
+<p>Tendo em vista que o eixo x do Q-Q plot mostra os quantis teóricos da normal padrão,</p>
 <p><span class="math display">\[
 Z \sim N(0,1)
 \]</span> e nessa distribuição, a média é 0 e o desvio padrão é 1.</p>
-<p>Ou seja, no Q-Q Plot, o eixo X não mostra nossos dados diretamente (eles estão no eixo Y). No eixo X, valores geralmente vão de cerca de -3 até +3, do intervalo de distribuiões, onde ±1σ representa ~68% dos valores, ±2 ~95% e 3σ ~99.7%. Então quase todos os valores ficam entre</p>
+<p>Ou seja, no Q-Q Plot, o eixo x não mostra nossos dados diretamente (eles estão no eixo y). No eixo x, valores geralmente vão de cerca de -3 até +3, do intervalo de distribuiões, onde ±1σ representa ~68% dos valores, ±2 ~95% e 3σ ~99.7%. Então quase todos os valores ficam entre</p>
 <p><span class="math display">\[
 -3 \leq Z \leq 3
 \]</span></p>
-<p>Dessa forma, cada ponto na distribuição representa o quantil teórico (eixo X) em relação ao valor observado nos nossos dados (eixo Y).</p>
+<p>Dessa forma, cada ponto na distribuição representa o quantil teórico (eixo x) em relação ao valor observado nos nossos dados (eixo y).</p>
 </div>
 </div>
 <div id="sumário-estatístico-geral" class="section level2" number="12.9">
@@ -621,7 +629,7 @@ Z \sim N(0,1)
 <h2>
 <span class="header-section-number">12.10</span> Estatística de Shapiro-Wilk<a class="anchor" aria-label="anchor" href="#estat%C3%ADstica-de-shapiro-wilk"><i class="fas fa-link"></i></a>
 </h2>
-<p>Os testes de Shapiro-Wilk e Kolmogorov-Smirnov são ambos usados para avaliar normalidade, mas funcionam de maneiras diferentes e têm objetivos diferentes <span class="citation">(<a href="#ref-moore2017">MOORE; MCCABE; CRAIG, 2017</a>)</span>. O Shapiro-Wilk é mais utilizado para amostras pequenas e médias. Testa as hipóteses:</p>
+<p>Os testes de Shapiro-Wilk e Kolmogorov-Smirnov são ambos usados para avaliar normalidade, mas funcionam de maneiras diferentes e têm objetivos diferentes <span class="citation">(<a href="#ref-moore2017">MOORE; MCCABE; CRAIG, 2017</a>)</span>. O Shapiro-Wilk é mais utilizado para amostras pequenas e médias (preferível em relação ao Kolmogorov-Smirnov). Testa as hipóteses:</p>
 <p>H<sub>0</sub>: os dados seguem distribuição normal<br>
 H<sub>1</sub>: os dados não seguem distribuição normal</p>
 <div class="sourceCode" id="cb137"><pre class="downlit sourceCode r">
@@ -633,37 +641,28 @@ H<sub>1</sub>: os dados não seguem distribuição normal</p>
 ## data:  brotos_sub
 ## W = 0.99695, p-value = 0.4748</code></pre>
 <p>Para um <code>p ≥ 0.05</code> você não rejeita H<sub>0</sub> ao nível de 5%. Ou seja, os dados são compatíveis com uma distribuição normal.</p>
-<p>Em um texto científico: <code>O teste de Shapiro-Wilk não indicou desvio significativo da normalidade (W=0.99695, p=0.4748).</code></p>
+<p>O QUE REPORTAR:</p>
+<p><code>O teste de Shapiro-Wilk não indicou desvio significativo da normalidade (W=0.99695, p=0.4748).</code></p>
 </div>
 <div id="estatística-de-kolmogorov-smirnov-com-nível-de-significância-de-lilliefors" class="section level2" number="12.11">
 <h2>
 <span class="header-section-number">12.11</span> Estatística de Kolmogorov-Smirnov, com nível de significância de Lilliefors<a class="anchor" aria-label="anchor" href="#estat%C3%ADstica-de-kolmogorov-smirnov-com-n%C3%ADvel-de-signific%C3%A2ncia-de-lilliefors"><i class="fas fa-link"></i></a>
 </h2>
 <p>O Kolmogorov-Smirnov é um teste mais geral, desenvolvido para responder a pergunta: “A distribuição observada difere da distribuição teórica?”. Portanto, mede se a distribuição observada difere da distribuição teórica, comparando a distribuição acumulada empírica dos dados com uma distribuição teórica. Por isso, ele pode ser usado para vários tipos de distribuição (normal, exponencial, uniforme, Poisson, etc). A estatística do teste é o <code>D</code>, e ele mede a maior distância entre as duas curvas acumuladas, sendo menos poderoso para normalidade e mais sensível ao centro da distribuição.</p>
-<p>No caso do Kolmogorov-Smirnov, para testar normalidade, precisamos fornecer a média e o desvio padrão da amostra. Quando elas são estimados da própria amostra, o teste deixa de ser o Kolmogorov-Smirnov “puro” (mas veja a seguir). Por isso, para normalidade, o Shapiro-Wilk costuma ser preferido. O Kolmogorov-Smirnov pressupõe, ainda, que não existem empates (<code>ties</code>) nos seus dados, ou seja, valores repetidos. Nesses casos, o valor-p pode ficar menos confiável. Quando há muitos empates, a distribuição empírica fica “escalonada”, o que viola a hipótese teórica do teste.</p>
+<p>No caso do Kolmogorov-Smirnov, para testar normalidade, precisamos fornecer a média e o desvio padrão da amostra. Quando elas são estimados da própria amostra, o teste deixa de ser o Kolmogorov-Smirnov “puro” (mas veja a seguir). Por isso, <strong>para normalidade, o Shapiro-Wilk costuma ser preferido</strong>. O Kolmogorov-Smirnov pressupõe, ainda, que não existem empates (<code>ties</code>) nos dados, ou seja, valores repetidos. Nesses casos, o valor-p pode ficar menos confiável. Quando há muitos empates, a distribuição empírica fica “escalonada”, o que viola a hipótese teórica do teste.</p>
 <p>Outro problema do Kolmogorov-Smirnov, para teste de normalidade é que ele precisa da média e do desvio padrão da normal teórica. Se a média e desvio padrão são estimados da amostra, isso enfraquece o teste. Uma possibilidade é a versão adaptada do Kolmogorov-Smirnov de Lilliefors no R. Ele é uma adaptação do Kolmogorov-Smirnov para normalidade com média e desvio padrão estimados da amostra.</p>
 <div class="sourceCode" id="cb139"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/ks.test.html">ks.test</a></span><span class="op">(</span><span class="va">brotos_sub</span>, <span class="st">"pnorm"</span><span class="op">)</span> <span class="co">#assume media 0 e desvio padrão 1</span></span></code></pre></div>
-<pre><code>## Warning in ks.test.default(brotos_sub, "pnorm"): não devem existir empates no
-## teste de Kolmogorov-Smirnov de apenas uma amostra</code></pre>
-<div class="sourceCode" id="cb141"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/ks.test.html">ks.test</a></span><span class="op">(</span><span class="va">brotos_sub</span>, <span class="co">#média e desvio padrão estimados da amostra</span></span>
+<code class="sourceCode R"><span><span class="co">#ks.test(brotos_sub, "pnorm") #assume media 0 e desvio padrão 1</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/ks.test.html">ks.test</a></span><span class="op">(</span><span class="va">brotos_sub</span>, <span class="co">#média e desvio padrão estimados da amostra</span></span>
 <span>        <span class="st">"pnorm"</span>,</span>
 <span>        <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">brotos_sub</span><span class="op">)</span>,</span>
 <span>        <span class="fu">sd</span><span class="op">(</span><span class="va">brotos_sub</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## Warning in ks.test.default(brotos_sub, "pnorm", mean(brotos_sub),
 ## sd(brotos_sub)): não devem existir empates no teste de Kolmogorov-Smirnov de
 ## apenas uma amostra</code></pre>
-<div class="sourceCode" id="cb143"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb141"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#format(p, scientific = FALSE)</span></span></code></pre></div>
 <pre><code>## 
-##  Asymptotic one-sample Kolmogorov-Smirnov test
-## 
-## data:  brotos_sub
-## D = 1, p-value &lt; 2.2e-16
-## alternative hypothesis: two-sided
-## 
-## 
 ##  Asymptotic one-sample Kolmogorov-Smirnov test
 ## 
 ## data:  brotos_sub
@@ -672,7 +671,7 @@ H<sub>1</sub>: os dados não seguem distribuição normal</p>
 <p>O teste Kolmogorov-Smirnov clássico foi desenvolvido para distribuições contínuas sem empates. No código acima foi estimada média e desvio usando a própria amostra.</p>
 <p>Como o Kolmogorov-Smirnov clássico assume parâmetros conhecidos previamente, isso torna o teste “otimista”.</p>
 <p>O teste ideal nesse caso é o <code>Lilliefors</code></p>
-<div class="sourceCode" id="cb145"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb143"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#install.packages("nortest")</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">nortest</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/nortest/man/lillie.test.html">lillie.test</a></span><span class="op">(</span><span class="va">brotos_sub</span><span class="op">)</span></span>
@@ -694,17 +693,17 @@ H<sub>1</sub>: os dados não seguem distribuição normal</p>
 <h3>
 <span class="header-section-number">12.12.1</span> Sobre transformações de variáveis em ecologia<a class="anchor" aria-label="anchor" href="#sobre-transforma%C3%A7%C3%B5es-de-vari%C3%A1veis-em-ecologia"><i class="fas fa-link"></i></a>
 </h3>
-<p>As transformações de dados são procedimentos matemáticos aplicados individualmente a cada valor de uma matriz de dados, independentemente das linhas ou colunas. Seu principal objetivo é reduzir problemas estatísticos, como assimetria da distribuição (´skewness´), heterogeneidade de variâncias e excesso de influência de valores muito altos <span class="citation">ZAR (<a href="#ref-zar2010">2010</a>)</span>. Além disso, em análises multivariadas, as transformações ajudam a melhorar medidas de similaridade e a equilibrar a importância entre espécies raras e abundantes <span class="citation">(<a href="#ref-legendre1998">LEGENDRE; LEGENDRE, 1998</a>; <a href="#ref-valentin2000">VALENTIN, 2000</a>)</span>.</p>
-<p>Os principais tipos de trabsformação de dados são <span class="citation">ZAR (<a href="#ref-zar2010">2010</a>)</span>:</p>
+<p>As transformações de dados são procedimentos matemáticos aplicados individualmente a cada valor de uma matriz de dados, independentemente das linhas ou colunas. Seu principal objetivo é reduzir problemas estatísticos, como assimetria da distribuição (´skewness´), heterogeneidade de variâncias e excesso de influência de valores muito altos <span class="citation">(<a href="#ref-sokal1995">SOKAL; ROHLF, 1995</a>; <a href="#ref-sokal2009">SOKAL; ROHLF, 2009</a>; <a href="#ref-zar2010">ZAR, 2010</a>)</span>. Além disso, em análises multivariadas, as transformações ajudam a melhorar medidas de similaridade e a equilibrar a importância entre espécies raras e abundantes <span class="citation">(<a href="#ref-legendre1998">LEGENDRE; LEGENDRE, 1998</a>; <a href="#ref-valentin2000">VALENTIN, 2000</a>)</span>.</p>
 <div class="infobox note">
 <div class="center">
 <p><strong>NOTA</strong></p>
 </div>
 <p>Veja a seção <a href="tiposR.html#tiposbasico">Tipos e estruturas de dados no R</a> do Capítulo <a href="tiposR.html#tiposR">Sintaxe e Tipos de dados no R</a></p>
 </div>
+<p>Os principais tipos de trabsformação de dados são <span class="citation">(<a href="#ref-sokal1995">SOKAL; ROHLF, 1995</a>; <a href="#ref-sokal2009">SOKAL; ROHLF, 2009</a>; <a href="#ref-zar2010">ZAR, 2010</a>)</span>:</p>
 <div id="transformação-exponencial-power-transformation" class="section level4" number="12.12.1.1">
 <h4>
-<span class="header-section-number">12.12.1.1</span> Transformação exponencial (´power transformation´)<a class="anchor" aria-label="anchor" href="#transforma%C3%A7%C3%A3o-exponencial-power-transformation"><i class="fas fa-link"></i></a>
+<span class="header-section-number">12.12.1.1</span> Transformação exponencial (<em>power transformation</em>)<a class="anchor" aria-label="anchor" href="#transforma%C3%A7%C3%A3o-exponencial-power-transformation"><i class="fas fa-link"></i></a>
 </h4>
 <p>A transformação exponencial é uma das mais utilizadas em matrizes ecológicas. Ela consiste em elevar os valores da matriz a uma potência ´p´:</p>
 <p><span class="math display">\[
@@ -715,27 +714,21 @@ y' = y^p
 <p>Os valores mais comuns de ´p´ são:</p>
 <p><span class="math display">\[
 p = 1
-\]</span>
-Ou seja, sem transformação.</p>
+\]</span> Ou seja, sem transformação.</p>
 <p><span class="math display">\[
 p = 0.5
-\]</span>
-Equivale a raiz quadrada, que também pode ser implementada por:</p>
+\]</span> Equivale a raiz quadrada, que também pode ser implementada por:</p>
 <p><span class="math display">\[
 y' = \sqrt{y}
-\]</span>
-<span class="math display">\[
+\]</span> <span class="math display">\[
 p = 0.25
-\]</span>
-Equivale a raiz quarta, ou:</p>
+\]</span> Equivale a raiz quarta, ou:</p>
 <p><span class="math display">\[
 y' = \sqrt{\sqrt{y}}
 \]</span></p>
-<p>Temos ainda:
-<span class="math display">\[
+<p>Temos ainda: <span class="math display">\[
 p = 0,
-\]</span>
-que, quando aplicado aos valores não-zero dos dados retorna a presença/ausência.</p>
+\]</span> que, quando aplicado aos valores não-zero dos dados retorna a presença/ausência.</p>
 <p>Em resumo, quanto menor o valor de ´p´, maior é a compressão relativa dos valores altos.</p>
 </div>
 <div id="transformação-logarítmica" class="section level4" number="12.12.1.2">
@@ -747,9 +740,7 @@ que, quando aplicado aos valores não-zero dos dados retorna a presença/ausênc
 <p>Pode ser usada como o log simples (<span class="math inline">\(\log_{10}(y)\)</span>) ou o log natural (<span class="math inline">\(\ln(y)\)</span>) (também, <span class="math inline">\(\log_{e}(y)\)</span>, em que <span class="math inline">\(e = \exp(1)\)</span>, como implementado no R).</p>
 <p><span class="math display">\[
 y' = \log(y)
-\]</span>
-Uma variação do log, é:
-<span class="math display">\[
+\]</span> Uma variação do log, é: <span class="math display">\[
 y' = \log(y + 1)
 \]</span></p>
 <p>O valor 1 é geralmente adicionado para evitar problemas com zeros no conjunto de dados. Essa transformação reduz a influência de valores extremos e melhora a distribuição dos dados.</p>
@@ -771,12 +762,10 @@ y' = \arcsin(y)
 <p>Essa transformação é mais adequada para dados proporcionais, pois melhora a normalidade e redistribui melhor os valores percentuais.</p>
 <p><span class="math display">\[
 y' = \arcsin(\sqrt{y})
-\]</span>
-Ou</p>
+\]</span> Ou</p>
 <p><span class="math display">\[
 y' = \frac{2}{\pi}\arcsin(\sqrt{y})
-\]</span>
-Nesses casos, os valores entram na fórmula variando entre 0 e 1, e o resultado continua variando entre 0 e 1. Essa transformação é especialmente útil quando os dados representam proporções ou porcentagens.</p>
+\]</span> Nesses casos, os valores entram na fórmula variando entre 0 e 1, e o resultado continua variando entre 0 e 1. Essa transformação é especialmente útil quando os dados representam proporções ou porcentagens.</p>
 <p>Note que, a escolha da transformação deve ser feita com critério, pois diferentes transformações podem alterar os resultados e as conclusões das análises multivariadas. Em ecologia, essa escolha depende mais da interpretação biológica desejada — como enfatizar espécies comuns ou raras — do que apenas de critérios estatísticos.</p>
 <p>Para ilustrar o processo de transformação e conjuntos de dados mais realistas, veja o capítulo a seguir.</p>
 </div>
@@ -794,7 +783,7 @@ Nesses casos, os valores entram na fórmula variando entre 0 e 1, e o resultado 
 <h2>Script limpo<a class="anchor" aria-label="anchor" href="#script-limpo-2"><i class="fas fa-link"></i></a>
 </h2>
 <p>Aqui apresento o scrip na íntegra sem os textos ou outros comentários. Você pode copiar e colar no R para executa-lo. Lembre de remover os <span style="color:green"><code>#</code></span> ou <span style="color:green"><code>##</code></span> caso necessite executar essas linhas.</p>
-<div class="sourceCode" id="cb147"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb145"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># rm(list=ls(all=TRUE)) #limpa a memória</span></span>
 <span><span class="co"># install.packages("openxlsx") #importa arquivos do excel</span></span>
 <span><span class="co"># install.packages("fdth")</span></span>
@@ -883,6 +872,9 @@ HYNDMAN, R. J. The problem with Sturges<span>’</span> rule for constructing hi
 <div id="ref-legendre1998" class="csl-entry">
 LEGENDRE, P.; LEGENDRE, L. <strong>Numerical Ecology</strong>. 2nd English ed ed. Amsterdam, The Netherlands ; New York ; Oxford.
 </div>
+<div id="ref-levin1977" class="csl-entry">
+LEVIN, J. <strong>Elementary Statistics in Social Research</strong>. 2. ed. New York, NY: Harper &amp; Row Publishers, 1977.
+</div>
 <div id="ref-moore2017" class="csl-entry">
 MOORE, D. S.; MCCABE, G. P.; CRAIG, B. A. <strong>Introduction to the Practice of Statistics</strong>. 9. ed. New York, NY: W.H. Freeman; Company, 2017.
 </div>
@@ -961,7 +953,7 @@ ZAR, J. H. <strong>Biostatistical Analysis</strong>. 5. ed. Upper Saddle River, 
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Fundamentos de Ecologia Numérica</strong>: Disciplina de Ecologia Numérica do Curso de Ciências Biológicas do Campus V da UEPB" was written by Prof. Elvio S. F. Medeiros, Laboratório de Ecologia, Universidade Estadual da Paraíba, Campus V, João Pessoa, PB. It was last built on Last updated: 05/06/2026 16:33:20.</p>
+    <p>"<strong>Fundamentos de Ecologia Numérica</strong>: Disciplina de Ecologia Numérica do Curso de Ciências Biológicas do Campus V da UEPB" was written by Prof. Elvio S. F. Medeiros, Laboratório de Ecologia, Universidade Estadual da Paraíba, Campus V, João Pessoa, PB. It was last built on Last updated: 13/06/2026 07:13:08.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
